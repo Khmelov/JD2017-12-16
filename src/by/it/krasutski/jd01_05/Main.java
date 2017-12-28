@@ -9,6 +9,7 @@ public class Main {
         taskA2();
         taskA3();
         taskB1();
+        taskB2();
     }
 
     static void taskA1() {
@@ -45,6 +46,26 @@ public class Main {
                 y+=pow(7,a)-cos(x);
             }
             System.out.println("При a= "+a+" y="+y);
+        }
+    }
+
+    static void taskB2(){
+        for (double x = -5.5; -6<x&&x<2; x=x+0.5) {
+            double a;
+            if (-2<(x/2)&&(x/2)<=-1) {
+                a = log10((sin(pow(x,2))+2.74));
+                System.out.println("При x/2="+x/2+" a=" + a);
+            }
+            else if (-1<(x/2)&&(x/2)<0.2) {
+                a = log10(cos(pow(x, 2)) + 2.74);
+                System.out.println("При x/2="+x/2+" a="+a);
+            }
+            else if ((x/2)==0.2) {
+                a = log10(1/(tan(pow(x, 2))) + 2.74);
+                System.out.println("При x/2="+x/2+" a="+a);
+            }
+            else
+                System.out.println("При x/2="+x/2+" вычисления не определены");
         }
     }
 
