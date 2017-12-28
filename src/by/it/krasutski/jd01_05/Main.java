@@ -8,6 +8,7 @@ public class Main {
         taskA1();
         taskA2();
         taskA3();
+        taskB1();
     }
 
     static void taskA1() {
@@ -36,4 +37,15 @@ public class Main {
             System.out.println("При a= "+i+" f="+f);
         }
     }
+
+    static void taskB1(){
+        double y=0;
+        for (double a = 0; 0<=a&&a<=2; a=a+0.2) {
+            for (double x = 1; 1<=x&&x<=6 ; x++) {
+                y+=pow(7,a)-cos(x);
+            }
+            System.out.println("При a= "+a+" y="+y);
+        }
+    }
+
 }
