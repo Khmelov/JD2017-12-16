@@ -16,7 +16,7 @@ public class Main {
     static void taskA2(){
         double a=1.12;
         double b=0.371;
-       // double y=tan()
+       /// double y=tan()
     }
     public static void main(String[] args) {
         taskA1();
