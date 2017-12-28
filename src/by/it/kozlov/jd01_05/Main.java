@@ -3,6 +3,11 @@ package by.it.kozlov.jd01_05;
 import static java.lang.Math.*;
 
 public class Main {
+
+    public static void Main(String[] args) {
+        taskA1();
+    }
+
     static void taskA1() {
         double a = 756.13;
         double x = 0.3;
@@ -12,7 +17,4 @@ public class Main {
         System.out.println("Result z=" + z);
     }
 
-    public static void main(String[] args) {
-        taskA1();
-    }
 }
