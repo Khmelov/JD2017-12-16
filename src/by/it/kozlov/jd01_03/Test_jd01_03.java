@@ -276,7 +276,7 @@ public class Test_jd01_03 {
         if (runMain) //если нужно запускать, то запустим, иначе оставим только вывод
             try {
                 Class[] argTypes = new Class[]{String[].class};
-                Method main = aClass.getDeclaredMethod("Main", argTypes);
+                Method main = aClass.getDeclaredMethod("main", argTypes);
                 main.invoke(null, (Object) new String[]{});
                 System.setOut(oldOut); //возврат вывода, нужен, только если был запуск
             } catch (Exception x) {
