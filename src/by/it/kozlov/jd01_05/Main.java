@@ -22,14 +22,16 @@ public class Main {
     static void taskA2(double a, double b) {
         double y;
         y = tan(pow((a + b), 2.0)) - pow((a + 1.5), (1.0 / 3.0)) + a * pow(b, 5.0) - b / log(a * a);
-        System.out.println("Result y = " +y);
+        System.out.println("Result y = " + y);
     }
 
     static void taskA3(double x, double a) {
         double f;
-        for (double i = -5; i <= 12; i+=3.75) {
-            f=pow(exp(-3.54*a),(a*x));
-            System.out.printf("При a = %.2f f = %f\n", i, f);
+        for (double i = -5; i <= 12; i=i) {
+            f = pow(E, a * i) - (3.45 * i);
+            if (i<0) System.out.printf("При a = %.2f f = %.5f\n", i, f);
+            else System.out.printf("При a = %.2f f = %.5e\n", i, f);
+            i+=3.75;
         }
     }
 }
