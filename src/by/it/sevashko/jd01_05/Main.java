@@ -20,5 +20,7 @@ public class Main {
         //Task_5
         Task5.calculate();
 
+        //Task_6
+        Task6.work(28);
     }
 }
