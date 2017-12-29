@@ -13,7 +13,7 @@ public class Task7 {
             arrayA[i] = (int)(Math.random() * (451 - 103)) + 103;
             if ((double)arrayA[i] * 0.1 > (double) i) lengthArrayB = lengthArrayB + 1;
         }
-        printArray(arrayA, "A", 5);
+        printArrayA(arrayA, "A", 5);
 
         int[] arrayB = new int[lengthArrayB];
         int j = 0;
@@ -24,20 +24,120 @@ public class Task7 {
             }
         }
         mergeSort(arrayB);
-//        printArray(arrayB, "B", 5);
+        printArrayB(arrayB, "B", 5);
     }
 
-    static void printArray(int[] arr, String name, int columnCount){
+    static void printArrayA(int[] arr, String name, int columnCount){
+        System.out.println("Massive A <index to rows>");
         //Top
         System.out.print((char)9556);
         for (int j = 0; j < 4; j++) {
-            for (int i = 0; i < 10; i++) System.out.print((char) 9552);
+            for (int i = 0; i < 11; i++) System.out.print((char) 9552);
             System.out.print((char) 9574);
         }
-        for (int i = 0; i < 10; i++) System.out.print((char) 9552);
+        for (int i = 0; i < 11; i++) System.out.print((char) 9552);
         System.out.println((char)9559);
 
-        for (int i = 0; i < 5; i++) System.out.printf("%s%s[%2d]=%d", (char)9553, name, i, arr[i]);
+        //body
+        for (int i = 0; i < arr.length; i++){
+            System.out.printf("%s %s[%2d]=%d ", (char)9553, name, i, arr[i]);
+            if ((i + 1)%5 == 0) System.out.printf("%c\n", (char)9553);
+
+            if ((i + 1)%5 == 0 && i != arr.length - 1) {
+                System.out.print((char) 9568);
+                for (int j = 0; j < 4; j++) {
+                    for (int k = 0; k < 11; k++) System.out.print((char) 9552);
+                    System.out.print((char) 9580);
+                }
+                for (int k = 0; k < 11; k++) System.out.print((char) 9552);
+                System.out.println((char) 9571);
+            }
+
+            if (i == arr.length - 1){
+                for (int k = 0; k < 4; k++) {
+                    System.out.printf("%c", (char)9553);
+                    for (int j = 0; j < 11; j++) {
+                        System.out.printf("%c", ' ');
+                    }
+                }
+                System.out.printf("%c\n", (char)9553);
+            }
+        }
+
+        //bottom
+        System.out.print((char)9562);
+        for (int j = 0; j < 4; j++) {
+            for (int i = 0; i < 11; i++) System.out.print((char) 9552);
+            System.out.print((char) 9577);
+        }
+        for (int i = 0; i < 11; i++) System.out.print((char) 9552);
+        System.out.println((char)9565);
+    }
+
+    static void printArrayB(int[] arr, String name, int columnCount){
+        System.out.println("Massive B <index to cols>");
+        //Top
+        System.out.print((char)9556);
+        for (int j = 0; j < 4; j++) {
+            for (int i = 0; i < 11; i++) System.out.print((char) 9552);
+            System.out.print((char) 9574);
+        }
+        for (int i = 0; i < 11; i++) System.out.print((char) 9552);
+        System.out.println((char)9559);
+
+        //body
+        for (int i = 0; i < (arr.length / 5 + 1); i++) {
+            for (int j = 0; j < 5; j++) {
+                if (i+j*(arr.length/5+1) < arr.length)System.out.printf("%s %s[%2d]=%d ", (char)9553, name, i+j*(arr.length/5+1), arr[i+j*(arr.length/5+1)]);
+                else {
+                    System.out.print((char) 9553);
+                    for (int k = 0; k < 11; k++) System.out.print(' ');
+                }
+            }
+            System.out.printf("%c\n", (char)9553);
+            if (i < (arr.length / 5)) {
+                System.out.print((char) 9568);
+                for (int j = 0; j < 4; j++) {
+                    for (int k = 0; k < 11; k++) System.out.print((char) 9552);
+                    System.out.print((char) 9580);
+                }
+                for (int k = 0; k < 11; k++) System.out.print((char) 9552);
+                System.out.println((char) 9571);
+            }
+        }
+        /*for (int i = 0; i < arr.length; i++){
+            System.out.printf("%s %s[%2d]=%d ", (char)9553, name, i, arr[i]);
+            if ((i + 1)%5 == 0) System.out.printf("%c\n", (char)9553);
+
+            if ((i + 1)%5 == 0 && i != arr.length - 1) {
+                System.out.print((char) 9568);
+                for (int j = 0; j < 4; j++) {
+                    for (int k = 0; k < 11; k++) System.out.print((char) 9552);
+                    System.out.print((char) 9580);
+                }
+                for (int k = 0; k < 11; k++) System.out.print((char) 9552);
+                System.out.println((char) 9571);
+            }
+
+            if (i == arr.length - 1){
+                for (int k = 0; k < 4; k++) {
+                    System.out.printf("%c", (char)9553);
+                    for (int j = 0; j < 11; j++) {
+                        System.out.printf("%c", ' ');
+                    }
+                }
+                System.out.printf("%c\n", (char)9553);
+            }
+        }*/
+
+        //bottom
+        System.out.print((char)9562);
+        for (int j = 0; j < 4; j++) {
+            for (int i = 0; i < 11; i++) System.out.print((char) 9552);
+            System.out.print((char) 9577);
+        }
+        for (int i = 0; i < 11; i++) System.out.print((char) 9552);
+        System.out.println((char)9565);
     }
 
     static void mergeSort(int[] array){

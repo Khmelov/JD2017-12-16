@@ -20,7 +20,6 @@ public class Main {
         //Task_4
         Task4.calculate(1.85);
         System.out.println();
-        System.out.println();
 
         //Task_5
         Task5.calculate();
