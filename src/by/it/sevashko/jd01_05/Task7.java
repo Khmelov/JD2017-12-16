@@ -86,16 +86,19 @@ public class Task7 {
         System.out.println((char)9559);
 
         //body
-        for (int i = 0; i < (arr.length / 5 + 1); i++) {
+        int rowCount;
+        if (arr.length%5 == 0) rowCount = arr.length/5;
+        else rowCount = arr.length/5 + 1;
+        for (int i = 0; i < rowCount; i++) {
             for (int j = 0; j < 5; j++) {
-                if (i+j*(arr.length/5+1) < arr.length)System.out.printf("%s %s[%2d]=%d ", (char)9553, name, i+j*(arr.length/5+1), arr[i+j*(arr.length/5+1)]);
+                if (i+j*rowCount < arr.length)System.out.printf("%s %s[%2d]=%d ", (char)9553, name, i+j*rowCount, arr[i+j*rowCount]);
                 else {
                     System.out.print((char) 9553);
                     for (int k = 0; k < 11; k++) System.out.print(' ');
                 }
             }
             System.out.printf("%c\n", (char)9553);
-            if (i < (arr.length / 5)) {
+            if (i < rowCount - 1) {
                 System.out.print((char) 9568);
                 for (int j = 0; j < 4; j++) {
                     for (int k = 0; k < 11; k++) System.out.print((char) 9552);
