@@ -108,30 +108,6 @@ public class Task7 {
                 System.out.println((char) 9571);
             }
         }
-        /*for (int i = 0; i < arr.length; i++){
-            System.out.printf("%s %s[%2d]=%d ", (char)9553, name, i, arr[i]);
-            if ((i + 1)%5 == 0) System.out.printf("%c\n", (char)9553);
-
-            if ((i + 1)%5 == 0 && i != arr.length - 1) {
-                System.out.print((char) 9568);
-                for (int j = 0; j < 4; j++) {
-                    for (int k = 0; k < 11; k++) System.out.print((char) 9552);
-                    System.out.print((char) 9580);
-                }
-                for (int k = 0; k < 11; k++) System.out.print((char) 9552);
-                System.out.println((char) 9571);
-            }
-
-            if (i == arr.length - 1){
-                for (int k = 0; k < 4; k++) {
-                    System.out.printf("%c", (char)9553);
-                    for (int j = 0; j < 11; j++) {
-                        System.out.printf("%c", ' ');
-                    }
-                }
-                System.out.printf("%c\n", (char)9553);
-            }
-        }*/
 
         //bottom
         System.out.print((char)9562);
