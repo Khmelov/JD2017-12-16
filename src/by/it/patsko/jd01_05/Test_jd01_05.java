@@ -1,142 +1,99 @@
-package by.it._tasks_.jd01_04;
+package by.it.patsko.jd01_05;
 
-
-import java.io.*;
-import java.lang.reflect.*;
-import java.util.Arrays;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import java.io.*;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 @SuppressWarnings("all")
 
 //поставьте курсор на следующую строку и нажмите Ctrl+Shift+F10
-public class Test_jd01_04 {
+public class Test_jd01_05 {
 
     @Test(timeout = 1500)
-    public void testTaskA1_printMulTable__TaskA() throws Exception {
-        Test_jd01_04 ok = run("", false);
-        Method m = checkMethod(ok.aClass.getSimpleName(), "static printMulTable");
-        m.setAccessible(true);
-        m.invoke(null);
-        ok
-                .include("2*2=4  2*3=6  2*4=8  2*5=10 2*6=12 2*7=14 2*8=16 2*9=18")
-                .include("3*2=6  3*3=9  3*4=12 3*5=15 3*6=18 3*7=21 3*8=24 3*9=27")
-                .include("4*2=8  4*3=12 4*4=16 4*5=20 4*6=24 4*7=28 4*8=32 4*9=36")
-                .include("5*2=10 5*3=15 5*4=20 5*5=25 5*6=30 5*7=35 5*8=40 5*9=45")
-                .include("6*2=12 6*3=18 6*4=24 6*5=30 6*6=36 6*7=42 6*8=48 6*9=54")
-                .include("7*2=14 7*3=21 7*4=28 7*5=35 7*6=42 7*7=49 7*8=56 7*9=63")
-                .include("8*2=16 8*3=24 8*4=32 8*5=40 8*6=48 8*7=56 8*8=64 8*9=72")
-                .include("9*2=18 9*3=27 9*4=36 9*5=45 9*6=54 9*7=63 9*8=72 9*9=81");
-
-        System.out.println("Проверка таблицы умножения завершена");
+    public void testTaskA1_Task1__Main() throws Exception {
+        System.out.println("Ожидается -11392.451698930832");
+        run("").include("4516");
     }
 
     @Test(timeout = 1500)
-    public void testTaskA2_buildOneDimArray__TaskA() throws Exception {
-        Test_jd01_04 ok = run("", false);
-        Method m = checkMethod(ok.aClass.getSimpleName(), "static buildOneDimArray", String.class);
-        m.invoke(null, "123 99 88 77 66 5 4 3 1 0 2");
-        ok.include("V[").include("]=0").include("]=123");
-        ok.include("first element=10");
-        ok.include("last element=2");
-        System.out.println("Проверка обработки массива завершена");
+    public void testTaskA2_Task2__Main() throws Exception {
+        System.out.println("Ожидается -3.106533964444678");
+        run("").include("10653");
     }
 
     @Test(timeout = 1500)
-    public void testTaskA3_run_main__TaskA() throws Exception {
-        Test_jd01_04 ok = run("123 99 88 77 66 5 4 3 1 0 2");
-        ok
-                .include("2*2=4  2*3=6  2*4=8  2*5=10 2*6=12 2*7=14 2*8=16 2*9=18")
-                .include("3*2=6  3*3=9  3*4=12 3*5=15 3*6=18 3*7=21 3*8=24 3*9=27")
-                .include("4*2=8  4*3=12 4*4=16 4*5=20 4*6=24 4*7=28 4*8=32 4*9=36")
-                .include("5*2=10 5*3=15 5*4=20 5*5=25 5*6=30 5*7=35 5*8=40 5*9=45")
-                .include("6*2=12 6*3=18 6*4=24 6*5=30 6*6=36 6*7=42 6*8=48 6*9=54")
-                .include("7*2=14 7*3=21 7*4=28 7*5=35 7*6=42 7*7=49 7*8=56 7*9=63")
-                .include("8*2=16 8*3=24 8*4=32 8*5=40 8*6=48 8*7=56 8*8=64 8*9=72")
-                .include("9*2=18 9*3=27 9*4=36 9*5=45 9*6=54 9*7=63 9*8=72 9*9=81");
-        ok.include("V[").include("]=0").include("]=123");
-        ok.include("first element=10");
-        ok.include("last element=2");
-        System.out.println("Проверка метода main завершена");
+    public void testTaskA3_Task3__Main() throws Exception {
+        System.out.println("Ожидается:\n" +
+                "При a= -5,00 f=17,2500\n" +
+                "При a= -1,25 f=4,31250\n" +
+                "При a=  2,50 f=1,37217e+13\n" +
+                "При a=  6,25 f=6,97461e+32\n" +
+                "При a= 10,00 f=3,54513e+52\n");
+        run("").include("3125");
     }
 
     @Test(timeout = 1500)
-    public void testTaskB1_inputSalary__TaskB() throws Exception {
-        run("3\n" +
-                "Ivanov\n" +
-                "Petrov\n" +
-                "Sidorov\n" +
-                "11 11 13 15\n" +
-                "15 16 17 18 \n" +
-                "19 20 11 12 \n")
-                .include("Ivanov").include("Petrov").include("Sidorov")
-                .include("11").include("13").include("13").include("13")
-                .include("15").include("16").include("17").include("18")
-                .include("19").include("20").include("11").include("12")
-        ;
+    public void testTaskB1_Task4__Main() throws Exception {
+        System.out.println("Ожидается:\n" +
+                "При a=0,00 Сумма y = 6,275648e+00\n" +
+                "При a=0,20 Сумма y = 9,130287e+00\n" +
+                "При a=0,40 Сумма y = 1,334309e+01\n" +
+                "При a=0,60 Сумма y = 1,956022e+01\n" +
+                "При a=0,80 Сумма y = 2,873531e+01\n" +
+                "При a=1,00 Сумма y = 4,227565e+01\n" +
+                "При a=1,20 Сумма y = 6,225812e+01\n" +
+                "При a=1,40 Сумма y = 9,174772e+01\n" +
+                "При a=1,60 Сумма y = 1,352677e+02\n" +
+                "При a=1,80 Сумма y = 1,994933e+02\n" +
+                "При a=2,00 Сумма y = 2,942756e+02\n");
+        run("").include("2756");
     }
 
     @Test(timeout = 1500)
-    public void testTaskB2_sumAndAvg__TaskB() throws Exception {
-        run("3\n" +
-                "Ivanov\n" +
-                "Petrov\n" +
-                "Sidorov\n" +
-                "11 11 13 15\n" +
-                "15 16 17 18 \n" +
-                "19 20 11 12 \n")
-                .include("178")
-                .include("14").include("833")
-        ;
+    public void testTaskB2_Task5__Main() throws Exception {
+        System.out.println("Ожидается:\n" +
+                "При x/2=-2,75 вычисления не определены\n" +
+                "При x/2=-2,50 вычисления не определены\n" +
+                "При x/2=-2,25 вычисления не определены\n" +
+                "При x/2=-2,00 вычисления не определены\n" +
+                "При x/2=-1,75 a = 3,854062e-01\n" +
+                "При x/2=-1,50 a = 4,986025e-01\n" +
+                "При x/2=-1,25 a = 4,324595e-01\n" +
+                "При x/2=-1,00 a = 2,973660e-01\n" +
+                "При x/2=-0,75 a = 3,246582e-01\n" +
+                "При x/2=-0,50 a = 5,159139e-01\n" +
+                "При x/2=-0,25 a = 5,692466e-01\n" +
+                "При x/2=0,00 a = 5,728716e-01\n" +
+                "При x/2=0,25 вычисления не определены\n" +
+                "При x/2=0,50 вычисления не определены\n" +
+                "При x/2=0,75 вычисления не определены");
+        run("").include("8540");
     }
 
     @Test(timeout = 1500)
-    public void testTaskC1_mergeSort__TaskC() throws Exception {
-        Test_jd01_04 ok = run("", false);
-        Method m = checkMethod(ok.aClass.getSimpleName(), "static mergeSort", double[].class);
-        double[] act = new double[15];
-        double[] exp = new double[15];
-        for (int i = 0; i < act.length; i++) {
-            act[i] = Math.random() * 31 - 15;
-            exp[i] = act[i];
-        }
-        m.invoke(null, act);  //тестируемая сортировка
-        Arrays.sort(exp);        //ожидаемая сортировка
-        System.out.println("   Yours array:" + Arrays.toString(act));
-        System.out.println("Expected array:" + Arrays.toString(exp));
-        assertArrayEquals("Сортировка работает неверно", exp, act, 1e-10);
-        System.out.println("Проверка сортировки завершена");
-    }
-
-    @Test(timeout = 1500)
-    public void testTaskC2_binarySearch__TaskC() throws Exception {
-        Test_jd01_04 ok = run("", false);
-
-        Method m = checkMethod(ok.aClass.getSimpleName(), "static binarySearch", double[].class, double.class);
-        double[] d = new double[15];
-        for (int i = 0; i < d.length; i++) {
-            d[i] = Math.random() * 31 - 15;
-        }
-        Arrays.sort(d);
-        System.out.println("Test massiv:" + Arrays.toString(d));
-        for (int i = 0; i < d.length; i++) {
-
-            int expected = Arrays.binarySearch(d, d[i]);
-            int actual = (int) m.invoke(null, d, d[i]);
-            assertEquals("Поиск работает неверно", expected, actual);
-
-        }
-        System.out.println("Проверка бинарного поиска завершена");
-
-        m = checkMethod(ok.aClass.getSimpleName(), "static buildOneDimArray", String.class);
-        m.invoke(null, "123 99 88 77 66 5 4 3 1 0 2");
-        ok.include("V[").include("]=0").include("]=123");
-        ok.include("first element=10");
-        ok.include("last element=2");
-        System.out.println("Проверка buildOneDimArray завершена");
-
+    public void testTaskC1_Task6__Main() throws Exception {
+        System.out.println("Ожидается\n" +
+                "Массив A[]\n" +
+                "A[ 0 ] = 3,20458    A[ 1 ] = 3,24985    A[ 2 ] = 3,29494    A[ 3 ] = 3,33986    A[ 4 ] = 3,38461    \n" +
+                "A[ 5 ] = 3,42918    A[ 6 ] = 3,47356    A[ 7 ] = 3,51777    A[ 8 ] = 3,56179    A[ 9 ] = 3,60564    \n" +
+                "A[ 10] = 3,64930    A[ 11] = 3,69278    A[ 12] = 3,73608    A[ 13] = 3,77921    A[ 14] = 3,82215    \n" +
+                "A[ 15] = 3,86492    A[ 16] = 3,90751    A[ 17] = 3,94993    A[ 18] = 3,99217    A[ 19] = 4,03425    \n" +
+                "A[ 20] = 4,07615    A[ 21] = 4,11788    A[ 22] = 4,15945    A[ 23] = 4,20085    A[ 24] = 4,24209    \n" +
+                "A[ 25] = 4,28316    A[ 26] = 4,32408    A[ 27] = 4,36483    \n" +
+                "\n" +
+                "Массив B[] из элементов массива A > 3.5\n" +
+                "B[ 0 ] = 3,51777    B[ 1 ] = 3,56179    B[ 2 ] = 3,60564    B[ 3 ] = 3,64930    B[ 4 ] = 3,69278    \n" +
+                "B[ 5 ] = 3,73608    B[ 6 ] = 3,77921    B[ 7 ] = 3,82215    B[ 8 ] = 3,86492    B[ 9 ] = 3,90751    \n" +
+                "B[ 10] = 3,94993    B[ 11] = 3,99217    B[ 12] = 4,03425    B[ 13] = 4,07615    B[ 14] = 4,11788    \n" +
+                "B[ 15] = 4,15945    B[ 16] = 4,20085    B[ 17] = 4,24209    B[ 18] = 4,28316    B[ 19] = 4,32408    \n" +
+                "B[ 20] = 4,36483 ");
+        run("").include("2045");
     }
 
     /*
@@ -203,11 +160,11 @@ public class Test_jd01_04 {
 
     //метод находит и создает класс для тестирования
     //по имени вызывающего его метода, testTaskA1 будет работать с Main
-    private static Test_jd01_04 run(String in) {
+    private static Test_jd01_05 run(String in) {
         return run(in, true);
     }
 
-    private static Test_jd01_04 run(String in, boolean runMain) {
+    private static Test_jd01_05 run(String in, boolean runMain) {
         Throwable t = new Throwable();
         StackTraceElement trace[] = t.getStackTrace();
         StackTraceElement element;
@@ -225,10 +182,10 @@ public class Test_jd01_04 {
         System.out.println("\n---------------------------------------------");
         System.out.println("Старт теста для " + clName + "\ninput:" + in);
         System.out.println("---------------------------------------------");
-        return new Test_jd01_04(clName, in, runMain);
+        return new Test_jd01_05(clName, in, runMain);
     }
 
-    public Test_jd01_04() {
+    public Test_jd01_05() {
         //Конструктор тестов
     }
 
@@ -240,7 +197,7 @@ public class Test_jd01_04 {
     Class<?> aClass;
 
     //Основной конструктор тестов
-    private Test_jd01_04(String className, String in, boolean runMain) {
+    private Test_jd01_05(String className, String in, boolean runMain) {
         //this.className = className;
         aClass = null;
         try {
@@ -273,18 +230,18 @@ public class Test_jd01_04 {
     }
 
     //проверка вывода
-    private Test_jd01_04 is(String str) {
+    private Test_jd01_05 is(String str) {
         assertTrue("Ожидается такой вывод:\n<---начало---->\n" + str + "<---конец--->",
                 stringWriter.toString().equals(str));
         return this;
     }
 
-    private Test_jd01_04 include(String str) {
+    private Test_jd01_05 include(String str) {
         assertTrue("Строка не найдена: " + str + "\n", stringWriter.toString().contains(str));
         return this;
     }
 
-    private Test_jd01_04 exclude(String str) {
+    private Test_jd01_05 exclude(String str) {
         assertTrue("Лишние данные в выводе: " + str + "\n", !stringWriter.toString().contains(str));
         return this;
     }
