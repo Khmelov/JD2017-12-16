@@ -16,7 +16,7 @@ public class InOut {
     }
     public static void printArray(double[] arr,String name, int colomnCount){
         for (int i = 0; i <arr.length ; i++) {
-            System.out.printf("%s[% -4d]=%5.2f ",name,i,arr[i]);
+            System.out.printf("%s[% -4d]=%-5.2f   ",name,i,arr[i]);
             if ((i+1)%colomnCount==0||i==arr.length-1) System.out.println();
         }
     }
