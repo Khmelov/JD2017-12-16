@@ -6,14 +6,14 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class TaskC {
-
+//static
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         String line=sc.nextLine();
         //  double[] arr;
-        buildOneDimArray(line);
-        //    double[] d=new double[]{78,15,-8.34,59};
-        //    mergeSort(d);
+       buildOneDimArray(line);
+          //  double[] d=new double[]{-14.456922400680195, -8.051713822905842, -13.498556542955063, 2.8830429842916097, -6.912475126115618, -8.831617683722952, 10.2700787657235, 2.182299447368436, 7.467592531566741, 11.003453365931609, 11.81940677757289, -7.806292583983632, -12.700688619398012, -11.820583645278663, -10.868152357118255};
+           // mergeSort(d);
     }
 
     static int binarySearch(double[] array, double value) {

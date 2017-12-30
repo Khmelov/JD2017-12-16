@@ -12,7 +12,7 @@ public class Main {
     static void taskA2(){
         double a=1.21;
         double b=0.371;
-        double y=tan(pow(a+b,2))-pow(a+1.5,1/3)+a*pow(b,5)-b/log(a*a);
+        double y=tan(pow(a+b,2))-pow(a+1.5,1.0/3)+a*pow(b,5)-b/log(a*a);
         System.out.println("Res ="+y);
     }
     static void taskA3(){
@@ -36,17 +36,22 @@ public class Main {
     }
     static void taskB5(){
         double b=0;
-        for (double x = -6; x < 2; x=x+0.5) {
+        for (double x = -5.5; x < 2; x=x+0.5) {
             if (x/2>-2 && x/2<=-1){
                 b=sin(x*x);
             }
-            if (x/2>-1 && x/2<=0.2){
+            else if (x/2>-1 && x/2<0.2){
                 b=cos(x*x);
             }
-            if (x/2==0.2) {
-                b = 1 / tan(x * x);
+            else if (x/2==0.2) {
+                b = 1.0 / tan(x * x);
             }
-            System.out.printf("При x=%f\ty=%f",x,log(abs(b+2.74)));
+            else
+            {
+                System.out.println("err");
+                continue;
+            }
+            System.out.printf("При x=%f\ty=%f",x,log10(abs(b+2.74)));
             System.out.println();
         }
     }
@@ -55,5 +60,6 @@ public class Main {
         taskA2();
         taskA3();
         taskB4();
+        taskB5();
     }
 }
