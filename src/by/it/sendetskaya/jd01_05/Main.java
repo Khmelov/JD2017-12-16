@@ -94,18 +94,18 @@ public class Main {
         int count=0;
 
         System.out.println("Массив: ");
-            while (x<9){
-            for (int i = 0; i < mas.length; i++){
+        int j=0;
+            while (x<9&&j<n){
+            //for (int i = 0; i < mas.length; i++){
                 x =x+(9 - 5.33) / n;
-                z = pow((pow(x, 2) + 4.5), 1. / 3);
-                mas[i] = z;
-                if (mas[i]>3.5) {
+                z = pow((pow(x, 2) + 4.5), 1. / 3);//x =x+(9 - 5.33) / n;  !!!!тогда левая граница будет включена и Ваш тест пройдет
+                mas[j] = z;
+                if (mas[j]>3.5) {
                     count++;
                 }
+                j++;
+                }
 
-            }
-
-        }
         printArray(mas,"M1",4);
         System.out.println();
         double []mas1=new double[count];
@@ -130,6 +130,8 @@ public class Main {
     {
         for (int i = 0; i < arr.length; i++) {
             System.out.printf("%s[%- 3d]=%-10.5f  ",name,i,arr[i]);
+            if(arr[i]==0)
+                i=i;
             if (((i+1)%columnCount==0)||i==arr.length-1)
             {
                 System.out.println();;
