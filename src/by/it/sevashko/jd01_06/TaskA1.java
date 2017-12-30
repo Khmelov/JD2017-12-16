@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class TaskA1 {
 
     public static void main(String[] args) {
-        Pattern pattern = Pattern.compile("[а-яА-яё]{4,100}") ;
+        Pattern pattern = Pattern.compile("[а-яА-Яё]{4,100}") ;
         Matcher matcher = pattern.matcher(Poem.text);
         StringBuilder sb = new StringBuilder(Poem.text);
         while (matcher.find()){
