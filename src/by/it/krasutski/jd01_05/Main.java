@@ -42,6 +42,7 @@ public class Main {
             double f=exp(i*x)-3.45*i;
             System.out.println("При a= "+i+" f="+f);
         }
+        System.out.println();
     }
 
     static void taskB1(){
