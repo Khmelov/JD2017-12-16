@@ -13,7 +13,7 @@ public class TaskC1 {
         }
 
         StringBuilder newText = new StringBuilder();
-        Pattern pattern = Pattern.compile("[ ]{1,}");
+        Pattern pattern = Pattern.compile("[ ]+");
         for (String i : text){
             StringBuilder sentence = new StringBuilder(i);
             if (sentence.length() < maxLength){
