@@ -5,12 +5,10 @@ import java.util.regex.Pattern;
 
 public class TaskA1 {
     public static void main(String[] args) {
-        //System.out.println(Poem.text);
         Pattern pattern = Pattern.compile("[а-яА-ЯёЁ]{4,}");
         Matcher matcher = pattern.matcher(Poem.text);
         StringBuilder sb = new StringBuilder(Poem.text);
         while (matcher.find()) {
-            //System.out.println(matcher.group());
             int pos=matcher.start()+3;
             sb.replace(pos,pos+1,"#");
             int len=matcher.end()-matcher.start();
