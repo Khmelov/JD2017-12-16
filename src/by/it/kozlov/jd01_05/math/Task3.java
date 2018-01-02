@@ -1,9 +1,9 @@
-package by.it.kozlov.jd01_05;
+package by.it.kozlov.jd01_05.math;
 
 import static java.lang.Math.*;
 
 public class Task3 {
-    static void task3() {
+    public static void printTable() {
         double f, x = 12.1;
         for (double a = -5; a <= 12; a = a + 3.75) {
             f = pow(E, a * x) - (3.45 * a);

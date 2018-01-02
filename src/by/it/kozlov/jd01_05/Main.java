@@ -1,11 +1,24 @@
 package by.it.kozlov.jd01_05;
 
+import by.it.kozlov.jd01_05.math.*;
+
 public class Main {
 
     public static void Main(String[] args) {
-        Task1.task1();
-        Task2.task2(1.21, 0.371);
-        Task3.task3();
-        Task4.task4();
+        //Задача 1
+        double x = 0.3;
+        System.out.println(Task1.optionA(x));
+        System.out.println(Task1.optionB(x));
+
+        //Задача 2
+        System.out.println(Task2.calculate(1.21, 0.371));
+
+        //Задача 3
+        Task3.printTable();
+
+        //Задача 4
+        Task4.calculate(0.2);
     }
+
+
 }
