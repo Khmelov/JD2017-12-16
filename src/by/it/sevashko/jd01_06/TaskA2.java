@@ -25,7 +25,6 @@ public class TaskA2 {
     public static void main(String[] args) {
         Pattern pattern = Pattern.compile("[а-яА-яё]+");
         Matcher matcher = pattern.matcher(Poem.text);
-        StringBuilder sb = new StringBuilder(Poem.text);
         while (matcher.find()) {
             String word = matcher.group();
             processWord(word);
