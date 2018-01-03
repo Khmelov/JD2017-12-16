@@ -13,7 +13,7 @@ import static org.junit.Assert.fail;
 
 @SuppressWarnings("all")
 
-//поставьте курсор на следующую строку и нажмите Ctrl+Shift+F10
+//поставьте курсор на следующую строку и нажмите Ctrl+Shift+F10_тест B2 некорректен
 public class Test_jd01_06 {
 
     @Test(timeout = 1500)

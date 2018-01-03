@@ -14,33 +14,24 @@ public class TaskA2 {
                 counts[i] = counts[i]+1;
                 return;
             }
-
         }
-//        String[] newWords = new String[words.length+1];
-//        int[] newCounts = new int[counts.length+1];
         words = Arrays.copyOf(words,words.length+1);
         counts = Arrays.copyOf(counts, counts.length+1);
         words[words.length-1] = word;
         counts[counts.length-1] = 1;
-
-
     }
 
     private static void print(){
         for (int i = 0; i < words.length; i++) {
             System.out.println(words[i]+"="+counts[i]);
-
         }
     }
 
     public static void main(String[] args) {
-        //System.out.println(Poem.text);
         Pattern pattern = Pattern.compile("[а-яА-ЯёЁ]+");
         Matcher matcher = pattern.matcher(Poem.text);
-        //StringBuilder sd = new StringBuilder(Poem.text);
         while (matcher.find()){
             String word = matcher.group();
-            //System.out.println(word);
             procWord(word);
         }
         print();

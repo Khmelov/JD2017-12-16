@@ -5,7 +5,7 @@ import static java.lang.Math.*;
 public class Task3 {
     public static void printTable(){
         for (double a = -5; a<=12; a=a+3.75){
-            System.out.printf("a=%.2f\ty=%.4f\n",a,fun(a));
+            System.out.printf("a=%.2f\ty=%.4e\n",a,fun(a));
         }
     }
     static double fun (double a){
