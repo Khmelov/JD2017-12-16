@@ -7,10 +7,10 @@ public class TaskB {
         double y;
         for (double a = 0; a <= 2; a += 0.2) {
             y = 0;
-            for (int x = 0; x <= 6; x++) {
-                y += pow(7, a) - cos(x);
+            for (int x = 1; x <= 6; x++) {
+                y += pow(7, a)-cos(x);
             }
-            System.out.printf("При a = %3.2f\ty = %g\n", a, y);
+            System.out.printf("При a = %3.2f\ty = %e\n", a, y);
         }
     }
 
