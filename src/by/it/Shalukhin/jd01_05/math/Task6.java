@@ -4,8 +4,8 @@ import static java.lang.Math.*;
 
 public class Task6 {
     public static double[] getArray(){
-        //int n = (int)(random()*21+20);
-        int n = 28;
+        int n = (int)(random()*21+20);
+        //int n = 28;
         double step = (9-5.33)/n;
         double [] mas = new double[n];
         double x = 5.33;
