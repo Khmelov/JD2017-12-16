@@ -1,4 +1,5 @@
 package by.it.akhmelev.jd01_07.matrixOk;
+@SuppressWarnings("all")
 public class Multiplicator {
     public Matrix multiply(Matrix p, Matrix q) throws MatrixException {
         int v = p.getVerticalSize();

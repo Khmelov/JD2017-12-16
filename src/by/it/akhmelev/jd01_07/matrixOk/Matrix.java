@@ -1,5 +1,5 @@
 package by.it.akhmelev.jd01_07.matrixOk;
-
+@SuppressWarnings("all")
 /**
  * Класс для хранения матрицы
  */

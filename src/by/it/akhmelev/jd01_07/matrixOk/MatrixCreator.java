@@ -1,4 +1,5 @@
 package by.it.akhmelev.jd01_07.matrixOk;
+@SuppressWarnings("all")
 public class MatrixCreator {
         public static void fillRandomized(Matrix t, int start, int end) {
             int v = t.getVerticalSize();

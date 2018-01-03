@@ -1,5 +1,5 @@
 package by.it.akhmelev.jd01_07;
-
+@SuppressWarnings("all")
 public class MatrixBad {
     private int[ ][ ] a;
     private int n;

@@ -1,5 +1,5 @@
 package by.it.akhmelev.jd01_07;
-
+@SuppressWarnings("all")
 public class Department {
     {
         System.out.println("logic (1) id=" + this.id);

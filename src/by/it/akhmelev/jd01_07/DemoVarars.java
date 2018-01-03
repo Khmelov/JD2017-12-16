@@ -1,5 +1,5 @@
 package by.it.akhmelev.jd01_07;
-
+@SuppressWarnings("all")
 /**
  * Метод с неопределенным числом формальных параметров Integer... args
  */

@@ -1,4 +1,5 @@
 package by.it.akhmelev.jd01_07;
+@SuppressWarnings("all")
 public class DemoOverload {
     public static void printArgCount(Object... args)    {System.out.println("Object args: " + args.length);}
     public static void printArgCount(Integer[ ]...args) {System.out.println("Integer[ ] args: " + args.length);}
