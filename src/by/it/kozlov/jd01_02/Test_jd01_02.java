@@ -1,4 +1,4 @@
-package by.it._tasks_.jd01_02;
+package by.it.kozlov.jd01_02;
 
 import org.junit.Test;
 
@@ -247,7 +247,6 @@ public class Test_jd01_02 {
                 }
             } else
                 m = aClass.getDeclaredMethod(methodName, parameters);
-            m.setAccessible(true);
             return m;
 
         } catch (NoSuchMethodException e) {
