@@ -26,7 +26,6 @@ public class TaskA {
         return -1;
     }
     static void buildOneDimArray(String line){
-       // long start = System.nanoTime();
         double[] arr = InOut.getArray(line);
         InOut.printArray(arr,"V",5);
         double first = arr[0];
@@ -35,9 +34,5 @@ public class TaskA {
         InOut.printArray(arr,"V",4);
         System.out.printf("index of first element=%d\n",find(arr,first));
         System.out.printf("index of last element=%d\n",find(arr,last));
-
-        //int indexFirst = find(arr,first);
-        //int indexLasst = find(arr,last);
-        //long delta =
     }
 }
