@@ -18,6 +18,9 @@ public class Main {
 
         //Задача 4
         Task4.calculate(0.2);
+
+        //Задача 5
+        Task5.calculate();
     }
 
 
