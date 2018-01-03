@@ -215,7 +215,7 @@ public class Test_jd01_03 {
 
 
     //метод находит и создает класс для тестирования
-    //по имени вызывающего его метода, testTaskA1 будет работать с Main
+    //по имени вызывающего его метода, testTaskA1 будет работать с TaskA1
     private static Test_jd01_03 run(String in) {
         return run(in, true);
     }
@@ -277,7 +277,7 @@ public class Test_jd01_03 {
         if (runMain) //если нужно запускать, то запустим, иначе оставим только вывод
             try {
                 Class[] argTypes = new Class[]{String[].class};
-                Method main = aClass.getDeclaredMethod("Main", argTypes);
+                Method main = aClass.getDeclaredMethod("main", argTypes);
                 main.invoke(null, (Object) new String[]{});
                 System.setOut(oldOut); //возврат вывода, нужен, только если был запуск
             } catch (Exception x) {

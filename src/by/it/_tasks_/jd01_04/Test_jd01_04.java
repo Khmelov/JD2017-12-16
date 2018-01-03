@@ -59,7 +59,7 @@ public class Test_jd01_04 {
         ok.include("V[").include("]=0").include("]=123");
         ok.include("first element=10");
         ok.include("last element=2");
-        System.out.println("Проверка метода Main завершена");
+        System.out.println("Проверка метода main завершена");
     }
 
     @Test(timeout = 1500)
@@ -202,7 +202,7 @@ public class Test_jd01_04 {
 
 
     //метод находит и создает класс для тестирования
-    //по имени вызывающего его метода, testTaskA1 будет работать с Main
+    //по имени вызывающего его метода, testTaskA1 будет работать с TaskA1
     private static Test_jd01_04 run(String in) {
         return run(in, true);
     }
@@ -264,7 +264,7 @@ public class Test_jd01_04 {
         if (runMain) //если нужно запускать, то запустим, иначе оставим только вывод
             try {
                 Class[] argTypes = new Class[]{String[].class};
-                Method main = aClass.getDeclaredMethod("Main", argTypes);
+                Method main = aClass.getDeclaredMethod("main", argTypes);
                 main.invoke(null, (Object) new String[]{});
                 System.setOut(oldOut); //возврат вывода, нужен, только если был запуск
             } catch (Exception x) {
