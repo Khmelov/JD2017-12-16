@@ -15,7 +15,7 @@ public class Task5 {
             } else if (x / 2 > -1 && x / 2 < 0.2) {
                 double b = cos(pow(x, 2.0));
                 System.out.printf("x=%f a=%e\n", x, log10(abs(b + 2.74)));
-            } else System.out.println("Ошибка");
+            }
         }
     }
 }

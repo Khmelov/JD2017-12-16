@@ -4,7 +4,7 @@ import by.it.kozlov.jd01_05.math.*;
 
 public class Main {
 
-    public static void Main(String[] args) {
+    public static void main(String[] args) {
         //Задача 1
         double x = 0.3;
         System.out.println(Task1.optionA(x));
