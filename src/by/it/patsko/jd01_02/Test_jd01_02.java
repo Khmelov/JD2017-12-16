@@ -1,4 +1,4 @@
-package by.it._tasks_.jd01_02;
+package by.it.patsko.jd01_02;
 
 import org.junit.Test;
 
@@ -247,7 +247,6 @@ public class Test_jd01_02 {
                 }
             } else
                 m = aClass.getDeclaredMethod(methodName, parameters);
-            m.setAccessible(true);
             return m;
 
         } catch (NoSuchMethodException e) {
@@ -341,7 +340,7 @@ public class Test_jd01_02 {
         if (runMain) //если нужно запускать, то запустим, иначе оставим только вывод
             try {
                 Class[] argTypes = new Class[]{String[].class};
-                Method main = aClass.getDeclaredMethod("Main", argTypes);
+                Method main = aClass.getDeclaredMethod("main", argTypes);
                 main.invoke(null, (Object) new String[]{});
                 System.setOut(oldOut); //возврат вывода, нужен, только если был запуск
             } catch (Exception x) {
