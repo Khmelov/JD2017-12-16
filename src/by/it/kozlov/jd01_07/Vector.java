@@ -13,25 +13,17 @@ public class Vector extends AbstractVar {
         this(vector.value);
     }
 
-    Vector(String string) {
-        if (string.charAt(0) == ('{')) string = string.substring(1, string.length() - 1);
-        String[] str = string.split(",");
-        double[] mas = new double[str.length];
-        for (int i = 0; i < str.length; i++) {
-            mas[i] = Double.valueOf(str[i]);
-        }
-        this.value = mas;
-    }
-
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
         result.append('{');
+
         for (int i = 0; i < value.length; i++) {
             if (i > 0) result.append(", ");
             result.append(value[i]);
         }
         result.append('}');
         return result.toString();
+
     }
 }
