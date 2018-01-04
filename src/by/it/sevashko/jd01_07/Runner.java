@@ -10,6 +10,8 @@ public class Runner {
 
         double[][] matrixArray = {{1, 2, 3}, {4, 5, 6}};
         Matrix matrix1 = new Matrix(matrixArray);
+        Matrix matrix2 = new Matrix(matrix1);
         System.out.println(matrix1);
+        System.out.println(matrix2);
     }
 }
