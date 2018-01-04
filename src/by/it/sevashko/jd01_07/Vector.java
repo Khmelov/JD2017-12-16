@@ -1,5 +1,9 @@
 package by.it.sevashko.jd01_07;
 
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Vector extends AbstractVar {
 
     private double[] value;
@@ -15,7 +19,17 @@ public class Vector extends AbstractVar {
     }
 
     Vector(String strVector){
-
+        Pattern pattern = Pattern.compile("[0-9]+\\.?[0-9]*");
+        Matcher matcher = pattern.matcher(strVector);
+        ArrayList<Double> array = new ArrayList<Double>();
+        while (matcher.find()){
+            Double item = Double.parseDouble(matcher.group());
+            array.add(item);
+        }
+        this.value = new double[array.size()];
+        for (int i = 0; i < this.value.length; i++) {
+            this.value[i] = array.get(i);
+        }
     }
 
     @Override
