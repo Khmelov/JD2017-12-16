@@ -12,6 +12,9 @@ public class Vector extends AbstractVar{
     Vector(Vector vector){
         this(vector.value);
     }
+    Vector (String strVector){
+        strVector=strVector.toString();
+    }
     @Override
     public String toString() {
         //return  Arrays.toString(value).replace('[','{').replace(']','}');
