@@ -13,7 +13,7 @@ TaskC2. Сформировать и вернуть в методе String slow (
  */
 public class TaskC2 {
 
-    static final long initTime=System.nanoTime();
+    private static final long initTime=System.nanoTime();
 
     public static void main(String[] args) {
 
@@ -21,7 +21,6 @@ public class TaskC2 {
         System.out.println(slow);
         StringBuilder fast=new StringBuilder(fast(""));
         System.out.println(fast);
-        System.out.println(slow.equals(fast));
     }
 
     private static String slow (String text)
@@ -32,7 +31,8 @@ public class TaskC2 {
         Random random=new Random(initTime);
         for (int i = 0; i < 100000/6; i++) {
 
-           text += " " +RandomWords(random);
+           text=text.concat(" ");
+           text=text.concat(RandomWords(random));
         }
         secondTime=System.nanoTime();
         time=secondTime-firstTime;
@@ -57,7 +57,7 @@ return text;
         return sb.toString();
     }
 
-    public static String RandomWords(Random random )
+    static String RandomWords(Random random )
     {
             char[] word = new char[5];
             for(int j = 0; j < word.length; j++)

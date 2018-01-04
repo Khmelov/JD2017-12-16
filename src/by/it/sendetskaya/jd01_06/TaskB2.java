@@ -35,8 +35,8 @@ public class TaskB2 {
             while (matcher.find()) {
                 String str = matcher.group();
                 String trim = str.trim();
-                int len=matcher.end()-matcher.start();
-                processWord(trim,len);
+                //int len=matcher.end()-matcher.start();
+                processWord(trim);
             }
 
         }
@@ -49,14 +49,14 @@ public class TaskB2 {
                     str1 = matcher1.group();
 
                     str1 = matcher1.replaceAll(" ");
-                    str1.trim();
+                    //str1.trim();
 
                     processWord1(str1);
                 }
                 return str1;
             }
 
-    private static void processWord (String str, int len)
+    private static void processWord (String str)
     {
             strings = Arrays.copyOf(strings, strings.length + 1);
             strings[strings.length - 1] = str;
