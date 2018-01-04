@@ -1,9 +1,12 @@
 package by.it.patsko.jd01_07;
 
-
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+/*
+На уровень B разработайте для класса AbstractVar наследника Vector с тремя конструкторами:
+1. Из массива {1.0, 2.0, 4.0} сигнатура конструктора Vector(double[ ] value)
+2. Из такой же точно переменной сигнатура конструктора Vector(Vector vector)
+3. Из строки вида {1.0, 2.0, 4.0} сигнатура конструктора Vector(String strVector)
+   Переопределите метод String toString() так, чтобы он возвращал строку вида {1.0, 2.0, 4.0}
+ */
 
 class Vector extends AbstractVar {
     private double[] value;
