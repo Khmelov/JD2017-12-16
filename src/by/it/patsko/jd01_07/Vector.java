@@ -18,22 +18,11 @@ class Vector extends AbstractVar {
     }
 
     Vector(String strVector) {
-        Pattern p=Pattern.compile("[0-9]");
-        Matcher mchr=p.matcher(strVector);
-        ArrayList<Double> list=new ArrayList<>();
-        while (mchr.find()){
-            list.add(Double.parseDouble(mchr.group()));
-        }
-        this.value=new double[list.size()];
-        for (int i = 0; i < value.length; i++) {
-            this.value[i]=list.get(i);
-        }
-        
-        /*String[] str = strVector.trim().split(",");
-        value = new double[str.length];
+        String[] str = strVector.substring(1, strVector.length() - 1).split(",");
+        this.value = new double[str.length];
         for (int i = 0; i < this.value.length; i++) {
             this.value[i] = Double.parseDouble(str[i]);
-        }*/
+        }
     }
 
     @Override
