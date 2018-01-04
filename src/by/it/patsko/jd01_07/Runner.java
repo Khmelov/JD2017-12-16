@@ -17,5 +17,8 @@ public class Runner {
 
         Vector vector2=new Vector(vector1);
         System.out.println("vector2="+vector2);
+
+        Vector vector3=new Vector("{1, 2, 3}");
+        System.out.println("vector3="+vector3);
     }
 }
