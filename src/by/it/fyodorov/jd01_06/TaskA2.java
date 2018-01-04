@@ -22,15 +22,15 @@ public class TaskA2 {
         counts[counts.length - 1]=1;
 
     }
-    private static void print
+//    private static void print
 
 
     public static void main(String[] args) {
-        Pattern pattern=Pattern.compile("[а-яA-ЯёЁ]{+}");
-        Matcher mather=pattern.matcher(Poem.text);
-        while (mather.find()){
-
-        }
+//        Pattern pattern=Pattern.compile("[а-яA-ЯёЁ]{+}");
+//        Matcher mather=pattern.matcher(Poem.text);
+//        while (mather.find()){
+//
+//        }
 
     }
 }
