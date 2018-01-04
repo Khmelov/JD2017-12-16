@@ -2,7 +2,6 @@ package by.it.patsko.jd01_06;
 
 class Poem {
     static final String text=
-
             "У лукоморья дуб зелёный,\n" +
             "Златая цепь на дубе том.\n" +
             "И днём и ночью кот учёный\n" +
