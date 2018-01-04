@@ -12,8 +12,8 @@ public class Scalar extends AbstractVar {
         this.value = other.value;
     }
 
-    Scalar(String strScallar){
-        this.value = Double.parseDouble(strScallar);
+    Scalar(String strScalar){
+        this.value = Double.parseDouble(strScalar);
     }
 
     public String toString(){
