@@ -8,8 +8,9 @@ import java.util.Scanner;
 public class TaskA {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        String line=sc.next();
+        String line=sc.nextLine();
         printMulTable();
+        System.out.println();
         buildOneDimArray(line);
     }
 
@@ -24,20 +25,20 @@ public class TaskA {
     }
 
     static void buildOneDimArray(String line) {
-        int j = 5;
+        int j=0,k=0;
         String l = "V";
         double[] mas = InOut.getArray(line);
-        InOut.printArray(mas, l, j);
+        InOut.printArray(mas, l, 5);
         double a=mas[0];
         double b=mas[mas.length-1];
         Helper.sort(mas);
-        j = 4;
-        InOut.printArray(mas,l,j);
+        InOut.printArray(mas,l,4);
         for (int i = 0; i <mas.length; i++) {
-            if (mas[i]==a) System.out.println("first element="+i);
-            if (mas[i]==b) System.out.println("last element="+i);
+            if (mas[i]==a) j=i;
+            if (mas[i]==b) k=i;
         }
-
+        System.out.println("first element="+j);
+        System.out.println("last element="+k);
 
     }
 }

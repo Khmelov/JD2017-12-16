@@ -18,7 +18,24 @@ public class TaskB {
             }
 
         }
+        System.out.println("------------------------------------------------------------");
+        System.out.printf("%-10s%-10s%-10s%-10s%-10s%-10s","Фамилия:","Квартал 1","Квартал 2","Квартал 3","Квартал 4","Итого:");
+        System.out.println();
+        System.out.println("------------------------------------------------------------");
+        for (int i = 0; i < name.length; i++) {
+            System.out.printf("%-10s%-10d%-10d%-10d%-10d%-10d",name[i],money[i][0],money[i][1],money[i][2],money[i][3],money[i][0]+money[i][1]+money[i][2]+money[i][3]);
+            System.out.println();
+        }
+        System.out.println("------------------------------------------------------------");
+        int sum=0;
+        for (int i = 0; i < name.length; i++) {
+            for (int j = 0; j < 4; j++) {
+                sum=sum+money[i][j];
+            }
+        }
 
+        System.out.println("Итого:   "+sum);
+        System.out.printf("%-9s,%9.4f","Средняя: "+(double)sum/4/n);
 
     }
 }
