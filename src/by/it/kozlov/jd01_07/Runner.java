@@ -19,5 +19,8 @@ public class Runner {
 
         Vector vector3 = new Vector("{1,2,3}");
         System.out.println("vector3=" + vector3);
+
+        Matrix matrix1 = new Matrix(new double[][] {{1.0,2.0},{3.0,4.0}});
+        System.out.println("matrix1=" + matrix1);
     }
 }
