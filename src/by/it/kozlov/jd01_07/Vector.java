@@ -13,6 +13,15 @@ public class Vector extends AbstractVar {
         this(vector.value);
     }
 
+//    Vector(String string) {
+//        String[] str = string.split(",");
+//        double[] mas = new double[str.length];
+//        for (int i = 0; i < str.length; i++) {
+//            mas[i] = Double.valueOf(str[i]);
+//        }
+//        this.value = mas;
+//    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
