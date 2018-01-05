@@ -22,5 +22,12 @@ public class Runner {
 
         Matrix matrix1 = new Matrix(new double[][] {{1.0,2.0},{3.0,4.0}});
         System.out.println("matrix1=" + matrix1);
+
+        Matrix matrix2 = new Matrix(matrix1);
+        System.out.println("matrix2=" + matrix2);
+
+        Matrix matrix3 = new Matrix("{{1,2},{3,4}}");
+        System.out.println("matrix3=" + matrix3);
+
     }
 }
