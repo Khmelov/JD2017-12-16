@@ -23,7 +23,7 @@ public class TaskB1 {
         for (int i = 0; i < glasn.length; i++) {
             if (first == glasn[i]) {
                 flag = false;
-                return flag;
+                return  flag;
             }
         }
         for (int i = 0; i < glasn.length; i++) {
