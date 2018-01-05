@@ -5,13 +5,13 @@ import java.util.Arrays;
 public class TaskC {
 
     public static void main(String[] args) {
-        double[] arr = {1,2,-3,1,6,76,-16,4.1};
-        String line="1 2 3 4 5 7.7 -1";
+        double[] arr = {1, 2, -3, 1, 6, 76, -16, 4.1};
+        String line = "1 2 3 4 5 7.7 -1";
         mergeSort(arr);
         buildOneDimArray(line);
     }
 
-    static void mergeSort(double[] array) {
+    private static void mergeSort(double[] array) {
         if (array.length >= 2) {
             double[] left = Arrays.copyOfRange(array, 0, array.length / 2);
             double[] right = Arrays.copyOfRange(array, array.length / 2, array.length);
@@ -27,17 +27,16 @@ public class TaskC {
         }
     }
 
-    static void printArray(double[] array){
+    private static void printArray(double[] array) {
         for (double a : array) System.out.print(a + " ");
         System.out.println();
     }
 
-    static int binarySearch(double[ ] array, double value){
+    private static int binarySearch(double[] array, double value) {
         int left = 0;
         int right = array.length;
 
-        while (true)
-        {
+        while (true) {
             int mid = left + (right - left) / 2;
 
             if (array[mid] == value)
@@ -50,14 +49,14 @@ public class TaskC {
         }
     }
 
-    public static void buildOneDimArray(String line){
-        double[] arr=InOut.getArray(line);
-        InOut.printArray(arr,"V",5);
-        double first=arr[0];
-        double last=arr[arr.length-1];
+    private static void buildOneDimArray(String line) {
+        double[] arr = InOut.getArray(line);
+        InOut.printArray(arr, "V", 5);
+        double first = arr[0];
+        double last = arr[arr.length - 1];
         mergeSort(arr);
-        InOut.printArray(arr,"V",4);
-        System.out.printf("Index of first element=%d\n",binarySearch(arr,first));
-        System.out.printf("Index of last element=%d\n",binarySearch(arr,last));
+        InOut.printArray(arr, "V", 4);
+        System.out.printf("Index of first element=%d\n", binarySearch(arr, first));
+        System.out.printf("Index of last element=%d\n", binarySearch(arr, last));
     }
 }
