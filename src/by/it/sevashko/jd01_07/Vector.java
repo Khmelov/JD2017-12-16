@@ -30,6 +30,15 @@ public class Vector extends AbstractVar {
         for (int i = 0; i < this.value.length; i++) {
             this.value[i] = array.get(i);
         }
+
+        // another version
+        /*strVector = strVector.substring(1, strVector.length()-1);
+        Pattern pattern = Pattern.compile("[ ,]+");
+        String[] vectorArray = pattern.split(strVector);
+        this.value = new double[vectorArray.length];
+        for (int i = 0; i < vectorArray.length; i++) {
+            this.value[i] = Double.parseDouble(vectorArray[i]);
+        }*/
     }
 
     @Override
