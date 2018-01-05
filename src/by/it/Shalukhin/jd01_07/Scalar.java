@@ -2,6 +2,7 @@ package by.it.Shalukhin.jd01_07;
 
 public class Scalar extends AbstractVar{
     private double value;
+
     Scalar(double value){
         this.value = value;
     }

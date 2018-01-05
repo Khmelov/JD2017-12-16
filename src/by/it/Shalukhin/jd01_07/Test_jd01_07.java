@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 
 @SuppressWarnings("all")
 
-//поставьте курсор на следующую строку и нажмите Ctrl+Shift+F10
+//поставьте курсор на следующую строку и нажмите Ctrl+Shift+F10_работает
 public class Test_jd01_07 {
 
     @Test(timeout = 1500)
