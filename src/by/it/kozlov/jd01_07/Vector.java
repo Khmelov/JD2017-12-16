@@ -14,7 +14,7 @@ public class Vector extends AbstractVar {
     }
 
     Vector(String string) {
-        if (string.charAt(0) == '{') string = string.substring(1, string.length() - 1);
+        if (string.charAt(0) == ('{')) string = string.substring(1, string.length() - 1);
         String[] str = string.split(",");
         double[] mas = new double[str.length];
         for (int i = 0; i < str.length; i++) {
