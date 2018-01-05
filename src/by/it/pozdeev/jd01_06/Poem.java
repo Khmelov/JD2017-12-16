@@ -1,4 +1,4 @@
-package by.it._tasks_.jd01_06;
+package by.it.pozdeev.jd01_06;
 
 public class Poem {
     static final String text=
