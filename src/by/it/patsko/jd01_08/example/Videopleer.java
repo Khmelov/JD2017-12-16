@@ -1,8 +1,6 @@
-package by.it.patsko.jd01_08;
+package by.it.patsko.jd01_08.example;
 
-/**
- * Created by user on 06.01.2018.
- */
+
 public class Videopleer extends Pleer {
 
 

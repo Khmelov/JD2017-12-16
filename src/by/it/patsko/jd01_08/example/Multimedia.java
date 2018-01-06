@@ -1,4 +1,4 @@
-package by.it.patsko.jd01_08;
+package by.it.patsko.jd01_08.example;
 
 interface Multimedia {
     void powerOn();

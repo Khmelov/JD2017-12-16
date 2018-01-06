@@ -1,4 +1,4 @@
-package by.it.patsko.jd01_08;
+package by.it.patsko.jd01_08.example;
 
 abstract class Pleer implements Multimedia {
     private boolean powerOn;
