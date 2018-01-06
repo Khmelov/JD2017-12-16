@@ -1,6 +1,7 @@
 package by.it.ikiselev.jd01_07;
 
 public class Matrix extends AbstractVar{
+
     private double[][] value;
     public Matrix(double[][] value){
         this.value=value;
@@ -36,4 +37,5 @@ public class Matrix extends AbstractVar{
         result.append("}}");
         return result.toString();
     }
+
 }
