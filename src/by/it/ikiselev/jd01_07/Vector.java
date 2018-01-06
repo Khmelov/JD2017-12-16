@@ -9,12 +9,20 @@ public class Vector extends AbstractVar{
         this.value = new double[value.length];
         System.arraycopy(value,0,this.value,0,value.length);
     }
-    Vector(Vector vector){
+
+    public Vector(Vector vector){
         this(vector.value);
     }
-    Vector (String strVector){
-        strVector=strVector.toString();
-    }
+    public Vector (String strVector){
+        strVector=strVector.replace('{',' ').replace('}',' ').trim();
+        String[] res=strVector.split(",");
+        double[] result=new double[res.length];
+        for (int i = 0; i < res.length; i++) {
+            result[i]=Double.parseDouble(res[i]);
+        }
+        this.value=result;}
+
+
     @Override
     public String toString() {
         //return  Arrays.toString(value).replace('[','{').replace(']','}');
