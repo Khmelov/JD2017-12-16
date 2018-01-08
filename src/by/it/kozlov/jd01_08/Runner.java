@@ -7,7 +7,8 @@ public class Runner {
         System.out.println(theater);
         theater.closeDoor();
         System.out.println(theater);
-        theater.curtainOpen();
+        theater.playSpectacle("Life of Galileo");
+        theater.curtainOpen(theater.theme());
         System.out.println(theater);
         theater.buildingClose();
         System.out.println(theater);

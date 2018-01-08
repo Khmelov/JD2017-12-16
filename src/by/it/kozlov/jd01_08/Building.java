@@ -1,6 +1,7 @@
 package by.it.kozlov.jd01_08;
 
 interface Building {
+    String theme();
 
     void buildingOpen();
 
@@ -10,12 +11,12 @@ interface Building {
 
     void closeDoor();
 
-    void playSpectacle();
+    void playSpectacle(String spectacleTheme);
 
     void stopSpectacle();
 
     //Открытие занавеса
-    void curtainOpen();
+    void curtainOpen(String spectacleTheme);
 
     //Закрытие занавеса
     void curtainClose();

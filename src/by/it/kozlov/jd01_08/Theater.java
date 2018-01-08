@@ -2,29 +2,25 @@ package by.it.kozlov.jd01_08;
 
 public class Theater extends PublicBuilding {
 
-    boolean curtain;
+    private boolean curtain;
 
     @Override
     //Открытие занавеса
-    public void curtainOpen() {
+    public void curtainOpen(String spectacleTheme) {
         curtain = true;
-        super.buildingOpen = true;
-        super.door = true;
-        super.spectacle = true;
+        super.playSpectacle(spectacleTheme);
     }
 
     @Override
     //Закрытие занавеса
     public void curtainClose() {
         curtain = false;
-        super.spectacle = false;
+        super.stopSpectacle();
     }
 
     @Override
     public void buildingClose() {
-        super.buildingOpen = false;
-        super.door = false;
-        super.spectacle = false;
+        super.buildingClose();
         this.curtain = false;
     }
 
@@ -35,5 +31,10 @@ public class Theater extends PublicBuilding {
         sb.append(curtain ? "Curtain open\n" : "Curtain close\n");
         sb.append("-----------------------------\n");
         return sb.toString();
+    }
+
+    public void stopSpectacle() {
+        super.stopSpectacle();
+        curtain = false;
     }
 }

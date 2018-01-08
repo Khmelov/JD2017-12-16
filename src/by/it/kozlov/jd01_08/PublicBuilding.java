@@ -4,16 +4,11 @@ public abstract class PublicBuilding implements Building {
     boolean buildingOpen;
     boolean door;
     boolean spectacle;
+    String spectacleTheme;
 
     @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("-----------------------------\n");
-        sb.append(buildingOpen ? "Building open\n" : "Building close\n");
-        sb.append(door ? "Door open\n" : "Door close\n");
-        sb.append(spectacle ? "Spectacle play\n" : "Spectacle stop\n");
-        sb.append("-----------------------------\n");
-        return sb.toString();
+    public String theme() {
+        return spectacleTheme;
     }
 
     @Override
@@ -41,7 +36,8 @@ public abstract class PublicBuilding implements Building {
     }
 
     @Override
-    public void playSpectacle() {
+    public void playSpectacle(String spectacleTheme) {
+        this.spectacleTheme = spectacleTheme;
         buildingOpen = true;
         door = true;
         spectacle = true;
@@ -50,5 +46,17 @@ public abstract class PublicBuilding implements Building {
     @Override
     public void stopSpectacle() {
         spectacle = false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("-----------------------------\n");
+        sb.append(buildingOpen ? "Building open\n" : "Building close\n");
+        sb.append(door ? "Door open\n" : "Door close\n");
+        sb.append(spectacle ? "Spectacle play\n" : "Spectacle stop\n");
+        sb.append(spectacle ? "Theme " + spectacleTheme + "\n" : "");
+        sb.append("-----------------------------\n");
+        return sb.toString();
     }
 }
