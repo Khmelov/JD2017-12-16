@@ -1,21 +1,29 @@
 package by.it.patsko.jd01_08;
 
 interface Doctor {
-    void examinePatient();          //осмотреть пациента
-    double takeTemperature();       //измерить температуру
-    String takePressure();          //измерить давление
-    int takePulse();                //измерить пульс
+    int definePatientCondition(Patient patient);                               //определить состояние пациента
 
-    void giveInjection();           //сделать укол
-    String askQuestion();           //задать вопрос
-//    void writePrescription();       //выписать рецепт
-    String prescribeTreatment();    //назначить лечение
-    boolean checkHealthInsurance(); //проверить страховку
+    void prescribeTreatment(int condition, boolean isHealthInsurance);         //назначить лечение
 
+    void prescribeTreatment(Patient patient);                                  //назначить лечение
 
-    boolean checkBloodTest();      //проверить анализ крови
-    boolean checkUrineTest();      //проверить анализ мочи
-    boolean checkStoolTest();      //проверить анализ кала
+    void askQuestion(String question);                                         //задать вопрос
 
+    void giveInjection();                                                      //сделать укол
 
+    boolean checkHealthInsurance(Patient patient);                             //проверить страховку
+
+    void examinePatient(Patient patient);                                      //осмотреть пациента
+
+    void takeTemperature(Patient patient);                                     //измерить температуру
+
+    void takePressure(Patient patient);                                        //измерить давление
+
+    void takePulse(Patient patient);                                           //измерить пульс
+
+    void checkBloodTest(Patient patient);                                      //проверить анализ крови
+
+    void checkUrineTest(Patient patient);                                      //проверить анализ мочи
+
+    void checkStoolTest(Patient patient);                                      //проверить анализ кала
 }
