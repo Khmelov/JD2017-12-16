@@ -1,13 +1,5 @@
 package by.it.patsko.jd01_09;
 
-/*
-На уровень B разработайте для класса Var наследника Vector с тремя конструкторами:
-1. Из массива {1.0, 2.0, 4.0} сигнатура конструктора Vector(double[ ] value)
-2. Из такой же точно переменной сигнатура конструктора Vector(Vector vector)
-3. Из строки вида {1.0, 2.0, 4.0} сигнатура конструктора Vector(String strVector)
-   Переопределите метод String toString() так, чтобы он возвращал строку вида {1.0, 2.0, 4.0}
- */
-
 class Vector extends Var {
     private double[] value;
 
@@ -28,6 +20,14 @@ class Vector extends Var {
         }
     }
 
+    public double[] getValue() {
+        return value;
+    }
+
+    public double getValue(int i) {
+        return value[i];
+    }
+
     @Override
     public String toString() {
 //        return Arrays.toString(value).replace('{','[').replace('}',']');
@@ -39,5 +39,70 @@ class Vector extends Var {
         }
         result.append('}');
         return result.toString();
+    }
+
+    @Override
+    public Var add(Var other) {
+        double[] result = new double[this.value.length];
+        if (other instanceof Scalar) {
+            for (int i = 0; i < result.length; i++) {
+                result[i] = this.value[i] + ((Scalar) other).getValue();
+            }
+            return new Vector(result);
+        } else if (other instanceof Vector) {
+            for (int i = 0; i < result.length; i++) {
+                result[i] = this.value[i] + ((Vector) other).value[i];
+            }
+            return new Vector(result);
+        } else return other.add(this);
+    }
+
+    @Override
+    public Var sub(Var other) {
+        double[] result = new double[this.value.length];
+        if (other instanceof Scalar) {
+            for (int i = 0; i < result.length; i++) {
+                result[i] = this.value[i] - ((Scalar) other).getValue();
+            }
+            return new Vector(result);
+        } else if (other instanceof Vector) {
+            for (int i = 0; i < result.length; i++) {
+                result[i] = this.value[i] - ((Vector) other).value[i];
+            }
+            return new Vector(result);
+        } else return super.sub(other);
+    }
+
+    @Override
+    public Var mul(Var other) {
+        double[] result = new double[this.value.length];
+        if (other instanceof Scalar) {
+            for (int i = 0; i < result.length; i++) {
+                result[i] = this.value[i] * ((Scalar) other).getValue();
+            }
+            return new Vector(result);
+        } else if (other instanceof Vector && this.value.length == ((Vector) other).value.length) {
+
+            //--------------векторное произведение векторов-----------------------------------------
+            /*result[0]=this.value[1]*((Vector) other).value[2]-this.value[2]*((Vector) other).value[1];
+            result[1]=this.value[2]*((Vector) other).value[0]-this.value[0]*((Vector) other).value[2];
+            result[2]=this.value[0]*((Vector) other).value[1]-this.value[1]*((Vector) other).value[0];*/
+            //--------------скалярное произведение n-мерных векторов---------------------------
+            for (int i = 0; i < result.length; i++) {
+                result[i] = this.value[i] * ((Vector) other).value[i];
+            }
+            return new Vector(result);
+        } else return super.mul(other);
+    }
+
+    @Override
+    public Var div(Var other) {
+        double[] result = new double[this.value.length];
+        if (other instanceof Scalar) {
+            for (int i = 0; i < result.length; i++) {
+                result[i] = this.value[i] / ((Scalar) other).getValue();
+            }
+            return new Vector(result);
+        } else return super.div(other);
     }
 }

@@ -2,7 +2,6 @@ package by.it.patsko.jd01_09;
 
 
 abstract class Var implements Operation {
-
     @Override
     public Var add(Var other) {
         System.out.printf("Сложение %s + %s невозможно\n", this, other);
@@ -26,7 +25,7 @@ abstract class Var implements Operation {
         System.out.printf("Деление %s / %s невозможно\n", this, other);
         return null;
     }
-    static Var creatVar(String operand){
+    static Var createVar(String operand){
         operand=operand.trim();
         if(operand.matches(Patterns.SCALAR))return new Scalar(operand);
         if(operand.matches(Patterns.VECTOR))return new Vector(operand);

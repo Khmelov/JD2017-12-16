@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 class Parser {
     Var calc(String expression){
         String[] operand=expression.split(Patterns.OPERATION);
-        Var one=Var.creatVar(operand[0]);
-        Var two=Var.creatVar(operand[1]);
+        Var one=Var.createVar(operand[0]);
+        Var two=Var.createVar(operand[1]);
         if(one==null||two==null) return null;             // TODO: 09.01.2018 create error
         //static final String OPERATION="[-+*/]";                             //операция
         Pattern operationPattern=Pattern.compile(Patterns.OPERATION);
