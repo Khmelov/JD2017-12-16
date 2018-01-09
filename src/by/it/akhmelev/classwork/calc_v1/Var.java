@@ -1,6 +1,7 @@
 package by.it.akhmelev.classwork.calc_v1;
 
 abstract class Var implements Operation{
+
     @Override
     public Var add(Var other) {
         System.out.printf("Сложение %s + %s невозможно.\n",this,other);
