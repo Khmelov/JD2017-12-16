@@ -19,7 +19,7 @@ public class Vector extends AbstractVar {
     }
 
     Vector(String strVector){
-        Pattern pattern = Pattern.compile("[0-9]+\\.?[0-9]*");
+        Pattern pattern = Pattern.compile("-?[0-9]+\\.?[0-9]*");
         Matcher matcher = pattern.matcher(strVector);
         ArrayList<Double> array = new ArrayList<>();
         while (matcher.find()){
