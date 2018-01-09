@@ -103,6 +103,7 @@ public abstract class Printer implements PrintingDevices {
                 System.out.printf("<<напечатано "+countPages+" страниц>>\n");
                 countAllPrintPages = countAllPrintPages + countPages;
                 lastPrint = text;
+                countShits = countShits-countPages;
                 resurs = resurs - 2 * countPages;
             }
             else if (isPaper()) System.out.printf("\nЗакончился тонер!\n");
