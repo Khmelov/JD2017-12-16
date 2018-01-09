@@ -34,6 +34,14 @@ public class Runner {
 
         System.out.println(l.toString());
 
+        ((LaserPrinter) l).ecoModeOn();
+
+        l.printTask("Реферат на 2 страницы",2);
+
+        System.out.println(l.toString());
+
+        l.printTask("Документ на 3 страницы", 3);
+
 
     }
 }

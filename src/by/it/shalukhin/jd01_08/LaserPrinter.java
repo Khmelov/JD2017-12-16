@@ -25,12 +25,12 @@ public class LaserPrinter extends Printer {
 
     public void ecoModeOn() {
         if (!ecoMode) ecoMode = true;
-        System.out.println("Экономичный режим включён!");
+        System.out.printf("\nЭкономичный режим включён!\n");
     }
 
     public void ecoModeOff() {
         if (ecoMode) ecoMode = false;
-        System.out.println("Экономичный режим выключён!");
+        System.out.printf("\nЭкономичный режим выключён!\n");
     }
 
     public void printTask(String text, int countPages) {
