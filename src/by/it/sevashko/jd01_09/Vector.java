@@ -14,8 +14,7 @@ public class Vector extends Var {
     }
 
     Vector(Vector vector){
-        this.value = new double[vector.value.length];
-        System.arraycopy(vector.value, 0, this.value, 0, value.length);
+        this(vector.value);
     }
 
     Vector(String strVector){

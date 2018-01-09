@@ -17,11 +17,7 @@ public class Matrix extends Var {
     }
 
     Matrix(Matrix other){
-        this.value = new double[other.value.length][];
-        for (int rowNumber = 0; rowNumber < this.value.length; rowNumber++){
-            this.value[rowNumber] = new double[other.value[rowNumber].length];
-            System.arraycopy(other.value[rowNumber], 0, this.value[rowNumber], 0, value.length);
-        }
+        this(other.value);
     }
 
     Matrix(String strMatrix){
