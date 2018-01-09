@@ -4,7 +4,7 @@ public class Runner {
     public static void main(String[] args) {
 
 
-        LaserPrinter l = new LaserPrinter("HP1", 10, 5);
+        Printer l = new LaserPrinter("HP1", 10, 5);
 
         System.out.println(l.toString());
 
