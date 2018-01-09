@@ -21,7 +21,7 @@ public class Runner {
         double[][] matrixArray = {{1, 2, 3}, {4, 5, 6}};
         Matrix matrix1 = new Matrix(matrixArray);
         Matrix matrix2 = new Matrix(matrix1);
-        Matrix matrix3 = new Matrix("{{12.2, 948.01}, {84.4, 11.0}}");
+        Matrix matrix3 = new Matrix("{{12.2, 948.01}, {84.4, -11.0}}");
         System.out.println(matrix1);
         System.out.println(matrix2);
         System.out.println(matrix3);
