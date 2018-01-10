@@ -3,6 +3,10 @@ package by.it.krasutski.jd01_09;
 public class Scalar extends Var {
     private double value;
 
+    public double getValue() {
+        return value;
+    }
+
     @Override
     public Var add(Var other) {
         if (other instanceof Scalar) {
@@ -36,6 +40,7 @@ public class Scalar extends Var {
         } else
             return super.div(other);
     }
+
 
     Scalar(double value) {
         this.value = value;

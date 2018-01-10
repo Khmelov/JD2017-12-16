@@ -1,6 +1,6 @@
 package by.it.krasutski.jd01_09;
 
-public abstract class Var implements Operation {
+abstract class Var implements Operation {
 
     @Override
     public Var add(Var other) {
@@ -10,19 +10,19 @@ public abstract class Var implements Operation {
 
     @Override
     public Var sub(Var other) {
-        System.out.printf("Вычитание %s + %s невозможно.\n", this, other);
+        System.out.printf("Вычитание %s - %s невозможно.\n", this, other);
         return null;
     }
 
     @Override
     public Var mul(Var other) {
-        System.out.printf("Умножение %s + %s невозможно.\n", this, other);
+        System.out.printf("Умножение %s * %s невозможно.\n", this, other);
         return null;
     }
 
     @Override
     public Var div(Var other) {
-        System.out.printf("Деление %s + %s невозможно.\n", this, other);
+        System.out.printf("Деление %s / %s невозможно.\n", this, other);
         return null;
     }
 
@@ -31,9 +31,9 @@ public abstract class Var implements Operation {
         if (operand.matches(Patterns.SCALAR))
             return new Scalar(operand);
         if (operand.matches(Patterns.VECTOR))
-            return new Scalar(operand);
+            return new Vector(operand);
         if (operand.matches(Patterns.MATRIX))
-            return new Scalar(operand);
+            return new Matrix(operand);
         return null;
     }
 }
