@@ -14,11 +14,19 @@ class Parser {
         Matcher matcher=operationPattern.matcher(expression);
         if(matcher.find()){
             String operation=matcher.group();
-            switch (operation){
-                case "+": return one.add(two);
-                case "-": return one.sub(two);
-                case "*": return one.mul(two);
-                case "/": return one.div(two);
+            try {
+                switch (operation) {
+                    case "+":
+                        return one.add(two);
+                    case "-":
+                        return one.sub(two);
+                    case "*":
+                        return one.mul(two);
+                    case "/":
+                        return one.div(two);
+                }
+            }catch (ArithmeticException e){
+                System.out.println("Error: "+e);
             }
         }
         return null;

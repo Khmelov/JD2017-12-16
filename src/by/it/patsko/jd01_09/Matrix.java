@@ -134,10 +134,11 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws ArithmeticException {
 //        double[][] result = new double[this.value.length][this.value[0].length];
         if (other instanceof Scalar) {
-            return this.mul(new Scalar(1 / ((Scalar) other).getValue()));
+            if (((Scalar) other).getValue() == 0) throw new ArithmeticException("Division by zero");
+            else return this.mul(new Scalar(1 / ((Scalar) other).getValue()));
             /*for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result[i].length; j++) {
                     result[i][j] = this.value[i][j] / ((Scalar) other).getValue();

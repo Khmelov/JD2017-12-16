@@ -96,11 +96,12 @@ class Vector extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other)throws ArithmeticException {
         double[] result = new double[this.value.length];
         if (other instanceof Scalar) {
             for (int i = 0; i < result.length; i++) {
-                result[i] = this.value[i] / ((Scalar) other).getValue();
+                if (((Scalar) other).getValue() == 0) throw new ArithmeticException("Division by zero");
+                else result[i] = this.value[i] / ((Scalar) other).getValue();
             }
             return new Vector(result);
         } else return super.div(other);
