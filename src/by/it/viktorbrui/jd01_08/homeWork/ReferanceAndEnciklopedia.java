@@ -19,4 +19,7 @@ public class ReferanceAndEnciklopedia extends Books{
             System.out.println("Print end:\n"+this);
         return result;
     }
+
+
+    
 }
