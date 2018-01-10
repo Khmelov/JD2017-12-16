@@ -2,7 +2,7 @@ package by.it.akhmelev.jd01_08.classwork;
 
 public class Runner {
     public static void main(String[] args) {
-        Multimedia pleer                                                        =new VideoPleer();
+        Multimedia pleer  =new VideoPleer();
         System.out.println(pleer);
         pleer.powerOn();
         System.out.println(pleer);
