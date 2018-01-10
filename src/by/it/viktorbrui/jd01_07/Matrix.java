@@ -1,49 +1,39 @@
 package by.it.viktorbrui.jd01_07;
 
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+/*
+На уровень C разработайте для класса AbstractVar наследника Matrix с тремя конструкторами:
+1. Из массива { { 1.0, 2.0 }, { 3.0, 4.0 } } сигнатура Matrix(double[ ][ ] value)
+2. Из такой же точно переменной сигнатура Matrix(Matrix matrix)
+3. Из строки вида { { 1.0, 2.0 }, { 3.0, 4.0 } } сигнатура Matrix(String strMatrix)
+   Переопределите метод String toString() так, чтобы он возвращал строку вида { { 1.0, 2.0 }, { 3.0, 4.0 } }
+ */
 
-public class Matrix extends AbstractVar {
 
+class Matrix extends AbstractVar {
     private double[][] value;
 
     Matrix(double[][] value) {
-        this.value = new double[value.length][];
-        for (int rowNumber = 0; rowNumber < this.value.length; rowNumber++){
-            this.value[rowNumber] = new double[value[rowNumber].length];
-            System.arraycopy(value[rowNumber], 0, this.value[rowNumber], 0, value.length);
+        this.value = new double[value.length][value[0].length];
+        for (int i = 0; i < this.value.length; i++) {
+            System.arraycopy(value[i], 0, this.value[i], 0, value[i].length);
         }
     }
 
-    Matrix(Matrix other){
-        this.value = new double[other.value.length][];
-        for (int rowNumber = 0; rowNumber < this.value.length; rowNumber++){
-            this.value[rowNumber] = new double[other.value[rowNumber].length];
-            System.arraycopy(other.value[rowNumber], 0, this.value[rowNumber], 0, value.length);
-        }
+    Matrix(Matrix matrix) {
+        this(matrix.value);
     }
 
-    Matrix(String strMatrix){
-        Pattern rowPattern = Pattern.compile("[\\[{][0-9\\s.,]*[]}]");
-        Matcher rowMatcher = rowPattern.matcher(strMatrix);
-        ArrayList<ArrayList<Double>> rowArray = new ArrayList<>();
-        while (rowMatcher.find()){
-            Pattern pattern = Pattern.compile("[0-9]+\\.?[0-9]*");
-            Matcher matcher = pattern.matcher(rowMatcher.group());
-            ArrayList<Double> array = new ArrayList<>();
-            while (matcher.find()){
-                Double item = Double.parseDouble(matcher.group());
-                array.add(item);
-            }
-            rowArray.add(array);
-        }
-        this.value = new double[rowArray.size()][];
-        for (int rowNumber = 0; rowNumber < this.value.length; rowNumber++){
-            int rowSize = rowArray.get(rowNumber).size();
-            this.value[rowNumber] = new double[rowSize];
-            for (int i = 0; i < this.value[rowNumber].length; i++) {
-                this.value[rowNumber][i] = rowArray.get(rowNumber).get(i);
+    Matrix(String strMatrix) {
+        strMatrix = strMatrix.substring(1, strMatrix.length() - 1).trim();
+        String[] strRow = strMatrix.split(",\\s*(?=\\{.+\\})");
+        this.value = new double[strRow.length][];
+        String[] strCols;
+        for (int i = 0; i < strRow.length; i++) {
+            strRow[i] = strRow[i].substring(1, strRow[i].length() - 1).trim();
+            strCols = strRow[i].split(",\\s*");
+            this.value[i] = new double[strCols.length];
+            for (int j = 0; j < strCols.length; j++) {
+                this.value[i][j] = Double.parseDouble(strCols[j]);
             }
         }
     }
@@ -52,14 +42,14 @@ public class Matrix extends AbstractVar {
     public String toString() {
         StringBuilder result = new StringBuilder();
         result.append('{');
-        for (int rowNumber = 0; rowNumber < value.length; rowNumber++){
-            if (rowNumber > 0) result.append(", ");
+        for (int i = 0; i < this.value.length; i++) {
             result.append('{');
-            for (int itemNumber = 0; itemNumber < value[rowNumber].length; itemNumber++){
-                if (itemNumber > 0) result.append(", ");
-                result.append(value[rowNumber][itemNumber]);
+            for (int j = 0; j < this.value[i].length; j++) {
+                result.append(this.value[i][j]);
+                if (j != this.value[i].length - 1) result.append(", ");
             }
             result.append('}');
+            if (i != this.value.length - 1) result.append(", ");
         }
         result.append('}');
         return result.toString();

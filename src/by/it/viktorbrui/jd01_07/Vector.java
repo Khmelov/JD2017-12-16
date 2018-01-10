@@ -1,11 +1,14 @@
 package by.it.viktorbrui.jd01_07;
 
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+/*
+На уровень B разработайте для класса AbstractVar наследника Vector с тремя конструкторами:
+1. Из массива {1.0, 2.0, 4.0} сигнатура конструктора Vector(double[ ] value)
+2. Из такой же точно переменной сигнатура конструктора Vector(Vector vector)
+3. Из строки вида {1.0, 2.0, 4.0} сигнатура конструктора Vector(String strVector)
+   Переопределите метод String toString() так, чтобы он возвращал строку вида {1.0, 2.0, 4.0}
+ */
 
-public class Vector extends AbstractVar {
-
+class Vector extends AbstractVar {
     private double[] value;
 
     Vector(double[] value) {
@@ -13,36 +16,21 @@ public class Vector extends AbstractVar {
         System.arraycopy(value, 0, this.value, 0, value.length);
     }
 
-    Vector(Vector vector){
-        this.value = new double[vector.value.length];
-        System.arraycopy(vector.value, 0, this.value, 0, value.length);
+    Vector(Vector vector) {
+        this(vector.value);
     }
 
-    Vector(String strVector){
-        Pattern pattern = Pattern.compile("[0-9]+\\.?[0-9]*");
-        Matcher matcher = pattern.matcher(strVector);
-        ArrayList<Double> array = new ArrayList<>();
-        while (matcher.find()){
-            Double item = Double.parseDouble(matcher.group());
-            array.add(item);
-        }
-        this.value = new double[array.size()];
+    Vector(String strVector) {
+        String[] str = strVector.substring(1, strVector.length() - 1).split(",");
+        this.value = new double[str.length];
         for (int i = 0; i < this.value.length; i++) {
-            this.value[i] = array.get(i);
+            this.value[i] = Double.parseDouble(str[i]);
         }
-
-        // another version
-        /*strVector = strVector.substring(1, strVector.length()-1);
-        Pattern pattern = Pattern.compile("[ ,]+");
-        String[] vectorArray = pattern.split(strVector);
-        this.value = new double[vectorArray.length];
-        for (int i = 0; i < vectorArray.length; i++) {
-            this.value[i] = Double.parseDouble(vectorArray[i]);
-        }*/
     }
 
     @Override
     public String toString() {
+//        return Arrays.toString(value).replace('{','[').replace('}',']');
         StringBuilder result = new StringBuilder();
         result.append('{');
         for (int i = 0; i < value.length; i++) {
