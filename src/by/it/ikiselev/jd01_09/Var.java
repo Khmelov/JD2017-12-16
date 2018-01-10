@@ -24,7 +24,7 @@ abstract class Var implements Operation {
         System.out.printf("Деление %s + %s невозможно.\n", this, other);
         return null;
     }
-
+//gh
     static Var createVar(String operand) {
         operand = operand.trim();
         if (operand.matches(Patterns.SCALAR))
