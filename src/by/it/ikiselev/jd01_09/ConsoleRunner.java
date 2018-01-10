@@ -1,10 +1,18 @@
 package by.it.ikiselev.jd01_09;
 
+import java.util.Scanner;
+
 public class ConsoleRunner {
+
     public static void main(String[] args) {
-        Var one=new Scalar(2);
-        Var two=new Scalar(3);
-        Var res=one.add(two);
-        System.out.println(res);
+        Scanner sc=new Scanner(System.in);
+        String line;
+
+        Parser parser=new Parser();
+        Printer printer=new Printer();
+        while (!(line=sc.nextLine()).equals("end")){
+            Var result=parser.calc(line.trim());
+            printer.print(result);
+        }
     }
 }
