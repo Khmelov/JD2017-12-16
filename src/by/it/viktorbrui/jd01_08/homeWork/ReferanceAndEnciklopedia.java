@@ -10,8 +10,6 @@ public class ReferanceAndEnciklopedia extends Books{
             System.out.println("Print in process:\n"+this);
         return result;
     }
-
-
     @Override
     public boolean endProcess() {
         boolean result=super.endProcess();
@@ -21,5 +19,5 @@ public class ReferanceAndEnciklopedia extends Books{
     }
 
 
-    
+
 }
