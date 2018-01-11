@@ -1,4 +1,4 @@
-package by.it.fyodorov.jd01_07;
+package by.it.shalukhin.jd01_07;
 
 
 import org.junit.Test;
@@ -12,12 +12,12 @@ import static org.junit.Assert.*;
 
 @SuppressWarnings("all")
 
-//поставьте курсор на следующую строку и нажмите Ctrl+Shift+F10
-public class jd01_07 {
+//поставьте курсор на следующую строку и нажмите Ctrl+Shift+F10_работает
+public class Test_jd01_07 {
 
     @Test(timeout = 1500)
     public void testTaskA1_double__Scalar() throws Exception {
-        jd01_07 ok=run("",false);
+        Test_jd01_07 ok=run("",false);
         assertEquals("У вас неверное наследование", "Var", ok.aClass.getSuperclass().getSimpleName());
 
         Constructor c=ok.aClass.getDeclaredConstructor(double.class);
@@ -31,7 +31,7 @@ public class jd01_07 {
 
     @Test(timeout = 1500)
     public void testTaskA2_Scalar__Scalar() throws Exception {
-        jd01_07 ok=run("",false);
+        Test_jd01_07 ok=run("",false);
         assertEquals("У вас неверное наследование", "Var", ok.aClass.getSuperclass().getSimpleName());
 
         Constructor c=ok.aClass.getDeclaredConstructor(double.class);
@@ -47,7 +47,7 @@ public class jd01_07 {
 
     @Test(timeout = 1500)
     public void testTaskA3_String__Scalar() throws Exception {
-        jd01_07 ok=run("",false);
+        Test_jd01_07 ok=run("",false);
         assertEquals("У вас неверное наследование", "Var", ok.aClass.getSuperclass().getSimpleName());
 
         Constructor c=ok.aClass.getDeclaredConstructor(String.class);
@@ -63,7 +63,7 @@ public class jd01_07 {
 
     @Test(timeout = 1500)
     public void testTaskB1_double__Vector() throws Exception {
-        jd01_07 ok=run("",false);
+        Test_jd01_07 ok=run("",false);
         assertEquals("У вас неверное наследование", "Var", ok.aClass.getSuperclass().getSimpleName());
 
         Constructor c=ok.aClass.getDeclaredConstructor(double[].class);
@@ -77,7 +77,7 @@ public class jd01_07 {
 
     @Test(timeout = 1500)
     public void testTaskB2_Vector__Vector() throws Exception {
-        jd01_07 ok=run("",false);
+        Test_jd01_07 ok=run("",false);
         assertEquals("У вас неверное наследование", "Var", ok.aClass.getSuperclass().getSimpleName());
 
         Constructor c=ok.aClass.getDeclaredConstructor(double[].class);
@@ -93,7 +93,7 @@ public class jd01_07 {
 
     @Test(timeout = 1500)
     public void testTaskB3_String__Vector() throws Exception {
-        jd01_07 ok=run("",false);
+        Test_jd01_07 ok=run("",false);
         assertEquals("У вас неверное наследование", "Var", ok.aClass.getSuperclass().getSimpleName());
 
         Constructor c=ok.aClass.getDeclaredConstructor(String.class);
@@ -108,7 +108,7 @@ public class jd01_07 {
 
     @Test(timeout = 1500)
     public void testTaskC1_double__Matrix() throws Exception {
-        jd01_07 ok=run("",false);
+        Test_jd01_07 ok=run("",false);
         assertEquals("У вас неверное наследование", "Var", ok.aClass.getSuperclass().getSimpleName());
 
         Constructor c=ok.aClass.getDeclaredConstructor(double[][].class);
@@ -122,7 +122,7 @@ public class jd01_07 {
 
     @Test(timeout = 1500)
     public void testTaskC2_Matrix__Matrix() throws Exception {
-        jd01_07 ok=run("",false);
+        Test_jd01_07 ok=run("",false);
         assertEquals("У вас неверное наследование", "Var", ok.aClass.getSuperclass().getSimpleName());
 
         Constructor c=ok.aClass.getDeclaredConstructor(double[][].class);
@@ -138,7 +138,7 @@ public class jd01_07 {
 
     @Test(timeout = 1500)
     public void testTaskC3_String__Matrix() throws Exception {
-        jd01_07 ok=run("",false);
+        Test_jd01_07 ok=run("",false);
         assertEquals("У вас неверное наследование", "Var", ok.aClass.getSuperclass().getSimpleName());
 
         Constructor c=ok.aClass.getDeclaredConstructor(String.class);
@@ -217,11 +217,11 @@ public class jd01_07 {
 
     //метод находит и создает класс для тестирования
     //по имени вызывающего его метода, testTaskA1 будет работать с TaskA1
-    private static jd01_07 run(String in) {
+    private static Test_jd01_07 run(String in) {
         return run(in, true);
     }
 
-    private static jd01_07 run(String in, boolean runMain) {
+    private static Test_jd01_07 run(String in, boolean runMain) {
         Throwable t = new Throwable();
         StackTraceElement trace[] = t.getStackTrace();
         StackTraceElement element;
@@ -239,10 +239,10 @@ public class jd01_07 {
         System.out.println("\n---------------------------------------------");
         System.out.println("Старт теста для " + clName + "\ninput:" + in);
         System.out.println("---------------------------------------------");
-        return new jd01_07(clName, in, runMain);
+        return new Test_jd01_07(clName, in, runMain);
     }
 
-    public jd01_07() {
+    public Test_jd01_07() {
         //Конструктор тестов
     }
 
@@ -254,7 +254,7 @@ public class jd01_07 {
     Class<?> aClass;
 
     //Основной конструктор тестов
-    private jd01_07(String className, String in, boolean runMain) {
+    private Test_jd01_07(String className, String in, boolean runMain) {
         //this.className = className;
         aClass = null;
         try {
@@ -287,18 +287,18 @@ public class jd01_07 {
     }
 
     //проверка вывода
-    private jd01_07 is(String str) {
+    private Test_jd01_07 is(String str) {
         assertTrue("Ожидается такой вывод:\n<---начало---->\n" + str + "<---конец--->",
                 stringWriter.toString().equals(str));
         return this;
     }
 
-    private jd01_07 include(String str) {
+    private Test_jd01_07 include(String str) {
         assertTrue("Строка не найдена: " + str + "\n", stringWriter.toString().contains(str));
         return this;
     }
 
-    private jd01_07 exclude(String str) {
+    private Test_jd01_07 exclude(String str) {
         assertTrue("Лишние данные в выводе: " + str + "\n", !stringWriter.toString().contains(str));
         return this;
     }
