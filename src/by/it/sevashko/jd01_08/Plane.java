@@ -4,5 +4,5 @@ public interface Plane {
     void engineStart();
     void engineShutdown();
     void flyUp();
-    //void land();
+    void land();
 }

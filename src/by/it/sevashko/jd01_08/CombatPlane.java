@@ -43,4 +43,10 @@ public class CombatPlane implements Plane {
             System.out.printf("Flight Altitude is %d\n", currentFlightAltitude);
         }
     }
+
+    public void land(){
+        System.out.println('l');
+    }
+
+
 }
