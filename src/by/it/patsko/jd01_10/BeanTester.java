@@ -12,13 +12,15 @@ public class BeanTester {
     public static void main(String[] args) {
         Class structBean = Bean.class;
         Method[] methods = structBean.getDeclaredMethods();
-        Object o;
+        Object o ;
         try {
             for (Method method : methods) {
                 if (method.isAnnotationPresent(Param.class)) {
-                    o = structBean.newInstance();
+//                    o = structBean.newInstance();
+                    o = structBean.getDeclaredConstructor().newInstance();
                     Param anno = method.getAnnotation(Param.class);
-                    System.out.println("Результат выполнения метода " + method.getName() + ": " + method.invoke(o, anno.a(), anno.b()));
+                    System.out.println("Результат выполнения метода " + method.getName() + ": "
+                            + method.invoke(o,anno.a(),anno.b()));
                 }
             }
         } catch (Exception e) {

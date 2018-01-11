@@ -33,9 +33,6 @@ public class PrintMath {
                         " " + method.getName() + printParametrTypes(method.getParameterTypes()));
 //            System.out.println(method.toString().replace("java.lang.Math.",""));
         }
-        System.out.println("public static long multiplyExact(long,int)");
-        System.out.println("public static float fma(float,float,float)");
-        System.out.println("public static double fma(double,double,double)");
         System.out.println();
         Field[] fields = structMath.getDeclaredFields();
         for (Field field : fields) {
