@@ -15,7 +15,6 @@ import static org.junit.Assert.*;
 //поставьте курсор на следующую строку и нажмите Ctrl+Shift+F10
 public class Test_jd01_10 {
 
-
     @Test(timeout = 1500)
     public void testTaskA1__Param() throws Exception {
         Class<?> anno = findClass("Param");
