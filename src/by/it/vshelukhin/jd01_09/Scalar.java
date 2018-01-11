@@ -47,7 +47,7 @@ public class Scalar extends Var {
         if (other instanceof Scalar){
             return new Scalar(value / ((Scalar) other).value);
         }
-        else return other.div(this);
+        else return super.div(this);
     }
 
     @Override
