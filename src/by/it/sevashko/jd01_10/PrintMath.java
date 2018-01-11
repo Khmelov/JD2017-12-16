@@ -7,9 +7,8 @@ import java.lang.reflect.Modifier;
 public class PrintMath {
 
     public static void main(String[] args) {
-        Class<?> structureOfMath = Math.class;
-        printPublicMethods(structureOfMath);
-        printPublicFields(structureOfMath);
+        printPublicMethods(Math.class);
+        printPublicFields(Math.class);
     }
 
     private static  void printPublicMethods(Class<?> structure){
