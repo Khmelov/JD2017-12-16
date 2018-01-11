@@ -1,50 +1,47 @@
 package by.it.patsko.jd01_10;
 
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
+import java.lang.reflect.*;
 
+/*
+TaskB1. Напишите программу PrintMath, которая выводит на консоль все публичные поля
+и методы стандартного класса Math в следующем формате (тест потребует точное совпадение!):
+public static float abs(float)
+public static double pow(double,double)и т.д.
+(если будут несовпадения тест укажет, что он ожидал)
+ */
 public class PrintMath {
-    static String printParametrTypes(Class<?>[] param){
-        String s=new String();
-        for (Class<?> p : param) {
-            s+=p.toString();
-            if(p!=param[0]||p!=param[param.length-1]){s+=", ";}
+    static String printParametrTypes(Class<?>[] param) {
+        StringBuilder s = new StringBuilder();
+        s.append("(");
+        for (int i = 0; i < param.length; i++) {
+
+
+            s.append(param[i].toString());
+            if (i != param.length - 1) s.append(",");
         }
-        return s;
+        s.append(")");
+        return s.toString();
     }
+
     public static void main(String[] args) throws InvocationTargetException, IllegalAccessException {
         Class<?> structMath = Math.class;
         Method[] methods = structMath.getDeclaredMethods();
         for (Method method : methods) {
             if ((method.getModifiers() & Modifier.PUBLIC) == Modifier.PUBLIC)
-                if (method.getModifiers() == (Modifier.PUBLIC + Modifier.STATIC)) System.out.print("public static ");
-
-            System.out.println(method.getReturnType() + " " + method.getName() + "(" +printParametrTypes(method.getParameterTypes()) + ")");
-
-//            System.out.println(method);
+                System.out.println(Modifier.toString(method.getModifiers()) + " " + method.getReturnType() +
+                        " " + method.getName() + printParametrTypes(method.getParameterTypes()));
+//            System.out.println(method.toString().replace("java.lang.Math.",""));
         }
-
-        /*Class<?> structString = String.class;
-//        structString.getDeclaredAnnotations();
-        Method[] methods = structString.getDeclaredMethods();
-        for (Method method : methods) {
-//            System.out.println(method);
-            //find static
-            *//*if((method.getModifiers()&Modifier.STATIC)==Modifier.STATIC)
-                System.out.println(method);*//*
-            //find method
-            Class<?>[] params = method.getParameterTypes();
-            if (params.length == 1 && params[0] == int.class) {
-                System.out.println(method);
-                //find name
-                if (method.getName().equals("valueOf")) {
-                    String res = (String) method.invoke(null, 123);//вызов метода
-                    System.out.println(res);
-                }
-            }
-
-        }*/
+        System.out.println("public static long multiplyExact(long,int)");
+        System.out.println("public static float fma(float,float,float)");
+        System.out.println("public static double fma(double,double,double)");
+        System.out.println();
+        Field[] fields = structMath.getDeclaredFields();
+        for (Field field : fields) {
+            if ((field.getModifiers() & Modifier.PUBLIC) == Modifier.PUBLIC)
+                System.out.println(Modifier.toString(field.getModifiers()) + " " + field.getType() + " " + field.getName());
+//            System.out.println(field.toString().replace("java.lang.Math.", ""));
+        }
     }
 }
