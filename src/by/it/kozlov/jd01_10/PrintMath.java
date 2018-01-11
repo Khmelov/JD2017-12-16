@@ -1,24 +1,36 @@
 package by.it.kozlov.jd01_10;
 
-import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PrintMath {
-    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException {
-        Class<?> structMath = String.class;
+
+
+    public static void main(String[] args) {
+        Class<?> structMath = Math.class;
         Method[] methods = structMath.getDeclaredMethods();
         for (Method method : methods) {
-            if ((method.getModifiers() & Modifier.STATIC) == Modifier.STATIC) ;
-            System.out.println(method);
 
-            Class<?>[] params = method.getParameterTypes();
-            if (params.length == 1 && params[0] == int.class)
-                System.out.println(method);
-            if (method.getName().equals("valueOf")) {
-                String res = (String) method.invoke(null, 123);
-                System.out.println(res);
+            if ((method.getModifiers() & Modifier.PUBLIC) == Modifier.PUBLIC) {
+                System.out.println(deleteNameJava(method.toString()));
             }
         }
+        Field[] fields = structMath.getFields();
+        for (Field field : fields) {
+            System.out.println(deleteNameJava(field.toString()));
+        }
+    }
+
+    public static String deleteNameJava(String string) {
+        StringBuilder sb = new StringBuilder(string);
+        Pattern pattern = Pattern.compile("java.");
+        Matcher matcher = pattern.matcher(sb);
+        if (matcher.find()) {
+            sb = sb.delete(matcher.start(), matcher.start() + 15);
+        }
+        return sb.toString();
     }
 }
