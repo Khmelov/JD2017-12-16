@@ -12,12 +12,12 @@ import java.lang.reflect.Modifier;
 public class PrintString {
     public static void main(String[] args) {
         Class<?> structString = String.class;
-        Method[] methods = structString.getMethods();
+        Method[] methods = structString.getDeclaredMethods();
         for (Method method : methods) {
             if ((method.getModifiers() & Modifier.STATIC) != Modifier.STATIC)
                 System.out.println(method.getName());
         }
-        System.out.println("nonSyncContentEquals");//в классе String метод с таким именем имеет модификатор private
-        // private boolean nonSyncContentEquals(AbstractStringBuilder sb)
     }
 }
+//codePoints
+//chars
