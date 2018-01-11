@@ -46,7 +46,6 @@ public class Scalar extends Var {
     }
 
     Scalar(String string) {
-        //"8.9765"
         this.value = Double.parseDouble(string);
     }
 
