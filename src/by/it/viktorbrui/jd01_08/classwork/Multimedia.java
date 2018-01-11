@@ -1,6 +1,6 @@
-package by.it.akhmelev.jd01_08.classwork;
+package by.it.viktorbrui.jd01_08.classwork;
 
-public interface Multimedia {
+interface Multimedia {
 
     void powerOn();
     void powerOff();

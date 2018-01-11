@@ -1,8 +1,8 @@
-package by.it.akhmelev.jd01_08.classwork;
+package by.it.viktorbrui.jd01_08.classwork;
 
 public class Runner {
     public static void main(String[] args) {
-        Multimedia pleer  =new VideoPleer();
+        by.it.viktorbrui.jd01_08.classwork.Multimedia pleer=new VideoPleer();
         System.out.println(pleer);
         pleer.powerOn();
         System.out.println(pleer);
@@ -15,6 +15,5 @@ public class Runner {
         pleer.stop();
         System.out.println(pleer);
         pleer.powerOff();
-
     }
 }
