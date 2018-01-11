@@ -9,7 +9,7 @@ TaskC1.
 После каждого вызова invoke на консоль выводится имя найденного метода и результат запуска.
  */
 public class BeanTester {
-    public static void main(String[] args) throws ClassNotFoundException {
+    public static void main(String[] args) {
         Class structBean = Bean.class;
         Method[] methods = structBean.getDeclaredMethods();
         Object o;

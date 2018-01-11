@@ -11,7 +11,7 @@ public static double pow(double,double)и т.д.
 (если будут несовпадения тест укажет, что он ожидал)
  */
 public class PrintMath {
-    static String printParametrTypes(Class<?>[] param) {
+    private static String printParametrTypes(Class<?>[] param) {
         StringBuilder s = new StringBuilder();
         s.append("(");
         for (int i = 0; i < param.length; i++) {
@@ -24,7 +24,7 @@ public class PrintMath {
         return s.toString();
     }
 
-    public static void main(String[] args) throws InvocationTargetException, IllegalAccessException {
+    public static void main(String[] args) {
         Class<?> structMath = Math.class;
         Method[] methods = structMath.getDeclaredMethods();
         for (Method method : methods) {
