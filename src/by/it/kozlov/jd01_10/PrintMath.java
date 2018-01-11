@@ -8,12 +8,10 @@ import java.util.regex.Pattern;
 
 public class PrintMath {
 
-
     public static void main(String[] args) {
         Class<?> structMath = Math.class;
         Method[] methods = structMath.getDeclaredMethods();
         for (Method method : methods) {
-
             if ((method.getModifiers() & Modifier.PUBLIC) == Modifier.PUBLIC) {
                 System.out.println(deleteNameJava(method.toString()));
             }
