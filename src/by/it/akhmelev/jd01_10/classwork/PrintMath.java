@@ -16,12 +16,12 @@ public class PrintMath {
                 System.out.println(method);
             //find methos with (int)
             Class<?>[] params = method.getParameterTypes();
-            if (params.length == 1 && params[0] == int.class)
-            {System.out.println(method);
+            if (params.length == 1 && params[0] == int.class) {
+                System.out.println(method);
                 //find by name
-                if (method.getName().equals("valueOf")){
+                if (method.getName().equals("valueOf")) {
                     //call method
-                    String res=(String) method.invoke(null,123);
+                    String res = (String) method.invoke(null, 123);
                     System.out.println(res);
                 }
             }
