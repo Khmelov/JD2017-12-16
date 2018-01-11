@@ -6,18 +6,17 @@ public class Bean {
         return a + b;
     }
 
-    @Param(a = 3, b = 4)
+    @Param(a = 2, b = 8)
     static double max(int a, int b) {
         return Math.max(a, b);
     }
 
-    @Param(a = 3, b = 4)
+    @Param(a = 6, b = 5)
     double min(int a, int b) {
         return Math.min(a, b);
     }
 
-    @Param(a = 3, b = 4)
     double avg(int a, int b) {
-        return a + b;
+        return (a + b) / 2.0;
     }
 }
