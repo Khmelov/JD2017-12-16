@@ -1,7 +1,7 @@
 package by.it.kozlov.jd01_09;
 
 public class Scalar extends Var {
-    private double value;
+    public double value;
 
     @Override
     public Var add(Var other) {

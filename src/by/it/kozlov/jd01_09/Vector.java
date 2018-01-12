@@ -4,6 +4,78 @@ class Vector extends Var {
 
     private double[] value;
 
+    @Override
+    public Var add(Var other) {
+        double[] add = new double[value.length];
+        if (other instanceof Scalar) {
+            for (int i = 0; i < value.length; i++) {
+                add[i] = value[i] + ((Scalar) other).value;
+            }
+            return new Vector(add);
+        }
+        if (other instanceof Vector) {
+            for (int i = 0; i < value.length; i++) {
+                add[i] = value[i] + ((Vector) other).value[i];
+            }
+            return new Vector(add);
+        } else
+            return other.add(this);
+    }
+
+    @Override
+    public Var sub(Var other) {
+        double[] add = new double[value.length];
+        if (other instanceof Scalar) {
+            for (int i = 0; i < value.length; i++) {
+                add[i] = value[i] - ((Scalar) other).value;
+            }
+            return new Vector(add);
+        }
+        if (other instanceof Vector) {
+            for (int i = 0; i < value.length; i++) {
+                add[i] = value[i] - ((Vector) other).value[i];
+            }
+            return new Vector(add);
+        } else
+            return other.add(this);
+    }
+
+    @Override
+    public Var mul(Var other) {
+        double[] add = new double[value.length];
+        if (other instanceof Scalar) {
+            for (int i = 0; i < value.length; i++) {
+                add[i] = value[i] * ((Scalar) other).value;
+            }
+            return new Vector(add);
+        }
+        if (other instanceof Vector) {
+            for (int i = 0; i < value.length; i++) {
+                add[i] = value[i] * ((Vector) other).value[i];
+            }
+            return new Vector(add);
+        } else
+            return other.add(this);
+    }
+
+    @Override
+    public Var div(Var other) {
+        double[] add = new double[value.length];
+        if (other instanceof Scalar) {
+            for (int i = 0; i < value.length; i++) {
+                add[i] = value[i] / ((Scalar) other).value;
+            }
+            return new Vector(add);
+        }
+        if (other instanceof Vector) {
+            for (int i = 0; i < value.length; i++) {
+                add[i] = value[i] / ((Vector) other).value[i];
+            }
+            return new Vector(add);
+        } else
+            return other.add(this);
+    }
+
     Vector(double[] value) {
         this.value = new double[value.length];
         System.arraycopy(value, 0, this.value, 0, value.length);
@@ -21,7 +93,6 @@ class Vector extends Var {
             value[i] = Double.parseDouble(el[i]);
         }
     }
-
 
     @Override
     public String toString() {
