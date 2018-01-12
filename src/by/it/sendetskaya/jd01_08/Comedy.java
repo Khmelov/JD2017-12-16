@@ -4,9 +4,8 @@ import java.util.Arrays;
 
 
 public class Comedy extends DomesticFilm {
-    int ratingFilm;
-    String [] nameFilm;
-    int count=0;
+
+    private String [] nameFilm;
 
     @Override
     public boolean play(String track) {
@@ -27,7 +26,7 @@ public class Comedy extends DomesticFilm {
 
     @Override
     public String [] addFilm(String nameFilm) {
-        nameFilm.trim();
+        nameFilm=nameFilm.trim();
         this.nameFilm=nameFilm.split(",");
 
         for (int i = 0; i < this.nameFilm.length; i++) {
@@ -44,7 +43,7 @@ public class Comedy extends DomesticFilm {
                 Arrays.sort(this.nameFilm);
         }
 
-        else this.nameFilm.toString();
+        else Arrays.toString(this.nameFilm);
     }
 
     @Override
@@ -54,7 +53,7 @@ public class Comedy extends DomesticFilm {
         if(nameFilm!=null) {
             sb.append("Список фильмов: \n");
             for (int i = 0; i < nameFilm.length; i++) {
-                sb.append("№" + (i+1) + " - " + nameFilm[i]+"\n");
+                sb.append("№").append(i + 1).append(" - ").append(nameFilm[i]).append("\n");
 
                 sb.append("------------------------------------------------\n");
             }
