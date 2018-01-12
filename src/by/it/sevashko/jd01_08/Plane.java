@@ -4,5 +4,8 @@ public interface Plane {
     void engineStart();
     void engineShutdown();
     void flyUp();
-    void land();
+    void landOnBase();
+    void changeFlightAltitude(int flightAltitude);
+    void changeSpeed(int newSpeed);
+    String getParameters();
 }
