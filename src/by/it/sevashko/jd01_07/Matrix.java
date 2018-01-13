@@ -25,11 +25,11 @@ public class Matrix extends AbstractVar {
     }
 
     Matrix(String strMatrix){
-        Pattern rowPattern = Pattern.compile("[\\[{][0-9\\s.,]*[]}]");
+        Pattern rowPattern = Pattern.compile("[\\[{][0-9\\s.,-]*[]}]");
         Matcher rowMatcher = rowPattern.matcher(strMatrix);
         ArrayList<ArrayList<Double>> rowArray = new ArrayList<>();
         while (rowMatcher.find()){
-            Pattern pattern = Pattern.compile("[0-9]+\\.?[0-9]*");
+            Pattern pattern = Pattern.compile("-?[0-9]+\\.?[0-9]*");
             Matcher matcher = pattern.matcher(rowMatcher.group());
             ArrayList<Double> array = new ArrayList<>();
             while (matcher.find()){
