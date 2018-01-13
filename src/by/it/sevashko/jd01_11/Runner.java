@@ -1,7 +1,5 @@
 package by.it.sevashko.jd01_11;
 
-import java.util.ArrayList;
-
 public class Runner {
 
     public static void main(String[] args) {
@@ -24,6 +22,15 @@ public class Runner {
         array.add(10);
         array.add(11);
         array.addAll(array1);
+        System.out.println(array);
+        System.out.println(array.contains(10));
+        ListA<Integer> array2 = new ListA<>();
+        array2.add(5);
+        array2.add(6);
+        array2.add(7);
+        array.addAll(4, array2);
+        System.out.println(array);
+        array.remove(new Integer(8));
         System.out.println(array);
     }
 }
