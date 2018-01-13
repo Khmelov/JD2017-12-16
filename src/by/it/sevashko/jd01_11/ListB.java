@@ -67,113 +67,28 @@ public class ListB<T> implements List<T>{
         return size;
     }
 
+    public boolean addAll(List<? extends T> c) {
+        if (size + c.size() >= elements.length)
+            elements = Arrays.copyOf(elements,elements.length + c.size());
+        for (int i = 0; i < c.size(); i++) {
+            elements[size] =  c.get(i);
+            size++;
+        }
+        return true;
+    }
+
     @Override
     public boolean addAll(Collection<? extends T> c) {
-        if (size + c.size() > elements.length)
+        if (size + c.size() >= elements.length)
             elements = Arrays.copyOf(elements,elements.length + c.size());
-        for (T e : c){
-            elements[size] = e;
+        Iterator<? extends T> iterator = c.iterator();
+        while (iterator.hasNext()){
+            elements[size] = iterator.next();
             size++;
         }
         return true;
     }
 
-    public boolean addAll(List<? extends T> c) {
-        if (size + c.size() > elements.length)
-            elements = Arrays.copyOf(elements,elements.length + c.size());
-        for (int i = 0; i < c.size(); i++) {
-            elements[size] = c.get(i);
-            size++;
-        }
-        return true;
-    }
-
-    @Override
-    public boolean contains(Object o) {
-        if (o == null){
-            for (int i = 0; i < size; i++) if (elements[i] == null) return true;
-        }
-        else for (int i = 0; i < size; i++) if (o.equals(elements[i])) return true;
-
-        return false;
-    }
-
-    @Override
-    public Object[] toArray() {
-        return elements;
-    }
-
-    @Override
-    public int indexOf(Object o) {
-        if (o == null){
-            for (int i = 0; i < size; i++) {
-                if (elements[i] == null) return i;
-            }
-        } else {
-            for (int i = 0; i < size; i++) {
-                if (o.equals(elements[i])) return i;
-            }
-        }
-        return -1;
-    }
-
-    @Override
-    public boolean remove(Object o) {
-        if (o == null){
-            for (int i = 0; i < size; i++) {
-                if (elements[i] == null){
-                    System.arraycopy(elements, i + 1, elements, i, size - 1 - i);
-                    size = size - 1;
-                    return true;
-                }
-
-            }
-        } else{
-            for (int i = 0; i < size; i++) {
-                if (o.equals(elements[i])){
-                    System.arraycopy(elements, i + 1, elements, i, size - 1 - i);
-                    size = size - 1;
-                    return true;
-                }
-
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public boolean addAll(int index, Collection<? extends T> c) {
-        if (size + c.size() > elements.length)
-            elements = Arrays.copyOf(elements,elements.length + c.size());
-        size = size +c.size();
-        for (int i = size - 1; i >= index + c.size(); i--) {
-            elements[i] = elements[i - c.size()];
-        }
-        for (T aC : c) {
-            elements[index] = aC;
-            index++;
-        }
-        return true;
-    }
-
-    public boolean addAll(int index, List<? extends T> c) {
-        if (size + c.size() > elements.length)
-            elements = Arrays.copyOf(elements, c.size() + size);
-        size = size + c.size();
-        for (int i = size - 1; i >= index + c.size(); i--) {
-            elements[i] = elements[i - c.size()];
-        }
-        for (int i = 0; i < c.size(); i++) {
-            elements[index] = c.get(i);
-            index++;
-        }
-        return true;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return size == 0;
-    }
 
 
 
@@ -193,24 +108,44 @@ public class ListB<T> implements List<T>{
     }
 
     @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
+    public boolean contains(Object o) {
+        return false;
+    }
+
+    @Override
     public Iterator<T> iterator() {
         return null;
     }
 
-
+    @Override
+    public Object[] toArray() {
+        return new Object[0];
+    }
 
     @Override
     public <T1> T1[] toArray(T1[] a) {
         return null;
     }
 
+    @Override
+    public boolean remove(Object o) {
+        return false;
+    }
 
     @Override
     public boolean containsAll(Collection<?> c) {
         return false;
     }
 
-
+    @Override
+    public boolean addAll(int index, Collection<? extends T> c) {
+        return false;
+    }
 
     @Override
     public boolean removeAll(Collection<?> c) {
@@ -227,7 +162,10 @@ public class ListB<T> implements List<T>{
 
     }
 
-
+    @Override
+    public int indexOf(Object o) {
+        return 0;
+    }
 
     @Override
     public int lastIndexOf(Object o) {
