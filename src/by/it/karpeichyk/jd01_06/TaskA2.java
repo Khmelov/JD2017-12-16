@@ -38,6 +38,6 @@ private static void  print(){
             System.out.println(word);
             processWord(word);
         }
-       // print();
+        print();
     }
 }
