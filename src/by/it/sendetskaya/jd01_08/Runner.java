@@ -42,7 +42,7 @@ public class Runner {
         printFilm (filmDom);
     }
 
-    static void printFilm(Film film)
+    private static void printFilm(Film film)
     {
         System.out.println(film);
     }
