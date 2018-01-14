@@ -7,7 +7,8 @@ public interface Applicant {
     boolean sleep();
     boolean reading();
     boolean writing();
-    boolean learn();
+    boolean sleep(String state);
+
 
 
 

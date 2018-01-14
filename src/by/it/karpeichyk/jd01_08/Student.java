@@ -6,31 +6,24 @@ package by.it.karpeichyk.jd01_08;
 abstract  class Student implements Applicant {
     boolean reading;
     boolean writing;
-    boolean learn;
     boolean attendThelecture;
-     boolean sleep;
-    private String exam;
+     
+    private   String  study;
+    private boolean sleep;
 
-    public void setExam(String exam){this.exam=exam;}
-
-
-    public void Student(boolean attendThelecture) {
-        this.attendThelecture = attendThelecture;
-    }
-    public Student(boolean attendThelecture){
-        reading=true;
-        writing=true;
-        learn=true;
-        sleep= false;
-        this.attendThelecture=attendThelecture;
+    public void setStudy(String study) {this.study = study;}
 
 
-    }
     public  Student(){
         reading=true;
         writing=true;
-        learn=true;
-        sleep= false;
+      
+    }
+    public Student(String study){
+        reading=false;
+        writing=false;
+        
+        this.study=study;
     }
     @Override
     public  boolean sleep(){
@@ -47,15 +40,21 @@ abstract  class Student implements Applicant {
     @Override
     public  String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(attendThelecture ? "Присутствовал\n" : "Отсуствовал\n");
+        sb.append("++++++++++++++++++++++++++++++\n");
+        sb.append(attendThelecture? "Отсуствовал\n" : "Присутствовал\n");
+        sb.append(sleep? "Не спал  "+study+"\n":"Не спал\n");
+       // System.out.println();
+        sb.append(reading? "Читал\n" : "Не читал\n");
+       // System.out.println();
+        sb.append(writing? "Писал\n":"Не писал\n");
+        sb.append("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&\n");
         return sb.toString();
-
     }
     @Override
     public boolean reading() {
-        if (! reading|| writing) {
+        if (! reading|| sleep) {
             reading=true;
-            writing=false;
+            sleep=true;
             return true;
         }
         else
@@ -64,7 +63,7 @@ abstract  class Student implements Applicant {
     @Override
     public boolean writing(){
         if (writing){
-            reading=false;
+            reading=true;
             return true;
         }
         return false;
