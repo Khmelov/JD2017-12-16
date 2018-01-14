@@ -1,7 +1,5 @@
 package by.it.akhmelev.jd01_11.classwork;
 
-
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class ListA<T> implements List<T> {
