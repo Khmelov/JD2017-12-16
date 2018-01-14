@@ -30,7 +30,7 @@ public class Runner {
         array2.add(7);
         array.addAll(4, array2);
         System.out.println(array);
-        array.remove(new Integer(8));
+        array.remove((Integer) 8);
         System.out.println(array);
     }
 }
