@@ -134,9 +134,7 @@ public class ListA<T> implements List<T>{
         } else{
             for (int i = 0; i < size; i++) {
                 if (o.equals(elements[i])){
-                    for (int index = i; index < size - 1; index++) {
-                        elements[index] = elements[index + 1];
-                    }
+                    System.arraycopy(elements, i + 1, elements, i, size - 1 - i);
                     size = size - 1;
                     return true;
                 }
@@ -169,8 +167,8 @@ public class ListA<T> implements List<T>{
         for (int i = size - 1; i >= index + c.size(); i--) {
             elements[i] = elements[i - c.size()];
         }
-        for (int i = 0; i < c.size(); i++) {
-            elements[index] =  c.get(i);
+        for (T aC : c) {
+            elements[index] = aC;
             index++;
         }
         return true;
