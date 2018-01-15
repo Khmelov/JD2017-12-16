@@ -24,7 +24,7 @@ public class ListA<T> implements List<T> {
         for (int i = index + 1; i < size; i++) {
             elements[i - 1] = elements[i];
         }
-        size--;
+        size = size > 0 ? size - 1 : 0;
         return deleted;
     }
 
