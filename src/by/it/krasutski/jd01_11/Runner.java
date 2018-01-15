@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Runner {
     public static void main(String[] args) {
-        ListB<String> list = new ListB<>();
+        List<String> list = new ListB<>();
         list.add("one");
         list.add("two");
         list.add("three");
@@ -14,7 +14,7 @@ public class Runner {
         System.out.println(list);
         list.set(1,"12");
         System.out.println(list);
-        ListB<String> second = new ListB<>();
+        List<String> second = new ListB<>();
         second.add("lol");
         second.addAll(list);
         System.out.println(second);
