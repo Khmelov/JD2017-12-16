@@ -6,14 +6,15 @@ import java.util.regex.Pattern;
 public class Parser {
 
     Var calc(String expression){
+        Pattern operationPattern=Pattern.compile(Patterns.OPERATION);
+        Matcher matcher=operationPattern.matcher(expression);
         String[] operand = expression.split(Patterns.OPERATION);
         Var one = Var.createVar(operand[0]);
         Var two = Var.createVar(operand[1]);
+
         if (one==null || two==null) {
             return null;
         }
-        Pattern operationPattern=Pattern.compile(Patterns.OPERATION);
-        Matcher matcher=operationPattern.matcher(expression);
         if (matcher.find()){
             String operation=matcher.group();
             switch (operation){
@@ -21,7 +22,6 @@ public class Parser {
                 case "-": return one.sub(two);
                 case "*": return one.mul(two);
                 case "/": return one.div(two);
-                case "=":
             }
         }
         return null;
