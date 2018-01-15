@@ -11,6 +11,12 @@ public class ConsoleRunner {
         while (!(line = sc.nextLine()).equals("end")) {
             Var result = parser.calc(line.trim());
             printer.print(result);
+            printer.printVariable();
+            printer.sortVariable();
+//            if (sc.nextLine().equals("print"))
+//                printer.printVariable();
+//            if (sc.nextLine().equals("sort"))
+//                printer.sortVariable();
         }
     }
 }

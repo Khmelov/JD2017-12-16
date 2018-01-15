@@ -26,6 +26,12 @@ abstract class Var implements Operation {
         return null;
     }
 
+    @Override
+    public Var assign(Var other) {
+        System.out.printf("Присваивание %s = %s невозможно\n", this, other);
+        return null;
+    }
+
     static Var createVar(String operand) {
         operand = operand.trim();
         if (operand.matches(Patterns.SCALAR))
@@ -34,6 +40,8 @@ abstract class Var implements Operation {
             return new Vector(operand);
         if (operand.matches(Patterns.MATRIX))
             return new Matrix(operand);
+        if (operand.matches(Patterns.KEY))
+            return new Variable(operand);
         return null;
     }
 }
