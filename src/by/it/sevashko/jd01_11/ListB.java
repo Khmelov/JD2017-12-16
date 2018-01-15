@@ -71,9 +71,8 @@ public class ListB<T> implements List<T>{
     public boolean addAll(Collection<? extends T> c) {
         if (size + c.size() > elements.length)
             elements = Arrays.copyOf(elements,elements.length + c.size());
-        Iterator<? extends T> iterator = c.iterator();
-        while (iterator.hasNext()){
-            elements[size] = iterator.next();
+        for (T e : c){
+            elements[size] = e;
             size++;
         }
         return true;
@@ -83,7 +82,7 @@ public class ListB<T> implements List<T>{
         if (size + c.size() > elements.length)
             elements = Arrays.copyOf(elements,elements.length + c.size());
         for (int i = 0; i < c.size(); i++) {
-            elements[size] =  c.get(i);
+            elements[size] = c.get(i);
             size++;
         }
         return true;
@@ -92,9 +91,9 @@ public class ListB<T> implements List<T>{
     @Override
     public boolean contains(Object o) {
         if (o == null){
-            for (T e : elements) if (e == null) return true;
+            for (int i = 0; i < size; i++) if (elements[i] == null) return true;
         }
-        else for (T e : elements) if (o.equals(e)) return true;
+        else for (int i = 0; i < size; i++) if (o.equals(elements[i])) return true;
 
         return false;
     }
@@ -123,9 +122,7 @@ public class ListB<T> implements List<T>{
         if (o == null){
             for (int i = 0; i < size; i++) {
                 if (elements[i] == null){
-                    for (int index = i; index < size - 1; index++) {
-                        elements[index] = elements[index + 1];
-                    }
+                    System.arraycopy(elements, i + 1, elements, i, size - 1 - i);
                     size = size - 1;
                     return true;
                 }
@@ -134,9 +131,7 @@ public class ListB<T> implements List<T>{
         } else{
             for (int i = 0; i < size; i++) {
                 if (o.equals(elements[i])){
-                    for (int index = i; index < size - 1; index++) {
-                        elements[index] = elements[index + 1];
-                    }
+                    System.arraycopy(elements, i + 1, elements, i, size - 1 - i);
                     size = size - 1;
                     return true;
                 }
@@ -154,9 +149,8 @@ public class ListB<T> implements List<T>{
         for (int i = size - 1; i >= index + c.size(); i--) {
             elements[i] = elements[i - c.size()];
         }
-        Iterator<? extends T> iterator = c.iterator();
-        while (iterator.hasNext()){
-            elements[index] = iterator.next();
+        for (T aC : c) {
+            elements[index] = aC;
             index++;
         }
         return true;
@@ -170,7 +164,7 @@ public class ListB<T> implements List<T>{
             elements[i] = elements[i - c.size()];
         }
         for (int i = 0; i < c.size(); i++) {
-            elements[index] =  c.get(i);
+            elements[index] = c.get(i);
             index++;
         }
         return true;
