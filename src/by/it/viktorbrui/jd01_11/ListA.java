@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd01_11.classwork;
+package by.it.viktorbrui.jd01_11;
 
 import java.util.*;
 
@@ -28,7 +28,9 @@ public class ListA<T> implements List<T> {
     }
 
     @Override
-    public T get(int index) {return elements[index];}
+    public T get(int index) {
+        return elements[index];
+    }
 
 
     @Override

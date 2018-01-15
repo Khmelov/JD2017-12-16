@@ -1,51 +1,80 @@
-package by.it.akhmelev.jd01_11.classwork;
+package by.it.kozlov.jd01_11;
 
 import java.util.*;
 
-public class ListA<T> implements List<T> {
+public class ListB<T> implements List<T> {
 
     private T[] elements = (T[]) new Object[]{};
     private int size = 0;
 
+    @Override
+    public T set(int index, T element) {
+        T deleted = elements[index];
+        elements[index] = element;
+        return deleted;
+    }
+
+
+    @Override
+    public void add(int index, T element) {
+        if (size == elements.length)
+            elements = Arrays.copyOf(elements, elements.length + 1);
+        size += 1;
+        for (int i = index; i < elements.length; i++) {
+            T buffer;
+            buffer = elements[i];
+            elements[i] = element;
+            element = buffer;
+        }
+
+    }
+
+    public boolean addAll(Collection<? extends T> c) {
+        T[] buff = (T[]) new Object[c.size()];
+        buff = (T[]) c.toArray();
+        int count = 0;
+        if (size == elements.length)
+            elements = Arrays.copyOf(elements, elements.length + c.size());
+        for (int i = size; i < elements.length; i++) {
+            elements[i] = buff[count++];
+        }
+        size += c.size();
+        return true;
+    }
 
     @Override
     public boolean add(T t) {
-        if (size==elements.length)
-            elements=Arrays.copyOf(elements,elements.length+1);
-        elements[size]=t;
-        size++;
+        if (size == elements.length)
+            elements = Arrays.copyOf(elements, elements.length + 1);
+        elements[size++] = t;
         return true;
     }
 
     @Override
     public T remove(int index) {
-        T deleted=elements[index];
-        for (int i=index+1; i<size; i++){
-            elements[i-1]=elements[i];
-        }
-        size=size>0?size-1:0;
+        T deleted = elements[index];
+        System.arraycopy(elements, index + 1, elements, index + 1 - 1, size - (index + 1));
+        size = size > 0 ? size - 1 : 0;
         return deleted;
     }
 
     @Override
-    public T get(int index) {return elements[index];}
-
+    public T get(int index) {
+        return elements[index];
+    }
 
     @Override
     public String toString() {
-        StringBuilder sb=new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         sb.append('[');
         for (int i = 0; i < size; i++) {
-            if (i>0) sb.append(", ");
+            if (i > 0) sb.append(", ");
             sb.append(elements[i]);
         }
         sb.append(']');
         return sb.toString();
     }
 
-
-
-    /// non implements
     @Override
     public int size() {
         return size;
@@ -53,7 +82,7 @@ public class ListA<T> implements List<T> {
 
     @Override
     public boolean isEmpty() {
-        return size==0;
+        return false;
     }
 
     @Override
@@ -88,11 +117,6 @@ public class ListA<T> implements List<T> {
     }
 
     @Override
-    public boolean addAll(Collection<? extends T> c) {
-        return false;
-    }
-
-    @Override
     public boolean addAll(int index, Collection<? extends T> c) {
         return false;
     }
@@ -109,20 +133,8 @@ public class ListA<T> implements List<T> {
 
     @Override
     public void clear() {
-        size=0;
-    }
-
-
-    @Override
-    public T set(int index, T element) {
-        return null;
-    }
-
-    @Override
-    public void add(int index, T element) {
 
     }
-
 
     @Override
     public int indexOf(Object o) {

@@ -1,51 +1,64 @@
-package by.it.akhmelev.jd01_11.classwork;
+package by.it.patsko.jd01_11;
 
 import java.util.*;
-
+/*
+TaskA.
+Свой ListA.
+Напишите класс ListA<T>, который реализует 3 метода add(T e),remove(int index), get(int index)из интерфейса List<T>
+(реализация остальных –фиктивная) и плюс к этому реализует toString()как в ArrayList.
+ */
 public class ListA<T> implements List<T> {
-
     private T[] elements = (T[]) new Object[]{};
     private int size = 0;
 
-
     @Override
     public boolean add(T t) {
-        if (size==elements.length)
-            elements=Arrays.copyOf(elements,elements.length+1);
-        elements[size]=t;
-        size++;
+        if (size == elements.length)
+            elements = Arrays.copyOf(elements, elements.length + 1);
+        elements[size++] = t;
         return true;
     }
 
     @Override
     public T remove(int index) {
-        T deleted=elements[index];
-        for (int i=index+1; i<size; i++){
-            elements[i-1]=elements[i];
+        T deleted = elements[index];
+        for (int i = index + 1; i < size; i++) {
+            elements[i - 1] = elements[i];
         }
-        size=size>0?size-1:0;
+//        System.arraycopy(elements, index + 1, elements, index + 1 - 1, size - (index + 1));
+        size = (size > 0) ? size - 1 : 0;
         return deleted;
     }
 
-    @Override
-    public T get(int index) {return elements[index];}
 
+    @Override
+    public T get(int index) {
+        return elements[index];
+    }
 
     @Override
     public String toString() {
-        StringBuilder sb=new StringBuilder();
-        sb.append('[');
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
         for (int i = 0; i < size; i++) {
-            if (i>0) sb.append(", ");
+            if (i > 0) sb.append(", ");
             sb.append(elements[i]);
         }
-        sb.append(']');
+        sb.append("]");
         return sb.toString();
     }
 
+    //fictiv
+    @Override
+    public void add(int index, T element) {
 
+    }
 
-    /// non implements
+    @Override
+    public boolean remove(Object o) {
+        return false;
+    }
+
     @Override
     public int size() {
         return size;
@@ -53,7 +66,7 @@ public class ListA<T> implements List<T> {
 
     @Override
     public boolean isEmpty() {
-        return size==0;
+        return size == 0;
     }
 
     @Override
@@ -76,11 +89,6 @@ public class ListA<T> implements List<T> {
         return null;
     }
 
-
-    @Override
-    public boolean remove(Object o) {
-        return false;
-    }
 
     @Override
     public boolean containsAll(Collection<?> c) {
@@ -109,18 +117,11 @@ public class ListA<T> implements List<T> {
 
     @Override
     public void clear() {
-        size=0;
     }
-
 
     @Override
     public T set(int index, T element) {
         return null;
-    }
-
-    @Override
-    public void add(int index, T element) {
-
     }
 
 

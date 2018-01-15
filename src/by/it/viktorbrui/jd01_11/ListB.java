@@ -1,59 +1,18 @@
-package by.it.akhmelev.jd01_11.classwork;
+package by.it.viktorbrui.jd01_11;
 
 import java.util.*;
 
-public class ListA<T> implements List<T> {
-
-    private T[] elements = (T[]) new Object[]{};
-    private int size = 0;
+public class ListB <T> implements List<T> {
 
 
-    @Override
-    public boolean add(T t) {
-        if (size==elements.length)
-            elements=Arrays.copyOf(elements,elements.length+1);
-        elements[size]=t;
-        size++;
-        return true;
-    }
-
-    @Override
-    public T remove(int index) {
-        T deleted=elements[index];
-        for (int i=index+1; i<size; i++){
-            elements[i-1]=elements[i];
-        }
-        size=size>0?size-1:0;
-        return deleted;
-    }
-
-    @Override
-    public T get(int index) {return elements[index];}
-
-
-    @Override
-    public String toString() {
-        StringBuilder sb=new StringBuilder();
-        sb.append('[');
-        for (int i = 0; i < size; i++) {
-            if (i>0) sb.append(", ");
-            sb.append(elements[i]);
-        }
-        sb.append(']');
-        return sb.toString();
-    }
-
-
-
-    /// non implements
     @Override
     public int size() {
-        return size;
+        return 0;
     }
 
     @Override
     public boolean isEmpty() {
-        return size==0;
+        return false;
     }
 
     @Override
@@ -76,6 +35,10 @@ public class ListA<T> implements List<T> {
         return null;
     }
 
+    @Override
+    public boolean add(T t) {
+        return false;
+    }
 
     @Override
     public boolean remove(Object o) {
@@ -109,9 +72,13 @@ public class ListA<T> implements List<T> {
 
     @Override
     public void clear() {
-        size=0;
+
     }
 
+    @Override
+    public T get(int index) {
+        return null;
+    }
 
     @Override
     public T set(int index, T element) {
@@ -123,6 +90,10 @@ public class ListA<T> implements List<T> {
 
     }
 
+    @Override
+    public T remove(int index) {
+        return null;
+    }
 
     @Override
     public int indexOf(Object o) {
