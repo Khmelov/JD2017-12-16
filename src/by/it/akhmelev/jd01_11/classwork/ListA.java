@@ -28,9 +28,7 @@ public class ListA<T> implements List<T> {
     }
 
     @Override
-    public T get(int index) {
-        return elements[index];
-    }
+    public T get(int index) {return elements[index];}
 
 
     @Override
