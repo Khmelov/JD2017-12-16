@@ -89,7 +89,7 @@ public class Test_jd01_12 {
     public void testTaskA1() throws Exception {
         Class<?> aclass = findClass("TaskA1");
         Method m = findMethod(aclass, "clearBad", List.class);
-        Integer[] grades = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+        Integer[] grades = new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8, 7, 6, 5, 4, 3, 2, 1};
         List<Integer> list = new ArrayList<Integer>(Arrays.asList(grades));
         Object instance = aclass.getDeclaredConstructor().newInstance();
         System.out.println("Дано: " + list);
@@ -189,20 +189,72 @@ public class Test_jd01_12 {
                 .include("said=2")
                 .include("stories=2")
                 .include("reliable=1")
-                ;
+        ;
     }
 
     @Test(timeout = 1500)
     public void testTaskB2() throws Exception {
         Class<?> aclass = findClass("TaskB2");
         Method mA = findMethod(aclass, "process", ArrayList.class);
+        mA.setAccessible(true);
         Method mL = findMethod(aclass, "process", LinkedList.class);
-
-        List<String> arr = new ArrayList<>(Arrays.asList("n1"));
-        assertEquals("Методы вычисляют разные результаты",mA.invoke(null,arr),mL.invoke(null,arr));
-        System.out.print("Проверка на множестве " + arr + " оставшийся =  ");
-        System.out.flush();
+        mL.setAccessible(true);
+        int[] expectedRes = {1, 1, 3, 1, 3, 5, 7, 1, 3, 5, 7, 9, 11, 13, 15, 1};
+        for (int n = 1; n <= expectedRes.length; n++) {
+            ArrayList<String> arra = new ArrayList<>();
+            LinkedList<String> arrl = new LinkedList<>();
+            for (int i = 1; i <= n; i++) {
+                arra.add("n" + i);
+                arrl.add("n" + i);
+            }
+            System.out.println("ArrayList=" + arra);
+            System.out.flush();
+            System.out.println("LinkedList=" + arrl);
+            System.out.flush();
+            assertEquals("Методы возвращают разные результаты", mA.invoke(null, arra), mL.invoke(null, arrl));
+            assertEquals("Метод c ArrayList работает неверно", mA.invoke(null, arra), "n" + expectedRes[n - 1]);
+            System.out.println("  process(ArrayList  arr)=" + "n" + expectedRes[n - 1]);
+            System.out.flush();
+            assertEquals("Метод с LinkedList работает неверно", mL.invoke(null, arrl), "n" + expectedRes[n - 1]);
+            System.out.println("  process(LinkedList arr)=" + "n" + expectedRes[n - 1]);
+            System.out.flush();
+        }
+        System.out.println("OK");
     }
+
+    @Test(timeout = 1500)
+    public void testTaskB3() throws Exception {
+        Class<?> aclass = findClass("TaskB3");
+        Method mA = findMethod(aclass, "process", ArrayList.class);
+        mA.setAccessible(true);
+        Method mL = findMethod(aclass, "process", LinkedList.class);
+        mL.setAccessible(true);
+        int[] expectedRes = new int[4096];
+        expectedRes[expectedRes.length - 1] = 1;
+        int n = expectedRes.length;
+        ArrayList<String> arra = new ArrayList<>(n);
+        LinkedList<String> arrl = new LinkedList<>();
+        for (int i = 1; i <= n; i++) {
+            arra.add("n" + i);
+            arrl.add("n" + i);
+        }
+        Long t=System.nanoTime();
+        String rA= (String) mA.invoke(null, arra);
+        Long tA=System.nanoTime()-t;
+
+        t=System.nanoTime();
+        String rL= (String) mL.invoke(null, arrl);
+        Long tL=System.nanoTime()-t;
+
+        assertEquals("Метод c ArrayList  работает неверно", rA, "n" + expectedRes[n - 1]);
+        assertEquals("Метод с LinkedList работает неверно", rL, "n" + expectedRes[n - 1]);
+
+        System.out.println(" Время работы для  ArrayList="+tA/1000+" мкс."); System.out.flush();
+        System.out.println(" Время работы для LinkedList="+tL/1000+" мкс."); System.out.flush();
+
+        assertTrue(" Время работы для  ArrayList должно быть существенно больше LinkedList",tA>tL*12/10);
+
+}
 
 
     /*
@@ -366,30 +418,30 @@ public class Test_jd01_12 {
     private PrintStream newOut;
 
     {
-        newOut = new PrintStream(new OutputStream() {
-            private byte bytes[] = new byte[2];
+            newOut=new PrintStream(new OutputStream(){
+private byte bytes[]=new byte[2];
 
-            @Override
-            public void write(int b) throws IOException {
-                if (b < 0) { //ловим и собираем двухбайтовый UTF (первый код > 127, или в байте <0)
-                    if (bytes[0] == 0) { //если это первый байт
-                        bytes[0] = (byte) b; //то запомним его
-                    } else {
-                        bytes[1] = (byte) b; //иначе это второй байт
-                        String s = new String(bytes); //соберем весь символ
-                        stringWriter.append(s); //запомним вывод для теста
-                        oldOut.append(s); //копию в обычный вывод
-                        bytes[0] = 0; //забудем все.
-                    }
-                } else {
-                    char c = (char) b; //ловим и собираем однобайтовый UTF
-                    bytes[0] = 0;
-                    if (c != '\r') {
-                        stringWriter.write(c); //запомним вывод для теста
-                    }
-                    oldOut.write(c); //копию в обычный вывод
-                }
-            }
+@Override
+public void write(int b)throws IOException{
+        if(b< 0){ //ловим и собираем двухбайтовый UTF (первый код > 127, или в байте <0)
+        if(bytes[0]==0){ //если это первый байт
+        bytes[0]=(byte)b; //то запомним его
+        }else{
+        bytes[1]=(byte)b; //иначе это второй байт
+        String s=new String(bytes); //соберем весь символ
+        stringWriter.append(s); //запомним вывод для теста
+        oldOut.append(s); //копию в обычный вывод
+        bytes[0]=0; //забудем все.
+        }
+        }else{
+        char c=(char)b; //ловим и собираем однобайтовый UTF
+        bytes[0]=0;
+        if(c!='\r'){
+        stringWriter.write(c); //запомним вывод для теста
+        }
+        oldOut.write(c); //копию в обычный вывод
+        }
+        }
         });
-    }
-}
+        }
+        }
