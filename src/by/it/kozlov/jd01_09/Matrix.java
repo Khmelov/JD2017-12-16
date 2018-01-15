@@ -36,50 +36,62 @@ public class Matrix extends Var {
 
     @Override
     public Var sub(Var other) {
-        double[][] add = new double[value.length][value[0].length];
+        double[][] sub = new double[value.length][value[0].length];
         if (other instanceof Scalar) {
             for (int i = 0; i < value.length; i++) {
                 for (int j = 0; j < value[i].length; j++) {
-                    add[i][j] = value[i][j] - ((Scalar) other).value;
+                    sub[i][j] = value[i][j] - ((Scalar) other).value;
                 }
             }
-            return new Matrix(add);
+            return new Matrix(sub);
         }
         if (other instanceof Vector) {
             for (int i = 0; i < value.length; i++) {
                 for (int j = 0; j < value[i].length; j++) {
-                    add[i][j] = value[i][j] - ((Vector) other).value[i];
+                    sub[i][j] = value[i][j] - ((Vector) other).value[i];
                 }
             }
-            return new Matrix(add);
+            return new Matrix(sub);
         }
         if (other instanceof Matrix) {
             for (int i = 0; i < value.length; i++) {
                 for (int j = 0; j < value[i].length; j++) {
-                    add[i][j] = value[i][j] - ((Matrix) other).value[i][j];
+                    sub[i][j] = value[i][j] - ((Matrix) other).value[i][j];
                 }
             }
-            return new Matrix(add);
+            return new Matrix(sub);
         } else
-            return other.add(this);
+            return other.sub(this);
     }
 
     @Override
     public Var mul(Var other) {
-//        double[] add = new double[value.length];
-//        if (other instanceof Scalar) {
-//            for (int i = 0; i < value.length; i++) {
-//                add[i] = value[i] * ((Scalar) other).value;
-//            }
-//            return new Vector(add);
-//        }
-//        if (other instanceof Vector) {
-//            for (int i = 0; i < value.length; i++) {
-//                add[i] = value[i] * ((Vector) other).value[i];
-//            }
-//            return new Vector(add);
-//        } else
-        return other.add(this);
+        double[][] mul = new double[value.length][value[0].length];
+        if (other instanceof Scalar) {
+            for (int i = 0; i < value.length; i++) {
+                for (int j = 0; j < value[i].length; j++) {
+                    mul[i][j] = value[i][j] - ((Scalar) other).value;
+                }
+            }
+            return new Matrix(mul);
+        }
+        if (other instanceof Vector) {
+            for (int i = 0; i < value.length; i++) {
+                for (int j = 0; j < value[i].length; j++) {
+                    mul[i][j] = value[i][j] - ((Vector) other).value[i];
+                }
+            }
+            return new Matrix(mul);
+        }
+        if (other instanceof Matrix) {
+            for (int i = 0; i < value.length; i++) {
+                for (int j = 0; j < value[i].length; j++) {
+                    mul[i][j] = value[i][j] - ((Matrix) other).value[i][j];
+                }
+            }
+            return new Matrix(mul);
+        } else
+            return other.mul(this);
     }
 
     @Override
@@ -119,7 +131,6 @@ public class Matrix extends Var {
                 i++;
                 j = 0;
             }
-
         }
     }
 
@@ -137,10 +148,8 @@ public class Matrix extends Var {
             if (i < value.length - 1) {
                 result.append(", ");
             }
-
         }
         result.append('}');
         return result.toString();
     }
-
 }
