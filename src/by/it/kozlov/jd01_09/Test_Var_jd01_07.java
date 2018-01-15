@@ -67,12 +67,12 @@ public class Test_Var_jd01_07 {
         assertEquals("У вас неверное наследование", "Var", ok.aClass.getSuperclass().getSimpleName());
 
         Constructor c=ok.aClass.getDeclaredConstructor(double[].class);
-        System.out.println("Создание переменной типа Vector на основе массива {1,2,4}");
+        System.out.println("Создание переменной типа Matrix на основе массива {1,2,4}");
         Object vector=c.newInstance(new double[]{1,2,4});
         System.out.println("было выполнено успешно. \nТестирование вывода значения {1,2,4} через метод toString()");
         System.out.flush();
         assertEquals("Не было получено ожидаемое значение {1.0, 2.0, 4.0}", vector.toString(), "{1.0, 2.0, 4.0}");
-        System.out.println("выполнено успешно. Vector="+vector);
+        System.out.println("выполнено успешно. Matrix="+vector);
     }
 
     @Test(timeout = 1500)
@@ -83,12 +83,12 @@ public class Test_Var_jd01_07 {
         Constructor c=ok.aClass.getDeclaredConstructor(double[].class);
         Object vector=c.newInstance(new double[]{1,2,4});
         c=ok.aClass.getDeclaredConstructor(ok.aClass);
-        System.out.println("Создание переменной типа Vector на основе объекта Vector({1,2,4})");
+        System.out.println("Создание переменной типа Matrix на основе объекта Matrix({1,2,4})");
         vector=c.newInstance(vector);
         System.out.println("было выполнено успешно. \nТестирование вывода значения {1,2,4} через метод toString()");
         System.out.flush();
         assertEquals("Не было получено ожидаемое значение {1.0, 2.0, 4.0}", vector.toString(), "{1.0, 2.0, 4.0}");
-        System.out.println("выполнено успешно. Vector="+vector);
+        System.out.println("выполнено успешно. Matrix="+vector);
     }
 
     @Test(timeout = 1500)
@@ -97,12 +97,12 @@ public class Test_Var_jd01_07 {
         assertEquals("У вас неверное наследование", "Var", ok.aClass.getSuperclass().getSimpleName());
 
         Constructor c=ok.aClass.getDeclaredConstructor(String.class);
-        System.out.println("Создание переменной типа Vector на основе строки {1,2,4}");
+        System.out.println("Создание переменной типа Matrix на основе строки {1,2,4}");
         Object vector=c.newInstance("{1,2,4}");
         System.out.println("было выполнено успешно. \nТестирование вывода значения {1,2,4} через метод toString()");
         System.out.flush();
         assertEquals("Не было получено ожидаемое значение {1.0, 2.0, 4.0}", vector.toString(), "{1.0, 2.0, 4.0}");
-        System.out.println("выполнено успешно. Vector="+vector);
+        System.out.println("выполнено успешно. Matrix="+vector);
     }
 
 

@@ -2,7 +2,7 @@ package by.it.kozlov.jd01_09;
 
 class Vector extends Var {
 
-    private double[] value;
+    double[] value;
 
     @Override
     public Var add(Var other) {

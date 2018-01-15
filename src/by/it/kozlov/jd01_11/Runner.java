@@ -1,21 +1,15 @@
 package by.it.kozlov.jd01_11;
 
-import java.util.List;
+import java.util.Set;
 
 public class Runner {
     public static void main(String[] args) {
-        List<String> list=new ListB<>();
-        List<String> list2=new ListB<>();
-        list.add("one");
-        list.add("two");
-        list.add("three");
-        list.add("four");
-        list2.add("one");
-        list2.add("two");
-        list2.add("three");
-        list2.add("four");
+        Set<Short> list=new SetC<>();
+        for (int i = 0; i < 10; i++) {
+            list.add((short) (i * 2));
+        }
         System.out.println(list);
-        list.addAll(list2);
-        System.out.println(list);
+//        list.addAll(list2);
+//        System.out.println(list);
     }
 }
