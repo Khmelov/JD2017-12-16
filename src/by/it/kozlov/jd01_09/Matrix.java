@@ -15,14 +15,6 @@ public class Matrix extends Var {
             }
             return new Matrix(add);
         }
-        if (other instanceof Vector) {
-            for (int i = 0; i < value.length; i++) {
-                for (int j = 0; j < value[i].length; j++) {
-                    add[i][j] = value[i][j] + ((Vector) other).value[i];
-                }
-            }
-            return new Matrix(add);
-        }
         if (other instanceof Matrix) {
             for (int i = 0; i < value.length; i++) {
                 for (int j = 0; j < value[i].length; j++) {
@@ -45,14 +37,6 @@ public class Matrix extends Var {
             }
             return new Matrix(sub);
         }
-        if (other instanceof Vector) {
-            for (int i = 0; i < value.length; i++) {
-                for (int j = 0; j < value[i].length; j++) {
-                    sub[i][j] = value[i][j] - ((Vector) other).value[i];
-                }
-            }
-            return new Matrix(sub);
-        }
         if (other instanceof Matrix) {
             for (int i = 0; i < value.length; i++) {
                 for (int j = 0; j < value[i].length; j++) {
@@ -66,27 +50,33 @@ public class Matrix extends Var {
 
     @Override
     public Var mul(Var other) {
-        double[][] mul = new double[value.length][value[0].length];
         if (other instanceof Scalar) {
+            double[][] mul = new double[value.length][value[0].length];
             for (int i = 0; i < value.length; i++) {
                 for (int j = 0; j < value[i].length; j++) {
-                    mul[i][j] = value[i][j] - ((Scalar) other).value;
+                    mul[i][j] = value[i][j] * ((Scalar) other).value;
                 }
             }
             return new Matrix(mul);
         }
         if (other instanceof Vector) {
+            double[] mul = new double[value.length];
             for (int i = 0; i < value.length; i++) {
                 for (int j = 0; j < value[i].length; j++) {
-                    mul[i][j] = value[i][j] - ((Vector) other).value[i];
+                    mul[i] = mul[i] + value[i][j] * ((Vector) other).value[j];
                 }
             }
-            return new Matrix(mul);
+            return new Vector(mul);
         }
         if (other instanceof Matrix) {
+            double[][] mul = new double[value.length][value[0].length];
             for (int i = 0; i < value.length; i++) {
-                for (int j = 0; j < value[i].length; j++) {
-                    mul[i][j] = value[i][j] - ((Matrix) other).value[i][j];
+                for (int j = 0; j < ((Matrix) other).value[0].length; j++) {
+                    double sum = 0;
+                    for (int k = 0; k < ((Matrix) other).value.length; k++) {
+                        sum = sum + value[i][k] * ((Matrix) other).value[k][j];
+                    }
+                    mul[i][j] = sum;
                 }
             }
             return new Matrix(mul);
@@ -96,20 +86,17 @@ public class Matrix extends Var {
 
     @Override
     public Var div(Var other) {
-//        double[] add = new double[value.length];
-//        if (other instanceof Scalar) {
-//            for (int i = 0; i < value.length; i++) {
-//                add[i] = value[i] / ((Scalar) other).value;
-//            }
-//            return new Vector(add);
-//        }
-//        if (other instanceof Vector) {
-//            for (int i = 0; i < value.length; i++) {
-//                add[i] = value[i] / ((Vector) other).value[i];
-//            }
-//            return new Vector(add);
-//        } else
-        return other.add(this);
+        if (other instanceof Scalar) {
+            double[][] div = new double[value.length][value[0].length];
+            for (int i = 0; i < value.length; i++) {
+                for (int j = 0; j < value[i].length; j++) {
+                    div[i][j] = value[i][j] / ((Scalar) other).value;
+                }
+            }
+            return new Matrix(div);
+        } else {
+            return other.add(this);
+        }
     }
 
     Matrix(double[][] value) {
