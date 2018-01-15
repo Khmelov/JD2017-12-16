@@ -37,5 +37,97 @@ public class Matrix extends Var {
         result.append("}}");
         return result.toString();
     }
+    @Override
+    public Var add(Var other) {
+        if (other instanceof Scalar){
+            Matrix res = new Matrix(this);
+            for (int rowNumber = 0; rowNumber < this.value.length; rowNumber++) {
+                for (int colNumber = 0; colNumber < this.value[rowNumber].length; colNumber++) {
+                    res.value[rowNumber][colNumber] = res.value[rowNumber][colNumber] + ((Scalar) other).getValue();
+                }
+            }
+            return  res;
+        }
+        if (other instanceof Matrix){
+            Matrix res = new Matrix(this);
+            for (int rowNumber = 0; rowNumber < this.value.length; rowNumber++) {
+                for (int colNumber = 0; colNumber < this.value[rowNumber].length; colNumber++) {
+                    res.value[rowNumber][colNumber] = res.value[rowNumber][colNumber] + ((Matrix) other).value[rowNumber][colNumber];
+                }
+            }
+            return res;
+        }
+        return super.add(other);
+    }
 
+    @Override
+    public Var sub(Var other) {
+        if (other instanceof Scalar){
+            Matrix res = new Matrix(this);
+            for (int rowNumber = 0; rowNumber < this.value.length; rowNumber++) {
+                for (int colNumber = 0; colNumber < this.value[rowNumber].length; colNumber++) {
+                    res.value[rowNumber][colNumber] = res.value[rowNumber][colNumber] - ((Scalar) other).getValue();
+                }
+            }
+            return  res;
+        }
+        if (other instanceof Matrix){
+            Matrix res = new Matrix(this);
+            for (int rowNumber = 0; rowNumber < this.value.length; rowNumber++) {
+                for (int colNumber = 0; colNumber < this.value[rowNumber].length; colNumber++) {
+                    res.value[rowNumber][colNumber] = res.value[rowNumber][colNumber] - ((Matrix) other).value[rowNumber][colNumber];
+                }
+            }
+            return res;
+        }
+        return super.add(other);
+    }
+
+    @Override
+    public Var mul(Var other) {
+        if (other instanceof Scalar){
+            Matrix res = new Matrix(this);
+            for (int rowNumber = 0; rowNumber < this.value.length; rowNumber++) {
+                for (int colNumber = 0; colNumber < this.value[rowNumber].length; colNumber++) {
+                    res.value[rowNumber][colNumber] = res.value[rowNumber][colNumber] * ((Scalar) other).getValue();
+                }
+            }
+            return res;
+        }
+        if (other instanceof Vector){
+            double[] res = new double[this.value.length];
+            for (int rowNumber = 0; rowNumber < this.value.length; rowNumber++) {
+                for (int colNumber = 0; colNumber < this.value[rowNumber].length; colNumber++) {
+                    res[rowNumber] = res[rowNumber] + this.value[rowNumber][colNumber] * ((Vector) other).getValue()[colNumber];
+                }
+            }
+            return new Vector(res);
+        }
+        if (other instanceof Matrix){
+            double[][] res = new double[this.value.length][((Matrix) other).value[0].length];
+            for (int i = 0; i < this.value.length; i++) {
+                for (int m = 0; m < ((Matrix) other).value[0].length; m++) {
+                    for (int j = 0; j < this.value[0].length; j++) {
+                        res[i][m] = res[i][m] + this.value[i][j] * ((Matrix) other).value[j][m];
+                    }
+                }
+            }
+            return new Matrix(res);
+        }
+        return super.mul(other);
+    }
+
+    @Override
+    public Var div(Var other) {
+        if (other instanceof Scalar){
+            Matrix res = new Matrix(this);
+            for (int rowNumber = 0; rowNumber < this.value.length; rowNumber++) {
+                for (int colNumber = 0; colNumber < this.value[rowNumber].length; colNumber++) {
+                    res.value[rowNumber][colNumber] = res.value[rowNumber][colNumber] / ((Scalar) other).getValue();
+                }
+            }
+            return res;
+        }
+        return super.div(other);
+    }
 }

@@ -2,7 +2,9 @@ package by.it.ikiselev.jd01_09;
 
 class Scalar extends Var {
     private double value;
-
+    public double getValue() {
+        return value;
+    }
     @Override
     public Var add(Var other) {
         if (other instanceof Scalar){
