@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 
 public class BeanTester {
     public static void main(String[] args) {
-        Class structBean = Bean.class;
+        Class<?> structBean = Bean.class;
         Method[] methods = structBean.getDeclaredMethods();
         Object obj;
         try {
