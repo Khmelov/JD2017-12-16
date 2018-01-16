@@ -1,7 +1,6 @@
 package by.it.akhmelev.jd01_12.classwork;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
