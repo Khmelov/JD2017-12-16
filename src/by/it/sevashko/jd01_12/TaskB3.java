@@ -4,22 +4,23 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class TaskB2 {
+public class TaskB3 {
 
     public static void main(String[] args) {
         ArrayList<String> a = new ArrayList<>();
-        a.add("Ivanov");
-        a.add("Sidorov");
-        a.add("Petrov");
-        a.add("Kotov");
-        System.out.println(process(a));
-
         LinkedList<String> b = new LinkedList<>();
-        b.add("Ivanov");
-        b.add("Sidorov");
-        b.add("Petrov");
-        b.add("Kotov");
-        System.out.println(process(b));
+        for (int i = 1; i <= 4096; i++ ){
+            a.add(String.valueOf(i));
+            b.add(String.valueOf(i));
+        }
+        long start = System.nanoTime();
+        process(a);
+        long workTime = System.nanoTime() - start;
+        System.out.println(workTime);
+        start = System.nanoTime();
+        process(b);
+        workTime = System.nanoTime() - start;
+        System.out.println(workTime);
     }
 
     static String process(LinkedList<String> peoples){
