@@ -20,9 +20,7 @@ public class ListA<T> implements List<T>{
     @Override
     public T remove(int index) {
             T deleted = elements[index];
-        for (int i = index; i < size - 1; i++) {
-            elements[i] = elements[i + 1];
-        }
+        System.arraycopy(elements, index + 1, elements, index, size - 1 - index);
         size = size - 1;
         return deleted;
     }
@@ -55,9 +53,7 @@ public class ListA<T> implements List<T>{
     public void add(int index, T element) {
         if (size==elements.length)
             elements=Arrays.copyOf(elements,elements.length+1);
-        for (int i = size; i > index ; i--) {
-            elements[i] = elements[i - 1];
-        }
+        System.arraycopy(elements, index, elements, index + 1, size - index);
         elements[index] = element;
         size++;
     }
