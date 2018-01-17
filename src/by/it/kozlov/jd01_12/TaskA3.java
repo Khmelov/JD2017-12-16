@@ -20,6 +20,5 @@ public class TaskA3 {
                 list.add(value);
         }
         System.out.println(list);
-
     }
 }
