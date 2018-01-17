@@ -19,10 +19,9 @@ public class TaskB3 {
     }
 
     public static String process(ArrayList<String> peoples) {
-
+        boolean test = false;
         while (peoples.size() != 1) {
             Iterator<String> iterator = peoples.iterator();
-            boolean test = false;
             while (iterator.hasNext()) {
                 iterator.next();
                 if (test) {
@@ -35,9 +34,9 @@ public class TaskB3 {
     }
 
     public static String process(LinkedList<String> peoples) {
+        boolean test = false;
         while (peoples.size() != 1) {
             Iterator<String> iterator = peoples.iterator();
-            boolean test = false;
             while (iterator.hasNext()) {
                 iterator.next();
                 if (test) {
