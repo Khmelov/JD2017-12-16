@@ -9,9 +9,17 @@ public class TaskA3 {
         List<Integer> list = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         String str;
+        int negpos = 0;
         while (!(str = sc.next()).equals("end")) {
-            list.add(Integer.parseInt(str));
+            Integer value = Integer.valueOf(str);
+            if (value > 0)
+                list.add(negpos++, value);
+            else if (value == 0)
+                list.add(negpos, value);
+            else
+                list.add(value);
         }
         System.out.println(list);
+
     }
 }
