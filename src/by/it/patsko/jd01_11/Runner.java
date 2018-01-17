@@ -1,6 +1,5 @@
 package by.it.patsko.jd01_11;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -39,5 +38,23 @@ public class Runner {
         listC.addAll(listB);
         System.out.println("listC="+listC);
 
+        System.out.println();
+        HashSet<Short> setH=new HashSet<>();
+        SetC<Short> setC=new SetC<>();
+
+        for (int i = 0; i < 10; i++) {//[0, 16, null, 2, 18, 4, 6, 8, 10, 12, 14]
+            setH.add((short) (i * 2));
+            setC.add((short) (i * 2));
+        }
+        System.out.println("setH"+setH+"\nsetC"+setC);
+        System.out.println();
+        System.out.println("setC.contains(0)"+setC.contains((short)0));
+        setH.add(null);
+        setC.add(null);
+        System.out.println("setC.contains(0)"+setC.contains((short)0));
+        System.out.println("setC.contains(null)"+setC.contains(null));
+        System.out.println("setH"+setH+"\nsetC"+setC);
+        setC.remove((short)2);
+        System.out.println("setC"+setC);
     }
 }

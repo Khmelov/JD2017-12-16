@@ -89,7 +89,6 @@ public class ListA<T> implements List<T> {
         return null;
     }
 
-
     @Override
     public boolean containsAll(Collection<?> c) {
         return false;
@@ -123,7 +122,6 @@ public class ListA<T> implements List<T> {
     public T set(int index, T element) {
         return null;
     }
-
 
     @Override
     public int indexOf(Object o) {
