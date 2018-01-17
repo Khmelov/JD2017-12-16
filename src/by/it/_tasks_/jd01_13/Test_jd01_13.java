@@ -1,9 +1,7 @@
 package by.it._tasks_.jd01_13;
 
 
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 import java.io.*;
 import java.lang.reflect.Method;
