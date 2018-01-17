@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
+
 public class TaskA2 {
 
     private static Set<Integer> getUnion(Set<Integer> a, Set<Integer> b){
