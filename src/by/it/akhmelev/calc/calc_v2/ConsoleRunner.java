@@ -11,8 +11,19 @@ public class ConsoleRunner {
         Parser parser=new Parser();
         Printer printer=new Printer();
         while (!(line=sc.nextLine()).equals("end")){
-            Var result=parser.calc(line.trim());
-            printer.print(result);
+            if (line.toLowerCase().contains("printvar"))
+            {
+                System.out.println(VarsMap.printvar());
+                continue;
+            }
+
+            Var result;
+            try {
+                result = parser.calc(line.trim());
+                printer.print(result);
+            } catch (CalcException e) {
+                System.out.println("ERROR: "+e.getMessage());
+            }
         }
     }
 }
