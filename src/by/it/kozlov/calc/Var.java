@@ -1,6 +1,6 @@
 package by.it.kozlov.calc;
 
-public class Var implements Operation {
+abstract public class Var implements Operation {
     @Override
     public Var add(Var other) throws CalcException {
         throw new CalcException(String.format("Сложение %s + %s невозможно.\n", this, other));
