@@ -1,6 +1,7 @@
 package by.it.patsko.calc;
 
 public class CalcException extends Exception {
+
     public CalcException() {
     }
 

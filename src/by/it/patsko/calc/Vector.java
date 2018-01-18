@@ -50,6 +50,8 @@ class Vector extends Var {
             }
             return new Vector(result);
         } else if (other instanceof Vector) {
+            if(this.value.length!=((Vector) other).value.length)
+                throw new CalcException("Векторы разного размера");
             for (int i = 0; i < result.length; i++) {
                 result[i] = this.value[i] + ((Vector) other).value[i];
             }
@@ -66,11 +68,13 @@ class Vector extends Var {
             }
             return new Vector(result);
         } else if (other instanceof Vector) {
+            if(this.value.length!=((Vector) other).value.length)
+                throw new CalcException("Векторы разного размера");
             for (int i = 0; i < result.length; i++) {
                 result[i] = this.value[i] - ((Vector) other).value[i];
             }
             return new Vector(result);
-        } else return super.sub(other);
+        } else throw new CalcException(" Некорректная операциия ");
     }
 
     @Override
@@ -92,18 +96,18 @@ class Vector extends Var {
                 result[i] = this.value[i] * ((Vector) other).value[i];
             }
             return new Vector(result);
-        } else return super.mul(other);
+        } else throw new CalcException(" Некорректная операциия ");
     }
 
     @Override
-    public Var div(Var other) throws ArithmeticException, CalcException {
+    public Var div(Var other) throws CalcException {
         double[] result = new double[this.value.length];
         if (other instanceof Scalar) {
             for (int i = 0; i < result.length; i++) {
-                if (((Scalar) other).getValue() == 0) throw new ArithmeticException("Division by zero");
+                if (((Scalar) other).getValue() == 0) throw new CalcException(" Деление на 0 ");
                 else result[i] = this.value[i] / ((Scalar) other).getValue();
             }
             return new Vector(result);
-        } else return super.div(other);
+        } else throw new CalcException(" Некорректная операциия ");
     }
 }

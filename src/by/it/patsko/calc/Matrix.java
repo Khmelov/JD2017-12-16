@@ -47,7 +47,7 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         double[][] result = new double[this.value.length][this.value[0].length];
         if (other instanceof Scalar) {
             for (int i = 0; i < result.length; i++) {
@@ -65,11 +65,11 @@ class Matrix extends Var {
                 }
             }
             return new Matrix(result);
-        } else return super.add(other);
+        } else throw new CalcException(" Некорректная операциия ");
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         double[][] result = new double[this.value.length][this.value[0].length];
         if (other instanceof Scalar) {
             for (int i = 0; i < result.length; i++) {
@@ -87,11 +87,11 @@ class Matrix extends Var {
                 }
             }
             return new Matrix(result);
-        } else return super.sub(other);
+        } else throw new CalcException(" Некорректная операциия ");
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
 
         if (other instanceof Scalar) {
             double[][] result = new double[this.value.length][this.value[0].length];
@@ -130,14 +130,14 @@ class Matrix extends Var {
                 }
             }
             return new Matrix(result);
-        } else return super.mul(other);
+        } else throw new CalcException(" Некорректная операциия ");
     }
 
     @Override
-    public Var div(Var other) throws ArithmeticException {
+    public Var div(Var other) throws CalcException {
 //        double[][] result = new double[this.value.length][this.value[0].length];
         if (other instanceof Scalar) {
-            if (((Scalar) other).getValue() == 0) throw new ArithmeticException("Division by zero");
+            if (((Scalar) other).getValue() == 0) throw new CalcException(" Деление на 0 ");
             else return this.mul(new Scalar(1 / ((Scalar) other).getValue()));
             /*for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result[i].length; j++) {
@@ -145,6 +145,6 @@ class Matrix extends Var {
                 }
             }
             return new Matrix(result);*/
-        } else return super.div(other);
+        } else throw new CalcException(" Некорректная операциия ");
     }
 }

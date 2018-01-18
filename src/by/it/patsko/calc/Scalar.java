@@ -25,13 +25,13 @@ class Scalar extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) return new Scalar(this.value + ((Scalar) other).value);
         else return other.add(this);
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar) return new Scalar(this.value - ((Scalar) other).value);
         else {
             Scalar minus = new Scalar(-1);
@@ -40,16 +40,18 @@ class Scalar extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar) return new Scalar(this.value * ((Scalar) other).value);
         else return other.mul(this);
     }
 
     @Override
-    public Var div(Var other) throws ArithmeticException {
+    public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
-            if (((Scalar) other).value == 0) throw new ArithmeticException("Division by zero");
+            double v = ((Scalar) other).value;
+            if (v == 0)
+                throw new CalcException(" Деление на 0 ");
             else return new Scalar(this.value / ((Scalar) other).value);
-        } else return super.div(other);
+        } else throw new CalcException(" Некорректная операциия ");
     }
 }
