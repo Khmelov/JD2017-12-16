@@ -8,6 +8,7 @@ TaskC.
 contains(Object o), size(), isEmpty(), addAll(List<?> c), containsAll(Collection<?> c), removeAll(Collection<?> c) интерфейса Set<T>(остальные методы –заглушки).
  */
 public class SetC<E> implements Set<E> {
+//    ListB<E> listB;
     HashMap<Object, E> map = new HashMap<>();
 
     @Override
@@ -15,6 +16,7 @@ public class SetC<E> implements Set<E> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SetC<?> setC = (SetC<?>) o;
+        HashSet<String> s=new HashSet<>();
         return Objects.equals(map, setC.map);
     }
 
@@ -25,11 +27,13 @@ public class SetC<E> implements Set<E> {
 
     @Override
     public boolean contains(Object o) {
+//        return  map.containsKey(o);
         for (Map.Entry<Object, E> entry : this.map.entrySet()) {
             if (entry.getValue() == null) {
                 if (o == null) return true;
             } else if (entry.getValue().equals(o)) return true;
         }
+
         return false;
     }
 

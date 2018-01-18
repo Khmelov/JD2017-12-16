@@ -3,7 +3,7 @@ package by.it.patsko.calc;
 import java.util.Scanner;
 
 public class ConsoleRunner {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CalcException {
         Scanner sc = new Scanner(System.in);
         String line;
         Parser parser = new Parser();
