@@ -62,7 +62,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException{
         if (other instanceof Scalar){
             Matrix res = new Matrix(this);
             for (int rowNumber = 0; rowNumber < this.value.length; rowNumber++) {
@@ -73,6 +73,8 @@ public class Matrix extends Var {
             return  res;
         }
         if (other instanceof Matrix){
+            if (this.value.length != ((Matrix) other).value.length) throw new CalcException("ERROR: У матриц разное количество строк");
+            if (this.value[0].length != ((Matrix) other).value[0].length) throw new CalcException("ERROR: У матриц разное количество столбцов");
             Matrix res = new Matrix(this);
             for (int rowNumber = 0; rowNumber < this.value.length; rowNumber++) {
                 for (int colNumber = 0; colNumber < this.value[rowNumber].length; colNumber++) {
@@ -85,7 +87,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException{
         if (other instanceof Scalar){
             Matrix res = new Matrix(this);
             for (int rowNumber = 0; rowNumber < this.value.length; rowNumber++) {
@@ -96,6 +98,8 @@ public class Matrix extends Var {
             return  res;
         }
         if (other instanceof Matrix){
+            if (this.value.length != ((Matrix) other).value.length) throw new CalcException("ERROR: У матриц разное количество строк");
+            if (this.value[0].length != ((Matrix) other).value[0].length) throw new CalcException("ERROR: У матриц разное количество столбцов");
             Matrix res = new Matrix(this);
             for (int rowNumber = 0; rowNumber < this.value.length; rowNumber++) {
                 for (int colNumber = 0; colNumber < this.value[rowNumber].length; colNumber++) {
@@ -108,7 +112,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException{
         if (other instanceof Scalar){
             Matrix res = new Matrix(this);
             for (int rowNumber = 0; rowNumber < this.value.length; rowNumber++) {
@@ -119,6 +123,7 @@ public class Matrix extends Var {
             return res;
         }
         if (other instanceof Vector){
+            if (this.value[0].length != ((Vector) other).getValue().length) throw new CalcException("ERROR: Матрица и вектор не согласованы");
             double[] res = new double[this.value.length];
             for (int rowNumber = 0; rowNumber < this.value.length; rowNumber++) {
                 for (int colNumber = 0; colNumber < this.value[rowNumber].length; colNumber++) {
@@ -128,6 +133,7 @@ public class Matrix extends Var {
             return new Vector(res);
         }
         if (other instanceof Matrix){
+            if (this.value[0].length != ((Matrix) other).value.length) throw new CalcException("ERROR: Матрицы не согласованы");
             double[][] res = new double[this.value.length][((Matrix) other).value[0].length];
             for (int i = 0; i < this.value.length; i++) {
                 for (int m = 0; m < ((Matrix) other).value[0].length; m++) {
@@ -142,8 +148,9 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException{
         if (other instanceof Scalar){
+            if (((Scalar) other).getValue() == 0) throw new CalcException("ERROR: Деление на 0");
             Matrix res = new Matrix(this);
             for (int rowNumber = 0; rowNumber < this.value.length; rowNumber++) {
                 for (int colNumber = 0; colNumber < this.value[rowNumber].length; colNumber++) {

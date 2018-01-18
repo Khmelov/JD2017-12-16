@@ -3,27 +3,23 @@ package by.it.sevashko.calc;
 abstract class Var implements Operation {
 
     @Override
-    public Var add(Var other) {
-        System.out.printf("Сложение %s с %s невозможно.\n", this, other);
-        return null;
+    public Var add(Var other) throws CalcException{
+        throw new CalcException(String.format("ERROR: Сложение %s с %s невозможно.\n", this, other));
     }
 
     @Override
-    public Var sub(Var other) {
-        System.out.printf("Вычитание %s из %s невозможно.\n", this, other);
-        return null;
+    public Var sub(Var other) throws CalcException {
+        throw new CalcException(String.format("ERROR: Вычитание %s из %s невозможно.\n", this, other));
     }
 
     @Override
-    public Var mul(Var other) {
-        System.out.printf("Умножение %s на %s невозможно.\n", this, other);
-        return null;
+    public Var mul(Var other) throws CalcException{
+        throw new CalcException(String.format("ERROR: Умножение %s на %s невозможно.\n", this, other));
     }
 
     @Override
-    public Var div(Var other) {
-        System.out.printf("Деление %s на %s невозможно.\n", this, other);
-        return null;
+    public Var div(Var other) throws CalcException{
+        throw new CalcException(String.format("ERROR: Деление %s на %s невозможно.\n", this, other));
     }
 
     static Var createVar(String operand){

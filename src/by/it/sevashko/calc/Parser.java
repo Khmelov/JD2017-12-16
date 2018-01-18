@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Parser {
 
-    Var calc(String expression){
+    Var calc(String expression) throws CalcException{
         String[] operand = expression.split(Patterns.OPERATION);
         Var one = Var.createVar(operand[0]);
         Var two = Var.createVar(operand[1]);
@@ -14,7 +14,7 @@ public class Parser {
             return null;
         }
         if (one==null || two==null) {
-            return null;
+            throw new CalcException("ERROR: Ошибка парсинга выражения " + expression);
         }
         Pattern operationPattern=Pattern.compile(Patterns.OPERATION);
         Matcher matcher=operationPattern.matcher(expression);

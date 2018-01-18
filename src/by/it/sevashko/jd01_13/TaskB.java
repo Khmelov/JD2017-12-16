@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class TaskB {
 
-    static double sumOfSquares = 0;
-    static double sumOfElements = 0;
+    private static double sumOfSquares = 0;
+    private static double sumOfElements = 0;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

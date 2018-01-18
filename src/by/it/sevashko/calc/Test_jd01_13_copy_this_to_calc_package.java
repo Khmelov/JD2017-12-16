@@ -13,62 +13,50 @@ import static org.junit.Assert.fail;
 @SuppressWarnings("all")
 
 //поставьте курсор на следующую строку и нажмите Ctrl+Shift+F10
-public class Test_jd01_09 {
+public class Test_jd01_13_copy_this_to_calc_package {
 
     @Test(timeout = 1500)
     public void testTaskA__ConsoleRunner() throws Exception {
         run(            "3.8+26.2\n" +
-                        "87.4-23.1\n" +
-                        "1.04*5.9\n" +
-                        "12.7*5\n" +
-                        "6+12\n" +
-                        "7*3.1\n" +
-                        "4/8\n" +
-                        "9-0.9\n" +
-                        "end\n")
+                "end\n")
                 .include("30.0")    //3.8+26.2=30.0
-                .include("64.3")    //87.4-23.1=64.3 
-                .include("6.136")   //1.04*5.9=6.136 
-                .include("63.5")    //12.7*5=63.5 
-                .include("18.0")    //6+12=18.0
-                .include("21.7")    //7*3.1=21.7 
-                .include("0.5")     //4/8=0.5 
-                .include("8.1")     //9-0.9=8.1 
+                .exclude("ERROR:")     //9-0.9=8.1 
         ;
+        run("3.8/0\n" +
+                "end\n")
+                .include("ERROR:");
+        run("5*странная_строка\n" +
+                "end\n")
+                .include("ERROR:");
 
     }
 
     @Test(timeout = 1500)
     public void testTaskB__ConsoleRunner() throws Exception {
-        run(    "{2,3,4}*2\n" +
-                "{3,6,9}/3\n" +
-                "{2,3,4}-5\n" +
-                "4+{2,3,4}\n" +
-                "{2,3,4}+{5,6,7}\n" +
-                "{5,6,7}-{2,3,4}\n" +
+        run("{2,3,4}*2\n" +
                 "end\n")
                 .include("{4.0, 6.0, 8.0}")    //{2,3,4}*2
-                .include("{1.0, 2.0, 3.0}")    //{3,6,9}/3
-                .include("{-3.0, -2.0, -1.0}") //{2,3,4}-5
-                .include("{6.0, 7.0, 8.0}")    //4+{2,3,4}
-                .include("{7.0, 9.0, 11.0}")   //{2,3,4}+{5,6,7}
-                .include("{3.0, 3.0, 3.0}")    //{5,6,7}-{2,3,4}
+                .exclude("ERROR:")
         ;
+        run("{2,3}+{1,2,3}\n" +
+                "end\n")
+                .include("ERROR:");
+        run("{2,3}-{1,2,3}\n" +
+                "end\n")
+                .include("ERROR:");
+        run("2/{1,2,3}\n" +
+                "end\n")
+                .include("ERROR:");
     }
 
     @Test(timeout = 1500)
     public void testTaskC__ConsoleRunner() throws Exception {
-        run(    "{{1,2},{8,3}}-2\n" +
-                "{{1,2},{8,3}}*{1,2}\n" +
+        run("{{1,2},{8,3}}-{{2,3,3},{2,3,3}}\n" +
                 "{{1,2},{8,3}}*{{1,2},{8,3}}\n" +
-                "{{1,2},{8,3}}+{{1,2},{8,3}}\n" +
                 "end\n")
-                .include("{{-1.0, 0.0}, {6.0, 1.0}}")   //{{1,2},{8,3}}-2
-                .include("{5.0, 14.0}")                   //{{1,2},{8,3}}*{1,2}
+                .include("ERROR:")
                 .include("{{17.0, 8.0}, {32.0, 25.0}}") //{{1,2},{8,3}} * {{1,2},{8,3}}
-                .include("{{2.0, 4.0}, {16.0, 6.0}}")    //{{1,2},{8,3}}+{{1,2},{8,3}}
         ;
-
     }
 
 
@@ -137,11 +125,11 @@ public class Test_jd01_09 {
 
     //метод находит и создает класс для тестирования
     //по имени вызывающего его метода, testTaskA1 будет работать с TaskA1
-    private static Test_jd01_09 run(String in) {
+    private static Test_jd01_13_copy_this_to_calc_package run(String in) {
         return run(in, true);
     }
 
-    private static Test_jd01_09 run(String in, boolean runMain) {
+    private static Test_jd01_13_copy_this_to_calc_package run(String in, boolean runMain) {
         Throwable t = new Throwable();
         StackTraceElement trace[] = t.getStackTrace();
         StackTraceElement element;
@@ -159,10 +147,10 @@ public class Test_jd01_09 {
         System.out.println("\n---------------------------------------------");
         System.out.println("Старт теста для " + clName + "\ninput:" + in);
         System.out.println("---------------------------------------------");
-        return new Test_jd01_09(clName, in, runMain);
+        return new Test_jd01_13_copy_this_to_calc_package(clName, in, runMain);
     }
 
-    public Test_jd01_09() {
+    public Test_jd01_13_copy_this_to_calc_package() {
         //Конструктор тестов
     }
 
@@ -174,7 +162,7 @@ public class Test_jd01_09 {
     Class<?> aClass;
 
     //Основной конструктор тестов
-    private Test_jd01_09(String className, String in, boolean runMain) {
+    private Test_jd01_13_copy_this_to_calc_package(String className, String in, boolean runMain) {
         //this.className = className;
         aClass = null;
         try {
@@ -207,18 +195,18 @@ public class Test_jd01_09 {
     }
 
     //проверка вывода
-    private Test_jd01_09 is(String str) {
+    private Test_jd01_13_copy_this_to_calc_package is(String str) {
         assertTrue("Ожидается такой вывод:\n<---начало---->\n" + str + "<---конец--->",
                 stringWriter.toString().equals(str));
         return this;
     }
 
-    private Test_jd01_09 include(String str) {
+    private Test_jd01_13_copy_this_to_calc_package include(String str) {
         assertTrue("Строка не найдена: " + str + "\n", stringWriter.toString().contains(str));
         return this;
     }
 
-    private Test_jd01_09 exclude(String str) {
+    private Test_jd01_13_copy_this_to_calc_package exclude(String str) {
         assertTrue("Лишние данные в выводе: " + str + "\n", !stringWriter.toString().contains(str));
         return this;
     }

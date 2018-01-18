@@ -19,8 +19,12 @@ public class ConsoleRunner {
                 System.out.println(Container.sortVar());
                 continue;
             }
-            Var result = parser.calc(line.trim());
-            printer.print(result);
+            try {
+                Var result = parser.calc(line.trim());
+                printer.print(result);
+            } catch (CalcException exception){
+                System.out.println(exception.getMessage());
+            }
         }
     }
 }
