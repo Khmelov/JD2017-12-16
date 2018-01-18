@@ -1,4 +1,4 @@
-package by.it.akhmelev.classwork.calc_v1;
+package by.it.akhmelev.calc.calc_v1;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

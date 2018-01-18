@@ -1,4 +1,4 @@
-package by.it.akhmelev.classwork.calc_v1;
+package by.it.akhmelev.calc.calc_v2;
 
 abstract class Var implements Operation{
 
