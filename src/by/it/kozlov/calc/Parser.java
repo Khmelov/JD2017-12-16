@@ -3,24 +3,12 @@ package by.it.kozlov.calc;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class Parser {
+public class Parser {
     Var calc(String expression) throws CalcException {
-        // 2.0 * 2.0
         String[] operand = expression.split(Patterns.OPERATION);
-        Var two = Var.createVar(operand[1]);
-        if (expression.contains("=")) {
-            VarsMap.set(operand[0], two);
-            return two;
-        }
-
         Var one = Var.createVar(operand[0]);
-        if (one == null || two == null)
-            throw new CalcException(String.format(" Ошибка парсинга выражения: " + expression));
-        if (one instanceof Scalar && (two instanceof Vector || two instanceof Vector))
-            throw new CalcException(String.format(" Операция невозможна " + expression));
-        if (one instanceof Vector && two instanceof Vector)
-            throw new CalcException(String.format(" Операция невозможна " + expression));
-        //find "[-+*/]"
+        Var two = Var.createVar(operand[1]);
+        if (one == null || two == null) return null;
         Pattern operationPattern = Pattern.compile(Patterns.OPERATION);
         Matcher matcher = operationPattern.matcher(expression);
         if (matcher.find()) {
