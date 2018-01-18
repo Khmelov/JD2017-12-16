@@ -1,7 +1,6 @@
 package by.it.sevashko.jd01_12;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
