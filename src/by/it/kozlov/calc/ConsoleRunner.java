@@ -9,8 +9,14 @@ public class ConsoleRunner {
         Parser parser = new Parser();
         Printer printer = new Printer();
         while (!(line = sc.nextLine()).equals("end")) {
-            Var result = parser.calc(line.trim());
-            printer.print(result);
+            Var result = null;
+            try {
+                result = parser.calc(line.trim());
+                printer.print(result);
+            } catch (CalcException e) {
+                System.out.println("EROR: " + e.getMessage());
+            }
+
         }
     }
 }
