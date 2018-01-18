@@ -7,7 +7,6 @@ class Patterns {
     static final String SCALAR="((-?)([0-9.])+)";                       //числа
     static final String VECTOR="\\{((-?([0-9.])+),?)+}";                //вектора
     static final String MATRIX="\\{((\\{((-?([0-9.])+),?)+}),?)+}";     //матрицы
-    static final String NAME_VAR="";
 
     //этот паттерн весьма несовершенный, т.к. операции вида
     //3.0 * -4.1 работать не смогут. Проблему решим позднее.

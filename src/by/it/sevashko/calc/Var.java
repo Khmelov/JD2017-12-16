@@ -1,6 +1,6 @@
 package by.it.sevashko.calc;
 
-abstract class Var implements Operation{
+abstract class Var implements Operation {
 
     @Override
     public Var add(Var other) {
