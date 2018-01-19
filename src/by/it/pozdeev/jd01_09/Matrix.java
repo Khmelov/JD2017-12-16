@@ -1,6 +1,4 @@
-package by.it.pozdeev.jd01_07;
-
-import by.it.pozdeev.jd01_09.Var;
+package by.it.pozdeev.jd01_09;
 
 public class Matrix extends Var {
     private double[][] value;
@@ -14,22 +12,6 @@ public class Matrix extends Var {
 
     Matrix(Matrix matrix) {
         this(matrix.value);
-    }
-    Matrix(String strMatrix){
-        String[] str=strMatrix.substring(2,strMatrix.length()-2).split(",");
-        for (int i = 0; i < str.length; i++) {
-           str[i]=str[i].replaceAll("}"," ");
-           str[i]=str[i].replaceAll("\\{"," ");
-           str[i]=str[i].trim();
-        }
-        int a=0;
-        this.value=new double[str.length/2][str.length/2];
-        for (int i = 0; i < str.length/2; i++) {
-            for (int j = 0; j < str.length/2; j++) {
-                this.value[i][j]=Double.parseDouble(str[a++]);
-            }
-
-        }
     }
 
 
