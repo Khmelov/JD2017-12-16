@@ -10,7 +10,7 @@ TaskA1.Создайте собственную аннотацию Param,
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Param {
+@interface Param {
     int a();
 
     int b();

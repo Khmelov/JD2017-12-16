@@ -10,7 +10,7 @@ public static float abs(float)
 public static double pow(double,double)и т.д.
 (если будут несовпадения тест укажет, что он ожидал)
  */
-public class PrintMath {
+class PrintMath {
     private static String printParametrTypes(Class<?>[] param) {
         StringBuilder s = new StringBuilder();
         s.append("(");

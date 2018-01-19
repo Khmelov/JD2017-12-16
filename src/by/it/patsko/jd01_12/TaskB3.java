@@ -10,7 +10,7 @@ TaskB3.
 Для предыдущей задачи измерьте на размере задачи в 4096 элемент какой из двух методов работает быстрее.
 Объясните итог.
  */
-public class TaskB3 {
+class TaskB3 {
     static final int N = 4096;
 
     static String process(ArrayList<String> peoples) {

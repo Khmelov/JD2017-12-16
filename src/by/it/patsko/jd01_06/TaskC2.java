@@ -13,7 +13,7 @@ TaskC2.
 
 import java.util.Random;
 
-public class TaskC2 {
+class TaskC2 {
     public static void main(String[] args) {
         long start=System.nanoTime();
         slow(Poem.text);

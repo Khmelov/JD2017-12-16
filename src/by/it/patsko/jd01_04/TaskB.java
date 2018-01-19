@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Created by user on 23.12.2017.
  */
-public class TaskB {
+class TaskB {
     static void printTable(String[] fam, int[][] wage){
         int sum, totalSum=0;
         System.out.println("-------------------------------------------------------");

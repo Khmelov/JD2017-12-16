@@ -1,7 +1,7 @@
 package by.it.patsko.jd01_07;
 
 
-public class Runner {
+class Runner {
     public static void main(String[] args) {
         Scalar scalar1=new Scalar(Math.PI);
         System.out.println("scalar1="+scalar1);

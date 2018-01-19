@@ -10,7 +10,7 @@ import java.util.Comparator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TaskB2 {
+class TaskB2 {
     public static void main(String[] args) {
         String[] str = Poem.text.split("\\.\\n");
         /*for (int i = 0; i < str.length; i++) {

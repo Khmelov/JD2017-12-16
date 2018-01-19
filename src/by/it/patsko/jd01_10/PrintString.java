@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 
-public class PrintString {
+class PrintString {
     public static void main(String[] args) {
         Class<?> structString = String.class;
         Method[] methods = structString.getDeclaredMethods();

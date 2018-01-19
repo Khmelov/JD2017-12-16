@@ -8,7 +8,7 @@ TaskC1.
 а затем находит и запускает его методы, помеченные созданной аннотацией с указанными в ней параметрами a и b.
 После каждого вызова invoke на консоль выводится имя найденного метода и результат запуска.
  */
-public class BeanTester {
+class BeanTester {
     public static void main(String[] args) {
         Class structBean = Bean.class;
         Method[] methods = structBean.getDeclaredMethods();

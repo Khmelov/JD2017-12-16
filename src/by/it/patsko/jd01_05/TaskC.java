@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 import static java.lang.Math.*;
 
-public class TaskC {
+class TaskC {
     static void taskC1() {
 
         double[] arrA = new double[(int) (random() * 21 + 20)];

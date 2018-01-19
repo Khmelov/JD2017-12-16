@@ -3,7 +3,7 @@ package by.it.patsko.calc;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Variable extends Var {
+class Variable extends Var {
     private String key;
     private Var value;
     static Map<String, Var> map = new HashMap<>();

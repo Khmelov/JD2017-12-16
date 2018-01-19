@@ -12,14 +12,14 @@ class TaskA {
         } catch (NullPointerException | NumberFormatException e) {
             System.out.println("name:" + e.getClass().getName());
 //            System.out.println("class:"+TaskA.class.getName());
-            Class ourName = TaskA.class;
+            String ourName = TaskA.class.getName();
             StackTraceElement[] stackTraceElements = e.getStackTrace();
             for (StackTraceElement element : stackTraceElements) {
                 String classname = element.getClassName();
                 int linenumber = element.getLineNumber();
                 System.out.println("class:" + classname);
                 System.out.println("line:" + linenumber);
-                if (classname.equals(ourName)) {
+                if (ourName.equals(classname)) {
                     System.out.println("class:" + classname);
                     System.out.println("line:" + linenumber);
                     break;

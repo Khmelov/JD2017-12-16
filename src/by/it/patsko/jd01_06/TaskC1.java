@@ -8,7 +8,7 @@ TaskC1.
  */
 
 
-public class TaskC1 {
+class TaskC1 {
     private static int maxLength;
 
     public static void main(String[] args) {

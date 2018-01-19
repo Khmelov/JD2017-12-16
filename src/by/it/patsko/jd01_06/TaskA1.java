@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 Для слов короче 7 символов заменять только 4-ю букву.
 */
 
-public class TaskA1 {
+class TaskA1 {
     public static void main(String[] args) {
         System.out.println(Poem.text);
         System.out.println();

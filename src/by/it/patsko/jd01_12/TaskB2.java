@@ -12,7 +12,7 @@ TaskB2.
 static String process(ArrayList<String> peoples)
 static String process(LinkedList<String> peoples)
  */
-public class TaskB2 {
+class TaskB2 {
     static final int N = 9;
 
     static String process(ArrayList<String> peoples) {

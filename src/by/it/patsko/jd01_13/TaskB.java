@@ -13,27 +13,25 @@ TaskB.
 такого же вида и формата, как в предыдущем задании
 если невозможно извлечь корень, то обработка аналогична, но тип ошибки -ArithmeticException
  */
-public class TaskB {
+class TaskB {
     public static void main(String[] args) {
         String str;
-        double num, sumSQRT=0;
-        Scanner sc=new Scanner(System.in);
+        double num, sum = 0;
+        Scanner sc = new Scanner(System.in);
         try {
-            while (!(str=sc.nextLine()).equals("END")){
-                num=Double.parseDouble(str);
-                sumSQRT+=Math.sqrt(num);
-                System.out.println("num="+num+"\n"+"sumSQRT="+sumSQRT);
+            while (!(str = sc.nextLine()).equals("END")) {
+                if ((num = Double.parseDouble(str)) < 0) throw new ArithmeticException();
+                sum += num;
+                System.out.println("num=" + num + "\n" + "sum=" + Math.sqrt(sum));
             }
-        }catch (NullPointerException | NumberFormatException |ArithmeticException e){
+        } catch (NullPointerException | NumberFormatException | ArithmeticException e) {
             System.out.println("name:" + e.getClass().getName());
-            Class ourName = TaskA.class;
+            String ourName = TaskB.class.getName();
             StackTraceElement[] stackTraceElements = e.getStackTrace();
             for (StackTraceElement element : stackTraceElements) {
                 String classname = element.getClassName();
                 int linenumber = element.getLineNumber();
-                System.out.println("class:" + classname);
-                System.out.println("line:" + linenumber);
-                if (classname.equals(ourName)) {
+                if (ourName.equals(classname)) {
                     System.out.println("class:" + classname);
                     System.out.println("line:" + linenumber);
                     break;
