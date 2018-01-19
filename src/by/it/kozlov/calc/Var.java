@@ -21,7 +21,7 @@ abstract public class Var implements Operation {
         throw new CalcException(String.format(" Деление %s / %s невозможно.\n", this, other));
     }
 
-    static Var createVar(String operand) {
+    static Var createVar(String operand) throws CalcException {
         operand = operand.trim();
         if (operand.matches(Patterns.SCALAR))
             return new Scalar(operand);
