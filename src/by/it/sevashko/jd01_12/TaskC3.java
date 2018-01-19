@@ -7,11 +7,11 @@ import java.util.regex.Pattern;
 public class TaskC3 {
 
     public static void main(String[] args) {
-        String exp = "(({[]})))";
+        String exp = "(({[]}))";
         System.out.println(check(exp));
     }
 
-    static boolean check(String line){
+    private static boolean check(String line){
         LinkedList<String> list = new LinkedList<>();
         Pattern pattern = Pattern.compile("[\\[\\]{}()]");
         Matcher matcher = pattern.matcher(line);
@@ -32,7 +32,7 @@ public class TaskC3 {
                     }
                     case ")": requared = "(";
                 }
-                if (requared.equals(list.getLast())){
+                if (list.size() != 0 && requared.equals(list.getLast())){
                     list.removeLast();
                 } else {
                     return false;
