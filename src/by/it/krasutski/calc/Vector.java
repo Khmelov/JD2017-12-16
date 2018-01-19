@@ -13,7 +13,6 @@ class Vector extends Var {
     }
 
 
-
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
@@ -35,9 +34,13 @@ class Vector extends Var {
             }
             return new Vector(result);
         } else if (other instanceof Vector) {
-            for (int i = 0; i < result.length; i++) {
-                result[i] = this.value[i] + ((Vector) other).value[i];
-            }
+            if (this.value.length < ((Vector) other).value.length
+                    || ((Vector) other).value.length < this.value.length) {
+                throw new CalcException("Сложение векторов разной длинны невозможно");
+            } else
+                for (int i = 0; i < result.length; i++) {
+                    result[i] = this.value[i] + ((Vector) other).value[i];
+                }
             return new Vector(result);
         } else return other.add(this);
     }
@@ -51,9 +54,13 @@ class Vector extends Var {
             }
             return new Vector(result);
         } else if (other instanceof Vector) {
-            for (int i = 0; i < result.length; i++) {
-                result[i] = this.value[i] - ((Vector) other).value[i];
-            }
+            if (this.value.length < ((Vector) other).value.length
+                    || ((Vector) other).value.length < this.value.length) {
+                throw new CalcException("Вычитание векторов разной длинны невозможно");
+            } else
+                for (int i = 0; i < result.length; i++) {
+                    result[i] = this.value[i] - ((Vector) other).value[i];
+                }
             return new Vector(result);
         } else return super.sub(other);
     }
