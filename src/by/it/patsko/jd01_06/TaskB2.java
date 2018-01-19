@@ -5,8 +5,6 @@ TaskB2.
 В предложениях нужно сначала заменить все небуквенные символы и их последовательности на один пробели выполнить trim() для каждого предложения.
  */
 
-import by.it.pozdeev.jd01_06.Poem;
-
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.regex.Matcher;
