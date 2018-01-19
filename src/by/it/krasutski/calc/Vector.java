@@ -13,7 +13,6 @@ class Vector extends Var {
     }
 
 
-
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
@@ -27,7 +26,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         double[] result = new double[this.value.length];
         if (other instanceof Scalar) {
             for (int i = 0; i < result.length; i++) {
@@ -35,15 +34,19 @@ class Vector extends Var {
             }
             return new Vector(result);
         } else if (other instanceof Vector) {
-            for (int i = 0; i < result.length; i++) {
-                result[i] = this.value[i] + ((Vector) other).value[i];
-            }
+            if (this.value.length < ((Vector) other).value.length
+                    || ((Vector) other).value.length < this.value.length) {
+                throw new CalcException("Сложение векторов разной длинны невозможно");
+            } else
+                for (int i = 0; i < result.length; i++) {
+                    result[i] = this.value[i] + ((Vector) other).value[i];
+                }
             return new Vector(result);
         } else return other.add(this);
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         double[] result = new double[this.value.length];
         if (other instanceof Scalar) {
             for (int i = 0; i < result.length; i++) {
@@ -51,15 +54,19 @@ class Vector extends Var {
             }
             return new Vector(result);
         } else if (other instanceof Vector) {
-            for (int i = 0; i < result.length; i++) {
-                result[i] = this.value[i] - ((Vector) other).value[i];
-            }
+            if (this.value.length < ((Vector) other).value.length
+                    || ((Vector) other).value.length < this.value.length) {
+                throw new CalcException("Вычитание векторов разной длинны невозможно");
+            } else
+                for (int i = 0; i < result.length; i++) {
+                    result[i] = this.value[i] - ((Vector) other).value[i];
+                }
             return new Vector(result);
         } else return super.sub(other);
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         double[] result = new double[this.value.length];
         if (other instanceof Scalar) {
             for (int i = 0; i < result.length; i++) {
@@ -76,7 +83,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         double[] result = new double[this.value.length];
         if (other instanceof Scalar) {
             for (int i = 0; i < result.length; i++) {

@@ -24,7 +24,7 @@ public class Variable extends Var {
     }
 
     @Override
-    public Var assign(Var other) {
+    public Var assign(Var other) throws CalcException {
         if (other instanceof Scalar || other instanceof Vector || other instanceof Matrix) {
             map.put(key, other);
             return new Variable(key, map.get(key));
