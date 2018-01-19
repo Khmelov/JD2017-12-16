@@ -27,16 +27,16 @@ class TaskC1 {
         while (!(str = sc.nextLine()).equals("end")) {
             matcher = pattern.matcher(str);
             while (matcher.find()) {
-                double code=code(matcher.group());
+                double code = code(matcher.group());
                 if (c1.containsValue(matcher.group())) deleteKeySet.add(code);
                 c1.put(code, matcher.group());
             }
         }
         System.out.println(c1);
-        Iterator<Double> iterator=deleteKeySet.iterator();
-        while (iterator.hasNext()){
-            double key=iterator.next();
-            if(c1.containsKey(key)) c1.remove(key);
+        Iterator<Double> iterator = deleteKeySet.iterator();
+        while (iterator.hasNext()) {
+            double key = iterator.next();
+            if (c1.containsKey(key)) c1.remove(key);
         }
         System.out.println(c1);
     }

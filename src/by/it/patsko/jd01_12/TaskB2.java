@@ -21,7 +21,7 @@ class TaskB2 {
         boolean f = true;//сдвигать или нет
         while (peoples.size() != 1) {
             iterator = peoples.iterator();
-            if (f==false && iterator.hasNext()) {
+            if (f == false && iterator.hasNext()) {
                 iterator.next();
                 iterator.remove();
             }
@@ -31,8 +31,8 @@ class TaskB2 {
                     iterator.next();
                     iterator.remove();
 
-                    if(!iterator.hasNext())f = true;
-                    else f=false;
+                    if (!iterator.hasNext()) f = true;
+                    else f = false;
                 }
             }
             System.out.println(peoples);
@@ -46,7 +46,7 @@ class TaskB2 {
         boolean f = true;//сдвигать или нет
         while (peoples.size() != 1) {
             iterator = peoples.iterator();
-            if (f==false && iterator.hasNext()) {
+            if (f == false && iterator.hasNext()) {
                 iterator.next();
                 iterator.remove();
             }
@@ -55,8 +55,8 @@ class TaskB2 {
                 if (iterator.hasNext()) {
                     iterator.next();
                     iterator.remove();
-                    if(!iterator.hasNext())f = true;
-                    else f=false;
+                    if (!iterator.hasNext()) f = true;
+                    else f = false;
                 }
             }
             System.out.println(peoples);
@@ -70,7 +70,6 @@ class TaskB2 {
         for (int i = 1; i <= N; i++) {
             peoplesA.add("n" + i);
             peoplesL.add("n" + i);
-
         }
         System.out.println(process(peoplesA));
         System.out.println(process(peoplesL));

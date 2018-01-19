@@ -21,8 +21,8 @@ class TaskB1 {
         Matcher matcher;
         Scanner sc = new Scanner(System.in);
         String str;
-        while (!(str=sc.nextLine()).equals("end")) {
-            matcher=pattern.matcher(str);
+        while (!(str = sc.nextLine()).equals("end")) {
+            matcher = pattern.matcher(str);
             while (matcher.find()) {
 //            map.put(matcher.group(),map.containsKey(matcher.group())?map.get(matcher.group())+1:1);
                 if (map.containsKey(matcher.group()))

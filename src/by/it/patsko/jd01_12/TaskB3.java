@@ -70,14 +70,14 @@ class TaskB3 {
             peoplesL.add("n" + i);
 
         }
-        long start=System.nanoTime();
+        long start = System.nanoTime();
         process(peoplesA);
-        long end=System.nanoTime();
-        System.out.println("Время работы для  ArrayList="+(end-start)/1000+" мкс.");
-        start=System.nanoTime();
+        long end = System.nanoTime();
+        System.out.println("Время работы для  ArrayList=" + (end - start) / 1000 + " мкс.");
+        start = System.nanoTime();
         process(peoplesL);
-        end=System.nanoTime();
-        System.out.println("Время работы для  LinkedList="+(end-start)/1000+" мкс.");
+        end = System.nanoTime();
+        System.out.println("Время работы для  LinkedList=" + (end - start) / 1000 + " мкс.");
 
 
     }

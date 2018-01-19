@@ -1,6 +1,5 @@
 package by.it.patsko.jd01_12;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
