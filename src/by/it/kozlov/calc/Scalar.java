@@ -35,7 +35,7 @@ public class Scalar extends Var {
 
             double v=((Scalar) other).value;
             if (v==0)
-                throw new CalcException(String.format(" Деление на 0 "));
+                throw new CalcException(String.format(" Деление на 0 невозможно"));
             return new Scalar(this.value / v);
 
         }
