@@ -20,7 +20,7 @@ class TaskC {
     private static Deque<Double> stack = new LinkedList<>();
     private static Scanner scanner;
 
-    static void readData() {
+    private static void readData() {
         try {
             while (true) {
                 stack.add(Double.parseDouble(scanner.nextLine()));
@@ -31,6 +31,7 @@ class TaskC {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e1) {
+                    e1.printStackTrace();
                 }
                 double num;
                 for (int i = 0; i < stack.size(); i++) {
