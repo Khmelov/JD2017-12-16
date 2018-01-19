@@ -14,6 +14,8 @@ class Vector extends Var {
             return new Vector(add);
         }
         if (other instanceof Vector) {
+            if (value.length != ((Vector) other).value.length)
+                throw new CalcException(String.format(" Операция невозможна"));
             for (int i = 0; i < value.length; i++) {
                 add[i] = value[i] + ((Vector) other).value[i];
             }
@@ -32,6 +34,8 @@ class Vector extends Var {
             return new Vector(sub);
         }
         if (other instanceof Vector) {
+            if (value.length != ((Vector) other).value.length)
+                throw new CalcException(String.format(" Операция невозможна"));
             for (int i = 0; i < value.length; i++) {
                 sub[i] = value[i] - ((Vector) other).value[i];
             }
