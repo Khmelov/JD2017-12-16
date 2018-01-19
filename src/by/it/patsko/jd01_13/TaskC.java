@@ -16,39 +16,36 @@ TaskC
 После 5 допущенных ошибок программа должна завершиться, пробрасывая ошибку в JVM.
  */
 class TaskC {
-    static int counter = 0;
+    private static int counter = 0;
+    private static Deque<Double> stack = new LinkedList<>();
+    private static Scanner scanner;
 
-    static void readData(Scanner sc) {
-        Deque<Double> stack = new LinkedList<>();
-//        double num;
+    static void readData() {
         try {
             while (true) {
-                stack.add(Double.parseDouble(sc.nextLine()));
-//                System.out.println(stack.toString());
+                stack.add(Double.parseDouble(scanner.nextLine()));
             }
         } catch (NumberFormatException e) {
             counter++;
-            System.out.println(counter);
             if (counter < 5) {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e1) {
-//                e1.printStackTrace();
                 }
-
-                while (!stack.isEmpty()) {
-                    System.out.print(stack.removeLast() + " ");
+                double num;
+                for (int i = 0; i < stack.size(); i++) {
+                    num = stack.removeLast();
+                    System.out.print(num + " ");
+                    stack.addFirst(num);
                 }
-            }
-//            else throw e;
+            } else throw e;
         }
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        scanner = new Scanner(System.in);
         while (true) {
-            readData(scanner);
+            TaskC.readData();
         }
-
     }
 }
