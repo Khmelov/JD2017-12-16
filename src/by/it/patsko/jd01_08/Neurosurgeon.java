@@ -1,6 +1,6 @@
 package by.it.patsko.jd01_08;
 
-public class Neurosurgeon extends Surgeon {
+class Neurosurgeon extends Surgeon {
     private String[] treatment = {"-Это не мой профиль", "-Могу посоветовать хорошего плотника.",
             "<выписывает рецепт на подорожник>", "<вскакивает> -Срочно в операционную!!!",
             "-Приходите ко мне через месяц. Посмотрим, что можно сделать", "-Поздровляю, вы здоровы!"};       //лечение

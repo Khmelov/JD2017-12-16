@@ -3,7 +3,7 @@ package by.it.patsko.jd01_04;
 /**
  * Created by user on 23.12.2017.
  */
-public class TaskC {
+class TaskC {
     public static void main(String[] args) {
         String line = "123 99 88 77 66 5 4 3 1 0 2";
         buildOneDimArray(line);

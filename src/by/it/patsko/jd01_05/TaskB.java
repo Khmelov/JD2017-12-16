@@ -2,7 +2,7 @@ package by.it.patsko.jd01_05;
 
 import static java.lang.Math.*;
 
-public class TaskB {
+class TaskB {
     static void taskB1() {
         double y;
         for (double a = 0; a <= 2; a += 0.2) {

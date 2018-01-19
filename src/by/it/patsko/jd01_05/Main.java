@@ -4,7 +4,7 @@ import static by.it.patsko.jd01_05.TaskA.*;
 import static by.it.patsko.jd01_05.TaskB.*;
 import static by.it.patsko.jd01_05.TaskC.*;
 
-public class Main {
+class Main {
 
     public static void main(String[] args) {
         System.out.println(taskA1());

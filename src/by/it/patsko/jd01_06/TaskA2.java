@@ -9,7 +9,7 @@ TaskA2.
 Вывести результаты на консоль в формате слово=повторы
 */
 
-public class TaskA2 {
+class TaskA2 {
     static String[] words = {};
     static int[] counts = {};
 

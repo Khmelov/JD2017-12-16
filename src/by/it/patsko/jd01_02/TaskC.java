@@ -2,7 +2,7 @@ package by.it.patsko.jd01_02;
 
 import java.util.*;
 
-public class TaskC {
+class TaskC {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n=sc.nextInt();

@@ -10,7 +10,7 @@ TaskB3.
 Для предыдущей задачи измерьте на размере задачи в 4096 элемент какой из двух методов работает быстрее.
 Объясните итог.
  */
-public class TaskB3 {
+class TaskB3 {
     static final int N = 4096;
 
     static String process(ArrayList<String> peoples) {
@@ -70,14 +70,14 @@ public class TaskB3 {
             peoplesL.add("n" + i);
 
         }
-        long start=System.nanoTime();
+        long start = System.nanoTime();
         process(peoplesA);
-        long end=System.nanoTime();
-        System.out.println("Время работы для  ArrayList="+(end-start)/1000+" мкс.");
-        start=System.nanoTime();
+        long end = System.nanoTime();
+        System.out.println("Время работы для  ArrayList=" + (end - start) / 1000 + " мкс.");
+        start = System.nanoTime();
         process(peoplesL);
-        end=System.nanoTime();
-        System.out.println("Время работы для  LinkedList="+(end-start)/1000+" мкс.");
+        end = System.nanoTime();
+        System.out.println("Время работы для  LinkedList=" + (end - start) / 1000 + " мкс.");
 
 
     }

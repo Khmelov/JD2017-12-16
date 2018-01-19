@@ -3,7 +3,7 @@ package by.it.patsko.jd01_04;
 /**
  * @author Patsko Arkadzi
  */
-public class InOut {
+class InOut {
     /**
      * Создание массива double из строки
      *

@@ -3,7 +3,7 @@ package by.it.patsko.jd01_11;
 import java.util.HashSet;
 import java.util.List;
 
-public class Runner {
+class Runner {
     public static void main(String[] args) {
 //        List<Integer> listA=new ArrayList<>();
         List<String> listA=new ListA<>();

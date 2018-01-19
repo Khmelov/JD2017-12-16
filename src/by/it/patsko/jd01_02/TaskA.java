@@ -2,7 +2,7 @@ package by.it.patsko.jd01_02;
 
 import java.util.*;
 
-public class TaskA {
+class TaskA {
     public static void main(String[] args) {
 //        int[] mas = {-1, 22, 33, 44, 567, 567, 44, 33, 22, -1, 4, 4};
         int[] mas = new int[10];

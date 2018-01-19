@@ -2,7 +2,7 @@ package by.it.patsko.jd01_09;
 
 import java.util.Scanner;
 
-public class ConsoleRunner {
+class ConsoleRunner {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String line;

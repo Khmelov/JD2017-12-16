@@ -1,6 +1,6 @@
 package by.it.patsko.jd01_01;
 
-public class Main {
+class Main {
     public static void main(String[] args) {
         Hello h = new Hello();
         h.printSlogan();

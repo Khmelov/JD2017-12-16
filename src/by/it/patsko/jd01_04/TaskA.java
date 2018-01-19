@@ -1,14 +1,12 @@
 package by.it.patsko.jd01_04;
 
-import by.it.patsko.jd01_03.*;
-import by.it.patsko.jd01_03.Helper;
 
 import java.util.Scanner;
 
 /**
  * Created by user on 23.12.2017.
  */
-public class TaskA {
+class TaskA {
     public static void main(String[] args) {
         printMulTable();
         Scanner sc=new Scanner(System.in);

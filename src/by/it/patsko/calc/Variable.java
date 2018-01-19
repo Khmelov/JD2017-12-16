@@ -3,7 +3,7 @@ package by.it.patsko.calc;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Variable extends Var {
+class Variable extends Var {
     private String key;
     private Var value;
     static Map<String, Var> map = new HashMap<>();
@@ -23,11 +23,11 @@ public class Variable extends Var {
     }
 
     @Override
-    public Var assign(Var other) {
+    public Var assign(Var other) throws CalcException {
         if (other instanceof Scalar || other instanceof Vector || other instanceof Matrix) {
             map.put(key, other);
             return new Variable(key, map.get(key));
-        } else return super.assign(other);
+        } else throw new CalcException("");
     }
 
 }

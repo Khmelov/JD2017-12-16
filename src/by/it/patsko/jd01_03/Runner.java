@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @author Patsko Arkadzi
  */
-public class Runner {
+class Runner {
     /**
      * Метод main
      *

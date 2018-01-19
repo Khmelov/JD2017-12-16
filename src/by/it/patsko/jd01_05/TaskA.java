@@ -2,7 +2,7 @@ package by.it.patsko.jd01_05;
 
 import static java.lang.Math.*;
 
-public class TaskA {
+class TaskA {
     static double taskA1() {
         double a = 756.13, x = 0.3;
         double z = cos(pow((x * x + PI / 6), 5));

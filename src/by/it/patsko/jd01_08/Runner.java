@@ -9,7 +9,7 @@ package by.it.patsko.jd01_08;
 interface Врач <-- abstract class Хирург <-- class Нейрохирург.
  */
 
-public class Runner {
+class Runner {
     public static void main(String[] args) {
         Patient[] patient = new Patient[20];
         Doctor neurosurgeon = new Neurosurgeon("Иванов");     //динамический полиморфизм, this, super (С)
