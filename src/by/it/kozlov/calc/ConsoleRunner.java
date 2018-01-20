@@ -20,6 +20,7 @@ public class ConsoleRunner {
                 printer.print(result);
             } catch (CalcException e) {
                 System.out.println("ERROR: " + e.getMessage());
+                System.out.flush();
             }
         }
     }

@@ -17,7 +17,7 @@ public class TaskC {
         try {
             list.addFirst(Double.parseDouble(str));
         } catch (NumberFormatException e) {
-            if (counter == 4) throw new Exception();
+            if (counter == 5) throw new Exception();
             counter++;
             Thread.sleep(100);
             Iterator iterator = list.iterator();

@@ -1,4 +1,4 @@
-package by.it.kozlov.calc;
+package by.it.kozlov.jd01_14;
 
 
 import org.junit.Test;
@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.io.*;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.Scanner;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -13,52 +14,82 @@ import static org.junit.Assert.fail;
 @SuppressWarnings("all")
 
 //поставьте курсор на следующую строку и нажмите Ctrl+Shift+F10
-public class Test_jd01_13_copy_this_to_calc_package {
+public class Test_jd01_14 {
 
     @Test(timeout = 1500)
-    public void testTaskA__ConsoleRunner() throws Exception {
-        run(            "3.8+26.2\n" +
-                "end\n")
-                .include("30.0")    //3.8+26.2=30.0
-                .exclude("ERROR:")     //9-0.9=8.1 
-        ;
-        run("3.8/0\n" +
-                "end\n")
-                .include("ERROR:");
-        run("5*wwwwwww\n" +
-                "end\n")
-                .include("ERROR:");
+    public void testTaskA() throws Exception {
+        Test_jd01_14 run = run("");
+        StringBuilder sb = new StringBuilder();
+        //читаем файл с числами
+        try (DataInputStream inp = new DataInputStream
+                (new BufferedInputStream
+                        (new FileInputStream(dir(Test_jd01_14.class) + "dataTaskA.bin"))
+                );
+        ) {
+            double sum = 0;
+            double count = 0;
+            while (inp.available() > 0) {
+                int i = inp.readInt();
+                sb.append(i + " ");
+                sum = sum + i;
+                count++;
+            }
+            run.include(sb.toString().trim()); //проверка строки из 20 чисел
+            run.include("avg=" + sum / count); //проверка вывода среднего арифметического
 
+            Scanner scanner = new Scanner(new File(dir(Test_jd01_14.class) + "resultTaskA.txt"));
+            //проверка соответсвия вывода и содержимого файла отчета resultTaskA.txt
+            while (scanner.hasNext()) {
+                run.include(scanner.nextLine());
+            }
+            scanner.close();
+        }
     }
 
     @Test(timeout = 1500)
-    public void testTaskB__ConsoleRunner() throws Exception {
-        run("{2,3,4}*2\n" +
-                "end\n")
-                .include("{4.0, 6.0, 8.0}")    //{2,3,4}*2
-                .exclude("ERROR:")
-        ;
-        run("{2,3}+{1,2,3}\n" +
-                "end\n")
-                .include("ERROR:");
-        run("{2,3}-{1,2,3}\n" +
-                "end\n")
-                .include("ERROR:");
-        run("2/{1,2,3}\n" +
-                "end\n")
-                .include("ERROR:");
+    public void testTaskB() throws Exception {
+        Test_jd01_14 run = run("");
+        run.include("words=157"); //слов должно быть 157
+        run.include("marks=31");  //знаков должно быть 31
+        StringBuilder sb = new StringBuilder();
+        //читаем файл с числами
+        Scanner scanner = new Scanner(new File(dir(Test_jd01_14.class) + "resultTaskB.txt"));
+        //проверка соответствия вывода и содержимого файла отчета resultTaskB.txt
+        while (scanner.hasNext()) {
+            run.include(scanner.nextLine());
+        }
+        scanner.close();
     }
 
     @Test(timeout = 1500)
-    public void testTaskC__ConsoleRunner() throws Exception {
-        run("{{1,2},{8,3}}-{{2,3,3},{2,3,3}}\n" +
-                "{{1,2},{8,3}}*{{1,2},{8,3}}\n" +
-                "end\n")
-                .include("ERROR:")
-                .include("{{17.0, 8.0}, {32.0, 25.0}}") //{{1,2},{8,3}} * {{1,2},{8,3}}
-        ;
+    public void testTaskC() throws Exception {
+        Test_jd01_14 run = run("");
+        showDir(dir(Test_jd01_14.class)+"..",run);
+        Scanner scanner = new Scanner(new File(dir(Test_jd01_14.class) + "resultTaskC.txt"));
+        //проверка соответствия вывода и содержимого файла отчета resultTaskC.txt
+        while (scanner.hasNext()) {
+            run.include(scanner.nextLine());
+        }
+        scanner.close();
     }
 
+    private static void showDir(String path, Test_jd01_14 run) {
+        File p = new File(path);
+        if (p.isFile()) {
+            run.include("file:" + p.getName());
+        } else if (p.isDirectory()) {
+            run.include("dir:" + p.getName());
+            File[] paths = p.listFiles();
+            if (paths != null)
+                for (File iterator : paths) {
+                    showDir(iterator.getAbsolutePath(),run);
+                }
+        }
+    }
+
+    static String dir(Class cl) {
+        return System.getProperty("user.dir") + "/src/" + cl.getName().replace(cl.getSimpleName(), "").replace(".", "/");
+    }
 
 
     /*
@@ -125,11 +156,11 @@ public class Test_jd01_13_copy_this_to_calc_package {
 
     //метод находит и создает класс для тестирования
     //по имени вызывающего его метода, testTaskA1 будет работать с TaskA1
-    private static Test_jd01_13_copy_this_to_calc_package run(String in) {
+    private static Test_jd01_14 run(String in) {
         return run(in, true);
     }
 
-    private static Test_jd01_13_copy_this_to_calc_package run(String in, boolean runMain) {
+    private static Test_jd01_14 run(String in, boolean runMain) {
         Throwable t = new Throwable();
         StackTraceElement trace[] = t.getStackTrace();
         StackTraceElement element;
@@ -147,10 +178,10 @@ public class Test_jd01_13_copy_this_to_calc_package {
         System.out.println("\n---------------------------------------------");
         System.out.println("Старт теста для " + clName + "\ninput:" + in);
         System.out.println("---------------------------------------------");
-        return new Test_jd01_13_copy_this_to_calc_package(clName, in, runMain);
+        return new Test_jd01_14(clName, in, runMain);
     }
 
-    public Test_jd01_13_copy_this_to_calc_package() {
+    public Test_jd01_14() {
         //Конструктор тестов
     }
 
@@ -162,7 +193,7 @@ public class Test_jd01_13_copy_this_to_calc_package {
     Class<?> aClass;
 
     //Основной конструктор тестов
-    private Test_jd01_13_copy_this_to_calc_package(String className, String in, boolean runMain) {
+    private Test_jd01_14(String className, String in, boolean runMain) {
         //this.className = className;
         aClass = null;
         try {
@@ -195,18 +226,18 @@ public class Test_jd01_13_copy_this_to_calc_package {
     }
 
     //проверка вывода
-    private Test_jd01_13_copy_this_to_calc_package is(String str) {
+    private Test_jd01_14 is(String str) {
         assertTrue("Ожидается такой вывод:\n<---начало---->\n" + str + "<---конец--->",
                 stringWriter.toString().equals(str));
         return this;
     }
 
-    private Test_jd01_13_copy_this_to_calc_package include(String str) {
+    private Test_jd01_14 include(String str) {
         assertTrue("Строка не найдена: " + str + "\n", stringWriter.toString().contains(str));
         return this;
     }
 
-    private Test_jd01_13_copy_this_to_calc_package exclude(String str) {
+    private Test_jd01_14 exclude(String str) {
         assertTrue("Лишние данные в выводе: " + str + "\n", !stringWriter.toString().contains(str));
         return this;
     }
