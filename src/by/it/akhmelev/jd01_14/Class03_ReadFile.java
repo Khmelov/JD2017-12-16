@@ -8,7 +8,7 @@ public class Class03_ReadFile {
     public static void main(String[] args) {
         //путь к файлу от корня проекта, здесь корень System.getProperty("user.dir")
         String src=System.getProperty("user.dir")+"/src/by/it/akhmelev/";
-        String filename = src+"jd01_14/text.txt";
+        String filename = src+"classwork/text.txt";
 
         File f = new File(filename); // объект для связи с файлом на диске
         int b, count = 0;
