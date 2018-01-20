@@ -23,7 +23,7 @@ public class Test_jd01_14 {
         //читаем файл с числами
         try (DataInputStream inp = new DataInputStream
                 (new BufferedInputStream
-                        (new FileInputStream(dir(TaskA.class) + "dataTaskA.bin"))
+                        (new FileInputStream(dir(Test_jd01_14.class) + "dataTaskA.bin"))
                 );
         ) {
             double sum = 0;
@@ -64,7 +64,7 @@ public class Test_jd01_14 {
     @Test(timeout = 1500)
     public void testTaskC() throws Exception {
         Test_jd01_14 run = run("");
-        showDir(dir(TaskC.class)+"..",run);
+        showDir(dir(Test_jd01_14.class)+"..",run);
         Scanner scanner = new Scanner(new File(dir(Test_jd01_14.class) + "resultTaskC.txt"));
         //проверка соответствия вывода и содержимого файла отчета resultTaskC.txt
         while (scanner.hasNext()) {
