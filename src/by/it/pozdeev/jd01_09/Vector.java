@@ -1,4 +1,4 @@
-package by.it.pozdeev.jd01_07;
+package by.it.pozdeev.jd01_09;
 
 public class Vector extends Var {
 
@@ -12,7 +12,6 @@ public class Vector extends Var {
     Vector(Vector vector) {
         this(vector.value);
     }
-
     Vector(String strVector) {
         String[] str = strVector.substring(1, strVector.length() - 1).split(",");
         this.value = new double[str.length];
