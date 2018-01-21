@@ -3,7 +3,7 @@ package by.it.kozlov.jd01_14;
 import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+//Сделать компактные методы, реализовать запись результата в файл
 public class TaskB {
     public static void main(String[] args) {
         String path = System.getProperty("user.dir");
