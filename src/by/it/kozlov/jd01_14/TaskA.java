@@ -18,7 +18,9 @@ public class TaskA {
         }
         //Read
 
-        try (DataInputStream dis = new DataInputStream(new BufferedInputStream(new FileInputStream(file))); PrintWriter out2 = new PrintWriter(new FileWriter(new File(path, " resultTaskA.txt")))) {
+        try (DataInputStream dis = new DataInputStream(new BufferedInputStream(new FileInputStream(file))
+        ); PrintWriter out2 = new PrintWriter(new FileWriter(new File(path, "resultTaskA.txt")))
+        ) {
             double sum = 0;
             int count = 0;
             while (dis.available() > 0) {
@@ -28,8 +30,8 @@ public class TaskA {
                 sum += value;
                 count++;
             }
-            System.out.println("\navg " + sum / count);
-            out2.println("\navg " + sum / count);
+            System.out.print("\navg=" + sum / count);
+            out2.println("\navg=" + sum / count);
         } catch (IOException e) {
             e.printStackTrace();
         }
