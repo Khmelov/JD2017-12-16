@@ -24,7 +24,7 @@ public class TaskB {
                 new FileReader(fileToRead));
              PrintStream fw = new PrintStream(fileToWrite)
         ){
-            Pattern pattern = Pattern.compile("([А-Яа-яЁё]+)|([!?,.-]+)");
+            Pattern pattern = Pattern.compile("([А-Яа-яЁё]+)|([!?,.-:]+)");
             while (fr.ready()) {
                 String line = fr.readLine();
                 Matcher matcher = pattern.matcher(line);
