@@ -9,20 +9,25 @@ import java.util.*;
 public class TaskC2{
 
     //объединение множеств
-    private <T> Set<T> getUnion(List<T> var)
+    private <T> Set<T> getUnion(Set<T>... var)
     {
-        return new HashSet<>(var);
+        Set<T> result=new HashSet<>();
+
+        for (Set<T> args:var) {
+            result.addAll(args);
+        }
+        return result;
     }
 
     //пересечение множеств
-    private <T> Set<T>getCross(List<T> t,int firstLength)
+    private <T> Set<T>getCross(Set<T>... var)
     {
-        Set<T>b=new HashSet<>(t.subList(0,firstLength));
-        Set<T>result=new HashSet<>(t.subList(firstLength,t.size()));
+        Set<T> result=new HashSet<>((Set<T>)var[0]);
 
-            b.retainAll(result);
-
-        return b;
+        for (Set<T> args:var) {
+            result.retainAll(args);
+        }
+        return result;
     }
 
 
@@ -31,15 +36,13 @@ public class TaskC2{
 
         TreeSet<Integer> treeSet=new TreeSet<>(Arrays.asList(1,2,3,4,5, 1,2,2,3,4,8));
         HashSet<Integer> hashSet=new HashSet<>(Arrays.asList(1,2,3,4,5, 4,5,6));
+        HashSet<Integer> linkSet=new LinkedHashSet<>(Arrays.asList(0,8,9,1,2,3,4,5, 4,5,6));
         System.out.println(treeSet);
         System.out.println(hashSet);
-        List<Integer> list=new ArrayList<>();
-        int length;
-        list.addAll(treeSet);
-        length=list.size();
-        list.addAll(hashSet);
-        System.out.println(taskC2.getUnion(list));
-        System.out.println(taskC2.getCross(list,length));
+        System.out.println(linkSet);
+
+        System.out.println(taskC2.getUnion(treeSet,hashSet,linkSet));
+       System.out.println(taskC2.getCross(treeSet,hashSet,linkSet));
     }
 
 }
