@@ -30,6 +30,7 @@ public class TaskC3 {
 
     private static boolean workPattern (String regexString, String text) {
         boolean flagCorrect=false;
+        //LinkedList<String> list=new LinkedList<>();
         Queue<String> linkList=new ArrayDeque<>();
         Pattern pattern = Pattern.compile(regexString);
         Matcher matcher = pattern.matcher(text);
@@ -39,11 +40,13 @@ public class TaskC3 {
             str = str.trim();
             if(str.equals("{")) {
                 linkList.add(str);
+                //list.add("{");
             }
             if (str.equals("}"))
             {
                 if (linkList.size()!=0) {
                     linkList.remove();
+                    //list.removeLast();
                     }
                 else return false;
             }

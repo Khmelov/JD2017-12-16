@@ -5,7 +5,7 @@ class Vector extends Var {
     double[] value;
 
     @Override
-    public Var add(Var other) {
+    public Var add(Var other) throws CalcException {
         double[] add = new double[value.length];
         if (other instanceof Scalar) {
             for (int i = 0; i < value.length; i++) {
@@ -14,6 +14,8 @@ class Vector extends Var {
             return new Vector(add);
         }
         if (other instanceof Vector) {
+            if (value.length != ((Vector) other).value.length)
+                throw new CalcException(String.format(" Операция сложеня векторов невозможна"));
             for (int i = 0; i < value.length; i++) {
                 add[i] = value[i] + ((Vector) other).value[i];
             }
@@ -23,7 +25,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var sub(Var other) {
+    public Var sub(Var other) throws CalcException {
         double[] sub = new double[value.length];
         if (other instanceof Scalar) {
             for (int i = 0; i < value.length; i++) {
@@ -32,6 +34,8 @@ class Vector extends Var {
             return new Vector(sub);
         }
         if (other instanceof Vector) {
+            if (value.length != ((Vector) other).value.length)
+                throw new CalcException(String.format(" Операция умножения векторов невозможна"));
             for (int i = 0; i < value.length; i++) {
                 sub[i] = value[i] - ((Vector) other).value[i];
             }
@@ -41,7 +45,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var mul(Var other) {
+    public Var mul(Var other) throws CalcException {
         double[] mul = new double[value.length];
         if (other instanceof Scalar) {
             for (int i = 0;
@@ -60,7 +64,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcException {
         double[] div = new double[value.length];
         if (other instanceof Scalar) {
             for (int i = 0; i < value.length; i++) {
