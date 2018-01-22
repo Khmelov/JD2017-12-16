@@ -17,8 +17,6 @@ class Parser {
             Var one = Var.createVar(operand[0]);
             if (one == null || two == null)
                 throw new CalcException(String.format(" Ошибка парсинга выражения: " + expression));
-            if (one instanceof Scalar && (two instanceof Vector || two instanceof Vector))
-                throw new CalcException(String.format(" Операция невозможна " + expression));
             //find "[-+*/]"
             Pattern operationPattern = Pattern.compile(Patterns.OPERATION);
             Matcher matcher = operationPattern.matcher(expression);
