@@ -1,7 +1,5 @@
 package by.it.karpeichyk.jd01_12;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
