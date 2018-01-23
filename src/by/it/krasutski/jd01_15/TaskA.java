@@ -1,14 +1,20 @@
 package by.it.krasutski.jd01_15;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Random;
 
 public class TaskA {
 
     public static void main(String[] args) {
+        int[][] matrix = generateMatrix();
+        getRoot();
+        File mFile = new File(getRoot(), "matrix.txt");
+        saveMatrix(mFile, matrix);
+        printFile(mFile);
+
+    }
+
+    private static int[][] generateMatrix() {
         int[][] matrix = new int[6][4];
         Random random = new Random();
         for (int i = 0; i < matrix.length; i++) {
@@ -16,7 +22,10 @@ public class TaskA {
                 matrix[i][j] = -15 + random.nextInt(31);
             }
         }
-        // output to txt file
+        return matrix;
+    }
+
+    private static String getRoot() {
         String path = System.getProperty("user.dir") +
                 File.separator +
                 "src" +
@@ -24,20 +33,31 @@ public class TaskA {
                 TaskA.class.getName()
                         .replace(TaskA.class.getSimpleName(), "")
                         .replace(".", File.separator);
-        try (PrintWriter printer = new PrintWriter(
-                new FileWriter(
-                        new File(path, "matrix.txt")))) {
+        return path;
+    }
+
+    private static void saveMatrix(File file, int[][] matrix) {
+        try (PrintWriter printer = new PrintWriter(file)) {
             for (int[] row : matrix) {
                 for (int value : row) {
                     printer.printf("%3d ", value);
-                    System.out.printf("%3d ", value);
                 }
                 printer.println();
-                System.out.println();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    private static void printFile(File txtFile){
+        try (BufferedReader br = new BufferedReader(
+                new FileReader(txtFile))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
