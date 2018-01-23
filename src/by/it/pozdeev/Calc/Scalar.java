@@ -1,4 +1,4 @@
-package by.it.pozdeev.jd01_09;
+package by.it.pozdeev.Calc;
 
 public class Scalar extends Var {
     private double value;
