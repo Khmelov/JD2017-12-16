@@ -7,7 +7,8 @@ import java.util.regex.Pattern;
 public class TaskB {
     public static void main(String[] args) {
         String text = openText();
-        System.out.printf("words=%d, punctuation marks=%d", countWord(text, "[A-Za-zА-Яа-яёЁ] ", 1, true), countChar(text));
+        System.out.printf("words=%d, punctuation marks=%d", countWord(text, "[A-Za-zА-Яа-яёЁ] ", true),
+                countWord(text, "(\\.\\.\\.)|([\\.|,|!|-])", false));
         saveText(text);
     }
 
@@ -36,7 +37,8 @@ public class TaskB {
         File file = new File(path, "resultTaskB.txt");
         try (PrintWriter bw = new PrintWriter(new BufferedWriter(new FileWriter(file)))
         ) {
-            bw.println("words=" + countWord(text, "[A-Za-zА-Яа-яёЁ] ", 1, true) + ", punctuation marks=" + countChar(text));
+            bw.println("words=" + countWord(text, "[A-Za-zА-Яа-яёЁ] ", true)
+                    + ", punctuation marks=" + countWord(text, "(\\.\\.\\.)|([\\.|,|!|-])", false));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -44,14 +46,7 @@ public class TaskB {
         }
     }
 
-    static int countChar(String string) {
-        int counter = 0;
-        counter = counter + countWord(string, "\\.{3}", -2, false) +
-                countWord(string, "\\.|,|!|-", 1, false);
-        return counter;
-    }
-
-    static int countWord(String string, String pat, int prise, boolean deletedChar) {
+    static int countWord(String string, String pat, boolean deletedChar) {
         int counter = 0;
         StringBuilder sb = new StringBuilder(string);
         if (deletedChar == true) {
@@ -61,7 +56,7 @@ public class TaskB {
         }
         Pattern pattern1 = Pattern.compile(pat);
         Matcher matcher1 = pattern1.matcher(sb);
-        while (matcher1.find()) counter = counter + prise;
+        while (matcher1.find()) counter++;
         return counter;
     }
 
