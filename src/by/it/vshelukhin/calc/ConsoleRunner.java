@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
-
+//lesson 15 - in work
 public class ConsoleRunner {
 
     public static void main(String[] args) {
@@ -17,6 +17,7 @@ public class ConsoleRunner {
         while (!(line = sc.nextLine()).equals("end")) {
             if (line.equals("printvar")) {
                 printer.printvar();
+                Data.writeMapInFile();
                 continue;
             }
             if (line.equals("sortvar")) {
