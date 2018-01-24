@@ -12,12 +12,12 @@ class Threads_01_Thread {
                     yield(); //так можно указать, что поток желает временно отдать
                              //управление для выполнения других конкуррентных потоков
                 } catch (InterruptedException e) {
-                    System.err.print(e);
+                    System.err.print(e.toString());
                 }
             }
         }
 
-        public MyThread(String name) { //конструктор потока передает
+        MyThread(String name) { //конструктор потока передает
                                        // имя суперклассу
             super(name);
         }

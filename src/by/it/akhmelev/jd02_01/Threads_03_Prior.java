@@ -3,7 +3,7 @@ package by.it.akhmelev.jd02_01;
 class Threads_03_Prior {
 
     static class PriorThread extends Thread {
-        public PriorThread(String name) {
+        PriorThread(String name) {
             super(name);
         }
         public void run() {
@@ -12,7 +12,7 @@ class Threads_03_Prior {
                 try {
                     Thread.sleep(1); // попробовать sleep(0),sleep(10)
                 } catch (InterruptedException e) {
-                    System.err.print(e);
+                    System.err.print(e.toString());
                 }
             }
         }

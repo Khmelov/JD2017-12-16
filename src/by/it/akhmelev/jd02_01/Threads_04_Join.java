@@ -2,9 +2,11 @@ package by.it.akhmelev.jd02_01;
 
 public class Threads_04_Join {
     static class JoinThread extends Thread {
-        public JoinThread (String name) {
+
+        JoinThread (String name) {
             super(name);
         }
+
         public void run() {
             String nameT = getName();
             long timeout = 0;

@@ -4,7 +4,8 @@ class Threads_02_Runnable {
 
     static class MyRunnable implements Runnable {
         String name;
-        public MyRunnable(String name) {
+
+        MyRunnable(String name) {
             this.name = name;
             //а здесь суперклассом будет Object а не Thread
             //поэтому делаем свое поле для имени потока
@@ -22,7 +23,7 @@ class Threads_02_Runnable {
                     Thread.sleep(7);
                     Thread.yield();
                 } catch (InterruptedException e) {
-                    System.err.println(e);
+                    System.err.println(e.toString());
                 }
             }
         }

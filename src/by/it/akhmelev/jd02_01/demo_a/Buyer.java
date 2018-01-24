@@ -3,10 +3,10 @@ package by.it.akhmelev.jd02_01.demo_a;
 public class Buyer extends Thread implements Runnable, IBuyer{
 
     //номер покупателя
-    int num; //номер покупателя
+    private int num; //номер покупателя
 
     //конструктор покупателя с его номером
-    public Buyer(int num) {
+    Buyer(int num) {
         this.num = num;
         this.setName("Покупатель № "+ num+" ");
         start();
@@ -28,7 +28,7 @@ public class Buyer extends Thread implements Runnable, IBuyer{
     //реализация интерфейсов
     @Override
     public void enterToMarket() {
-        System.out.println(this + "вошел в магазин");
+        System.out.println(this + "вошел в магазин. Его номер "+num);
     }
 
     @Override

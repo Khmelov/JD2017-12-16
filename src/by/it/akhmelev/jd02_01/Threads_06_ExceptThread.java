@@ -3,7 +3,7 @@ package by.it.akhmelev.jd02_01;
 public class Threads_06_ExceptThread extends Thread {
     static class ExceptThread extends Thread {
         public void run() {
-            boolean flag = true;
+            boolean flag = System.nanoTime()>0;
             if (flag) {
                 throw new RuntimeException();
             }

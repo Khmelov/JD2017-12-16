@@ -6,7 +6,7 @@ class Threads_07_ExceptMain {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                System.err.print(e);
+                System.err.print(e.toString());
             }
             System.out.println("end of SimpleThread");
         }
