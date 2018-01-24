@@ -25,7 +25,7 @@ public class Test_jd01_13_copy_this_to_calc_package {
         run("3.8/0\n" +
                 "end\n")
                 .include("ERROR:");
-        run("5*странная_строка\n" +
+        run("5*incorrect_string\n" +
                 "end\n")
                 .include("ERROR:");
 
