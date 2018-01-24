@@ -46,6 +46,7 @@ public class Buyer extends Thread implements Runnable, IBuyer{
 
     @Override
     public void goToOut() {
+        Runner.queue.remove(this);
         System.out.println(this + "вышел из магазина");
     }
 }
