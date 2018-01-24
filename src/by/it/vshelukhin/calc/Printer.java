@@ -14,7 +14,7 @@ class Printer {
 
     void printvar(){
         Set<Map.Entry<String,Var>> setData = Data.data.entrySet();
-        Iterator it = setData.iterator();
+        Iterator<Map.Entry<String,Var>> it = setData.iterator();
         while (it.hasNext()){
             System.out.println(it.next());
         }
@@ -23,7 +23,7 @@ class Printer {
     void sortvar(){
         Map<String,Var> sortData = new TreeMap<>(Data.data);
         Set<Map.Entry<String,Var>> setSortData = sortData.entrySet();
-        Iterator it = setSortData.iterator();
+        Iterator<Map.Entry<String,Var>> it = setSortData.iterator();
         while (it.hasNext()){
             System.out.println(it.next());
         }

@@ -17,6 +17,7 @@ public class ConsoleRunner {
         while (!(line = sc.nextLine()).equals("end")) {
             if (line.equals("printvar")) {
                 printer.printvar();
+                Data.writeMapInFile();
                 continue;
             }
             if (line.equals("sortvar")) {
