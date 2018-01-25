@@ -1,13 +1,12 @@
 package by.it.akhmelev.jd02_01.classwork;
 
 import java.util.ArrayDeque;
-import java.util.LinkedList;
 import java.util.Queue;
 
 public class Runner {
 
     static Queue<Buyer> queue = new ArrayDeque<>();
-    static int countBuyer = 0;
+    private static int countBuyer = 0;
 
     public static void main(String[] args) {
         for (int second = 0; second < 12; second++) {
