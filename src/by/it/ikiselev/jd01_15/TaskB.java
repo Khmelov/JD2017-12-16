@@ -61,7 +61,7 @@ public class TaskB {
         String fileOutTxt = src+"JD01_15/TaskB.txt";
         try (PrintWriter printer=
                      new PrintWriter(
-                             new FileWriter(fileOutTxt, true))){
+                             new FileWriter(fileOutTxt))){
             printer.println(out);  //тут что-то печатаем, для примера - все ту же коллекцию
             //обратите внимание как она выводится.
             System.out.print(out); //для этого продублируем на консоль
