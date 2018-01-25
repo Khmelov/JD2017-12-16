@@ -1,6 +1,6 @@
 package by.it.akhmelev.jd02_01.classwork;
 
-public interface IBuyer {
+interface IBuyer {
 
     void enterToMarket();    //вошел в магазин (мгновенно)
 

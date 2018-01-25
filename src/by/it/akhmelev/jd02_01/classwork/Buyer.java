@@ -1,6 +1,5 @@
 package by.it.akhmelev.jd02_01.classwork;
 
-import by.it.akhmelev.jd01_04.*;
 
 class Buyer extends Thread implements IBuyer
 {

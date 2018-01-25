@@ -24,7 +24,7 @@ class Goods extends HashMap<String,Double> {
     }
 
     static String rndGoodName(){
-        List<String> names=new ArrayList<String>(goods.keySet());
+        List<String> names=new ArrayList<>(goods.keySet());
         return names.get(Helper.getRandom(names.size()));
     }
 
