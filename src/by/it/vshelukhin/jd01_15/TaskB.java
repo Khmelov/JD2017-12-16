@@ -37,7 +37,6 @@ public class TaskB {
                         if (isAddOne && isAddMult) sb.append((char)i);
 
                         if ((char)temp == '*'){
-                            sb.deleteCharAt(sb.length()-1);
                             isAddMult = true;
                         }
                         break;
