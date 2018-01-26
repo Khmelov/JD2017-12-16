@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd02_02.jd02_02;
+package by.it.akhmelev.jd02_02;
 
 public class th2_09_deadlock {
     static class Friend {
