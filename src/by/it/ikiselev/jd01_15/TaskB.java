@@ -70,7 +70,7 @@ public class TaskB {
             throw new IOException("Not write "+fileOutTxt,e);
         }
 
-
+//nm mn
 //        File f = new File(filename); // объект для связи с файлом на диске
 //        int b, count = 0;
 //        FileReader is = null;        //объявляем до try, чтобы is был доступен в finally
