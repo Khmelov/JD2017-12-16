@@ -1,9 +1,8 @@
-package by.it.akhmelev.jd02_02.jd02_02;
+package by.it.akhmelev.jd02_02;
 
-public class th2_05_with_synchro_ok {
+public class th2_01_not_syn {
 
     //переменная баланса
-    private final static Integer fakeBalance=0;
     static Integer balance=new Integer(0);
 
     //это касса. Просто добавляет в баланс единицу
@@ -15,10 +14,8 @@ public class th2_05_with_synchro_ok {
         }
         @Override
         public  void run() {
-                synchronized (fakeBalance) {
-                    balance += (calc(1));
-                    //fakeBalance++; //а вот так нельзя, поломаем, поле станет изменяемым
-                }
+            //не будет работать. Одновременный доступ.
+                balance += (calc(1));
         }
     }
     //создадим 6666 касс. Каждая добавит по 1. Сколько всего будет?
@@ -28,9 +25,9 @@ public class th2_05_with_synchro_ok {
 
         for (int i = 0; i < 6666; i++) {
             new Cashier().start();
-        }
-        //пока потоков больше, чем было в начале просто ждем
+         }
+        //пока потоков больше чем было в начале просто ждем
         while (Thread.activeCount()>thCount) {Thread.sleep(100);}
         System.out.print("Итого:"+balance);
-    }
+     }
 }

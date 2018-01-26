@@ -1,6 +1,6 @@
-package by.it.akhmelev.jd02_02.jd02_02;
+package by.it.akhmelev.jd02_02;
 
-public class th2_01_not_syn {
+public class th2_03_with_synchro_method {
 
     //переменная баланса
     static Integer balance=new Integer(0);
@@ -10,12 +10,15 @@ public class th2_01_not_syn {
         //создадим видимость расчета
         int calc(int in) {
             int j=0; for (int i = 0; i < 666; i++) {j=j+(int)((Math.sqrt(i)));}
+            balance += in;
             return in;
         }
         @Override
-        public  void run() {
-            //не будет работать. Одновременный доступ.
-                balance += (calc(1));
+        public synchronized void run() {
+            //Удивительно, но и так тоже не будет работать
+            balance += (calc(1));
+            //Почему? Потому, что синхронизатор привязан ко потоку, т.е. к this.
+            //Поэтому он другим не мешает а значит ничего не блокирует
         }
     }
     //создадим 6666 касс. Каждая добавит по 1. Сколько всего будет?
@@ -25,9 +28,9 @@ public class th2_01_not_syn {
 
         for (int i = 0; i < 6666; i++) {
             new Cashier().start();
-         }
+        }
         //пока потоков больше чем было в начале просто ждем
         while (Thread.activeCount()>thCount) {Thread.sleep(100);}
         System.out.print("Итого:"+balance);
-     }
+    }
 }
