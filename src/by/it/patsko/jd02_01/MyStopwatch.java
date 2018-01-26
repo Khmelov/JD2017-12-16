@@ -13,7 +13,12 @@ public class MyStopwatch extends Thread {
             for (int second = 0; second < 60; second++) {
                 try {
                     currentSecond = second;
-                    System.out.println("\n" + currentSecond + " cекунд " + "-- количество покупателей:" + Runner.queue.size());
+                    System.out.printf("\n%2d cекунд - количество покупателей: %2d", currentSecond, Runner.queue.size());
+                    /*System.out.print("|");
+                    for (int i = 0; i < Runner.queue.size()/2; i++) {
+                        System.out.print("-");
+                    }*/
+                    System.out.println();
                     Thread.sleep(105);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
