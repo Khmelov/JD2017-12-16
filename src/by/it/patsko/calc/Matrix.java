@@ -37,10 +37,10 @@ class Matrix extends Var {
             result.append('{');
             for (int j = 0; j < this.value[i].length; j++) {
                 result.append(this.value[i][j]);
-                if (j != this.value[i].length - 1) result.append(", ");
+                if (j != this.value[i].length - 1) result.append(",");
             }
             result.append('}');
-            if (i != this.value.length - 1) result.append(", ");
+            if (i != this.value.length - 1) result.append(",");
         }
         result.append('}');
         return result.toString();
