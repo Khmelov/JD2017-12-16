@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TaskC {
-    static StringBuilder sb = new StringBuilder("C:/Users/skynet/IdeaProjects/JD2017-12-16/src/by/it/kozlov/jd01_15/");
+    static StringBuilder sb = new StringBuilder(getRoot());
 
     public static void main(String[] args) {
         System.out.println("Содержимое папки " + sb + "\n");
@@ -37,7 +37,7 @@ public class TaskC {
 
     static private void lastDir() {
         int start = 0;
-        Pattern pattern = Pattern.compile("/[A-Za-zА-Яа-яёЁ0-9]");
+        Pattern pattern = Pattern.compile("\\\\[A-Za-zА-Яа-яёЁ0-9]");
         Matcher matcher = pattern.matcher(sb);
         while (matcher.find()) {
             start = matcher.start();
@@ -48,7 +48,7 @@ public class TaskC {
     static private void nextDir(String string) {
         string = string.replace("cd ", "");
         int leight = sb.length();
-        sb.append(string+"/");
+        sb.append(string+"\\");
         File file = new File(sb.toString());
         if (!file.isDirectory()) {
             System.out.println("Не правильное имя дериктории");
@@ -56,4 +56,13 @@ public class TaskC {
         }
     }
 
+    private static String getRoot() {
+        return System.getProperty("user.dir") +
+                File.separator +
+                "src" +
+                File.separator +
+                TaskC.class.getName()
+                        .replace(TaskC.class.getSimpleName(), "")
+                        .replace(".", File.separator);
+    }
 }
