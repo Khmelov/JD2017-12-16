@@ -21,6 +21,7 @@ public class TaskC {
             String line;
             while (!(line = dti.readLine()).equals("end")){
                 parselLine(line.trim());
+                printSrc();
             }
         } catch (IOException e){
             e.printStackTrace();
@@ -56,14 +57,12 @@ public class TaskC {
                     path = path.replace("..", "");
                     File newPath = new File(String.format("%s%s",src.getParentFile().toString(), path));
                     if (newPath.exists()) src = newPath;
-                    printSrc();
                     return;
                 }
                 File newPath = new File(String.format("%s%s%s",src.toString(), File.separator, path));
                 if (newPath.exists()) src = newPath;
             }
         }
-        printSrc();
     }
 
     private static void printContent(){
@@ -83,7 +82,6 @@ public class TaskC {
         System.out.printf("%16d файлов %,13d байт\n", fileCount, size);
         System.out.printf("%16d папок %,14d байт свободно\n", dirCount, src.getFreeSpace());
         System.out.println();
-        printSrc();
     }
 
     private static String getDate(File file){
