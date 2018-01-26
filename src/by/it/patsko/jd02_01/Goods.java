@@ -18,7 +18,7 @@ class Goods extends HashMap<String,Double> {
     static Double getPrice(String name){
         return goods.get(name);
     }
-    static String rndGoodname(){
+    static String rndGoodName(){
         List<String> names=new ArrayList<>(goods.keySet());
         return names.get(Helper.getRandom(names.size()-1));
     }

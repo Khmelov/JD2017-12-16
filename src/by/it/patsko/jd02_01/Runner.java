@@ -4,25 +4,26 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 class Runner {
-    static Queue<Buyer> queue=new LinkedList<>();
-    static int countBuyer=0;
-    public static void main(String[] args) {
-        for (int second = 0; second < 12; second++) {
-            int count=Helper.getRandom(2);
-            for (int i = 0; i <= count; i++) {
-                Buyer b=new Buyer(++countBuyer);
-                b.start();
-                queue.add(b);
-            }
-            try {
+    static Queue<Buyer> queue = new LinkedList<>();
+    private static int countBuyer = 0;
+
+    public static void main(String[] args) throws InterruptedException {
+        MyStopwatch stopwatch = new MyStopwatch();
+        stopwatch.setDaemon(true);
+        stopwatch.start();
+        for (int minutes = 0; minutes < 2; minutes++) {
+            for (int second = 0; second < 60; second++) {
+                int count = Helper.getRandomCustomers();
+//            int count = Helper.getRandom(3);
+                for (int i = 0; i <= count; i++) {
+                    Buyer b = new Buyer(++countBuyer);
+                    b.start();
+                    queue.add(b);
+                }
                 Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
         }
-       /* Buyer b=new Buyer(++countBuyer);
-        b.start();*/
-        while (queue.size()>0){
+        while (queue.size() > 0) {
             for (Buyer buyer : queue) {
                 try {
                     buyer.join();
@@ -32,6 +33,7 @@ class Runner {
                 }
             }
         }
+
         System.out.println("Все вышли");
     }
 }
