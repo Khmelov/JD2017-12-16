@@ -13,7 +13,12 @@ public class Helper {
         return start + random.nextInt(stop - start);
     }
 
-    static void sleep(int start, int stop) {
+    static void sleep(int start, int stop, boolean pensioneer) {
+        if (pensioneer) {
+            int rand = getRandom(3) + 1;
+            start *= rand;
+            stop *= rand;
+        }
         try {
             Thread.sleep(Helper.getRandom(start, stop));
         } catch (InterruptedException e) {
