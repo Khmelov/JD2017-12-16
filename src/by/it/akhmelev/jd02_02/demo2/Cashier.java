@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd02_02.demo;
+package by.it.akhmelev.jd02_02.demo2;
 
 class Cashier implements Runnable {
     private int number;
@@ -19,13 +19,15 @@ class Cashier implements Runnable {
                     //вторую проблему смотрите в классе Queues
                     if (Queues.buyers.size() == 0)
                         break;
-                    buyer = Queues.buyers.pollFirst();
+                    buyer = Queues.buyers.getFirst();
                 }
                 System.out.println(buyer + "обслуживается в "+this);
                 Thread.sleep(2500);
                 //service
                 System.out.println(buyer + "обслужен в "+this);
-                synchronized (buyer) {
+
+                //обслужен, извлекаем и отпускаем его
+                synchronized (buyer = Queues.buyers.pollFirst()) {
                     buyer.notify();
                 }
             }

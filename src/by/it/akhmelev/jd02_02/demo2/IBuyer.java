@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd02_02.demo;
+package by.it.akhmelev.jd02_02.demo2;
 
 interface IBuyer {
     void enterToMarket();   //вошел в магазин
