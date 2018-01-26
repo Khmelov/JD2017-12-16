@@ -58,7 +58,7 @@ public class Test_jd01_15 {
 
         for (int i = 0; i < ch1.length; i++) {
             if (ch1[i] == ch0[i])
-                System.out.print(ch1);
+                System.out.print(ch1[i]);
             else
                 fail("expected <<" + ch1[i] + ">>, actual <<" + ch0[i] + ">>");
             System.out.flush();
