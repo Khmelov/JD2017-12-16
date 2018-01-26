@@ -1,13 +1,9 @@
-package by.it.akhmelev.jd02_02.demo;
+package by.it.akhmelev.jd02_02.demo2;
 
 class Buyer extends Thread implements Runnable, IBuyer {
 
-    //номер покупателя
-    protected int num;
-
     //конструктор покупателя с его номером
     Buyer(int num) {
-        this.num = num;
         this.setName("Покупатель № " + num + " ");
         start();
     }

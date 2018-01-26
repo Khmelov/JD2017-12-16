@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd02_02.demo;
+package by.it.akhmelev.jd02_02.demo2;
 
 class Runner {
     private static int countBuyers = 0; //общий счетчик покупателей
