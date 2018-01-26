@@ -29,6 +29,7 @@ public class TaskC {
         File something = new File(path);
         File[] content = something.listFiles();
         if (content != null) {
+            contentOfAll.append(String.format("%sdir:.\n",indent));
             contentOfAll.append(String.format("%sdir:..\n",indent));
             for (File item : content) {
                 if (item.isDirectory()) {

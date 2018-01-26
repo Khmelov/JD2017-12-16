@@ -1,4 +1,4 @@
-package by.it.patsko.jd01_15;
+package by.it.sevashko.jd01_15;
 
 
 import org.junit.Test;
@@ -8,7 +8,9 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Scanner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 @SuppressWarnings("all")
 
@@ -56,7 +58,7 @@ public class Test_jd01_15 {
 
         for (int i = 0; i < ch1.length; i++) {
             if (ch1[i] == ch0[i])
-                System.out.print(ch1[i]);
+                System.out.print(ch1);
             else
                 fail("expected <<" + ch1[i] + ">>, actual <<" + ch0[i] + ">>");
             System.out.flush();
