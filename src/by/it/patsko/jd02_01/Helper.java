@@ -32,10 +32,10 @@ class Helper {
             else startRandCustomers -=2;
         } else {
             if (Runner.queue.size() <= 40 + (30 - MyStopwatch.getCurrentSecond())) startRandCustomers++;
-            else if(Runner.queue.size()>=35) startRandCustomers -=3;
-            else if(Runner.queue.size()>=40) startRandCustomers -=4;
+            else if(Runner.queue.size()>=35) startRandCustomers -=4;
+            else if(Runner.queue.size()>=40) startRandCustomers -=5;
             else startRandCustomers -=2;
         }
-        return random.nextInt(1)+ startRandCustomers;
+        return  startRandCustomers;
     }
 }
