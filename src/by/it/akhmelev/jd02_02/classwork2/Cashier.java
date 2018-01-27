@@ -12,19 +12,25 @@ public class Cashier implements Runnable {
     public void run() {
         while (!Dispatcher.allBuyerComplete()) {
             Buyer b = Dispatcher.extractFromQueue();
+            //если есть покупатель, обслуживаем его
             if (b != null) {
                 System.out.println(this + "Начало обслуживания " + b);
                 Helper.sleep(200, 500);
+                System.out.println(this + "печатаем чек для " + b);
                 System.out.println(this + "Конец обслуживания " + b);
                 synchronized (b) {
                     b.notify();
                 }
             }
+            else
+                //если пока нет работы, отдадим управление другим потокам
+                Thread.yield();
         }
+        System.out.println(this+"закрыл кассу.");
     }
 
     @Override
     public String toString() {
-        return "Cashier" + number + " ";
+        return "Cashier: Кассир №" + number + " ";
     }
 }

@@ -13,17 +13,25 @@ class Dispatcher {
     private final static LinkedList<Buyer> queue = new LinkedList<>();
 
 
+    static int incCountBuyer(){ //volatile
+        return ++countBuyer;
+    }
+
+    //счетчики синхронизированы по монитору Dispatcher.class
     synchronized static boolean allBuyerComplete() {
             return (countBuyer > 0) && (completeBuyer == countBuyer);
     }
 
-    static int incCountBuyer(){ //volatile
-        return ++countBuyer;
-    }
     synchronized static int incCompleteBuyer(){ //volatile
         return ++completeBuyer;
     }
 
+    synchronized static void printCounts(){
+        System.out.printf("\tDispatcher: Всего вошло %d. Всего вышло %d\n",countBuyer,completeBuyer);
+    }
+
+
+    //очередь синхронизирована по монитору queue
     static void addToQueue(Buyer b) {
         synchronized (queue) {
             queue.addLast(b);
@@ -36,13 +44,16 @@ class Dispatcher {
         }
     }
 
+    static Buyer readFirstQueue() {
+        synchronized (queue) {
+            return queue.peekFirst();
+        }
+    }
+
     static int getSizeQueue() {
         synchronized (queue) {
             return queue.size();
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println(queue.pollFirst());
-    }
 }

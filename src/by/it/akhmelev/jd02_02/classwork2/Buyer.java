@@ -11,12 +11,14 @@ class Buyer extends Thread implements IBuyer
     public void run() {
         enterToMarket();
         chooseGoods();
+        goToQueue();
         goToOut();
     }
 
     @Override
     public void enterToMarket() {
         System.out.println(this+"зашел в магазин");
+        Dispatcher.printCounts();
     }
 
     @Override
@@ -32,21 +34,26 @@ class Buyer extends Thread implements IBuyer
 
     @Override
     public void goToQueue() {
+        //становимся в очередь
         Dispatcher.addToQueue(this);
+        //тут синхронизируемся по своему монитору
         synchronized (this){
             try {
+                //и останавливаемся (запускать поток будет уже кассир)
                 this.wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                System.err.println(this+" неожиданная ошибка !!!");
             }
         }
-
     }
 
     @Override
     public void goToOut() {
         System.out.println(this+"вышел из магазина");
-        System.out.println("В очереди осталось "+Dispatcher.getSizeQueue());
+        //в принципе уменьшать счетчик может и кассир,
+        //но этот код позднее, поэтому уменьшаем тут
+        Dispatcher.incCompleteBuyer();
+        Dispatcher.printCounts();
     }
 
     @Override
