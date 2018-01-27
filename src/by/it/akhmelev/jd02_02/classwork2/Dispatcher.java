@@ -27,7 +27,7 @@ class Dispatcher {
     }
 
     synchronized static void printCounts(){
-        System.out.printf("\tDispatcher: Всего вошло %d. Всего вышло %d\n",countBuyer,completeBuyer);
+        System.out.printf("\tDispatcher: Всего клиентов %d. Из них обслужено %d\n",countBuyer,completeBuyer);
     }
 
 

@@ -18,12 +18,11 @@ class Buyer extends Thread implements IBuyer
     @Override
     public void enterToMarket() {
         System.out.println(this+"зашел в магазин");
-        Dispatcher.printCounts();
     }
 
     @Override
     public void chooseGoods() {
-        for (int i = 1; i <= Helper.getRandom(5); i++) {
+        for (int i = 1; i <= Helper.getRandom(4)+1; i++) {
             Helper.sleep(100,200);
             String goodName= Goods.rndGoodName();
             Double goodPrice= Goods.getPrice(goodName);

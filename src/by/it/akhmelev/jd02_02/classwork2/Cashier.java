@@ -10,6 +10,7 @@ public class Cashier implements Runnable {
 
     @Override
     public void run() {
+        System.out.println(this+"открыл кассу.");
         while (!Dispatcher.allBuyerComplete()) {
             Buyer b = Dispatcher.extractFromQueue();
             //если есть покупатель, обслуживаем его
