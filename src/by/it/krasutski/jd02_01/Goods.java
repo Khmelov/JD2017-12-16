@@ -15,7 +15,7 @@ class Goods extends HashMap<String, Double> {
             this.put("Хлеб", 1.0);
             this.put("Вода", 0.5);
             this.put("Соль", 0.8);
-            this.put("Масло", 3.1);
+            this.put("Масло", 3.0);
         }
     };
 
