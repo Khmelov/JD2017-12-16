@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 class Queues {
-    static final Deque<Buyer> buyers = new ArrayDeque<>() {
+    static final Deque<Buyer> buyers = new ArrayDeque<Buyer>() {
         @Override
         public void addLast(Buyer buyer) {
             synchronized (buyers) { //мы не знаем из какого потока будет вызвано добавление
