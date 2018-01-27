@@ -5,7 +5,7 @@ import java.io.*;
 public class Class02_IO_Int {
     public static void main(String[ ] args) throws IOException {
         String src=System.getProperty("user.dir")+"/src/by/it/akhmelev/";
-        String filename = src+"classwork/integer.dat";
+        String filename = src+"classwork2/integer.dat";
         File f=new File(filename);
         //=============================================================
         //пример записи значений типа int в двоичный файл

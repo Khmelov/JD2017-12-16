@@ -3,7 +3,7 @@ package by.it.vshelukhin.jd02_01;
 import java.util.ArrayDeque;
 
 public class BacketRoom {
-    static ArrayDeque<Backet> backetAll = new ArrayDeque<>() {
+    static ArrayDeque<Backet> backetAll = new ArrayDeque<Backet>() {
         @Override
         public String toString() {
             return super.toString().replace(",", "");

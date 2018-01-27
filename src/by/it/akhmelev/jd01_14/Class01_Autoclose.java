@@ -8,7 +8,7 @@ public class Class01_Autoclose {
     public static void main(String[] args) {
         //вычислим каталог, в котором находится проект
         String src = System.getProperty("user.dir") + "/src/by/it/akhmelev/";
-        String fin = src + "classwork/text.txt";
+        String fin = src + "classwork2/text.txt";
         //или то же самое можно сделать через выделенную функцию
         fin=Utils.getFilePath("text.txt");
         //указание ресурса в try автоматически закроет его при выходе (Java 7)

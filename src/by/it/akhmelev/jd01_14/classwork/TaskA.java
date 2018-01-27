@@ -6,7 +6,7 @@ public class TaskA {
 
     public static void main(String[] args) {
         String path = System.getProperty("user.dir");
-        path = path + "/src/by/it/akhmelev/jd01_14/classwork/";
+        path = path + "/src/by/it/akhmelev/jd01_14/classwork2/";
         File file = new File(path, "dataTaskA.bin");
         try (DataOutputStream dos = new DataOutputStream(
                 new FileOutputStream(file))

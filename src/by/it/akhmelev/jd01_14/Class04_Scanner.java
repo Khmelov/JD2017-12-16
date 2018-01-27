@@ -9,7 +9,7 @@ public class Class04_Scanner {
     public static void main(String[ ] args) throws FileNotFoundException {
         double sum = 0.0;
         String src=System.getProperty("user.dir")+"/src/by/it/akhmelev/";
-        String filename = src+"classwork/scan.txt";
+        String filename = src+"classwork2/scan.txt";
         File f=new File(filename);
         Scanner scan = new Scanner(f);
 
