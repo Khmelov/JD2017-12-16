@@ -14,18 +14,10 @@ public class Helper {
         return start + RANDOM.nextInt(stop - start);
     }
 
-    static void sleep(int start, int stop){
-        try {
-            Thread.sleep(Helper.getRandom(start, stop));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
     static void sleep(int start, int stop, boolean pensioner) {
         if (pensioner) {
-            int time = getRandom(2) + 1;
-            start *= time;
-            stop *= time;
+            start *= 1.75;
+            stop *= 1.75;
         }
         try {
             Thread.sleep(Helper.getRandom(start, stop));
