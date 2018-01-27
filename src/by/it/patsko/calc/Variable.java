@@ -17,6 +17,14 @@ class Variable extends Var {
         this.value = value;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public Var getValue() {
+        return value;
+    }
+
     @Override
     public String toString() {
         return this.key+"="+this.value;
