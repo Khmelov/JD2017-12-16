@@ -23,20 +23,7 @@ class Helper {
     }
 
     static int getRandomCustomers() {
-        int num, size=Runner.queue.size(),result=0;
-        /*if (MyStopwatch.getCurrentSecond() < 30) {
-            while ( size< MyStopwatch.getCurrentSecond() + 10) {
-                num = getRandom(3);
-                result += num;
-                size += num;
-            }
-        } else {
-            while (size <= 40 + (30 - MyStopwatch.getCurrentSecond())){
-                num = getRandom(3);
-                result += num;
-                size += num;
-            }
-        }*/
+        int result=0;
         if (MyStopwatch.getCurrentSecond() < 30) {
             while ( result+Runner.queue.size()< MyStopwatch.getCurrentSecond() + 10) {
                 result += getRandom(3);
