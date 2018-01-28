@@ -1,9 +1,16 @@
 package by.it.sevashko.jd02_01;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Buyer extends Thread implements IBuyer, IUseBacket{
 
-    public Buyer(int number) {
+    private ArrayList<String> basket = new ArrayList<>();
+    private boolean pensioner = false;
+
+    Buyer(int number) {
         super(String.format("Покупатель №%d", number));
+        if (Helper.getRandom(4) == 3) pensioner = true;
     }
 
     @Override
@@ -21,29 +28,37 @@ public class Buyer extends Thread implements IBuyer, IUseBacket{
 
     @Override
     public void chooseGoods() {
-        System.out.println(this + "выбирает товар");
-        Helper.sleep(500, 2000);
-        System.out.println(this + "выбрал товар");
+        List<String> listOfProducts = new ArrayList<>(Assortment.getProducts());
+        for (int i = 0; i < Helper.getRandom(5); i++) {
+            Helper.sleep(500, 2000, pensioner);
+            String product = listOfProducts.get(Helper.getRandom(Assortment.getSize()));
+            System.out.println(this + "выбрал " + product);
+            putGoodsToBacket(product);
+        }
     }
 
     @Override
     public void goToOut() {
+        Dispatcher.changeCurrentBuyerNumber(-1);
         System.out.println(this + "вышел из магазина");
     }
 
     @Override
     public String toString() {
+        if (pensioner) return this.getName() + "(пенсионер) ";
         return this.getName() + " ";
     }
 
     @Override
     public void takeBacket() {
-        Helper.sleep(100, 200);
+        Helper.sleep(100, 200, pensioner);
         System.out.println(this + "взял корзину");
     }
 
     @Override
-    public void putGoodsToBaccket() {
-
+    public void putGoodsToBacket(String name) {
+        Helper.sleep(100, 200, pensioner);
+        basket.add(name);
+        System.out.println(this + "положил " + name + " в корзину");
     }
 }

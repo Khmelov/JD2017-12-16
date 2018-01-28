@@ -14,8 +14,9 @@ public class Helper {
         return start + random.nextInt(end - start);
     }
 
-    static void sleep(int start, int stop){
+    static void sleep(int start, int stop, boolean pensioner){
         try {
+            if (pensioner) Thread.sleep(Math.round(getRandom(start, stop) * 1.5));
             Thread.sleep(getRandom(start,stop));
         } catch (InterruptedException e) {
             e.printStackTrace();
