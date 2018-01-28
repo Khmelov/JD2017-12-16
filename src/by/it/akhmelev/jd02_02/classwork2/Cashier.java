@@ -19,12 +19,12 @@ public class Cashier implements Runnable {
                 Helper.sleep(200, 500);
                 System.out.println(this + "печатаем чек для " + b);
                 System.out.println(this + "Конец обслуживания " + b);
-                synchronized (b) {
+                synchronized (b) { //отправим покупателю команду выйти из wait
                     b.notify();
                 }
             }
             else
-                //если пока нет работы, отдадим управление другим потокам
+                //если нет работы, отдадим управление другим потокам
                 Thread.yield();
         }
         System.out.println(this+"закрыл кассу.");

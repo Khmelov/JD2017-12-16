@@ -22,7 +22,7 @@ class Dispatcher {
             return (countBuyer > 0) && (completeBuyer == countBuyer);
     }
 
-    synchronized static int incCompleteBuyer(){ //volatile
+    synchronized static int incCompleteBuyer(){
         return ++completeBuyer;
     }
 
@@ -50,10 +50,13 @@ class Dispatcher {
         }
     }
 
+    /* пока не требуется, но если нужно, то читать лучше так:
+
     static int getSizeQueue() {
         synchronized (queue) {
             return queue.size();
         }
     }
+    */
 
 }
