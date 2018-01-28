@@ -4,16 +4,37 @@ package by.it.sevashko.jd02_01;
 public class ShopRunner {
 
     public static void main(String[] args) {
-        for (int second = 0; second < 120; second++) {
-            int buyerNumber = Helper.getRandom(2);
-            for (int buyer = 0; buyer <= buyerNumber; buyer++) {
-                Buyer b = new Buyer(buyer+1);
-                b.start();
-            }
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        for (int minute = 1; minute < 3; minute++) {
+            for (int second = 1; second < 61; second++) {
+                if (second < 31) {
+                    if (Dispatcher.getCurrentBuyerNumber() < second + 10){
+                        for (int buyer = 0; buyer < 2; buyer++) {
+                            Buyer b = new Buyer(Dispatcher.getBuyerNumber());
+                            b.start();
+                        }
+                    }
+                    else {
+                        int buyerNumber = Helper.getRandom(2);
+                        for (int buyer = 0; buyer <= buyerNumber; buyer++) {
+                            Buyer b = new Buyer(Dispatcher.getBuyerNumber());
+                            b.start();
+                        }
+                    }
+                }
+                else {
+                    if (Dispatcher.getCurrentBuyerNumber() <= 70 - second) {
+                        int buyerNumber = Helper.getRandom(2);
+                        for (int buyer = 0; buyer <= buyerNumber; buyer++) {
+                            Buyer b = new Buyer(Dispatcher.getBuyerNumber());
+                            b.start();
+                        }
+                    }
+                }
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
