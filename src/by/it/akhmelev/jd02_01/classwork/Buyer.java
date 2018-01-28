@@ -12,6 +12,7 @@ class Buyer extends Thread implements IBuyer
         enterToMarket();
         chooseGoods();
         goToOut();
+
     }
 
     @Override
