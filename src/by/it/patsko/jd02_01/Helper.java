@@ -6,8 +6,6 @@ import java.util.Random;
 class Helper {
     private final static Random random = new Random();
 
-    static int startRandCustomers =0;
-
     static int getRandom(int bound) {
         return random.nextInt(bound);
     }
@@ -25,17 +23,17 @@ class Helper {
     }
 
     static int getRandomCustomers() {
+        int result=0;
         if (MyStopwatch.getCurrentSecond() < 30) {
-            if (Runner.queue.size() < MyStopwatch.getCurrentSecond() + 10) startRandCustomers++;
-            else if(Runner.queue.size()>25) startRandCustomers -=2;
-            else if(Runner.queue.size()>30) startRandCustomers -=3;
-            else startRandCustomers -=2;
+            while ( result+Runner.queue.size()< MyStopwatch.getCurrentSecond() + 10) {
+                result += getRandom(3);
+            }
         } else {
-            if (Runner.queue.size() <= 40 + (30 - MyStopwatch.getCurrentSecond())) startRandCustomers++;
-            else if(Runner.queue.size()>=35) startRandCustomers -=4;
-            else if(Runner.queue.size()>=40) startRandCustomers -=5;
-            else startRandCustomers -=2;
+            while (result+Runner.queue.size() <= 40 + (30 - MyStopwatch.getCurrentSecond())){
+                result += getRandom(3);
+            }
         }
-        return  startRandCustomers;
+
+        return result;
     }
 }
