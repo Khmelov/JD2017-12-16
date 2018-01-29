@@ -9,7 +9,7 @@ public class BuyersRunner extends Thread {
             for (int second = 1; second < 61; second++) {
                 if (second < 31) {
                     if (Dispatcher.getQueSize() < second + 10){
-                        for (int buyer = 0; buyer < 2; buyer++) {
+                        for (int buyer = 0; buyer <= Helper.getRandom(1,3); buyer++) {
                             Buyer b = new Buyer(Dispatcher.getBuyerNumber());
                             b.start();
                         }

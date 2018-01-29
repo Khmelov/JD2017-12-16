@@ -77,4 +77,8 @@ public class Buyer extends Thread implements IBuyer, IUseBacket{
         String[] array = new String[basket.size()];
         return basket.toArray(array);
     }
+
+    boolean isPensioner(){
+        return pensioner;
+    }
 }

@@ -18,6 +18,7 @@ public class ShopRunner {
                 }
             }
         }
+        System.out.println(Cashier.getTotal());
         System.out.println("Магазин закрылся");
     }
 

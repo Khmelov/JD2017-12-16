@@ -9,6 +9,7 @@ public class Dispatcher {
     private static int buyerCount = 0;
     private static int servicedBuyers = 0;
     private final static LinkedList<Buyer> queue = new LinkedList<>();
+    private final static LinkedList<Buyer> queueForPensioner = new LinkedList<>();
     private final static Set<Cashier> workingCashiers = new HashSet<>();
 
     static int getBuyerNumber(){
@@ -17,13 +18,16 @@ public class Dispatcher {
 
     static void addToQue(Buyer buyer){
         synchronized (queue){
-            queue.addLast(buyer);
+            if (buyer.isPensioner()) queueForPensioner.addLast(buyer);
+            else queue.addLast(buyer);
         }
     }
 
     static int getQueSize(){
         synchronized (queue) {
-            return queue.size();
+            synchronized (queueForPensioner) {
+                return queue.size() + queueForPensioner.size();
+            }
         }
     }
 
@@ -32,7 +36,12 @@ public class Dispatcher {
     }
 
     static Buyer getBuyer(){
-        return queue.pollFirst();
+        synchronized (queue) {
+            synchronized (queueForPensioner) {
+                if (queueForPensioner.size() > 0) return queueForPensioner.pollFirst();
+                else return queue.pollFirst();
+            }
+        }
     }
 
     synchronized static boolean AllBuyersServed(){
