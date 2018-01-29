@@ -1,19 +1,19 @@
 package by.it.kozlov.jd02_01;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
-
 public class Runner {
-    static Queue<Buyer> queue = new ArrayDeque<>();
-    private static int countBuyer = 0;
 
     public static void main(String[] args) {
+        System.out.println("Runner: Магазин открыт");
+        for (int i = 1; i <= 5; i++) {
+            Cashier c=new Cashier(i);
+            new Thread(c).start();
+        }
+
         for (int second = 0; second < 12; second++) {
             int count = Helper.getRandom(2);
             for (int i = 0; i <= count; i++) {
-                Buyer b = new Buyer(++countBuyer);
+                Buyer b = new Buyer(Dispetcher.incCountBuyer());
                 b.start();
-                queue.add(b);
             }
             try {
                 Thread.sleep(100);
@@ -22,18 +22,18 @@ public class Runner {
             }
         }
 
-        while (queue.size() > 0) {
-            //todo thread is bad
-            for (Buyer buyer : queue) {
+        while (!Dispetcher.allBuyerComplete()) {
+            Buyer first=Dispetcher.readFirstQueue();
+            if (first!=null)
                 try {
-                    buyer.join();
+                    first.join();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            }
         }
-        System.out.println("Все вышли");
-
+        System.out.println("Runner: Все вышли");
+        Helper.sleep(100,200);
+        System.out.println("Runner: Магазин закрыт");
 
     }
 }
