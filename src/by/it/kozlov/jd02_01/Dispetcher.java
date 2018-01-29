@@ -20,7 +20,7 @@ public class Dispetcher {
     }
 
     synchronized static void printCounts() {
-        System.out.printf("\tDispatcher: Всего клиентов %d. Из них обслужено %d\n", countBuyer, completeBuyer);
+        System.out.printf("\tДиспетчер: Всего клиентов %d. Из них обслужено %d\n", countBuyer, completeBuyer);
     }
 
     static void addToQueue(Buyer b) {
