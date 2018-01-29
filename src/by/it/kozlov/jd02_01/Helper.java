@@ -9,7 +9,7 @@ public class Helper {
         return random.nextInt(bound);
     }
 
-    private static int getRandom(int start, int stop) {
+    static int getRandom(int start, int stop) {
         return start + random.nextInt(stop - start);
     }
 
