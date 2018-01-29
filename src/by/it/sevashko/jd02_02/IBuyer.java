@@ -9,4 +9,6 @@ public interface IBuyer {
     void goToOut();
 
     void getInLine();
+
+    String[] showChosenProducts();
 }

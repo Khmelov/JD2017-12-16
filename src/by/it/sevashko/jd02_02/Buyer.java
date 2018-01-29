@@ -24,7 +24,7 @@ public class Buyer extends Thread implements IBuyer, IUseBacket{
 
     @Override
     public void enterToMarket() {
-        System.out.println(this + "зашёл в магазин");
+        //System.out.println(this + "зашёл в магазин");
     }
 
     @Override
@@ -33,7 +33,6 @@ public class Buyer extends Thread implements IBuyer, IUseBacket{
         for (int i = 0; i < Helper.getRandom(5); i++) {
             Helper.sleep(500, 2000, pensioner);
             String product = listOfProducts.get(Helper.getRandom(Assortment.getSize()));
-            System.out.println(this + "выбрал " + product);
             putGoodsToBacket(product);
         }
     }
@@ -41,7 +40,7 @@ public class Buyer extends Thread implements IBuyer, IUseBacket{
     @Override
     public void goToOut() {
         Dispatcher.addServedBuyer();
-        System.out.println(this + "вышел из магазина");
+//        System.out.println(this + "вышел из магазина");
     }
 
     @Override
@@ -53,19 +52,16 @@ public class Buyer extends Thread implements IBuyer, IUseBacket{
     @Override
     public void takeBacket() {
         Helper.sleep(100, 200, pensioner);
-        System.out.println(this + "взял корзину");
     }
 
     @Override
     public void putGoodsToBacket(String name) {
         Helper.sleep(100, 200, pensioner);
         basket.add(name);
-        System.out.println(this + "положил " + name + " в корзину");
     }
 
     @Override
     public void getInLine() {
-        System.out.println(this + "стал в очередь");
         synchronized (this){
             try {
                 Dispatcher.addToQue(this);
@@ -74,5 +70,11 @@ public class Buyer extends Thread implements IBuyer, IUseBacket{
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public String[] showChosenProducts() {
+        String[] array = new String[basket.size()];
+        return basket.toArray(array);
     }
 }
