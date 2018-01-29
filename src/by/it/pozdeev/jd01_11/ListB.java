@@ -1,11 +1,47 @@
 package by.it.pozdeev.jd01_11;
-
 import java.util.*;
 
-public class ListA<T> implements List<T> {
+public class ListB<T> implements List<T> {
+
 
     private T[] elements = (T[]) new Object[]{};
     private int size = 0;
+
+
+    @Override
+    public T remove(int index) {
+        T deleted = elements[index];
+        for (int i = index + 1; i < size; i++) {
+            elements[i - 1] = elements[i];
+        }
+        size = size > 0 ? size - 1 : 0;
+        elements=Arrays.copyOf(elements,size);
+
+        return deleted;
+    }
+
+    @Override
+    public T set(int index, T element) {
+        T deleted = elements[index];
+        elements[index] = element;
+        return deleted;
+    }
+
+    @Override
+    public T get(int index) {
+        return elements[index];
+    }
+
+    @Override
+    public void add(int index, T element) {
+        if (size == elements.length) elements = Arrays.copyOf(elements, elements.length + 1);
+        size++;
+        for (int i = elements.length - 1; i > index; i--) elements[i] = elements[i - 1];
+        elements[index] = element;
+        return;
+    }
+
+
 
 
     @Override
@@ -15,18 +51,24 @@ public class ListA<T> implements List<T> {
         return true;
     }
 
+
     @Override
-    public T remove(int index) {
-        T deleted=elements[index];
-        for (int i=index+1; i<size; i++){
-            elements[i-1]=elements[i];
+    public boolean addAll(Collection<? extends T> c) {
+        if (!c.isEmpty()) {
+            T[] ext = (T[])c.toArray();
+            int len=elements.length;
+            elements=Arrays.copyOf(elements,elements.length+ext.length);
+            System.arraycopy(ext,0,elements,len,ext.length);
+            size=elements.length;
+            return true;
         }
-        size=size>0?size-1:0;
-        return deleted;
+        return false;
     }
 
     @Override
-    public T get(int index) {return elements[index];}
+    public boolean addAll(int index, Collection<? extends T> c) {
+        return false;
+    }
 
 
     @Override
@@ -41,17 +83,14 @@ public class ListA<T> implements List<T> {
         return sb.toString();
     }
 
-
-
-    /// non implements
     @Override
     public int size() {
-        return size;
+        return 0;
     }
 
     @Override
     public boolean isEmpty() {
-        return size==0;
+        return false;
     }
 
     @Override
@@ -74,7 +113,6 @@ public class ListA<T> implements List<T> {
         return null;
     }
 
-
     @Override
     public boolean remove(Object o) {
         return false;
@@ -82,16 +120,6 @@ public class ListA<T> implements List<T> {
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        return false;
-    }
-
-    @Override
-    public boolean addAll(Collection<? extends T> c) {
-        return false;
-    }
-
-    @Override
-    public boolean addAll(int index, Collection<? extends T> c) {
         return false;
     }
 
@@ -107,20 +135,8 @@ public class ListA<T> implements List<T> {
 
     @Override
     public void clear() {
-        size=0;
-    }
-
-
-    @Override
-    public T set(int index, T element) {
-        return null;
-    }
-
-    @Override
-    public void add(int index, T element) {
 
     }
-
 
     @Override
     public int indexOf(Object o) {

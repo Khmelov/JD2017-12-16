@@ -1,8 +1,10 @@
 package by.it.pozdeev.jd01_15;
 
+import by.it.pozdeev.jd01_10.Param;
+
 import java.io.*;
 import java.util.Random;
-
+@Param(a = 4, b = 6)
 public class TaskA {
     public static void main(String[] args) {
         int[][] matrix = new int[6][4];
@@ -12,10 +14,13 @@ public class TaskA {
                 matrix[i][j] = -15 + rnd.nextInt(31);
             }
         }
-
+//qwerty
         String path = System.getProperty("user.dir") + "/" + "src" + "/" +
                 TaskA.class.getName().replace(TaskA.class.getSimpleName(), "").replaceAll("\\.", "/");
-        try (PrintWriter writer = new PrintWriter(
+        /* Привет
+
+
+    */    try (PrintWriter writer = new PrintWriter(
                 new FileWriter(new File(path, "matrix.txt")))) {
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j < matrix[0].length; j++) {
