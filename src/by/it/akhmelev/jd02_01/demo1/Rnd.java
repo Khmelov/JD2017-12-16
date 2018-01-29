@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd02_01.demo_a;
+package by.it.akhmelev.jd02_01.demo1;
 
 import java.util.Random;
 
