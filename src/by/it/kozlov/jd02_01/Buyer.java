@@ -1,7 +1,11 @@
 package by.it.kozlov.jd02_01;
 
+import java.util.*;
+
 class Buyer extends Thread implements IBuyer, IUseBasket {
     private boolean pensioneer = false;
+
+    volatile Map<String, Double> buy = new HashMap<>();
 
     Buyer(int number) {
         super("Покупатель №" + number);
@@ -9,6 +13,10 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
 
     private void getPensioner() {
         if (Helper.getRandom(4) == 0) pensioneer = true;
+    }
+
+    Map<String, Double> getGoods() {
+        return buy;
     }
 
     @Override
@@ -33,6 +41,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
             Helper.sleep(500, 2000, pensioneer);
             String goodName = Goods.rndGoodName();
             Double goodPrice = Goods.getPrice(goodName);
+            buy.put(goodName, goodPrice);
             System.out.println(this + "выбрал товар " + goodName + " цена:" + goodPrice);
         }
         System.out.println(this + "завершил выбор товаров");
