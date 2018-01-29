@@ -38,7 +38,7 @@ public class Cashier extends Thread{
                         check.append(getLine(String.format("%6s : %-6.2f", product, price))).append("\n");
                     }
                     check.append(getLine(String.format("Сумма к оплате: %-6.2f", sum)));
-                    check.append(String.format("Размер очереди: %-3d      Выручка: %-6.2f", Dispatcher.getQueSize(), addToTotal(sum)));
+                    check.append(String.format("Размер очереди: %-3d      Выручка: %-7.2f\n", Dispatcher.getQueSize(), addToTotal(sum)));
                     System.out.println(check);
                     buyer.notify();
                 }
@@ -74,7 +74,7 @@ public class Cashier extends Thread{
                 line.append(String.format("%-30s", subLine));
             }
             else {
-                line.append(getIndent());
+                line.append(indent);
             }
         }
         return line.toString();

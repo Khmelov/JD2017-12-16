@@ -18,7 +18,7 @@ public class ShopRunner {
                 }
             }
         }
-        System.out.println(Cashier.getTotal());
+        System.out.printf("Общая выручка : %-7.2f\n", Cashier.getTotal());
         System.out.println("Магазин закрылся");
     }
 
