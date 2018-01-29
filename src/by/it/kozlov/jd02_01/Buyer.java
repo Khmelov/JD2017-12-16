@@ -7,7 +7,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
         super("Покупатель №" + number);
     }
 
-    void getPensioner() {
+    private void getPensioner() {
         if (Helper.getRandom(4) == 0) pensioneer = true;
     }
 
@@ -17,6 +17,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
         takeBasket();
         chooseGoods();
         putGoodsToBasket();
+        goToQueue();
         goToOut();
     }
 
@@ -39,15 +40,14 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void goToOut() {
-        //todo all is bad (sync)
-        Runner.queue.remove(this);
         System.out.println(this + "вышел из магазина");
-        System.out.println("В очереди осталось " + Runner.queue.size());
+        Dispetcher.incCompleteBuyer();
+        Dispetcher.printCounts();
     }
 
     @Override
     public String toString() {
-        return this.getName() + " "; //"Покупатель №"+number
+        return this.getName() + " ";
     }
 
     @Override
@@ -60,5 +60,17 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
     public void putGoodsToBasket() {
         Helper.sleep(100, 200, pensioneer);
         System.out.println(this + "положил выбранный товар в корзину");
+    }
+
+    @Override
+    public void goToQueue() {
+        Dispetcher.addToQueue(this);
+        synchronized (this) {
+            try {
+                this.wait();
+            } catch (InterruptedException e) {
+                System.err.println(this + " невозможно стать в очередь");
+            }
+        }
     }
 }
