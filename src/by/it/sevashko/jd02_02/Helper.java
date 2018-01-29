@@ -1,4 +1,4 @@
-package by.it.sevashko.jd02_01;
+package by.it.sevashko.jd02_02;
 
 import java.util.Random;
 
@@ -18,6 +18,14 @@ public class Helper {
         try {
             if (pensioner) Thread.sleep(Math.round(getRandom(start, stop) * 1.5));
             else Thread.sleep(getRandom(start,stop));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static void sleep(int start, int stop){
+        try {
+            Thread.sleep(getRandom(start,stop));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -1,13 +1,14 @@
-package by.it.sevashko.jd02_01;
+package by.it.sevashko.jd02_02;
 
 
-public class ShopRunner {
+public class BuyersRunner extends Thread {
 
-    public static void main(String[] args) {
+    @Override
+    public void run(){
         for (int minute = 1; minute < 3; minute++) {
             for (int second = 1; second < 61; second++) {
                 if (second < 31) {
-                    if (Dispatcher.getCurrentBuyerNumber() < second + 10){
+                    if (Dispatcher.getQueSize() < second + 10){
                         for (int buyer = 0; buyer <= Helper.getRandom(1,3); buyer++) {
                             Buyer b = new Buyer(Dispatcher.getBuyerNumber());
                             b.start();
@@ -22,7 +23,7 @@ public class ShopRunner {
                     }
                 }
                 else {
-                    if (Dispatcher.getCurrentBuyerNumber() <= 70 - second) {
+                    if (Dispatcher.getQueSize() <= 70 - second) {
                         int buyerNumber = Helper.getRandom(2);
                         for (int buyer = 0; buyer <= buyerNumber; buyer++) {
                             Buyer b = new Buyer(Dispatcher.getBuyerNumber());
