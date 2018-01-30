@@ -2,6 +2,7 @@ package by.it.viktorbrui.jd01_09;
 
 class Patterns {
 
+
     // регулярки, приведены для сокращения времени.
     // будет полезно составить свои варианты
     static final String SCALAR="((-?)([0-9.])+)";                       //числа

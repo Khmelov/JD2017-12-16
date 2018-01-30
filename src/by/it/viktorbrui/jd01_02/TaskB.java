@@ -2,6 +2,7 @@ package by.it.viktorbrui.jd01_02;
 
 import java.util.Scanner;
 
+
 public class TaskB {
     public static void main(String[] args) {
         TaskB.step1();

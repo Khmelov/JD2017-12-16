@@ -1,5 +1,6 @@
 package by.it.viktorbrui.jd01_04;
 
+
 public class Helper {
     static double findMin(double[] arr) {
         if (arr.length == 0)

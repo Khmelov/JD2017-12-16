@@ -1,6 +1,5 @@
 package by.it.viktorbrui.jd01_01;
 
-
 public class Args {
     void printArguments(String[] args){
         for (String arg : args) {

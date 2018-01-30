@@ -1,6 +1,5 @@
 package by.it.viktorbrui.jd01_01;
 
-
 public class Hello {
     private String slogan = "Hello World";
     void printSlogan(){

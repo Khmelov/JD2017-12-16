@@ -1,5 +1,6 @@
 package by.it.viktorbrui.jd01_11;
 
+
 import java.util.*;
 
 public class ListA<T> implements List<T> {

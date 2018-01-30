@@ -1,5 +1,6 @@
 package by.it.viktorbrui.jd01_09;
 
+
 public interface Operation {
 
     Var add(Var other);

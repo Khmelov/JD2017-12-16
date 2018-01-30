@@ -2,6 +2,7 @@ package by.it.viktorbrui.jd01_09;
 
 abstract class Var implements Operation {
 
+
     @Override
     public Var add(Var other) {
         System.out.printf("Сложение %s с %s невозможно.\n", this, other);

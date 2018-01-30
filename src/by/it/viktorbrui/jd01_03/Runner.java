@@ -1,5 +1,6 @@
 package by.it.viktorbrui.jd01_03;
 
+
 public class Runner {
     public static void main(String[] args){
         String line="1 2 3 4 5 6 7.7 -1";

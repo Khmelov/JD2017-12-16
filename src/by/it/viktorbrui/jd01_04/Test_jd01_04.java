@@ -1,6 +1,5 @@
 package by.it.viktorbrui.jd01_04;
 
-
 import java.io.*;
 import java.lang.reflect.*;
 import java.util.Arrays;

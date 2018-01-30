@@ -1,6 +1,5 @@
 package by.it.viktorbrui.jd01_05;
 
-
 import org.junit.Test;
 
 import java.io.*;

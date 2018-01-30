@@ -1,6 +1,7 @@
 package by.it.viktorbrui.jd01_08.classwork;
 
-abstract class Pleer implements by.it.viktorbrui.jd01_08.classwork.Multimedia {
+
+abstract class Pleer implements Multimedia {
 
     private boolean powerOn;
     private boolean playState;

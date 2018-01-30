@@ -1,5 +1,6 @@
 package by.it.viktorbrui.jd01_10;
 
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 

@@ -2,6 +2,7 @@ package by.it.viktorbrui.jd01_09;
 
 import java.util.Scanner;
 
+
 public class ConsoleRunner {
 
     public static void main(String[] args) {
