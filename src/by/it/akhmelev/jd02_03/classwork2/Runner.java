@@ -1,24 +1,32 @@
-package by.it.akhmelev.jd02_02.classwork2;
+package by.it.akhmelev.jd02_03.classwork2;
 
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Runner {
 
     public static void main(String[] args) {
         System.out.println("Runner: Магазин открыт");
+
+        ExecutorService pool= Executors.newFixedThreadPool(5);
         for (int i = 1; i <= 5; i++) {
             Cashier c=new Cashier(i);
-            new Thread(c).start();
+            pool.execute(c);
         }
 
-        for (int second = 0; second < 12; second++) {
+        for (int second = 0; second < 120; second++) {
             int count=Helper.getRandom(2);
             for (int i = 0; i <= count; i++) {
+                if (!Dispatcher.planComplete()){
                 Buyer b = new Buyer(Dispatcher.incCountBuyer());
                 System.out.println("Runner: Новый "+b);
                 Dispatcher.printCounts();
                 b.start();
+               }
             }
+
+            if (Dispatcher.planComplete()) break;
+
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
@@ -27,10 +35,10 @@ public class Runner {
         }
 
         while (!Dispatcher.allBuyerComplete()){
-            Buyer first=Dispatcher.readFirstQueue();
-            if (first!=null)
+            Buyer any=Dispatcher.readFirstQueue();
+            if (any!=null)
                 try {
-                    first.join();
+                    any.join();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -38,6 +46,7 @@ public class Runner {
         System.out.println("Runner: Все вышли");
         //очереди кассиров нет, поэтому
         //тут просто подождем.
+        pool.shutdown();
         Helper.sleep(100,200);
         System.out.println("Runner: Магазин закрыт");
     }
