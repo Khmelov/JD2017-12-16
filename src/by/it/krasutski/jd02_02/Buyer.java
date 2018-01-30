@@ -40,7 +40,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
             Helper.sleep(500, 2000, pensioner);
             String goodName = Goods.rndGoodName();
             Double goodPrice = Goods.getPrice(goodName);
-            System.out.println(this + " выбрал товар " + goodName + " за " + goodPrice + "рублей.");
+            System.out.println(this + " выбрал товар " + goodName + " за " + goodPrice + " рублей.");
             putGoodsToBasket(goodName, goodPrice);
         }
         System.out.println(this + " закончил выбирать товары.");

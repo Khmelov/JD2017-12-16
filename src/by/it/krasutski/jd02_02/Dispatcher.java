@@ -1,22 +1,20 @@
 package by.it.krasutski.jd02_02;
 
-
 import java.util.LinkedList;
 
 public class Dispatcher {
+
     private final static LinkedList<Buyer> queue = new LinkedList<>();
     private final static LinkedList<Buyer> pensionerQueue = new LinkedList<>();
+    private volatile static int allCustomers = 0;
+    private static int servedCustomers = 0;
 
-    private volatile static int numOfAllCustomers = 0;
-
-    private static int numOfServedCustomers = 0;
-
-    public static int getNumOfAllCustomers() {
-        return numOfAllCustomers;
+    public static int getAllCustomers() {
+        return allCustomers;
     }
 
-    public static int getNumOfServedCustomers() {
-        return numOfServedCustomers;
+    public static int getServedCustomers() {
+        return servedCustomers;
     }
 
     synchronized public static int getQueueSize() {
@@ -28,16 +26,16 @@ public class Dispatcher {
     }
 
     synchronized static int incNumOfAllCustomers() {
-        return ++numOfAllCustomers;
+        return ++allCustomers;
     }
 
-    synchronized static int incNumOfServedCustomers() {
-        return ++numOfServedCustomers;
+    synchronized static void incNumOfServedCustomers() {
+        ++servedCustomers;
     }
 
     synchronized static boolean allBuyerComplete() {
-        return (numOfAllCustomers > 0) &&
-                (numOfServedCustomers == numOfAllCustomers);
+        return (allCustomers <= 0) ||
+                (servedCustomers != allCustomers);
     }
 
     static void addBuyerToQueue(Buyer buyer) {

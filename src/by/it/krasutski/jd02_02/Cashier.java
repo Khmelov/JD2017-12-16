@@ -9,7 +9,7 @@ public class Cashier implements Runnable {
     public volatile static double totalSum = 0;
     private boolean isOpen = false;
 
-    public Cashier(int cashierNumber) {
+    Cashier(int cashierNumber) {
         this.cashierNumber = cashierNumber;
     }
 
@@ -26,7 +26,7 @@ public class Cashier implements Runnable {
         numOfCashiers++;
         isOpen = true;
         System.out.println(this + " открыл кассу.");
-        while (!Dispatcher.allBuyerComplete() && isOpen) {
+        while (Dispatcher.allBuyerComplete() && isOpen) {
             Buyer buyer = Dispatcher.getPensionerQueueSize() == 0
                     ? Dispatcher.extractBuyerFromQueue() :
                     Dispatcher.extractBuyerFromPensionerQueue();
