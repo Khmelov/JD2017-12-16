@@ -64,8 +64,6 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
     public void goToQueue() {
         System.out.println(this + " стал в очередь.");
         Dispatcher.addBuyerToQueue(this);
-
-        System.out.println();
         synchronized (this) {
             try {
                 this.wait();
