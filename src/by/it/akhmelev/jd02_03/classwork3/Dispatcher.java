@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd02_03.classwork2;
+package by.it.akhmelev.jd02_03.classwork3;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.PriorityBlockingQueue;

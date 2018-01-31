@@ -1,8 +1,8 @@
 package by.it.akhmelev.jd02_03;
 
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.Semaphore;
 
 public class th3_02_Semaphore {
@@ -15,7 +15,7 @@ public class th3_02_Semaphore {
 
         @Override
         public void run() {
-            System.out.println(name+" создан");
+            System.out.println(name+" получил управление");
             try {
             semaphore.acquire(); //взяли разрешение у семафора
             System.out.println("--"+name+" стартовал");
@@ -32,10 +32,16 @@ public class th3_02_Semaphore {
 
     public static void main(String[] args) {
         ExecutorService executors= Executors.newFixedThreadPool(10);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 11; i++) {
             executors.execute(new Run("Поток №"+i));
         }
         executors.shutdown();
+        try {
+            executors.execute(new Run("Поток № 999"));
+        }
+        catch (RejectedExecutionException rejectedExecutionException){
+            System.out.println("---- Ошибка старта потока  № 999");
+        }
         System.out.println("Все потоки запущены");
     }
 

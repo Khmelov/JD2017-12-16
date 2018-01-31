@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd02_03.classwork2;
+package by.it.akhmelev.jd02_03.classwork3;
 
 import java.util.ArrayList;
 import java.util.HashMap;

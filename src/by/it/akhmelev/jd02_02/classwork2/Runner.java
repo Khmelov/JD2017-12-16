@@ -1,7 +1,5 @@
 package by.it.akhmelev.jd02_02.classwork2;
 
-import java.util.concurrent.ExecutorService;
-
 public class Runner {
 
     public static void main(String[] args) {
