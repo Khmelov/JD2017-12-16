@@ -18,8 +18,14 @@ public class Dispatcher {
 
     static void addToQue(Buyer buyer){
         synchronized (queue){
-            if (buyer.isPensioner()) queueForPensioner.addLast(buyer);
-            else queue.addLast(buyer);
+            if (buyer.isPensioner()) {
+                queueForPensioner.addLast(buyer);
+                System.out.println(buyer + "встал в очередь для пенсионеров");
+            }
+            else {
+                queue.addLast(buyer);
+                System.out.println(buyer + "встал в очередь");
+            }
         }
     }
 
@@ -45,7 +51,7 @@ public class Dispatcher {
     }
 
     synchronized static boolean AllBuyersServed(){
-        return ((buyerCount <= 0) || (servicedBuyers != buyerCount));
+        return ((buyerCount > 0) && (servicedBuyers == buyerCount));
     }
 
     static void addToCashierSet(Cashier cashier){
@@ -62,7 +68,7 @@ public class Dispatcher {
 
     static boolean removeFromWorkingCashiers(Cashier cashier){
         synchronized (workingCashiers) {
-            if (Dispatcher.getCashierCount() > Dispatcher.getQueSize()/5+1 && Dispatcher.getCashierCount() != 1) {
+            if (Dispatcher.getCashierCount() > Dispatcher.getQueSize()/5+2 && Dispatcher.getCashierCount() != 1 || AllBuyersServed()) {
                 workingCashiers.remove(cashier);
                 return true;
             }
