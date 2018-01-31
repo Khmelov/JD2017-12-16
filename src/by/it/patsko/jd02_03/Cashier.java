@@ -1,45 +1,65 @@
-package by.it.patsko.jd02_02;
+package by.it.patsko.jd02_03;
 
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class Cashier implements Runnable {
-    private static int numOfCashiers = 0;
-    private int cashierNumber;
-    private volatile static double totalSum = 0;
-    private boolean isOpen = false;
 
+    private static AtomicInteger numOfCashiers = new AtomicInteger(1);
+    private int cashierNumber;
+    static CountDownLatch numOfBuyers;
+    private volatile static double totalSum = 0;
+    private boolean isOpen = true;
+
+    /*private boolean isOpen(){
+        if(cashierNumber==numOfCashiers.intValue()) {
+
+        }
+        return true;
+    }*/
+    public Cashier(CountDownLatch cdl, int cashierNumber) {
+        this.cashierNumber = cashierNumber;
+        numOfBuyers = cdl;
+    }
     public Cashier(int cashierNumber) {
         this.cashierNumber = cashierNumber;
     }
 
-    public static int getNumOfCashiers() {
+    public static AtomicInteger getNumOfCashiers() {
         return numOfCashiers;
     }
 
-    public void setIsOpen(boolean open) {
+    /*public void setIsOpen(boolean open) {
         isOpen = open;
-    }
+    }*/
 
     @Override
     public void run() {
-        numOfCashiers++;
-        isOpen = true;
-        System.out.println("\n"+this+" открыл кассу");
-        while (!Queue.allBuyerComplete() && isOpen) {
-            Buyer buyer = Queue.getPensionerQueueSize() == 0 ? Queue.extractBuyerFromQueue() : Queue.extractBuyerFromPensionerQueue();
-            if (buyer != null) {
+        try {
+            if(!Queue.allBuyerComplete())numOfBuyers.await();
+
+            numOfCashiers.getAndIncrement();
+            System.out.println("\n!!!!!!!!!!!!!\n" + this + " открыл кассу\n!!!!!!!!!!!!!\n");
+            while (!Queue.allBuyerComplete() && isOpen) {
+                Buyer buyer = Queue.extractBuyerFromQueue();
+                if (buyer != null) {
                 System.out.println(this + " начал обслуживать " + buyer);
-                Helper.sleep(200, 500);
+                    Helper.sleep(200, 500);
                 System.out.println(this + " печатает чек для " + buyer);
                 printCheck(buyer);
                 System.out.println(this + " закончил обслуживать " + buyer);
-                synchronized (buyer) {
-                    buyer.notify();
-                }
-            } else Thread.yield();
+                    synchronized (buyer) {
+                        buyer.notify();
+                    }
+                } else Thread.yield();
+            }
+
+            numOfCashiers.getAndDecrement();
+            System.out.println(this + " закрыл кассу");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        numOfCashiers--;
-        System.out.println(this+" закрыл кассу");
     }
 
     @Override
@@ -51,7 +71,7 @@ class Cashier implements Runnable {
         StringBuilder check = new StringBuilder();
         double sum = 0.0;
 
-//        check.append("\nВ "+Cashier.getNumOfCashiers()+ " ОЧЕРЕДЯХ "+Queue.getQueueSize()+" ЧЕЛОВЕК\n");
+        check.append("\nВ " + Cashier.getNumOfCashiers() + " ОЧЕРЕДЯХ " + Queue.getQueueSize() + " ЧЕЛОВЕК\n");
 
         check.append(tableHead());
         check.append(wrapLine(String.format("|Чек %-26s", buyer)));
@@ -67,7 +87,6 @@ class Cashier implements Runnable {
             check.append("---------------------------------");
         }
         check.append("\n");
-//        check.append(printTotalSum());
         System.out.println(check);
     }
 
@@ -115,20 +134,4 @@ class Cashier implements Runnable {
         result.append("\n");
         return result;
     }
-
-    /*private StringBuilder printTotalSum() {
-        StringBuilder result = new StringBuilder();
-        result.append("|ВСЕГО:                         ");
-        for (int i = 0; i < 3; i++) {
-            result.append("                                 ");
-        }
-        synchronized (this) {
-            result.append(String.format("% ,33.1f|\n", totalSum));
-        }
-        for (int i = 0; i < 5; i++) {
-            result.append("---------------------------------");
-        }
-        result.append("\n");
-        return result;
-    }*/
 }
