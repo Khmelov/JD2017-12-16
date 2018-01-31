@@ -23,8 +23,7 @@ public class TaskA {
         sbPath.append(File.separator);
         sbPath.append("src");
         sbPath.append(File.separator);
-        sbPath.append((new TaskA()).getClass().getPackageName().replace(".",File.separator));
-        sbPath.append(File.separator);
+        sbPath.append((new TaskA()).getClass().getName().replace((new TaskA()).getClass().getSimpleName(),"").replace(".",File.separator));
 
        return sbPath.toString();
     }
@@ -62,6 +61,7 @@ public class TaskA {
     }
 
     public static void main(String[] args) {
+
         int row = 4;
         int column = 6;
         int[][] matrix = getMatrix(row,column);

@@ -11,8 +11,7 @@ public class TaskB {
         sbPath.append(File.separator);      /*сепаратор*/
         sbPath.append("src");
         sbPath.append(File.separator);          /**сепаратор*/
-        sbPath.append((new TaskB()).getClass().getPackageName().replace(".", File.separator));
-        sbPath.append(File.separator);
+        sbPath.append((new TaskB()).getClass().getName().replace((new TaskB()).getClass().getSimpleName(),"").replace(".",File.separator));
 /*      sbPath.append("t");
         sbPath.append(File.separator);
         */
