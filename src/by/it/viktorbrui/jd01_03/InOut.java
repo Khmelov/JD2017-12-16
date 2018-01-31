@@ -1,5 +1,6 @@
 package by.it.viktorbrui.jd01_03;
 
+
 public class InOut {
     static double [] getArray (String line){
         String [] strMas=line.split(" ");

@@ -1,5 +1,6 @@
 package by.it.viktorbrui.jd01_07;
 
+
 class Vector extends AbstractVar {
     private double[] value;
     Vector(double[] value) {

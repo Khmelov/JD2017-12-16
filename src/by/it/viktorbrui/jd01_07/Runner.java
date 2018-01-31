@@ -1,6 +1,5 @@
 package by.it.viktorbrui.jd01_07;
 
-
 public class Runner {
     public static void main(String[] args) {
         Scalar scalar1=new Scalar(Math.PI);

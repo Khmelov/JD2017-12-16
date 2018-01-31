@@ -1,7 +1,5 @@
 package by.it.viktorbrui.jd01_02;
 
-
-
 import java.util.Arrays;
 import java.util.Scanner;
 

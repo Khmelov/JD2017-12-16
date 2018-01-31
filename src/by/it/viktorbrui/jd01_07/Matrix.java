@@ -1,6 +1,5 @@
 package by.it.viktorbrui.jd01_07;
 
-
 class Matrix extends AbstractVar {
     private double[][] value;
     Matrix(double[][] value) {

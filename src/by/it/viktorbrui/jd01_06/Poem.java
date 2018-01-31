@@ -1,5 +1,6 @@
 package by.it.viktorbrui.jd01_06;
 
+
 class Poem {
     static final String text=
             "У лукоморья дуб зелёный,\n" +

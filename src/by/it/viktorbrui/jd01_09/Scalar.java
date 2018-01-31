@@ -2,6 +2,7 @@ package by.it.viktorbrui.jd01_09;
 
 public class Scalar extends Var {
 
+
     private double value;
 
     public double getValue() {

@@ -1,5 +1,6 @@
 package by.it.viktorbrui.jd01_10;
 
+
 @Param(b=9)
 public class Bean {
 

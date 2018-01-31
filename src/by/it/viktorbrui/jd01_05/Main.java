@@ -4,6 +4,7 @@ import by.it.viktorbrui.jd01_04.TaskA;
 
 import static java.lang.Math.*;
 
+
 public class Main {
 
     public static void main(String[] args) {
