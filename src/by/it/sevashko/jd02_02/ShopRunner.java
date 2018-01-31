@@ -6,7 +6,7 @@ public class ShopRunner {
         System.out.println("Магазин открылся");
         new BuyersRunner().start();
 
-        while (Dispatcher.AllBuyersServed()){
+        while (!Dispatcher.AllBuyersServed()){
             if (Dispatcher.getQueSize()/5+1 <= Dispatcher.getCashierCount()) {
                 Thread.yield();
             }
