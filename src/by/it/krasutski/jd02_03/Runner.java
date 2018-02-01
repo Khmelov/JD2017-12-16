@@ -10,11 +10,11 @@ public class Runner {
         for (int second = 0; second < 60; second++) {
             int count = Helper.getRandom(5);
             for (int i = 0; i <= count; i++) {
+                if (Dispatcher.planComplete()) break;
                 Buyer b = new Buyer(Dispatcher.getNumber());
                 b.start();
             }
             Thread.sleep(100);
-            if (Dispatcher.planComplete()) break;
         }
         ExecutorService pool = Executors.newFixedThreadPool(5);
         pool.execute(new Cashier(Dispatcher.getCashierNumber()));
