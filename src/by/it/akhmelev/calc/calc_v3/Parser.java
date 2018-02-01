@@ -13,8 +13,8 @@ class Parser {
                             "=", "+", "-", "*", "/"
                     )
             );
-    private List<String> operations = new ArrayList<>();
-    private List<String> operands = new ArrayList<>();
+    private List<String> operations;
+    private List<String> operands;
 
     private int getPosOperation() {
         int level = -1;
@@ -74,20 +74,21 @@ class Parser {
         String res = null;
         // get operands
         String[] part = expression.split(Patterns.OPERATION);
+        operands = new ArrayList<>();
         for (String one : part) operands.add(one);
         // get operations
+        operations = new ArrayList<>();
         Pattern p = Pattern.compile(Patterns.OPERATION);
         Matcher m = p.matcher(expression);
         while (m.find()) operations.add(m.group());
         while (operations.size() > 0) {
             int pos = getPosOperation();
-            System.out.println("before:"+debug());
             String left = operands.get(pos);
             String operation = operations.remove(pos);
             String right = operands.remove(pos+1);
             res = oneOperationCalc(left, operation, right);
-            System.out.println("after:"+debug());
             operands.set(pos, res);
+            System.out.println(debug());
         }
         return res;
     }
