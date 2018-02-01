@@ -81,13 +81,13 @@ class Parser {
         while (m.find()) operations.add(m.group());
         while (operations.size() > 0) {
             int pos = getPosOperation();
+            System.out.println("before:"+debug());
             String left = operands.get(pos);
             String operation = operations.remove(pos);
-            String right = operands.remove(pos);
-            System.out.println("before:"+debug());
+            String right = operands.remove(pos+1);
             res = oneOperationCalc(left, operation, right);
             System.out.println("after:"+debug());
-            operations.set(pos, res);
+            operands.set(pos, res);
         }
         return res;
     }
