@@ -32,11 +32,11 @@ class Cashier implements Runnable {
         while (!Queue.allBuyerComplete()) {
             Buyer buyer = Queue.extractBuyerFromQueue();
             if (buyer != null) {
-//                System.out.println(this + " начал обслуживать " + buyer);
+                System.out.println(this + " начал обслуживать " + buyer);
                 Helper.sleep(200, 500);
-//                System.out.println(this + " печатает чек для " + buyer);
-//                printCheck(buyer);
-//                System.out.println(this + " закончил обслуживать " + buyer);
+                System.out.println(this + " печатает чек для " + buyer);
+                printCheck(buyer);
+                System.out.println(this + " закончил обслуживать " + buyer);
                 synchronized (buyer) {
                     buyer.notify();
                 }
