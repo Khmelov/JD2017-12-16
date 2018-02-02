@@ -2,7 +2,7 @@ package by.it.kozlov.jd02_01;
 
 import java.util.*;
 
-class Buyer extends Thread implements IBuyer, IUseBasket, Comparable {
+class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
     private boolean pensioneer = false;
 
     volatile Map<String, Double> buy = new HashMap<>();
@@ -84,7 +84,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket, Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(Buyer o) {
         return 0;
     }
 }
