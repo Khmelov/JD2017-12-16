@@ -1,41 +1,80 @@
 package by.it.kozlov.calc;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Parser {
-    Var calc(String expression) throws CalcException {
-        // 2.0 * 2.0
-        try {
-            String[] operand = expression.split(Patterns.OPERATION);
-            Var two = Var.createVar(operand[1]);
-            if (expression.contains("=")) {
-                VarsMap.set(operand[0], two);
-                return two;
-            }
+    private static final List<String> priopity = new ArrayList<String>(Arrays.asList(
+            "=", "+", "-", "*", "/"
+    ));
+    private List<String> operations;
+    private List<String> operands;
 
-            Var one = Var.createVar(operand[0]);
-            if (one == null || two == null)
-                throw new CalcException(String.format(" Ошибка парсинга выражения: " + expression));
-            //find "[-+*/]"
-            Pattern operationPattern = Pattern.compile(Patterns.OPERATION);
-            Matcher matcher = operationPattern.matcher(expression);
-            if (matcher.find()) {
-                String operation = matcher.group();
-                switch (operation) {
-                    case "+":
-                        return one.add(two);
-                    case "-":
-                        return one.sub(two);
-                    case "*":
-                        return one.mul(two);
-                    case "/":
-                        return one.div(two);
-                }
+    private int getPosOperation() {
+        int level = -1;
+        int pos = -1;
+        int i = 0;
+        for (String operation : operations) {
+            int currentLevel = priopity.indexOf(operation);
+            if (currentLevel > level) {
+                level = currentLevel;
+                pos = i;
             }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            throw new CalcException(String.format(" Операция невозможна"));
+            i++;
         }
-        return null;
+        return pos;
+    }
+
+    private String oneOperationCalc(String left, String operation, String right) throws CalcException {
+        Var two = Var.createVar(right);
+        if (operation.equals("=")) {
+            VarsMap.set(left, two);
+            return two.toString();
+        }
+
+        Var one = Var.createVar(left);
+        if (one == null || two == null)
+            throw new CalcException(
+                    String.format(" Ошибка %s%s%s:", left, operation, right)
+            );
+
+        switch (operation) {
+            case "+":
+                return one.add(two).toString();
+            case "-":
+                return one.sub(two).toString();
+            case "*":
+                return one.mul(two).toString();
+            case "/":
+                return one.div(two).toString();
+        }
+        throw new CalcException(
+                String.format(" Неизвестная Ошибка ")
+        );
+    }
+
+    String calc(String expression) throws CalcException {
+        String res = null;
+        // get operands
+        String[] part = expression.split(Patterns.OPERATION);
+        operands = new ArrayList<>();
+        for (String one : part) operands.add(one);
+        // get operations
+        operations = new ArrayList<>();
+        Pattern p = Pattern.compile(Patterns.OPERATION);
+        Matcher m = p.matcher(expression);
+        while (m.find()) operations.add(m.group());
+        while (operations.size() > 0) {
+            int pos = getPosOperation();
+            String left = operands.get(pos);
+            String operation = operations.remove(pos);
+            String right = operands.remove(pos + 1);
+            res = oneOperationCalc(left, operation, right);
+            operands.set(pos, res);
+        }
+        return res;
     }
 }

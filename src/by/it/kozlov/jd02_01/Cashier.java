@@ -24,7 +24,7 @@ public class Cashier implements Runnable {
                 if (check.size() > 0) {
                     System.out.println(this + "печатаем чек для " + b);
                     System.out.println(this + "в корзине у покупателя:");
-                    int sum = 0;
+                    double sum = 0;
                     for (Map.Entry<String, Double> entry : check.entrySet()) {
                         System.out.println(entry.getKey() + " : " + entry.getValue());
                         sum += entry.getValue();
