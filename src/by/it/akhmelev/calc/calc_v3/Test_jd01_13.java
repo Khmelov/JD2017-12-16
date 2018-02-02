@@ -13,7 +13,7 @@ import static org.junit.Assert.fail;
 @SuppressWarnings("all")
 
 //поставьте курсор на следующую строку и нажмите Ctrl+Shift+F10
-public class Test_jd01_13_copy_this_to_calc_package {
+public class Test_jd01_13 {
 
     @Test(timeout = 1500)
     public void testTaskA__ConsoleRunner() throws Exception {
@@ -125,11 +125,11 @@ public class Test_jd01_13_copy_this_to_calc_package {
 
     //метод находит и создает класс для тестирования
     //по имени вызывающего его метода, testTaskA1 будет работать с TaskA1
-    private static Test_jd01_13_copy_this_to_calc_package run(String in) {
+    private static Test_jd01_13 run(String in) {
         return run(in, true);
     }
 
-    private static Test_jd01_13_copy_this_to_calc_package run(String in, boolean runMain) {
+    private static Test_jd01_13 run(String in, boolean runMain) {
         Throwable t = new Throwable();
         StackTraceElement trace[] = t.getStackTrace();
         StackTraceElement element;
@@ -147,10 +147,10 @@ public class Test_jd01_13_copy_this_to_calc_package {
         System.out.println("\n---------------------------------------------");
         System.out.println("Старт теста для " + clName + "\ninput:" + in);
         System.out.println("---------------------------------------------");
-        return new Test_jd01_13_copy_this_to_calc_package(clName, in, runMain);
+        return new Test_jd01_13(clName, in, runMain);
     }
 
-    public Test_jd01_13_copy_this_to_calc_package() {
+    public Test_jd01_13() {
         //Конструктор тестов
     }
 
@@ -162,7 +162,7 @@ public class Test_jd01_13_copy_this_to_calc_package {
     Class<?> aClass;
 
     //Основной конструктор тестов
-    private Test_jd01_13_copy_this_to_calc_package(String className, String in, boolean runMain) {
+    private Test_jd01_13(String className, String in, boolean runMain) {
         //this.className = className;
         aClass = null;
         try {
@@ -195,18 +195,18 @@ public class Test_jd01_13_copy_this_to_calc_package {
     }
 
     //проверка вывода
-    private Test_jd01_13_copy_this_to_calc_package is(String str) {
+    private Test_jd01_13 is(String str) {
         assertTrue("Ожидается такой вывод:\n<---начало---->\n" + str + "<---конец--->",
                 stringWriter.toString().equals(str));
         return this;
     }
 
-    private Test_jd01_13_copy_this_to_calc_package include(String str) {
+    private Test_jd01_13 include(String str) {
         assertTrue("Строка не найдена: " + str + "\n", stringWriter.toString().contains(str));
         return this;
     }
 
-    private Test_jd01_13_copy_this_to_calc_package exclude(String str) {
+    private Test_jd01_13 exclude(String str) {
         assertTrue("Лишние данные в выводе: " + str + "\n", !stringWriter.toString().contains(str));
         return this;
     }

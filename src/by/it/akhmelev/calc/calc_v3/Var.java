@@ -30,16 +30,22 @@ abstract class Var implements Operation {
         );
     }
 
-    static Var createVar(String operand){
+    static Var createVar(String operand) throws CalcException {
         operand=operand.trim();
+        //если переменная уже есть, то читаем ее
+        if (VarsMap.get(operand)!=null)
+            return VarsMap.get(operand);
+        //скаляр
         if (operand.matches(Patterns.SCALAR))
             return new Scalar(operand);
+        //вектор
         if (operand.matches(Patterns.VECTOR))
             return new Vector(operand);
+        //матрица
 //        if (operand.matches(Patterns.MATRIX))
 //            return new Matrix(operand);
 
-        return null;
+        throw new CalcException("Ошибка в "+operand);
     }
 
 

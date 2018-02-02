@@ -8,11 +8,11 @@ class VarsMap {
     private static Map<String,Var> map=new HashMap<>();
 
     static Var get(String key){
-        return map.get(key);
+        return map.get(key.trim().toUpperCase());
     };
 
     static void set(String key, Var var){
-        map.put(key, var);
+        map.put(key.trim().toUpperCase(), var);
     }
 
     static String printvar() {
