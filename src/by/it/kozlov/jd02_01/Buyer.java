@@ -2,7 +2,7 @@ package by.it.kozlov.jd02_01;
 
 import java.util.*;
 
-class Buyer extends Thread implements IBuyer, IUseBasket {
+class Buyer extends Thread implements IBuyer, IUseBasket, Comparable {
     private boolean pensioneer = false;
 
     volatile Map<String, Double> buy = new HashMap<>();
@@ -81,5 +81,10 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
                 System.err.println(this + " невозможно стать в очередь");
             }
         }
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }

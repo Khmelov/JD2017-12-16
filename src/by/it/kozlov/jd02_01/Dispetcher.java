@@ -1,11 +1,14 @@
 package by.it.kozlov.jd02_01;
 
-import java.util.LinkedList;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.PriorityBlockingQueue;
 
-public class Dispetcher {
+public class Dispetcher{
     private volatile static int countBuyer = 0;
     private static int completeBuyer = 0;
-    private final static LinkedList<Buyer> queue = new LinkedList<>();
+    private final static BlockingQueue<Buyer> queue = new PriorityBlockingQueue<>(30);
+
+    private final static int PLAN=100;
 
     static int incCountBuyer() {
         return ++countBuyer;
@@ -25,19 +28,23 @@ public class Dispetcher {
 
     static void addToQueue(Buyer b) {
         synchronized (queue) {
-            queue.addLast(b);
+            try {
+                queue.put(b);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     static Buyer extractFromQueue() {
         synchronized (queue) {
-            return queue.pollFirst();
+            return queue.poll();
         }
     }
 
     static Buyer readFirstQueue() {
         synchronized (queue) {
-            return queue.peekFirst();
+            return queue.peek();
         }
     }
 
@@ -46,4 +53,6 @@ public class Dispetcher {
             return queue.size();
         }
     }
+
+
 }

@@ -1,12 +1,16 @@
 package by.it.kozlov.jd02_01;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class Runner {
 
     public static void main(String[] args) {
         System.out.println("Runner: Магазин открыт");
+        ExecutorService pool= Executors.newFixedThreadPool(5);
         for (int i = 1; i <= 5; i++) {
-            Cashier c = new Cashier(i);
-            new Thread(c).start();
+            Cashier c=new Cashier(i);
+            pool.execute(c);
         }
 
 
@@ -32,6 +36,7 @@ public class Runner {
                 }
         }
         System.out.println("Runner: Все вышли");
+        pool.shutdown();
         Helper.sleep(100, 200);
         System.out.println("Runner: Магазин закрыт");
 
