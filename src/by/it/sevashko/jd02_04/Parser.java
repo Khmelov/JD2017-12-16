@@ -13,6 +13,7 @@ public class Parser {
     private List<String> operations;
 
     String calc(String expression) throws CalcException {
+        expression = withoutBrackets(expression);
         operations = new ArrayList<>();
         List<String> operands = new ArrayList<>();
         String[] part = expression.split(Patterns.OPERATION);
@@ -65,5 +66,19 @@ public class Parser {
             i++;
         }
         return pos;
+    }
+
+    private String withoutBrackets(String expression) throws CalcException {
+        StringBuilder newExpression = new StringBuilder(expression);
+        Pattern p = Pattern.compile("\\(([^()]+)\\)");
+        Matcher m = p.matcher(newExpression);
+        while (m.find()){
+            int start = m.start();
+            int end = m.end();
+            String res = calc(m.group(1));
+            newExpression.replace(start, end, res);
+            m.reset();
+        }
+        return newExpression.toString();
     }
 }

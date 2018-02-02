@@ -8,8 +8,8 @@ public class Container {
 
     private static HashMap<String, Var> vars = new HashMap<>();
 
-    static Var setVar(String key, Var value){
-        return vars.put(key, value);
+    static void setVar(String key, Var value){
+        vars.put(key, value);
     }
 
     static Var getVar(String key){
