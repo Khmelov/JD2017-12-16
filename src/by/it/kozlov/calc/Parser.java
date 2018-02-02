@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Parser {
-    private static final List<String> priopity = new ArrayList<String>(Arrays.asList(
+    private static final List<String> priopity = new ArrayList<>(Arrays.asList(
             "=", "+", "-", "*", "/"
     ));
     private List<String> operations;
@@ -56,12 +56,32 @@ class Parser {
         );
     }
 
+    static String operations(String string) throws CalcException {
+        Parser parser = new Parser();
+        StringBuilder stringBuilder = new StringBuilder(string);
+        String temp;
+        Pattern pattern = Pattern.compile("\\([^(\\)]*\\)");
+        Matcher matcher = pattern.matcher(stringBuilder);
+        while (matcher.find(0)) {
+            temp = stringBuilder.substring(matcher.start(), matcher.end());
+            temp = temp.replace("(", "");
+            temp = temp.replace(")", "");
+            temp = parser.calc(temp);
+            stringBuilder.replace(matcher.start(), matcher.end(), temp);
+        }
+        return stringBuilder.toString();
+    }
+
     String calc(String expression) throws CalcException {
+        expression = Parser.operations(expression);
         String res = null;
         // get operands
         String[] part = expression.split(Patterns.OPERATION);
+
         operands = new ArrayList<>();
-        for (String one : part) operands.add(one);
+        for (String one : part) {
+            operands.add(one);
+        }
         // get operations
         operations = new ArrayList<>();
         Pattern p = Pattern.compile(Patterns.OPERATION);

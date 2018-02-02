@@ -31,15 +31,14 @@ public class Scalar extends Var {
 
     @Override
     public Var div(Var other) throws CalcException {
-        if (other instanceof Scalar){
+        if (other instanceof Scalar) {
 
-            double v=((Scalar) other).value;
-            if (v==0)
+            double v = ((Scalar) other).value;
+            if (v == 0)
                 throw new CalcException(String.format(" Деление на 0 невозможно"));
             return new Scalar(this.value / v);
 
-        }
-        else
+        } else
             return super.div(other);
     }
 
