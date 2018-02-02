@@ -31,6 +31,7 @@ public class Cashier extends Thread {
                     buyer.notify();
                 }
             }
+            else Thread.yield();
             if (Dispatcher.getQueSize()/5+1 < Dispatcher.cashierCount()){
                 break;
             }

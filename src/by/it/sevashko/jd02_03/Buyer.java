@@ -34,7 +34,7 @@ public class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buye
     @Override
     public void chooseGoods() {
         List<String> listOfProducts = new ArrayList<>(Assortment.getProducts());
-        for (int i = 0; i < Helper.getRandom(5); i++) {
+        for (int i = 0; i <= Helper.getRandom(4); i++) {
             Helper.sleep(500, 2000, pensioner);
             String product = listOfProducts.get(Helper.getRandom(Assortment.getSize()));
             System.out.println(this + "выбрал " + product);
