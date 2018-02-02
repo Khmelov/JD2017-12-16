@@ -1,9 +1,6 @@
 package by.it.sevashko.jd02_04;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -69,6 +66,7 @@ public class Parser {
     }
 
     private String withoutBrackets(String expression) throws CalcException {
+        if (!checkBrackets(expression)) throw new CalcException("ERROR: Неправильная расстановка скобок");
         StringBuilder newExpression = new StringBuilder(expression);
         Pattern p = Pattern.compile("\\(([^()]+)\\)");
         Matcher m = p.matcher(newExpression);
@@ -80,5 +78,36 @@ public class Parser {
             m.reset();
         }
         return newExpression.toString();
+    }
+
+    private static boolean checkBrackets(String line){      //скопировал из jd01_12 TaskC3
+        LinkedList<String> list = new LinkedList<>();
+        Pattern pattern = Pattern.compile("[\\[\\]{}()]");
+        Matcher matcher = pattern.matcher(line);
+        String requared = "";
+        while (matcher.find()){
+            String c = matcher.group();
+            if ("[{(".contains(c)){
+                list.addLast(c);
+            } else {
+                switch (c){
+                    case "]": {
+                        requared = "[";
+                        break;
+                    }
+                    case "}": {
+                        requared = "{";
+                        break;
+                    }
+                    case ")": requared = "(";
+                }
+                if (list.size() != 0 && requared.equals(list.getLast())){
+                    list.removeLast();
+                } else {
+                    return false;
+                }
+            }
+        }
+        return list.size() == 0;
     }
 }
