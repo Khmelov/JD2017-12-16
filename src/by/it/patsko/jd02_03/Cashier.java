@@ -1,45 +1,52 @@
-package by.it.patsko.jd02_02;
+package by.it.patsko.jd02_03;
 
+import java.util.Arrays;
 import java.util.Map;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 class Cashier implements Runnable {
-    private static int numOfCashiers = 0;
+    final static ConcurrentLinkedQueue<Integer> cashierQueue = new ConcurrentLinkedQueue<>(Arrays.asList(1,2,3,4,5));
     private int cashierNumber;
     private volatile static double totalSum = 0;
-    private boolean isOpen = false;
+
 
     public Cashier(int cashierNumber) {
         this.cashierNumber = cashierNumber;
     }
 
-    public static int getNumOfCashiers() {
-        return numOfCashiers;
+    static int openCashier(){
+        return cashierQueue.poll();
     }
 
-    public void setIsOpen(boolean open) {
-        isOpen = open;
+    void closeCashiers(int cashierNumber){
+        cashierQueue.add(cashierNumber);
+    }
+
+    static int getNumOfCashier(){
+        return 5-cashierQueue.size();
     }
 
     @Override
     public void run() {
-        numOfCashiers++;
-        isOpen = true;
-        System.out.println("\n"+this+" открыл кассу");
-        while (!Queue.allBuyerComplete() && isOpen) {
-            Buyer buyer = Queue.getPensionerQueueSize() == 0 ? Queue.extractBuyerFromQueue() : Queue.extractBuyerFromPensionerQueue();
+        System.out.println("\n!!!!!!!!!!!!!\n" + this + " открыл кассу\n!!!!!!!!!!!!!\n");
+        while (!Queue.allBuyerComplete()) {
+            Buyer buyer = Queue.extractBuyerFromQueue();
             if (buyer != null) {
-                System.out.println(this + " начал обслуживать " + buyer);
+//                System.out.println(this + " начал обслуживать " + buyer);
                 Helper.sleep(200, 500);
-                System.out.println(this + " печатает чек для " + buyer);
-                printCheck(buyer);
-                System.out.println(this + " закончил обслуживать " + buyer);
+//                System.out.println(this + " печатает чек для " + buyer);
+//                printCheck(buyer);
+//                System.out.println(this + " закончил обслуживать " + buyer);
                 synchronized (buyer) {
                     buyer.notify();
                 }
             } else Thread.yield();
+            if (Queue.getQueueSize()/5+1 < getNumOfCashier()) {
+                break;
+            }
         }
-        numOfCashiers--;
-        System.out.println(this+" закрыл кассу");
+        System.out.println(this + " закрыл кассу");
+        closeCashiers(cashierNumber);
     }
 
     @Override
@@ -51,7 +58,7 @@ class Cashier implements Runnable {
         StringBuilder check = new StringBuilder();
         double sum = 0.0;
 
-//        check.append("\nВ "+Cashier.getNumOfCashiers()+ " ОЧЕРЕДЯХ "+Queue.getQueueSize()+" ЧЕЛОВЕК\n");
+//        check.append("\nВ " + Cashier.getNumOfCashiers() + " ОЧЕРЕДЯХ " + Queue.getQueueSize() + " ЧЕЛОВЕК\n");
 
         check.append(tableHead());
         check.append(wrapLine(String.format("|Чек %-26s", buyer)));
@@ -67,7 +74,6 @@ class Cashier implements Runnable {
             check.append("---------------------------------");
         }
         check.append("\n");
-//        check.append(printTotalSum());
         System.out.println(check);
     }
 
@@ -115,20 +121,4 @@ class Cashier implements Runnable {
         result.append("\n");
         return result;
     }
-
-    /*private StringBuilder printTotalSum() {
-        StringBuilder result = new StringBuilder();
-        result.append("|ВСЕГО:                         ");
-        for (int i = 0; i < 3; i++) {
-            result.append("                                 ");
-        }
-        synchronized (this) {
-            result.append(String.format("% ,33.1f|\n", totalSum));
-        }
-        for (int i = 0; i < 5; i++) {
-            result.append("---------------------------------");
-        }
-        result.append("\n");
-        return result;
-    }*/
 }
