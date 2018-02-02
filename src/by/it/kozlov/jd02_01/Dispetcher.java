@@ -2,28 +2,28 @@ package by.it.kozlov.jd02_01;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class Dispetcher{
-    private volatile static int countBuyer = 0;
-    private static int completeBuyer = 0;
+public class Dispetcher {
+    private final static int PLAN = 100;
+    private final static AtomicInteger countBuyer = new AtomicInteger(0);
+    private final static AtomicInteger completeBuyer = new AtomicInteger(0);
     private final static BlockingQueue<Buyer> queue = new PriorityBlockingQueue<>(30);
 
-    private final static int PLAN=100;
-
     static int incCountBuyer() {
-        return ++countBuyer;
+        return countBuyer.incrementAndGet();
     }
 
     synchronized static boolean allBuyerComplete() {
-        return (countBuyer > 0) && (completeBuyer == countBuyer);
+        return (countBuyer.get() > 0) && (completeBuyer.get() == countBuyer.get());
     }
 
     synchronized static int incCompleteBuyer() {
-        return ++completeBuyer;
+        return completeBuyer.incrementAndGet();
     }
 
     synchronized static void printCounts() {
-        System.out.printf("\tДиспетчер: Всего клиентов %d. Из них обслужено %d\n", countBuyer, completeBuyer);
+        System.out.printf("\tДиспетчер: Всего клиентов %d. Из них обслужено %d\n", countBuyer.get(), completeBuyer.get());
     }
 
     static void addToQueue(Buyer b) {
