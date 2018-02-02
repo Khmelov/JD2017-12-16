@@ -1,11 +1,13 @@
 package by.it.patsko.jd02_03;
 
 
+import java.util.concurrent.atomic.AtomicInteger;
 
 class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
     private Basket basket;
     private boolean pensioner;
-
+    private final static AtomicInteger numberInQueueCounter=new AtomicInteger(0);
+    private int numberInQueue;
 
     Buyer(int number) {
         super("Покупатель №" + number);
@@ -24,10 +26,10 @@ class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
     public void run() {
         enterToMarket();
         try {
-            long start=System.nanoTime();
+            long start = System.nanoTime();
             Basket.BASKET_SEMAPHORE.acquire();
-            long end=System.nanoTime();
-            System.out.println(this+" ждал корзину "+(end-start)/1000+" микросекунд");
+            long end = System.nanoTime();
+//            System.out.println(this+" ждал корзину "+(end-start)/1000+" микросекунд");
 
 
             takeBasket();
@@ -43,32 +45,29 @@ class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
 
     @Override
     public void enterToMarket() {
-        System.out.println(this + " вошел в магазин");
+//        System.out.println(this + " вошел в магазин");
     }
 
     @Override
     public void chooseGoods() {
         for (int i = 1; i <= Helper.getRandom(1, 5); i++) {
-            System.out.println(this + " выбирает товар");
+//            System.out.println(this + " выбирает товар");
             Helper.sleep(100, 200, pensioner);
             String goodName = Goods.rndGoodName();
             Double goodPrice = Goods.getPrice(goodName);
-            System.out.println(this + " выбрал " + goodName + " за " + goodPrice + " рублей");
+//            System.out.println(this + " выбрал " + goodName + " за " + goodPrice + " рублей");
             putGoodsToBasket(goodName, goodPrice);
-//            if (!basket.isBasketFull) putGoodsToBasket(goodName, goodPrice);
-//            else break;
         }
-        System.out.println(this + " закончил выбирать товары");
+//        System.out.println(this + " закончил выбирать товары");
     }
 
     @Override
     public void goToQueue() {
-        System.out.println(this + " стал в очередь");
+//        System.out.println(this + " стал в очередь");
+        numberInQueue=numberInQueueCounter.incrementAndGet();
         Queue.addBuyerToQueue(this);
-        Cashier.numOfBuyers.countDown();
-
-//        Queue.printQueue();
-        System.out.println();
+//        System.out.println(Queue.queue);
+//        System.out.println();
         synchronized (this) {
             try {
                 this.wait();
@@ -81,7 +80,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
     @Override
     public void goToOut() {
         Basket.numOfOccupiedBasket.decrementAndGet();
-        System.out.println(this + " вышел из магазина");
+//        System.out.println(this + " вышел из магазина");
         Queue.incNumOfServedCustomers();
         System.out.println("В очереди осталось " + Queue.getQueueSize());
     }
@@ -96,19 +95,32 @@ class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
     public void takeBasket() {
         basket = new Basket();
         Helper.sleep(100, 200, pensioner);
-        System.out.println(this + " взял корзину");
+//        System.out.println(this + " взял корзину");
+        Basket.numOfOccupiedBasket.incrementAndGet();
     }
 
     @Override
     public void putGoodsToBasket(String name, Double price) {
-        System.out.println(this + " положил " + name + " за " + price + " рублей в корзину");
+//        System.out.println(this + " положил " + name + " за " + price + " рублей в корзину");
         basket.addGoodsToBasket(name, price);
         Helper.sleep(100, 200, pensioner);
     }
 
     @Override
     synchronized public int compareTo(Buyer other) {
-        if (this.isPensioner()) return other.isPensioner() ? 0 : -1;
-        else return other.isPensioner() ? 1 : 0;
+        if(this.isPensioner()&&other.isPensioner()){
+            if(this.numberInQueue>other.numberInQueue)return 1;
+            else return -1;
+        }
+        if(!this.isPensioner()&&!other.isPensioner()){
+            if(this.numberInQueue>other.numberInQueue)return 1;
+            else return -1;
+        }
+        if(this.isPensioner()&&!other.isPensioner())return -1;
+        if(!this.isPensioner()&&other.isPensioner())return 1;
+
+        /*if (this.isPensioner()) return other.isPensioner() ? (other.numberInQueue-this.numberInQueue) : -1;
+        else return other.isPensioner() ? 1 : (other.numberInQueue-this.numberInQueue);*/
+        return 0;
     }
 }

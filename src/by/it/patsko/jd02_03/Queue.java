@@ -1,13 +1,14 @@
 package by.it.patsko.jd02_03;
 
 
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Queue {
-    private final static int PLAN=100;
-    private final static BlockingQueue<Buyer> queue = new PriorityBlockingQueue<>();
+    private final static int PLAN = 100;
+    final static BlockingQueue<Buyer> queue = new PriorityBlockingQueue<>();
     private static AtomicInteger numOfAllCustomers = new AtomicInteger(0);       //количество всех покупателей в магазине(бывшие и настоящие)
     private static AtomicInteger numOfServedCustomers = new AtomicInteger(0);     //количество обслуженных покупателей
 
@@ -22,7 +23,7 @@ public class Queue {
 
     public static int getQueueSize() {
         synchronized (queue) {
-        return queue.size();
+            return queue.size();
         }
     }
 
@@ -45,7 +46,6 @@ public class Queue {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
     }
 
     static Buyer readFirstQueue() {
@@ -53,21 +53,21 @@ public class Queue {
     }
 
     static Buyer extractBuyerFromQueue() {
-            return queue.poll();
+        return queue.poll();
 
     }
+
     public static boolean planComplete() {
-        return (numOfAllCustomers.get()>=PLAN);
+        return (numOfAllCustomers.get() >= PLAN);
     }
 
-    static void printQueue(){
-        StringBuilder result = new StringBuilder();
-        result.append("Первый в очереди: ").append(readFirstQueue()).append("\n");
-            result.append("ОЧЕРЕДЬ: ");
-            synchronized (queue) {
-                for (Buyer aQueue : queue) result.append(aQueue).append(" ");
-            }
-            result.append("\n");
+
+
+    /*static void printQueue() {
+        synchronized (queue) {
+//            result.append("Первый в очереди: ").append(readFirstQueue()).append("\n");
+            result.append("ОЧЕРЕДЬ: " + queue);
             System.out.println(result);
-    }
+        }
+    }*/
 }
