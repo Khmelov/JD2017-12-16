@@ -14,7 +14,7 @@ class Runner {
         ExecutorService executors = Executors.newFixedThreadPool(5);
 
 
-        for (int minutes = 0; minutes < 1; minutes++) {
+        for (int minutes = 0; minutes < 2; minutes++) {
             for (int second = 0; second < 60; second++) {
                 if (!Queue.planComplete()) {
 
@@ -32,14 +32,15 @@ class Runner {
                         b.start();
                     }
                 }
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
             if (Queue.planComplete()) break;
 
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
         }
         while (!Queue.allBuyerComplete()) {
             Buyer customer = Queue.readFirstQueue();

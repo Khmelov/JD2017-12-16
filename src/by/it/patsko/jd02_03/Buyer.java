@@ -29,7 +29,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
             long start = System.nanoTime();
             Basket.BASKET_SEMAPHORE.acquire();
             long end = System.nanoTime();
-//            System.out.println(this+" ждал корзину "+(end-start)/1000+" микросекунд");
+            System.out.println(this+" ждал корзину "+(end-start)/1000+" микросекунд");
 
 
             takeBasket();
@@ -45,20 +45,20 @@ class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
 
     @Override
     public void enterToMarket() {
-//        System.out.println(this + " вошел в магазин");
+        System.out.println(this + " вошел в магазин");
     }
 
     @Override
     public void chooseGoods() {
         for (int i = 1; i <= Helper.getRandom(1, 5); i++) {
-//            System.out.println(this + " выбирает товар");
+            System.out.println(this + " выбирает товар");
             Helper.sleep(100, 200, pensioner);
             String goodName = Goods.rndGoodName();
             Double goodPrice = Goods.getPrice(goodName);
-//            System.out.println(this + " выбрал " + goodName + " за " + goodPrice + " рублей");
+            System.out.println(this + " выбрал " + goodName + " за " + goodPrice + " рублей");
             putGoodsToBasket(goodName, goodPrice);
         }
-//        System.out.println(this + " закончил выбирать товары");
+        System.out.println(this + " закончил выбирать товары");
     }
 
     @Override
@@ -95,13 +95,12 @@ class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
     public void takeBasket() {
         basket = new Basket();
         Helper.sleep(100, 200, pensioner);
-//        System.out.println(this + " взял корзину");
-        Basket.numOfOccupiedBasket.incrementAndGet();
+        System.out.println(this + " взял корзину");
     }
 
     @Override
     public void putGoodsToBasket(String name, Double price) {
-//        System.out.println(this + " положил " + name + " за " + price + " рублей в корзину");
+        System.out.println(this + " положил " + name + " за " + price + " рублей в корзину");
         basket.addGoodsToBasket(name, price);
         Helper.sleep(100, 200, pensioner);
     }
