@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Test02_04 {
-
     @Test
     void calc() throws CalcException {
         Parser parser=new Parser();
