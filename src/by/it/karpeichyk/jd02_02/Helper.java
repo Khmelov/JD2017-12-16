@@ -1,4 +1,4 @@
-package by.it.karpeichyk.jd02_01;
+package by.it.karpeichyk.jd02_02;
 
 import java.util.Random;
 
@@ -9,7 +9,7 @@ public class Helper {
    private final static Random random=new Random();
     static int getRandom (int bound){ return  random.nextInt(bound);}
    private  static int getRandom (int start, int stop){return start+random.nextInt(stop-start);}
-   public static  void slep(int start, int stop){
+   static  void sleep(int start, int stop){
        try{
            Thread.sleep(Helper.getRandom(start,stop));
        }catch (InterruptedException e){
