@@ -38,7 +38,7 @@ abstract class Var implements Operation {
         if(operand.matches(Patterns.SCALAR))return new Scalar(operand);
         if(operand.matches(Patterns.VECTOR))return new Vector(operand);
         if(operand.matches(Patterns.MATRIX))return new Matrix(operand);
-        if(operand.matches(Patterns.KEY)) return new Variable(operand);
+        if(operand.matches(Patterns.KEY)) return Variable.getValue(operand);
 
         return null;
     }

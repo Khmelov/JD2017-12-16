@@ -1,9 +1,10 @@
 package by.it.patsko.calc;
 
-import java.util.*;
+import java.util.AbstractMap;
+import java.util.TreeMap;
 
 class Printer {
-    void print(Var var) {
+    void print(String var) {
         if (var != null) System.out.println(var);
     }
 

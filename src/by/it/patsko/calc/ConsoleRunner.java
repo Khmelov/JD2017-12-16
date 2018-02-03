@@ -6,12 +6,14 @@ import java.util.Scanner;
 public class ConsoleRunner {
     public static void main(String[] args) {
         FileReaderWriterCalc frwc;
+
         try {
             frwc = new FileReaderWriterCalc(
-                    System.getProperty("user.dir") + "/src/by/it/patsko/calc/", "vars.txt", "rw");
+                    System.getProperty("user.dir") + "/src/by/it/patsko/jd02_04/", "vars.txt", "rw");
             frwc.readFileCalc();
         } catch (CalcException | IOException e) {
             e.printStackTrace();
+
         }
 
         Scanner sc = new Scanner(System.in);
@@ -27,7 +29,7 @@ public class ConsoleRunner {
                 printer.sortvar();
                 continue;
             }
-            Var result;
+            String result;
             try {
                 result = parser.calc(line.trim());
                 printer.print(result);
@@ -38,7 +40,7 @@ public class ConsoleRunner {
 
         try {
             frwc = new FileReaderWriterCalc(
-                    System.getProperty("user.dir") + "/src/by/it/patsko/calc/", "vars.txt", "rw");
+                    System.getProperty("user.dir") + "/src/by/it/patsko/jd02_04/", "vars.txt", "rw");
             frwc.writeFileCalc();
         } catch (IOException e) {
             e.printStackTrace();

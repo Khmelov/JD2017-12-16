@@ -24,7 +24,12 @@ class Variable extends Var {
     public Var getValue() {
         return value;
     }
-
+    public static Var getValue(String key) {
+        return map.get(key.trim());
+    }
+    static void set(String key, Var var){
+        map.put(key.trim(), var);
+    }
     @Override
     public String toString() {
         return this.key+"="+this.value;

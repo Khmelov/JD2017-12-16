@@ -1,5 +1,6 @@
 package by.it.patsko.calc;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -17,6 +18,10 @@ class FileReaderWriterCalc {
         this.mode = mode;
         file = new RandomAccessFile(path + fileName, mode);
     }
+    FileReaderWriterCalc(File file, String mode) throws FileNotFoundException {
+        file= new File(file,mode);
+    }
+
 
     void writeFileCalc() throws IOException {
         for (Map.Entry<String, Var> element : Variable.map.entrySet()) {
@@ -32,16 +37,18 @@ class FileReaderWriterCalc {
     }
 
     void readFileCalc() throws CalcException, IOException {
-        Parser parser=new Parser();
-        Variable var;
+        if(file.length()!=0) {
+            Parser parser = new Parser();
+            String var;
 //        StringBuilder All=new StringBuilder();
-        String line, varNvalue[];
-        while ((line = file.readLine()) != null) {
-//            varNvalue = line.split("=");
-            var=(Variable)parser.calc(line);
+            String line, varNvalue[];
+            while ((line = file.readLine()) != null) {
+                parser.calc(line);
+                line=new String();
 //            var=(Variable)parser.calc(line);
-//            Variable.map.put(var.getKey(), var.getValue());
+            }
+            file.close();
+
         }
-        file.close();
     }
 }
