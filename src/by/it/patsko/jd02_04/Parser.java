@@ -57,10 +57,18 @@ class Parser {
     }
 
     String calc(String expression) throws CalcException {
-        /*Pattern pattern=Pattern.compile("(?<=\\()[\\w-+/*\\.\\{,\\}]+(?=\\))");
-        Matcher matcher1=pattern.matcher(expression);
+        Pattern pattern = Pattern.compile("(?<=\\()[\\w-+/*\\.\\{,\\}]+(?=\\))");
+        //(?<=\()[\w-+/*\.\{,\}]+(?=\)) - без скобок
+        //\([\w-+/*\.\{,\}]+\) - со скобками
+        Matcher matcher1 = pattern.matcher(expression);
         String line;
-        while (matcher1.find()) calc(matcher1.group());*/
+        while (matcher1.find()) {
+            line=matcher1.group();
+//            System.out.println(line);
+//            expression=matcher1.replaceFirst(calc(line));
+            expression=expression.replace("("+line+")",calc(line));
+            matcher1.reset(expression);
+        }
 
         String result = null;
         operations = new ArrayList<>();
