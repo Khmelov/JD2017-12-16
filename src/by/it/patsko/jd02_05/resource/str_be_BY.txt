@@ -1,0 +1,3 @@
+str.Welcome=Прывітанне
+str.Name=Аркадзь
+str.Question=Як справы?

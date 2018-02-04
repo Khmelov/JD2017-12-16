@@ -1,0 +1,3 @@
+str.Welcome=Привет
+str.Name=Аркадий
+str.Question=Как дела?
