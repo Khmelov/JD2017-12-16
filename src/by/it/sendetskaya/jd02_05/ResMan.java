@@ -9,7 +9,7 @@ public enum ResMan {
     ResourceBundle rb;
     Locale locale;
 
-    private ResMan()
+    ResMan()
     {
         rb=ResourceBundle.getBundle(path,Locale.getDefault());
     }
