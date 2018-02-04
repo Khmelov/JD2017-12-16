@@ -1,0 +1,70 @@
+package by.it.sendetskaya.jd02_05;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Runner {
+    public static void main(String[] args) {
+
+        boolean flag = true;
+        DateFormat dateFormat;
+        Date d = null;
+
+            d = Calendar.getInstance().getTime();
+
+        String country = "";
+        String language = "";
+        Locale locale;
+        ResMan manager = ResMan.INSTANCE;
+
+
+        System.out.println("Для переключения языка введите en-английский, " +
+                "ru-русский, be-белорусский, end-выйти");
+
+        do {
+            Scanner sc = new Scanner(System.in);
+            String strChoose = sc.nextLine();
+
+
+                switch (strChoose) {
+                    case "en":
+                        country = "US";
+                        language = "en";
+                        System.out.println("английский");
+                        break;
+                    case "ru":
+                        country = "RU";
+                        language = "ru";
+                        System.out.println("русский");
+                        break;
+                    case "be":
+                        country = "BY";
+                        language = "be";
+                        System.out.println("белорусский");
+                        break;
+                    case "end":
+                        flag = false;
+                        break;
+                    default:
+                        System.out.println("по умолчанию английский");
+                }
+                if (!flag)break;
+                    locale = new Locale(language, country);
+                    manager.setLocale(locale);
+
+            dateFormat = DateFormat.getDateInstance(DateFormat.LONG, locale);
+            System.out.println(manager.getString(Msg.Welcome));
+            System.out.println(manager.getString(Msg.Question));
+            System.out.println(manager.getString(Msg.Name));
+            System.out.println(dateFormat.format(d));
+            System.out.println("------------------------------------");
+
+        }
+        while (flag);
+    }
+
+}
