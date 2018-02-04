@@ -46,6 +46,7 @@ package by.it.karpeichyk.jd02_02;
             String goodName= by.it.karpeichyk.jd02_02.Goods.rndGoodName();
             Double goodPrice = Goods.getPrice(goodName);
             System.out.println(this+"товар "+goodName+" цена" + goodPrice+ " положил в корзину");
+
         }
         // System.out.println("полным полна корзина");
     }

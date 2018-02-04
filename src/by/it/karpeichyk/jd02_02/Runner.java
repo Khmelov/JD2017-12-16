@@ -12,10 +12,12 @@ public class Runner {
 
     public static void main(String[] args) {
         System.out.println("Runner: Магазин открыт");
-        for (int i = 1; i <= 5; i++) {
-            Cashier c=new Cashier(i);
-            new Thread(c).start();
-        }
+
+       for (int i = 1; i <= 5; i++) {
+           Cashier c = new Cashier(i);
+           new Thread(c).start();
+       }
+
         for (int second = 0; second <20 ; second++) {
             int count= Helper.getRandom(2);
             for (int i = 0; i <=count ; i++) {
@@ -30,6 +32,7 @@ public class Runner {
                 e.printStackTrace();
             }
         }
+
         while (!Dispatcher.allByerComplete()){
             Byer first=Dispatcher.ReadFirstToQueue();
             if (first!=null)
@@ -44,5 +47,6 @@ public class Runner {
         System.out.println("Все вышли!!");
         Helper.sleep(100,200);
         System.out.println("Runner:магазин закрыт");
+        System.out.println(Dispatcher.incCommpleteByer());
     }}
 
