@@ -1,9 +1,11 @@
 package by.it.kozlov.jd02_01;
 
 import java.util.*;
+import java.util.concurrent.Semaphore;
 
 class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
-    private boolean pensioneer = false;
+    private boolean pensioner = false;
+    private static Semaphore semaphore=new Semaphore(20);
 
     volatile Map<String, Double> buy = new HashMap<>();
 
@@ -12,7 +14,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
     }
 
     private void getPensioner() {
-        if (Helper.getRandom(4) == 0) pensioneer = true;
+        if (Helper.getRandom(4) == 0) pensioner = true;
     }
 
     Map<String, Double> getGoods() {
@@ -31,14 +33,21 @@ class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
 
     @Override
     public void enterToMarket() {
+        try {
+            semaphore.acquire();
+            Dispetcher.holeBuyer.incrementAndGet();
+            System.out.println("В зале "+Dispetcher.holeBuyer.get()+"человек");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         getPensioner();
-        System.out.println(this + (pensioneer ? "пенсионер" : "") + "зашел в магазин");
+        System.out.println(this + (pensioner ? "пенсионер" : "") + "зашел в магазин");
     }
 
     @Override
     public void chooseGoods() {
         for (int i = 1; i <= Helper.getRandom(5); i++) {
-            Helper.sleep(500, 2000, pensioneer);
+            Helper.sleep(500, 2000, pensioner);
             String goodName = Goods.rndGoodName();
             Double goodPrice = Goods.getPrice(goodName);
             buy.put(goodName, goodPrice);
@@ -61,26 +70,22 @@ class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
 
     @Override
     public void takeBasket() {
-        Helper.sleep(100, 200, pensioneer);
-        System.out.println(this + "взял корзину");
+        Helper.sleep(100, 200, pensioner);
+        //System.out.println(this + "взял корзину");
     }
 
     @Override
     public void putGoodsToBasket() {
-        Helper.sleep(100, 200, pensioneer);
-        System.out.println(this + "положил выбранный товар в корзину");
+        Helper.sleep(100, 200, pensioner);
+        //System.out.println(this + "положил выбранный товар в корзину");
     }
 
     @Override
     public void goToQueue() {
+        System.out.println(this + "стал в очередь");
         Dispetcher.addToQueue(this);
-        synchronized (this) {
-            try {
-                this.wait();
-            } catch (InterruptedException e) {
-                System.err.println(this + " невозможно стать в очередь");
-            }
-        }
+        Dispetcher.holeBuyer.getAndDecrement();
+        semaphore.release();
     }
 
     @Override

@@ -7,30 +7,37 @@ public class Runner {
 
     public static void main(String[] args) {
         System.out.println("Runner: Магазин открыт");
-        ExecutorService pool= Executors.newFixedThreadPool(5);
+        ExecutorService pool = Executors.newFixedThreadPool(5);
         for (int i = 1; i <= 5; i++) {
-            Cashier c=new Cashier(i);
+            Cashier c = new Cashier(i);
             pool.execute(c);
         }
 
+        for (int second = 0; second < 120; second++) {
+            int count = Helper.getRandom(2);
+            for (int i = 0; i <= count; i++) {
+                if (!Dispetcher.planComplete()) {
+                    Buyer b = new Buyer(Dispetcher.incCountBuyer());
+                    System.out.println("Runner: Новый " + b);
+                    Dispetcher.printCounts();
+                    b.start();
+                }
+            }
 
-        int count = Helper.getRandom(5, 30);
-        for (int i = 0; i <= count; i++) {
-            Buyer b = new Buyer(Dispetcher.incCountBuyer());
-            b.start();
-        }
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+            if (Dispetcher.planComplete()) break;
 
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 
         while (!Dispetcher.allBuyerComplete()) {
-            Buyer first = Dispetcher.readFirstQueue();
-            if (first != null)
+            Buyer any = Dispetcher.readFirstQueue();
+            if (any != null)
                 try {
-                    first.join();
+                    any.join();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

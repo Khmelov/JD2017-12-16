@@ -45,8 +45,8 @@ public class Cashier implements Runnable {
                     System.out.println(this + b.toString() + "общая сумма: " + sum + " Рублей");
                     try {
                         lock.lock();
-                        allPrice+=sum;
-                    }finally {
+                        allPrice += sum;
+                    } finally {
                         lock.unlock();
                     }
 
