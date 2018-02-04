@@ -3,8 +3,7 @@ package by.it.krasutski.calc;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Variable extends Var {
-
+class Variable extends Var {
     private String key;
     private Var value;
     static Map<String, Var> map = new HashMap<>();
@@ -13,11 +12,24 @@ public class Variable extends Var {
         this.key = key;
     }
 
-    private Variable(String key, Var value) {
+    Variable(String key, Var value) {
         this.key = key;
         this.value = value;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public Var getValue() {
+        return value;
+    }
+    public static Var getValue(String key) {
+        return map.get(key.trim());
+    }
+    static void set(String key, Var var){
+        map.put(key.trim(), var);
+    }
     @Override
     public String toString() {
         return this.key+"="+this.value;
@@ -28,7 +40,7 @@ public class Variable extends Var {
         if (other instanceof Scalar || other instanceof Vector || other instanceof Matrix) {
             map.put(key, other);
             return new Variable(key, map.get(key));
-        } else return super.assign(other);
+        } else throw new CalcException("");
     }
 
 }

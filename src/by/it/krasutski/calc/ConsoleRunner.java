@@ -9,15 +9,22 @@ public class ConsoleRunner {
         Parser parser = new Parser();
         Printer printer = new Printer();
         while (!(line = sc.nextLine()).equals("end")) {
-            Var result = null;
+            if (line.equals("print")) {
+                printer.printVariable();
+                continue;
+            }
+            if (line.equals("sort")) {
+                printer.sortVariable();
+                continue;
+            }
+            String result;
             try {
                 result = parser.calc(line.trim());
                 printer.print(result);
-                printer.printVariable();
-                printer.sortVariable();
             } catch (CalcException e) {
                 System.out.println("ERROR: " + e.getMessage());
             }
         }
+
     }
 }

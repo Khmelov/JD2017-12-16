@@ -18,7 +18,7 @@ class Vector extends Var {
         StringBuilder result = new StringBuilder();
         result.append('{');
         for (int i = 0; i < value.length; i++) {
-            if (i > 0) result.append(", ");
+            if (i > 0) result.append(",");
             result.append(value[i]);
         }
         result.append('}');
@@ -36,7 +36,7 @@ class Vector extends Var {
         } else if (other instanceof Vector) {
             if (this.value.length < ((Vector) other).value.length
                     || ((Vector) other).value.length < this.value.length) {
-                throw new CalcException("Сложение векторов разной длинны невозможно");
+                throw new CalcException(" Сложение векторов разной длинны невозможно ");
             } else
                 for (int i = 0; i < result.length; i++) {
                     result[i] = this.value[i] + ((Vector) other).value[i];
@@ -56,7 +56,7 @@ class Vector extends Var {
         } else if (other instanceof Vector) {
             if (this.value.length < ((Vector) other).value.length
                     || ((Vector) other).value.length < this.value.length) {
-                throw new CalcException("Вычитание векторов разной длинны невозможно");
+                throw new CalcException(" Вычитание векторов разной длинны невозможно ");
             } else
                 for (int i = 0; i < result.length; i++) {
                     result[i] = this.value[i] - ((Vector) other).value[i];
@@ -74,12 +74,11 @@ class Vector extends Var {
             }
             return new Vector(result);
         } else if (other instanceof Vector && this.value.length == ((Vector) other).value.length) {
-
             for (int i = 0; i < result.length; i++) {
                 result[i] = this.value[i] * ((Vector) other).value[i];
             }
             return new Vector(result);
-        } else return super.mul(other);
+        } else throw new CalcException(" Операция невозможна ");
     }
 
     @Override
@@ -87,10 +86,11 @@ class Vector extends Var {
         double[] result = new double[this.value.length];
         if (other instanceof Scalar) {
             for (int i = 0; i < result.length; i++) {
-                result[i] = this.value[i] / ((Scalar) other).getValue();
+                if (((Scalar) other).getValue() == 0) throw new CalcException(" Деление на 0 ");
+                else result[i] = this.value[i] / ((Scalar) other).getValue();
             }
             return new Vector(result);
-        } else return super.div(other);
+        } else throw new CalcException(" Операция невозможна ");
     }
 
     Vector(double[] value) {

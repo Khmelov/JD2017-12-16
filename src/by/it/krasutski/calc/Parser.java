@@ -1,32 +1,85 @@
 package by.it.krasutski.calc;
 
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Parser {
-    Var calc(String expression) throws CalcException {
-        String[] operand = expression.split(Patterns.OPERATION);
-        Var one = Var.createVar(operand[0]);
-        Var two = Var.createVar(operand[1]);
+class Parser {
+    private List<String> operations;
+    private List<String> operands;
+    private static final HashMap<String, Integer> priority = new HashMap<String, Integer>() {
+        {
+            this.put("=", 0);
+            this.put("+", 1);
+            this.put("-", 1);
+            this.put("*", 2);
+            this.put("/", 2);
+        }
+    };
+
+    private String oneOperation(String left, String operation, String right) throws CalcException {
+        Var two = Var.createVar(right);
+        if (operation.equals("=")) {
+            Variable.set(left, two);
+            return two.toString();
+
+        }
+        Var one = Var.createVar(left);
+
         if (one == null || two == null)
-            throw new CalcException("Ошибка парсинга выражения: " + expression);
-        Pattern operationPattern = Pattern.compile(Patterns.OPERATION);
-        Matcher matcher = operationPattern.matcher(expression);
-        if (matcher.find()) {
-            String operation = matcher.group();
-            switch (operation) {
-                case "+":
-                    return one.add(two);
-                case "-":
-                    return one.sub(two);
-                case "*":
-                    return one.mul(two);
-                case "/":
-                    return one.div(two);
-                case "=":
-                    return one.assign(two);
+            throw new CalcException(String.format("Error: %s%s%s:", left, operation, right));
+
+        switch (operation) {
+            case "+":
+                return one.add(two).toString();
+            case "-":
+                return one.sub(two).toString();
+            case "*":
+                return one.mul(two).toString();
+            case "/":
+                return one.div(two).toString();
+            default:
+                throw new CalcException(" Неизвестная ошибка ");
+        }
+    }
+
+    private int getPosOperation() {
+        int level = -1;
+        int pos = -1;
+        for (int i = 0; i < operations.size(); i++) {
+            int currentLevel = priority.get(operations.get(i));
+            if (currentLevel > level) {
+                level = currentLevel;
+                pos = i;
             }
         }
-        return null;
+        return pos;
+    }
+
+    String calc(String expression) throws CalcException {
+        Pattern pattern = Pattern.compile("(?<=\\()[\\w-+/*\\.\\{,\\}]+(?=\\))");
+        Matcher m = pattern.matcher(expression);
+        String line;
+        while (m.find()) {
+            line = m.group();
+            expression = expression.replace("(" + line + ")", calc(line));
+            m.reset(expression);
+        }
+        operations = new ArrayList<>();
+        operands = new ArrayList<>();
+        Collections.addAll(operands, expression.split(Patterns.OPERATION));
+        if (operands.size() < 2) return Objects.requireNonNull(Var.createVar(expression)).toString();
+        Pattern operationPattern = Pattern.compile(Patterns.OPERATION);
+        Matcher matcher = operationPattern.matcher(expression);
+        while (matcher.find()) operations.add(matcher.group());
+        while (operations.size() > 0) {
+            int pos = getPosOperation();
+            String left = operands.get(pos);
+            String operation = operations.remove(pos);
+            String right = operands.remove(pos + 1);
+            String res = oneOperation(left, operation, right);
+            operands.set(pos, res);
+        }
+        return operands.get(0);
     }
 }
