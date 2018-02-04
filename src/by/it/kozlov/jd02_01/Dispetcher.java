@@ -26,6 +26,14 @@ public class Dispetcher {
         return completeBuyer.incrementAndGet();
     }
 
+    static int getCompleteBuyer() {
+        return completeBuyer.get();
+    }
+
+    static int getCountBuyer() {
+        return countBuyer.get();
+    }
+
     static void printCounts() {
         System.out.printf("\tДиспетчер: Всего клиентов %d. Из них обслужено %d\n", countBuyer.get(), completeBuyer.get());
     }
@@ -40,14 +48,18 @@ public class Dispetcher {
 
 
     static Buyer extractFromQueue() {
-            return queue.poll();
+        return queue.poll();
     }
 
     static Buyer readFirstQueue() {
-            return queue.peek();
+        return queue.peek();
     }
 
     public static boolean planComplete() {
         return (countBuyer.get() >= PLAN);
+    }
+
+    public static int getQueueSize() {
+        return countBuyer.get() - completeBuyer.get() - holeBuyer.get();
     }
 }

@@ -5,7 +5,7 @@ import java.util.concurrent.Semaphore;
 
 class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
     private boolean pensioner = false;
-    private static Semaphore semaphore=new Semaphore(20);
+    private static Semaphore semaphore = new Semaphore(20);
 
     volatile Map<String, Double> buy = new HashMap<>();
 
@@ -36,12 +36,12 @@ class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
         try {
             semaphore.acquire();
             Dispetcher.holeBuyer.incrementAndGet();
-            System.out.println("В зале "+Dispetcher.holeBuyer.get()+"человек");
+            System.out.println("В зале " + Dispetcher.holeBuyer.get() + "человек");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         getPensioner();
-        System.out.println(this + (pensioner ? "пенсионер" : "") + "зашел в магазин");
+        System.out.println(this + (pensioner ? "пенсионер " : "") + "зашел в магазин");
     }
 
     @Override
@@ -51,7 +51,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
             String goodName = Goods.rndGoodName();
             Double goodPrice = Goods.getPrice(goodName);
             buy.put(goodName, goodPrice);
-            System.out.println(this + "выбрал товар " + goodName + " цена:" + goodPrice);
+            //System.out.println(this + "выбрал товар " + goodName + " цена:" + goodPrice);
         }
         System.out.println(this + "завершил выбор товаров");
     }
@@ -85,7 +85,15 @@ class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
         System.out.println(this + "стал в очередь");
         Dispetcher.addToQueue(this);
         Dispetcher.holeBuyer.getAndDecrement();
-        semaphore.release();
+        synchronized (this) {
+            try {
+                //и останавливаемся (запускать поток будет уже кассир)
+                this.wait();
+            } catch (InterruptedException e) {
+                System.err.println(this + " неожиданная ошибка !!!");
+            }
+            semaphore.release();
+        }
     }
 
     @Override
