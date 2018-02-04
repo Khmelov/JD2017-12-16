@@ -1,0 +1,11 @@
+/Users/George/IdeaProjects/JD2017-12-16/src/by/it/krasutski/jd02_05/resources
+"/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/bin/native2ascii.exec"
+-encoding utf-8 strings.txt strings.properties
+
+/Users/George/IdeaProjects/JD2017-12-16/src/by/it/krasutski/jd02_05/resources
+"/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/bin/native2ascii.exec"
+-encoding utf-8 strings_be_BY.txt strings_be_BY.properties
+
+/Users/George/IdeaProjects/JD2017-12-16/src/by/it/krasutski/jd02_05/resources
+"/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/bin/native2ascii.exec"
+-encoding utf-8 strings_ru_RU.txt strings_ru_RU.properties
