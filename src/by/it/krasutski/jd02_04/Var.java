@@ -1,4 +1,4 @@
-package by.it.krasutski.calc;
+package by.it.krasutski.jd02_04;
 
 abstract class Var implements Operation {
 

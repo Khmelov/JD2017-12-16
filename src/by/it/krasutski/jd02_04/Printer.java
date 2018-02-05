@@ -1,6 +1,7 @@
-package by.it.krasutski.calc;
+package by.it.krasutski.jd02_04;
 
-import java.util.*;
+import java.util.AbstractMap;
+import java.util.TreeMap;
 
 public class Printer {
     void print(String var) {
