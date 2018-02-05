@@ -1,12 +1,13 @@
 package by.it.kozlov.jd02_01;
 
 import java.util.*;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Semaphore;
 
 class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
     private boolean pensioner = false;
     private static Semaphore semaphore = new Semaphore(20);
-
+    private static Semaphore basket = new Semaphore(30);
     volatile Map<String, Double> buy = new HashMap<>();
 
     Buyer(int number) {
@@ -70,6 +71,11 @@ class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
 
     @Override
     public void takeBasket() {
+        try {
+            basket.acquire();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Helper.sleep(100, 200, pensioner);
         //System.out.println(this + "взял корзину");
     }
@@ -87,17 +93,19 @@ class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
         Dispetcher.holeBuyer.getAndDecrement();
         synchronized (this) {
             try {
-                //и останавливаемся (запускать поток будет уже кассир)
                 this.wait();
             } catch (InterruptedException e) {
-                System.err.println(this + " неожиданная ошибка !!!");
+                System.err.println(this + "ошибка");
             }
             semaphore.release();
+            basket.release();
         }
     }
 
     @Override
     public int compareTo(Buyer o) {
+        if (this.pensioner && !o.pensioner) return 1;
+        if (!this.pensioner && o.pensioner) return -1;
         return 0;
     }
 }
