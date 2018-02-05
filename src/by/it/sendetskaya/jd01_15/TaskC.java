@@ -1,9 +1,7 @@
 package by.it.sendetskaya.jd01_15;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -38,6 +36,11 @@ public class TaskC {
             Scanner sc = new Scanner(System.in);
             String choose = sc.nextLine();
 
+            if (choose.startsWith("cd ..")||choose.startsWith("cd.. ")) {
+                //namePackage = choose.replace("cd ", "");
+                choose = "cd..";
+
+            }
             if (choose.startsWith("cd ")) {
                 namePackage = choose.replace("cd ", "");
                 choose = "cd";
@@ -48,6 +51,7 @@ public class TaskC {
                 }
 
             }
+
             switch (choose) {
                 case "cd": {
                     String pathChoose = pathCurrent + namePackage;

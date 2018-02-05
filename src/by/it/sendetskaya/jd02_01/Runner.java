@@ -1,69 +1,97 @@
 package by.it.sendetskaya.jd02_01;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Runner {
 
-    static Queue<Buyer> queue=new LinkedList<>();
-    private static int countBuyer=0;
+
+
     private static boolean pensioneer=false;
+    //int countBuyer=0;
 
     public static void main(String[] args) {
+
+        System.out.println("Runner: Магазин открыт");
+
+        ///
+        ExecutorService pool= Executors.newFixedThreadPool(5);
+
+        ////
+        for (int i = 1; i <= 5; i++) {
+            Cashier cashier=new Cashier(i);
+            pool.execute(cashier);
+        }
+        ////
 
         for (int second = 0; second < 120; second++) {
 
             if ((second>0&&second<=30)||(second>60&&second<=90)) {
-                while (countBuyer <= (10 + second)) {
+                while (Dispetcher.allCountBuyer() <= (10 + second)) {
                     addQueue();
                 }
             }
             else
             {
-                while (countBuyer<=(40+(30-second)))
+                while (Dispetcher.allCountBuyer()<=(40+(30-second)))
                 {
                     addQueue();
                     }
                 }
+            if (Dispetcher.planComplete()) break;
 
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
         }
 
-        while (queue.size()>0)
-        {
-            //
+        ///
 
-            for (Buyer buyer : queue) {
+        while (!Dispetcher.allBuyerComplete())   ///изменено
+        {
+            Buyer first=Dispetcher.readFirstQueue();   //ждет пока обслужат покупателя
+            if (first!=null)
+            {
                 try {
-                    buyer.join();
-                    break;           //ОШИБКА! может уже не быть последнего покупателя? он мог уже выйти
-                } catch (InterruptedException e) {
+                    first.join();
+                }
+                catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
         }
-        System.out.println("Все вышли");
+        System.out.println("Runner: Все вышли");
+        pool.shutdown();
+        //очереди кассиров нет, поэтому
+        //тут просто подождем.
+        Helper.sleep(100,200);
+        System.out.println("Runner: Магазин закрыт");
 
     }
 
     private static void addQueue() {
-        int count = Helper.getRandom(2);
+        int count = Helper.getRandom(12);
         for (int i = 0; i <= count; i++) {
-            ++countBuyer;
-            if (countBuyer % 4 == 0) {
-                pensioneer = true;
-            } else pensioneer = false;
-            Buyer b = new Buyer(countBuyer, pensioneer);
+            if (!Dispetcher.planComplete()) {
+                Dispetcher.incCountBuyer();
+                if (Dispetcher.allCountBuyer() % 4 == 0) {
+                    pensioneer = true;
+                } else pensioneer = false;
+                Buyer b = new Buyer(Dispetcher.allCountBuyer(), pensioneer);
+                System.out.println("Runner: Новый " + b);
 
-            b.start();
-            queue.add(b);
+                b.start();
+
+               // Dispetcher.addLastToQueue(b);
+                Dispetcher.printCounts();
+            }
+
         }
 
-            try {
+        try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
