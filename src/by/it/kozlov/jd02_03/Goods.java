@@ -1,4 +1,4 @@
-package by.it.kozlov.jd02_01;
+package by.it.kozlov.jd02_03;
 
 import java.util.ArrayList;
 import java.util.HashMap;

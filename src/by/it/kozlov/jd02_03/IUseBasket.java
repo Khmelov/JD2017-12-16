@@ -1,4 +1,4 @@
-package by.it.kozlov.jd02_01;
+package by.it.kozlov.jd02_03;
 
 public interface IUseBasket {
     void takeBasket(); //взял корзину
