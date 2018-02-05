@@ -1,0 +1,11 @@
+D:\Программирование\Программирование на JAVA\JD2017-12-16\src\by\it
+\patsko\jd02_05\resource>"C:\Program Files\Java\jdk1.8.0_144\bin\native2ascii.exe"
+ -encoding utf-8 str.txt  str.properties
+
+D:\Программирование\Программирование на JAVA\JD2017-12-16\src\by\it
+\patsko\jd02_05\resource>"C:\Program Files\Java\jdk1.8.0_144\bin\native2ascii.exe"
+ -encoding utf-8 str_be_BY.txt  str_be_BY.properties
+
+D:\Программирование\Программирование на JAVA\JD2017-12-16\src\by\it
+\patsko\jd02_05\resource>"C:\Program Files\Java\jdk1.8.0_144\bin\native2ascii.exe"
+ -encoding utf-8 str_ru_RU.txt  str_ru_RU.properties

@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Basket {
     public Basket() {
-//        System.out.println("Количество свободных корзинок = "+(30-numOfOccupiedBasket.incrementAndGet()));
+        System.out.println("Количество свободных корзинок = "+(30-numOfOccupiedBasket.incrementAndGet()));
     }
 
     static AtomicInteger numOfOccupiedBasket = new AtomicInteger();

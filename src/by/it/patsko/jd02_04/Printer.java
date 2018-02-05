@@ -1,4 +1,4 @@
-package by.it.patsko.calc;
+package by.it.patsko.jd02_04;
 
 import java.util.AbstractMap;
 import java.util.TreeMap;

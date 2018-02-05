@@ -1,9 +1,6 @@
-package by.it.patsko.calc;
+package by.it.patsko.jd02_04;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
