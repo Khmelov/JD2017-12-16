@@ -1,4 +1,4 @@
-package by.it.kozlov.jd02_01;
+package by.it.kozlov.jd02_03;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.PriorityBlockingQueue;

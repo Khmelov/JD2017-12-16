@@ -1,7 +1,6 @@
-package by.it.kozlov.jd02_01;
+package by.it.kozlov.jd02_03;
 
 import java.util.*;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Semaphore;
 
 class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
@@ -105,7 +104,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket, Comparable<Buyer> {
     @Override
     public int compareTo(Buyer o) {
         if (this.pensioner && !o.pensioner) return 1;
-        if (!this.pensioner && o.pensioner) return -1;
+        else if (!this.pensioner && o.pensioner) return -1;
         return 0;
     }
 }

@@ -1,9 +1,7 @@
-package by.it.kozlov.jd02_01;
+package by.it.kozlov.jd02_03;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 

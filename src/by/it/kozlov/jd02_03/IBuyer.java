@@ -1,4 +1,4 @@
-package by.it.kozlov.jd02_01;
+package by.it.kozlov.jd02_03;
 
 public interface IBuyer {
     void enterToMarket(); //вошел в магазин (мгновенно)
