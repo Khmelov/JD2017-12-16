@@ -10,5 +10,7 @@ class Patterns {
 
     //этот паттерн весьма несовершенный, т.к. операции вида
     //3.0 * -4.1 работать не смогут. Проблему решим позднее.
-    static final String OPERATION="[-+*/=]";                             //операция
+    static final String OPERATION="(?<=[^=*/+{,-])([=/*/+-])";                             //операция
+    static final String SKOBKI="\\((?!.*\\(.*).+?\\)";
+
 }

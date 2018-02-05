@@ -48,7 +48,7 @@ public class Scalar extends Var {
             if (((Scalar) other).value == 0) throw new CalcException("Деление на ноль!");
             return new Scalar(value / ((Scalar) other).value);
         }
-        else return super.div(this);
+        else return super.div(other);
     }
 
     @Override
