@@ -1,12 +1,12 @@
 package by.it.kozlov.calc;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class Test02_04 {
+class Test02_04 {
     @Test
-    public void calcA() throws CalcException {
+    void calcA() throws CalcException {
         Parser parser = new Parser();
         String actual = parser.calc("A=1+2*-4+5/5--5");
         assertEquals("-1.0", actual, "Error test");
@@ -21,7 +21,7 @@ public class Test02_04 {
     }
 
     @Test
-    public void calcB() throws CalcException {
+    void calcB() throws CalcException {
         Parser parser = new Parser();
         String actual = parser.calc("{2,3,4}+{5,6,7}*6-{2,3,4}");
         assertEquals("{30.0,36.0,42.0}", actual, "Error test");
@@ -38,7 +38,7 @@ public class Test02_04 {
     }
 
     @Test
-    public void calcC() throws CalcException {
+    void calcC() throws CalcException {
         Parser parser = new Parser();
         String actual = parser.calc("{{1,2},{8,-3}}*{1,-2}");
         assertEquals("{-3.0,14.0}", actual, "Error test");
