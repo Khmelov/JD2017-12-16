@@ -12,11 +12,12 @@ public class Runner {
         boolean flag = true;
         DateFormat dateFormat;
         Date d =Calendar.getInstance().getTime();
-
-        String country = "";
-        String language = "";
-        Locale locale;
         ResMan manager = ResMan.INSTANCE;
+
+
+        String country ="";
+        String language ="";
+        Locale locale;
 
 
         System.out.println("Для переключения языка введите en-английский, " +
@@ -29,8 +30,10 @@ public class Runner {
 
             switch (strChoose) {
                 case "en":
-                    country = "US";
-                    language = "en";
+                    if (args.length==2) {
+                        country = args[0];
+                        language = args[1];
+                    }
                     System.out.println("английский");
                     break;
                 case "ru":
@@ -47,6 +50,10 @@ public class Runner {
                     flag = false;
                     break;
                 default:
+                    if (args.length==2) {
+                        country = args[0];
+                        language = args[1];
+                    }
                     System.out.println("по умолчанию английский");
             }
             if (flag) {

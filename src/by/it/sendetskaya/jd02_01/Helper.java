@@ -10,14 +10,15 @@ public class Helper {
         return random.nextInt(max);
     }
 
-    static int getRandom(int start, int stop)
+    public static int getRandom(int start, int stop)
     {
-        return start+random.nextInt(stop-start+1);
+        return start+random.nextInt(stop-start);
     }
+
 
     static void sleep(int start, int stop) {
         try {
-            Thread.sleep(start,stop);
+            Thread.sleep(Helper.getRandom(start,stop));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
