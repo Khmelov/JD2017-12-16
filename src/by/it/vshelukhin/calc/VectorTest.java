@@ -18,7 +18,7 @@ public class VectorTest {
     }
 
     @Test(expected = CalcException.class)
-    public void testAddVector() throws CalcException {
+    public void testExceptionVectorAddVector() throws CalcException {
         Vector one = new Vector("{5,5}");
         Vector two = new Vector("{1,2,3}");
         Var rezult = one.add(two);
@@ -26,7 +26,7 @@ public class VectorTest {
     }
 
     @Test(expected = CalcException.class)
-    public void testAddMatrix() throws CalcException {
+    public void testExceptionVectorAddMatrix() throws CalcException {
         Vector one = new Vector("{5,5}");
         Matrix two =new Matrix("{{1,2},{3,4}}");;
         Var rezult = one.add(two);
@@ -45,7 +45,7 @@ public class VectorTest {
     }
 
     @Test(expected = CalcException.class)
-    public void testSubVector() throws CalcException {
+    public void testExceptionVectorSubVector() throws CalcException {
         Vector one = new Vector("{5,5}");
         Vector two = new Vector("{1,2,3}");
         Var rezult = one.sub(two);
@@ -53,7 +53,7 @@ public class VectorTest {
     }
 
     @Test(expected = CalcException.class)
-    public void testSubMatrix() throws CalcException {
+    public void testExceptionVectorSubMatrix() throws CalcException {
         Vector one = new Vector("{5,5}");
         Matrix two =new Matrix("{{1,2},{3,4}}");;
         Var rezult = one.sub(two);
@@ -75,7 +75,7 @@ public class VectorTest {
     }
 
     @Test(expected = CalcException.class)
-    public void testMulVector() throws CalcException {
+    public void testExceptionVectorMulVector() throws CalcException {
         Vector one = new Vector("{5,5}");
         Vector two = new Vector("{1,2,3}");
         Var rezult = one.mul(two);
@@ -83,7 +83,7 @@ public class VectorTest {
     }
 
     @Test(expected = CalcException.class)
-    public void testMulMatrix() throws CalcException {
+    public void testExceptionVectorMulMatrix() throws CalcException {
         Vector one = new Vector("{5,9,4}");
         Matrix two =new Matrix("{{1,2},{3,4}}");;
         Var rezult = one.mul(two);
@@ -99,7 +99,7 @@ public class VectorTest {
     }
 
     @Test(expected = CalcException.class)
-    public void testDivVector() throws CalcException {
+    public void testExceptionVectorDivVector() throws CalcException {
         Vector one = new Vector("{5,5}");
         Vector two = new Vector("{1,2,3}");
         Var rezult = one.div(two);
@@ -107,11 +107,10 @@ public class VectorTest {
     }
 
     @Test(expected = CalcException.class)
-    public void testDivMatrix() throws CalcException {
+    public void testExceptionVectorDivMatrix() throws CalcException {
         Vector one = new Vector("{5,9}");
         Matrix two =new Matrix("{{1,2},{3,4}}");;
         Var rezult = one.div(two);
         fail("метод не генерирует исключение");
     }
-
 }

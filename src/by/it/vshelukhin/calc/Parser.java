@@ -33,11 +33,6 @@ public class Parser {
         return resultOperationPosition;
     }
 
-    public static void main(String[] args) throws CalcException {
-        Parser pr = new Parser();
-        String a = "((2*(4-1)+3)*8)";
-        System.out.println(pr.calc(a));
-    }
     Var calc (String expressionAll) throws CalcException {
 
         if (!testSkobki(expressionAll)) throw new CalcException("Неверный баланс скобок!");

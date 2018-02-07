@@ -57,27 +57,21 @@ public class ScalarTest {
     }
 
     @Test
-    public void TestDivScalar() throws CalcException {
+    public void testDiv() throws CalcException {
         Scalar one = new Scalar(3);
         Var two = new Scalar(2);
         Var rezult = one.div(two);
         assertEquals(new Scalar(1.5).toString(), rezult.toString());
-//        two = new Vector("{1,2}");
-//        rezult = one.div(two);
-//        assertEquals(null, rezult.toString());
-//        two = new Matrix("{{1,2},{3,4}}");
-//        rezult = one.div(two);
-//        assertEquals(null, rezult.toString());
     }
     @Test(expected = CalcException.class)
-    public void TestDivVector() throws Exception {
+    public void testExceptionScalarDivVector() throws Exception {
         Scalar one = new Scalar(2);
         Var two = new Vector("{1,2}");
         Var rezult = one.div(two);
         fail("метод не генерирует исключение");
     }
     @Test(expected = CalcException.class)
-    public void TestDivMatrix() throws Exception {
+    public void testExceptionScalarDivMatrix() throws Exception {
         Scalar one = new Scalar(2);
         Var two = new Matrix("{{1,2},{3,4}}");
         Var rezult = one.div(two);
