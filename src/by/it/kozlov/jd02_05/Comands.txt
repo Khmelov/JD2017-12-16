@@ -1,0 +1,8 @@
+cd C:\Users\skynet\IdeaProjects\JD2017-12-16\src\by\it\kozlov\jd02_05
+"C:\program files\java\jdk1.8.0_144\bin\native2ascii.exe" -encoding utf-8 properties_ru.txt properties_ru.properties
+
+cd C:\Users\skynet\IdeaProjects\JD2017-12-16\src\by\it\kozlov\jd02_05
+"C:\program files\java\jdk1.8.0_144\bin\native2ascii.exe" -encoding utf-8 properties_be.txt properties_be.properties
+
+cd C:\Users\skynet\IdeaProjects\JD2017-12-16\src\by\it\kozlov\jd02_05
+"C:\program files\java\jdk1.8.0_144\bin\native2ascii.exe" -encoding utf-8 properties_en.txt properties_en.properties
