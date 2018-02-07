@@ -35,12 +35,4 @@ class Variable extends Var {
         return this.key+"="+this.value;
     }
 
-    @Override
-    public Var assign(Var other) throws CalcException {
-        if (other instanceof Scalar || other instanceof Vector || other instanceof Matrix) {
-            map.put(key, other);
-            return new Variable(key, map.get(key));
-        } else throw new CalcException("");
-    }
-
 }
