@@ -18,7 +18,7 @@ public class MatrixTest {
     }
 
     @Test (expected = CalcException.class)
-    public void teatAddVector() throws CalcException {
+    public void testExceptionMatrixAddVector() throws CalcException {
         Var one = new Matrix("{{3,5},{2,8}}");
         Var two = new Vector("{3,5}");
         Var rezult = one.add(two);
@@ -26,7 +26,7 @@ public class MatrixTest {
     }
 
     @Test (expected = CalcException.class)
-    public void teatAddMatrix() throws CalcException {
+    public void testExceptionMatrixAddMatrix() throws CalcException {
         Var one = new Matrix("{{3,5},{2,8}}");
         Var two = new Matrix("{{3,5,8},{2,8,1}}");
         Var rezult = one.add(two);
@@ -45,7 +45,7 @@ public class MatrixTest {
     }
 
     @Test (expected = CalcException.class)
-    public void teatSubVector() throws CalcException {
+    public void testExceptionMatrixSubVector() throws CalcException {
         Var one = new Matrix("{{3,5},{2,8}}");
         Var two = new Vector("{3,5}");
         Var rezult = one.sub(two);
@@ -53,7 +53,7 @@ public class MatrixTest {
     }
 
     @Test (expected = CalcException.class)
-    public void teatSubMatrix() throws CalcException {
+    public void testExceptionMatrixSubMatrix() throws CalcException {
         Var one = new Matrix("{{3,5},{2,8}}");
         Var two = new Matrix("{{3,5,8},{2,8,1}}");
         Var rezult = one.sub(two);
@@ -77,7 +77,7 @@ public class MatrixTest {
     }
 
     @Test (expected = CalcException.class)
-    public void teatMulVector() throws CalcException {
+    public void testExceptionMatrixMulVector() throws CalcException {
         Var one = new Matrix("{{3,5},{2,8}}");
         Var two = new Vector("{3,5,8}");
         Var rezult = one.mul(two);
@@ -85,7 +85,7 @@ public class MatrixTest {
     }
 
     @Test (expected = CalcException.class)
-    public void teatMulMatrix() throws CalcException {
+    public void testExceptionMatrixMulMatrix() throws CalcException {
         Var one = new Matrix("{{3,5},{2,8}}");
         Var two = new Matrix("{{3,5,8},{2,8,1},{9,1,1}}");
         Var rezult = one.mul(two);
@@ -102,7 +102,7 @@ public class MatrixTest {
     }
 
     @Test (expected = CalcException.class)
-    public void testDivVector() throws CalcException {
+    public void testExceptionMatrixDivVector() throws CalcException {
         Var one = new Matrix("{{3,5},{2,8}}");
         Var two = new Vector("{3,5,8}");
         Var rezult = one.div(two);
@@ -110,7 +110,7 @@ public class MatrixTest {
     }
 
     @Test (expected = CalcException.class)
-    public void testDivMatrix() throws CalcException {
+    public void testExceptionMatrixDivMatrix() throws CalcException {
         Var one = new Matrix("{{3,5},{2,8}}");
         Var two = new Matrix("{{3,5,8},{2,8,1},{9,1,1}}");
         Var rezult = one.div(two);
