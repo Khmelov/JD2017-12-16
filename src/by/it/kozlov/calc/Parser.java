@@ -74,6 +74,7 @@ class Parser {
 
     String calc(String expression) throws CalcException {
         expression = Parser.operations(expression);
+        Logger logger = Logger.getLogger();
         String res = null;
         // get operands
         String[] part = expression.split(Patterns.OPERATION);
@@ -95,6 +96,7 @@ class Parser {
             res = oneOperationCalc(left, operation, right);
             operands.set(pos, res);
         }
+        logger.logger(res);
         return res;
     }
 }
