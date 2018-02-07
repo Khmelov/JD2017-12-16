@@ -18,13 +18,13 @@ class Parser {
     };
 
     private String oneOperation(String left, String operation, String right) throws CalcException {
-        Var two = Var.createVar(right);
+        Var two = FabricVar.createVar(right);
         if (operation.equals("=")) {
             Variable.set(left, two);
             return two.toString();
 
         }
-        Var one = Var.createVar(left);
+        Var one = FabricVar.createVar(left);
 
         if (one == null || two == null)
             throw new CalcException(String.format("Error: %s%s%s:", left, operation, right));
@@ -68,7 +68,7 @@ class Parser {
         operations = new ArrayList<>();
         operands = new ArrayList<>();
         Collections.addAll(operands, expression.split(Patterns.OPERATION));
-        if (operands.size() < 2) return Objects.requireNonNull(Var.createVar(expression)).toString();
+        if (operands.size() < 2) return Objects.requireNonNull(FabricVar.createVar(expression)).toString();
         Pattern operationPattern = Pattern.compile(Patterns.OPERATION);
         Matcher matcher = operationPattern.matcher(expression);
         while (matcher.find()) operations.add(matcher.group());
