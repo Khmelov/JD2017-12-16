@@ -12,6 +12,7 @@ public class Goods extends HashMap<String,Double>{
             this.put("Вода", 2.00);
             this.put("Мука", 3.00);
             this.put("Соль", 1.00);
+            this.put("Молоко", 1.50);
         }
     };
 

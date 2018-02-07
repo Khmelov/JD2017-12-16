@@ -5,18 +5,13 @@ import java.util.concurrent.Executors;
 
 public class Runner {
 
-
-
     private static boolean pensioneer=false;
-    //int countBuyer=0;
 
     public static void main(String[] args) {
 
         System.out.println("Runner: Магазин открыт");
-
         ///
         ExecutorService pool= Executors.newFixedThreadPool(5);
-
         ////
         for (int i = 1; i <= 5; i++) {
             Cashier cashier=new Cashier(i);
@@ -39,20 +34,17 @@ public class Runner {
                     }
                 }
             if (Dispetcher.planComplete()) break;
-
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
         }
-
         ///
 
         while (!Dispetcher.allBuyerComplete())   ///изменено
         {
-            Buyer first=Dispetcher.readFirstQueue();   //ждет пока обслужат покупателя
+            Buyer first=Queue.readFirstQueue();   //ждет пока обслужат покупателя
             if (first!=null)
             {
                 try {
@@ -63,8 +55,12 @@ public class Runner {
                 }
             }
         }
-        System.out.println("Runner: Все вышли");
         pool.shutdown();
+        System.out.println("Runner: Все вышли");
+        Helper.sleep(100,200);
+        System.out.println("---------------------------------------------------------------------");
+        System.out.printf("ВСЕГО |%10s|%10s|%10s|%10s|%10s|%5.2f|\n", "", "", "", "", "", Buyer.sumGeneral);
+
         //очереди кассиров нет, поэтому
         //тут просто подождем.
         Helper.sleep(100,200);
@@ -73,22 +69,18 @@ public class Runner {
     }
 
     private static void addQueue() {
-        int count = Helper.getRandom(12);
-        for (int i = 0; i <= count; i++) {
-            if (!Dispetcher.planComplete()) {
+
+            int count = Helper.getRandom(2);
+            for (int i = 0; i <= count; i++){
+                if (!Dispetcher.planComplete()){
                 Dispetcher.incCountBuyer();
                 if (Dispetcher.allCountBuyer() % 4 == 0) {
                     pensioneer = true;
                 } else pensioneer = false;
                 Buyer b = new Buyer(Dispetcher.allCountBuyer(), pensioneer);
                 System.out.println("Runner: Новый " + b);
-
                 b.start();
-
-               // Dispetcher.addLastToQueue(b);
-                Dispetcher.printCounts();
             }
-
         }
 
         try {
@@ -96,7 +88,5 @@ public class Runner {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-
     }
 }

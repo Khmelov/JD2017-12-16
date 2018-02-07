@@ -1,13 +1,11 @@
 package by.it.sendetskaya.jd02_01;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
+
+import java.util.Map;
 
 public class Cashier implements Runnable{
 
     private int number;
-    //private static int numberCashier = 0;
-    private final static BlockingQueue<Cashier> queueCashier=new ArrayBlockingQueue<>(5);
 
 
     public Cashier(int number) {
@@ -23,36 +21,93 @@ public class Cashier implements Runnable{
     @Override
     public void run() {
 
-        Queue.addToQueue(new Cashier(this.number));
-        System.out.println(this + "открыл кассу.");
+        Buyer b;
+        do {
 
             while (!Dispetcher.allBuyerComplete()) {
-                Buyer b = Dispetcher.delFirstFromQueue();
-                if (b != null) {
-                    System.out.println(this + "Начало обслуживания покупателя " + b);
-                    Helper.sleep(200, 500);
 
-                    System.out.println(this + "печатаем чек для " + b + " , сумма чека: " + Buyer.sum);
+                if (Queue.getSizeQueue() / 5 >= Queue.getCashierQueueSize() || Queue.getCashierQueueSize() == 0) {
+                    Queue.addCashierToQueue(this);
+                    System.out.println(this + "открыл кассу.");
+                }
+                if (Queue.inclQueueCashier(this)) {
 
-                    Helper.sleep(200, 500);
-                    System.out.println(this + "Конец обслуживания покупателя " + b);
-                    synchronized (b) {
-                        b.notify();
-                    }if (Dispetcher.getSizeQueque()/5>=Queue.numberCashier) {
-                        Queue.addToQueue(new Cashier(this.number));
-                        System.out.println(this + "открыл кассу.");
-                    }
-                    if (Dispetcher.getSizeQueque()/5<Queue.numberCashier&&Queue.numberCashier!=1) {
-                        Queue.delFromQueue();
-                        System.out.println(this + "закрыл кассу.");
+                    b = Queue.delFirstFromQueue();
+                    if (b != null) {
+                        System.out.println(this + "Начало обслуживания покупателя " + b);
+                        Helper.sleep(200, 500);
+
+                        synchronized (b){
+                            printBuild(b);
+                        }
+                        Helper.sleep(200, 500);
+                        System.out.println(this + "Конец обслуживания покупателя " + b);
+                        synchronized (b) {
+                            b.notify();
+                        }
+                        Queue.delBacketFromQueue(b);
+//
+                        if (Queue.getSizeQueue() / 5 < Queue.getCashierQueueSize()) {
+                            Queue.delCashierFromQueue();
+                            System.out.println(this + "закрыл кассу.");
+                            Thread.yield();
+                        }
+                    } else
+                        //если пока нет работы, отдадим управление другим потокам
                         Thread.yield();
-                    }
-                } else
-                    //если пока нет работы, отдадим управление другим потокам
-                    Thread.yield();
+                }
             }
+        }
+        while (!Dispetcher.planComplete());
+        if (Queue.getCashierQueueSize()>0) {
+            Queue.delCashierFromQueue();
+        }
+    }
 
+    private synchronized void printBuild(Buyer b) {
 
+        double sum=0, price;
+        String name;
+
+        System.out.println(this + "печатаем чек для " + b + ":");
+
+        System.out.printf("Кассы |%10s|%10s|%10s|%10s|%10s|%5s|\n","1","2","3","4","5","Сумма");
+        System.out.println("--------------------------------------------------------------------");
+        int choose=this.number;
+
+        for (Map.Entry<String, Double> entry: Buyer.hashMap.entrySet())
+        {
+            price=entry.getValue();
+            name=entry.getKey();
+            String print=name+"="+price;
+
+            switch (choose)
+            {
+
+                case 1:
+                    System.out.printf("      |%10s|%10s|%10s|%10s|%10s|%5s|\n", print, "", "", "", "", "");
+                    break;
+                case 2:
+                    System.out.printf("      |%10s|%10s|%10s|%10s|%10s|%5s|\n", "", print, "", "", "", "");
+                    break;
+                case 3:
+                    System.out.printf("      |%10s|%10s|%10s|%10s|%10s|%5s|\n", "", "", print, "", "", "");
+                    break;
+                case 4:
+                    System.out.printf("      |%10s|%10s|%10s|%10s|%10s|%5s|\n", "", "", "", print, "", "");
+                    break;
+                case 5:
+                    System.out.printf("      |%10s|%10s|%10s|%10s|%10s|%5s|\n", "", "", "", "", print, "");
+                    break;
+                    default:
+                        System.out.println("Непредвиденная ошибка!");
+                    break;
+            }
+            sum+=price;
+        }
+        System.out.printf("Сумма |%10s|%10s|%10s|%10s|%10s|%5s|\n", "", "", "", "", "", sum);
+
+        System.out.println("--------------------------------------------------------------------");
     }
 
 }

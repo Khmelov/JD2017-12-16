@@ -10,10 +10,11 @@ public class Helper {
         return random.nextInt(max);
     }
 
-    private static int getRandom(int start, int stop)
+    public static int getRandom(int start, int stop)
     {
         return start+random.nextInt(stop-start);
     }
+
 
     static void sleep(int start, int stop) {
         try {
