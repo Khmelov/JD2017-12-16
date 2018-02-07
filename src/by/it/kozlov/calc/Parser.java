@@ -29,13 +29,13 @@ class Parser {
     }
 
     private String oneOperationCalc(String left, String operation, String right) throws CalcException {
-        Var two = Var.createVar(right);
+        Var two = VarFactory.getVar(right);
         if (operation.equals("=")) {
             VarsMap.set(left, two);
             return two.toString();
         }
 
-        Var one = Var.createVar(left);
+        Var one = VarFactory.getVar(left);
         if (one == null || two == null)
             throw new CalcException(
                     String.format(" Ошибка %s%s%s:", left, operation, right)
