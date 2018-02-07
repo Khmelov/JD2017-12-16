@@ -15,7 +15,7 @@ public class ConsoleRunner {
             }
 
             try {
-                System.out.println(parser.operations(line.trim()));
+                System.out.println(parser.calc(line.trim()));
             } catch (CalcException e) {
                 System.out.println("ERROR: " + e.getMessage());
             }
