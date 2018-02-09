@@ -67,7 +67,12 @@ class Parser {
             temp = temp.replace("(", "");
             temp = temp.replace(")", "");
             temp = parser.calc(temp);
-            stringBuilder.replace(matcher.start(), matcher.end(), temp);
+            try {
+                stringBuilder.replace(matcher.start(), matcher.end(), temp);
+            } catch (NullPointerException e) {
+                throw new CalcException(String.format(" Ошибка парсинга %s\n", string));
+            }
+
         }
         return stringBuilder.toString();
     }
@@ -97,6 +102,7 @@ class Parser {
             operands.set(pos, res);
         }
         logger.logger(res);
+        if (res == null) throw new CalcException(String.format(" Введено некоректное выражение %s", expression));
         return res;
     }
 }
