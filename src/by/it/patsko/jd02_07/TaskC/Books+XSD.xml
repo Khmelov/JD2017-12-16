@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.by/it/patsko/xml/catalog Books.xsd"
+         xmlns="http://www.by/it/patsko/xml/catalog">
+    <Category>                                                      <!--раздел-->
+        <CategoryName>Цифровые технологии</CategoryName>            <!--название раздела-->
+        <Books>                                                     <!--книги в разделе-->
+            <Book>                                                  <!--конкретная книга-->
+                <Name>Java.
+                    Эффективное программирование
+                </Name>                                             <!--название книги-->
+                <Author>Джошуа Блох</Author>                        <!--автор-->
+                <Price>200</Price>                                  <!--цена товара-->
+                <BookDetails>                                       <!--описание книги-->
+                    <Publisher>Лори</Publisher>                     <!--издательство-->
+                    <Language>русский</Language>                    <!--язык-->
+                    <NumOfPages>461</NumOfPages>                    <!--количество страниц-->
+                    <Edition>2</Edition>                            <!--издание-->
+                </BookDetails>
+            </Book>
+            <Book>
+                <Name>Java 8.
+                    Полное руководство
+                </Name>
+                <Author>Герберт Шилдт</Author>
+                <Price>500</Price>
+                <BookDetails>
+                    <Publisher>Вильямс</Publisher>
+                    <Language>русский</Language>
+                    <NumOfPages>1377</NumOfPages>
+                    <Edition>9</Edition>
+                </BookDetails>
+            </Book>
+        </Books>
+    </Category>
+
+    <Category>
+        <CategoryName>Художественная литература</CategoryName>
+        <Books>
+            <Book>
+                <Name>Оно</Name>
+                <Author>Стивен Кинг</Author>
+                <Price>100</Price>
+                <BookDetails>
+                    <Publisher>АСТ</Publisher>
+                    <Language>русский</Language>
+                    <NumOfPages>1245</NumOfPages>
+                    <Edition>5</Edition>
+                </BookDetails>
+            </Book>
+        </Books>
+    </Category>
+</Catalog>
