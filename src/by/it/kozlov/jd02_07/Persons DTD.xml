@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Persons SYSTEM "Person.dtd">
+<Persons>
+    <Person>
+        <Email>bmw.service@bayernkraft.by</Email>
+        <NickName>bayernkraft.by</NickName>
+        <Password>bayernkraft</Password>
+        <Address>г. Минск, ул. Панченко, 9</Address>
+        <PhoneNumber>+375447730077</PhoneNumber>
+        <Brand>
+            <Title>BMW</Title>
+            <Model>
+                <Name>7 series</Name>
+                <Class>Седан</Class>
+                <Price>164400</Price>
+                <Year>2018</Year>
+            </Model>
+            <Model>
+                <Name>X6</Name>
+                <Class>Кроссовер</Class>
+                <Price>132000</Price>
+                <Year>2018</Year>
+            </Model>
+        </Brand>
+    </Person>
+
+    <Person>
+        <Email>info@mercedes-benz.by</Email>
+        <NickName>mercedes-benz.by</NickName>
+        <Password>mercedes</Password>
+        <Address>г. Минск, ул. Тимирязева, 70</Address>
+        <PhoneNumber>+375296039999</PhoneNumber>
+        <Brand>
+            <Title>Mercedes-Benz</Title>
+            <Model>
+                <Name>E 200 4MATIC</Name>
+                <Class>Седан</Class>
+                <Price>137706</Price>
+                <Year>2018</Year>
+            </Model>
+            <Model>
+                <Name>GLS</Name>
+                <Class>Внедорожник</Class>
+                <Price>164700</Price>
+                <Year>2018</Year>
+            </Model>
+        </Brand>
+    </Person>
+</Persons>
