@@ -1,11 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Catalog SYSTEM "Books.dtd" >
 <Catalog>                                                           <!--католог книг/товаров-->
     <Category>                                                      <!--раздел-->
         <CategoryName>Цифровые технологии</CategoryName>            <!--название раздела-->
         <Books>                                                     <!--книги в разделе-->
             <Book>                                                  <!--конкретная книга-->
                 <Name>Java.
-                    Эффективное программирование
-                </Name>             <!--название книги-->
+                    Эффективное программирование</Name>             <!--название книги-->
                 <Author>Джошуа Блох</Author>                        <!--автор-->
                 <Price>200</Price>                                  <!--цена товара-->
                 <BookDetails>                                       <!--описание книги-->
@@ -17,8 +18,7 @@
             </Book>
             <Book>
                 <Name>Java 8.
-                    Полное руководство
-                </Name>
+                    Полное руководство</Name>
                 <Author>Герберт Шилдт</Author>
                 <Price>500</Price>
                 <BookDetails>

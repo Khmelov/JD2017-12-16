@@ -1,11 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Catalog [
+                           <!ELEMENT Catalog (Category)+>                                  <!--один и более раз-->
+                           <!ELEMENT Category (CategoryName,Books)+>                       <!--один и более раз-->
+                           <!ELEMENT CategoryName (#PCDATA)>
+                           <!ELEMENT Books (Book)*>                                        <!--ноль и более раз-->
+                           <!ELEMENT Book (Name,Author,Price,BookDetails)*>                <!--ноль и более раз-->
+                           <!ELEMENT Name (#PCDATA)>
+                           <!ELEMENT Author (#PCDATA)>
+                           <!ELEMENT Price (#PCDATA)>
+                           <!ELEMENT BookDetails (Publisher,Language,NumOfPages,Edition)>  <!--один обязательный элемент-->
+                           <!ELEMENT Publisher (#PCDATA)>
+                           <!ELEMENT Language (#PCDATA)>
+                           <!ELEMENT NumOfPages (#PCDATA)>
+                           <!ELEMENT Edition (#PCDATA)>
+] >
 <Catalog>                                                           <!--католог книг/товаров-->
     <Category>                                                      <!--раздел-->
         <CategoryName>Цифровые технологии</CategoryName>            <!--название раздела-->
         <Books>                                                     <!--книги в разделе-->
             <Book>                                                  <!--конкретная книга-->
                 <Name>Java.
-                    Эффективное программирование
-                </Name>             <!--название книги-->
+                    Эффективное программирование</Name>             <!--название книги-->
                 <Author>Джошуа Блох</Author>                        <!--автор-->
                 <Price>200</Price>                                  <!--цена товара-->
                 <BookDetails>                                       <!--описание книги-->
@@ -17,8 +32,7 @@
             </Book>
             <Book>
                 <Name>Java 8.
-                    Полное руководство
-                </Name>
+                    Полное руководство</Name>
                 <Author>Герберт Шилдт</Author>
                 <Price>500</Price>
                 <BookDetails>
