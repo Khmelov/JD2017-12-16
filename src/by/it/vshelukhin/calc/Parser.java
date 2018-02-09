@@ -52,7 +52,7 @@ public class Parser {
         operations = new ArrayList<>();
         operands = new ArrayList<>();
         Collections.addAll(operands, expression.split(Patterns.OPERATION));
-        if (operands.size()<2) return Var.createVar(operands.get(0));
+        if (operands.size()<2) return FactoryVars.createVar(operands.get(0));
         Matcher mat = Pattern.compile(Patterns.OPERATION).matcher(expression);
         while (mat.find()){
             operations.add(mat.group());
@@ -68,18 +68,18 @@ public class Parser {
 
             operands.set(pos, rez);
         }
-        return Var.createVar(rez.replace(" ",""));
+        return FactoryVars.createVar(rez.replace(" ",""));
 
     }
 
     static String oneOperation (String left, String operation, String right) throws CalcException {
-        Var two = Var.createVar(right.replace(" ", ""));
+        Var two = FactoryVars.createVar(right.replace(" ", ""));
         if (operation.equals("=")){
             two.assign(left);
             System.out.print("добавлено в базу:\n"+left+"=");
             return right;
         }
-        Var one = Var.createVar(left.replace(" ", ""));
+        Var one = FactoryVars.createVar(left.replace(" ", ""));
 
         if (one == null || two == null) throw new CalcException("Ошибка выражения "+left+operation+right);
 
