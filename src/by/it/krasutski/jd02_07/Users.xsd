@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://it.by/onlineshop"
+        xmlns:tns="http://it.by/onlineshop"
+        elementFormDefault="qualified">
+    <element name="Users">
+        <complexType>
+            <sequence>
+                <element name="User"
+                         type="tns:User"
+                         maxOccurs="unbounded">
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="User">
+        <sequence>
+            <element name="Email" type="string"/>
+            <element name="Nickname" type="ID"/>
+            <element name="Password" type="string"/>
+            <element name="Cart" type="tns:Cart"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Cart">
+        <sequence>
+            <element name="Goods" type="tns:Goods"
+                     maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+
+    <complexType name="Goods">
+        <all>
+            <element name="Name" type="string"/>
+            <element name="Type" type="string"/>
+            <element name="Description" type="string"/>
+            <element name="Price" type="string"/>
+            <element name="Availability" type="string"/>
+        </all>
+    </complexType>
+
+</schema>
