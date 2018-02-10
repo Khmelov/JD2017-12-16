@@ -29,13 +29,13 @@ class Parser {
     }
 
     private String oneOperationCalc(String left, String operation, String right) throws CalcException {
-        Var two = Var.createVar(right);
+        Var two = VarFactory.getVar(right);
         if (operation.equals("=")) {
             VarsMap.set(left, two);
             return two.toString();
         }
 
-        Var one = Var.createVar(left);
+        Var one = VarFactory.getVar(left);
         if (one == null || two == null)
             throw new CalcException(
                     String.format(" Ошибка %s%s%s:", left, operation, right)
@@ -67,13 +67,19 @@ class Parser {
             temp = temp.replace("(", "");
             temp = temp.replace(")", "");
             temp = parser.calc(temp);
-            stringBuilder.replace(matcher.start(), matcher.end(), temp);
+            try {
+                stringBuilder.replace(matcher.start(), matcher.end(), temp);
+            } catch (NullPointerException e) {
+                throw new CalcException(String.format(" Ошибка парсинга %s\n", string));
+            }
+
         }
         return stringBuilder.toString();
     }
 
     String calc(String expression) throws CalcException {
         expression = Parser.operations(expression);
+        Logger logger = Logger.getLogger();
         String res = null;
         // get operands
         String[] part = expression.split(Patterns.OPERATION);
@@ -95,6 +101,8 @@ class Parser {
             res = oneOperationCalc(left, operation, right);
             operands.set(pos, res);
         }
+        logger.logger(res);
+        if (res == null) throw new CalcException(String.format(" Введено некоректное выражение %s", expression));
         return res;
     }
 }

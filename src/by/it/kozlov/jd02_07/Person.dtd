@@ -1,0 +1,14 @@
+<!ELEMENT Persons (Person)+>
+        <!ELEMENT Person (Email, NickName, Password, Address, PhoneNumber, Brand)>
+        <!ELEMENT Email (#PCDATA)>
+        <!ELEMENT NickName (#PCDATA)>
+        <!ELEMENT Password (#PCDATA)>
+        <!ELEMENT Address (#PCDATA)>
+        <!ELEMENT PhoneNumber (#PCDATA)>
+        <!ELEMENT Brand (Title, Model+)>
+        <!ELEMENT Title (#PCDATA)>
+        <!ELEMENT Model (Name, Class, Price, Year)>
+        <!ELEMENT Name (#PCDATA)>
+        <!ELEMENT Class (#PCDATA)>
+        <!ELEMENT Price (#PCDATA)>
+        <!ELEMENT Year (#PCDATA)>
