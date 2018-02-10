@@ -1,0 +1,57 @@
+<?xml version ="1.0" encoding="UTF-8"?>
+<Shop xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://it.by/sendetskaya Shop.xsd"
+         xmlns="http://it.by/sendetskaya">
+        <Buyers>
+            <Buyer>
+                <IdBuyer>1</IdBuyer>
+                <Email>qweqwe@ya.ru</Email>
+                <Nickname>IvanA1234</Nickname>
+                <Password>qwerty</Password>
+            </Buyer>
+            <Buyer>
+                <IdBuyer>2</IdBuyer>
+                <Email>qwe@ya.ru</Email>
+                <Nickname>Ivan1234</Nickname>
+                <Password>qwery</Password>
+            </Buyer>
+        </Buyers>
+        <Goods>
+            <Good>
+                <IdGood>1</IdGood>
+                <Name>Кофта</Name>
+                <Price>12.0</Price>
+                <Size>s</Size>
+                <Colour>Зеленый</Colour>
+                <Structure>Хлопок</Structure>
+                <Description>
+                    Крутая новая кофта
+                </Description>
+            </Good>
+            <Good>
+                <IdGood>2</IdGood>
+                <Name>Штаны</Name>
+                <Price>10.50</Price>
+                <Size>s</Size>
+                <Colour>Красный</Colour>
+                <Structure>Вельвет</Structure>
+                <Description>
+                    Крутые новые штаны
+                </Description>
+            </Good>
+        </Goods>
+        <Baskets>
+            <Basket>
+                <IdBuyerInBasket>2</IdBuyerInBasket>
+                <IdGoodInBasket>2</IdGoodInBasket>
+                <Quantity>1</Quantity>
+                <Sum>10.50</Sum>
+            </Basket>
+            <Basket>
+                <IdBuyerInBasket>1</IdBuyerInBasket>
+                <IdGoodInBasket>1</IdGoodInBasket>
+                <Quantity>2</Quantity>
+                <Sum>24.0</Sum>
+            </Basket>
+        </Baskets>
+    </Shop>
