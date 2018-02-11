@@ -5,11 +5,11 @@ public class VarFactory {
         Var var = null;
         operand = operand.trim();
         if (operand.matches(Patterns.SCALAR))
-            var = new Scalar(operand);
+            return var = new Scalar(operand);
         if (operand.matches(Patterns.VECTOR))
-            var = new Vector(operand);
+            return var = new Vector(operand);
         if (operand.matches(Patterns.MATRIX))
-            var = new Matrix(operand);
-        return var;
+            return var = new Matrix(operand);
+        return VarsMap.get(operand);
     }
 }
