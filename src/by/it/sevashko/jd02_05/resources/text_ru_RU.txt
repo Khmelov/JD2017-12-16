@@ -1,0 +1,3 @@
+msg.Hello = Здравствуй!
+msg.Question = Как дела?
+msg.Name = Владислав
