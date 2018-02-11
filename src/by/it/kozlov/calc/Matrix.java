@@ -132,12 +132,12 @@ public class Matrix extends Var {
         for (int i = 0; i < value.length; i++) {
             result.append('{');
             for (int j = 0; j < value[i].length; j++) {
-                if (j > 0) result.append(",");
+                if (j > 0) result.append(", ");
                 result.append(value[i][j]);
             }
             result.append('}');
             if (i < value.length - 1) {
-                result.append(",");
+                result.append(", ");
             }
         }
         result.append('}');

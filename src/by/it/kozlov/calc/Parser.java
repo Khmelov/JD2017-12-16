@@ -29,13 +29,13 @@ class Parser {
     }
 
     private String oneOperationCalc(String left, String operation, String right) throws CalcException {
-        Var two = VarFactory.getVar(right);
+        Var two = VarFactory.getVar(right.replace(" ", ""));
         if (operation.equals("=")) {
             VarsMap.set(left, two);
             return two.toString();
         }
 
-        Var one = VarFactory.getVar(left);
+        Var one = VarFactory.getVar(left.replace(" ", ""));
         if (one == null || two == null)
             throw new CalcException(
                     String.format(" Ошибка %s%s%s:", left, operation, right)
@@ -67,6 +67,7 @@ class Parser {
             temp = temp.replace("(", "");
             temp = temp.replace(")", "");
             temp = parser.calc(temp);
+            temp.replace(" ", "");
             try {
                 stringBuilder.replace(matcher.start(), matcher.end(), temp);
             } catch (NullPointerException e) {
