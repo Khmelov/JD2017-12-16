@@ -104,7 +104,7 @@ class Vector extends Var {
         StringBuilder result = new StringBuilder();
         result.append('{');
         for (int i = 0; i < value.length; i++) {
-            if (i > 0) result.append(",");
+            if (i > 0) result.append(", ");
             result.append(value[i]);
         }
         result.append('}');
