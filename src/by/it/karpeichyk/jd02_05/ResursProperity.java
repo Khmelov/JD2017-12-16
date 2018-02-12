@@ -3,8 +3,6 @@ package by.it.karpeichyk.jd02_05;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import static com.sun.org.apache.xerces.internal.dom.DOMMessageFormatter.setLocale;
-
 /**
  * Created by user on 03.02.2018.
  */
