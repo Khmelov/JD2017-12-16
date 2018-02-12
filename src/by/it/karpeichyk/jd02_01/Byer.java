@@ -1,7 +1,5 @@
 package by.it.karpeichyk.jd02_01;
 
-import by.it.akhmelev.jd01_03.Runner;
-
 /**
  * Created by user on 25.01.2018.
  */

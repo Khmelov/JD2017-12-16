@@ -28,6 +28,7 @@
         <Email>pppp123@ya.ru</Email>
         <Nickname>Petr1234</Nickname>
         <Password>zxcvbn</Password>
+        <Ads>
         <Ad>
             <Description>
                 Убогий хрущ
@@ -37,5 +38,6 @@
             <Floors>2</Floors>
             <Square>29.0</Square>
         </Ad>
+        </Ads>
     </Person>
 </Persons>
