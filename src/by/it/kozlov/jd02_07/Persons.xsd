@@ -16,12 +16,12 @@
     <complexType name="Person">
         <sequence>
             <element name="Email" type="string"/>
-            <element name="Nickname" type="ID"/>
             <element name="Password" type="string"/>
             <element name="Address" type="string"/>
             <element name="PhoneNumber" type="integer"/>
             <element name="Brand" type="tns:Brand"/>
         </sequence>
+        <attribute name="nickName" type="ID"/>
     </complexType>
     <complexType name="Brand">
         <sequence>

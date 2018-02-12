@@ -2,9 +2,8 @@
 <Persons xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="myNamespace Persons.xsd"
          xmlns="myNamespace">
-    <Person>
+    <Person nickName="bayernkraft.by">
         <Email>bmw.service@bayernkraft.by</Email>
-        <Nickname>bayernkraft.by</Nickname>
         <Password>bayernkraft</Password>
         <Address>г. Минск, ул. Панченко, 9</Address>
         <PhoneNumber>+375447730077</PhoneNumber>
@@ -25,9 +24,8 @@
         </Brand>
     </Person>
 
-    <Person>
+    <Person nickName="mercedes-benz.by">
         <Email>info@mercedes-benz.by</Email>
-        <Nickname>mercedes-benz.by</Nickname>
         <Password>mercedes</Password>
         <Address>г. Минск, ул. Тимирязева, 70</Address>
         <PhoneNumber>+375296039999</PhoneNumber>
