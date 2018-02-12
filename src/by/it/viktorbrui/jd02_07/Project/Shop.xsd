@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://it.by/Магаз"
+        xmlns:tns="http://it.by/Магаз"
+        elementFormDefault="qualified">
+    <element name="Persons">
+        <complexType>
+            <sequence>
+                <element name="Person"
+                         type="tns:Person"
+                         maxOccurs="unbounded">
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="Person">
+        <sequence>
+            <element name="Nickname" type="ID"/>
+            <element name="Password" type="string"/>
+            <element name="Email" type="string"/>
+            <element name="Address" type="string"/>
+            <element name="Phone" type="string"/>
+            <element name="Orders" type="tns:Orders"/>
+        </sequence>
+    </complexType>
+    <complexType name="Orders">
+        <sequence>
+            <element name="Order" type="tns:Order" minOccurs="1" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+    <complexType name="Order">
+        <sequence>
+            <element name="Data" type="string"/>
+            <element name="OrderNumber" type="integer"/>
+            <element name="Products" type="tns:Products"/>
+        </sequence>
+    </complexType>
+    <complexType name="Products">
+        <sequence>
+            <element name="Product" type="tns:Product" minOccurs="1" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+    <complexType name="Product">
+        <all>
+            <element name="ProductName" type="string"/>
+            <element name="Sku" type="string"/>
+            <element name="Count" type="integer"/>
+            <element name="Price" type="double"/>
+            <element name="PriceCurrencу" type="string"/>
+        </all>
+    </complexType>
+    </schema>

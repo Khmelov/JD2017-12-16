@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE Persons [
+        <!ELEMENT Persons (Person)+>
+        <!ELEMENT Person (Email,Nickname,Password,Ads) >
+        <!ELEMENT Email (#PCDATA)>
+        <!ELEMENT Nickname (#PCDATA)>
+        <!ELEMENT Password (#PCDATA)>
+        <!ELEMENT Ads (Ad)+>
+        <!ELEMENT Ad (Description,Address,Floor,Floors,Square)>
+        <!ELEMENT Description (#PCDATA)>
+        <!ELEMENT Address (#PCDATA)>
+        <!ELEMENT Floor (#PCDATA)>
+        <!ELEMENT Floors (#PCDATA)>
+        <!ELEMENT Square (#PCDATA)>
+] >
+<Persons>
+    <Person>
+        <Email>qweqwe@ya.ru</Email>
+        <Nickname>IvanA1234</Nickname>
+        <Password>qwerty</Password>
+        <Ads>
+            <Ad>
+                <Description>
+                    Элитная новостройка
+                </Description>
+                <Address>Скрыганова 14</Address>
+                <Floor>5</Floor>
+                <Floors>6</Floors>
+                <Square>249.0</Square>
+            </Ad>
+            <Ad>
+                <Description>
+                    Убогий хрущ
+                </Description>
+                <Address>Кнорина 1</Address>
+                <Floor>1</Floor>
+                <Floors>2</Floors>
+                <Square>29.0</Square>
+            </Ad>
+        </Ads>
+    </Person>
+    <Person>
+        <Email>pppp123@ya.ru</Email>
+        <Nickname>Petr1234</Nickname>
+        <Password>zxcvbn</Password>
+        <Ads>
+            <Ad>
+                <Description>dfds</Description>
+                <Address>dsfds</Address>
+                <Floor>4</Floor>
+                <Floors>5</Floors>
+                <Square>6</Square>
+            </Ad>
+        </Ads>
+    </Person>
+</Persons>

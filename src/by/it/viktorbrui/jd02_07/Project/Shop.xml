@@ -1,0 +1,60 @@
+<Persons>
+    <Person>
+        <Nickname>Adolph</Nickname>
+        <Password>CatsRuleTheWorld</Password>
+        <Email>IneedPolland@germ.ge</Email>
+        <Address>Berlin,Braunau</Address>
+        <Phone>0172-3020732</Phone>
+        <Orders>
+            <Order>
+                <Data>2018-02-08 21:13:48</Data>
+                <OrderNumber>002</OrderNumber>
+                <Products>
+                    <Product>
+                        <ProductName>Кусочек Польши</ProductName>
+                        <Sku>A4754P3</Sku>
+                        <Count>1</Count>
+                        <Price>120</Price>
+                        <PriceCurrencу>Euro</PriceCurrencу>
+                    </Product>
+                    <Product>
+                        <ProductName>Кусочек России</ProductName>
+                        <Sku>A4234D7</Sku>
+                        <Count>2</Count>
+                        <Price>7005</Price>
+                        <PriceCurrencу>RUB</PriceCurrencу>
+                    </Product>
+                    <Product>
+                        <ProductName>Кусочек Пирога</ProductName>
+                        <Sku>R2351T1</Sku>
+                        <Count>8</Count>
+                        <Price>2</Price>
+                        <PriceCurrencу>Euro</PriceCurrencу>
+                    </Product>
+                </Products>
+            </Order>
+        </Orders>
+    </Person>
+    <Person>
+        <Nickname>Napoleon</Nickname>
+        <Password>CatsRuleTheWorld</Password>
+        <Email>Vlastelin@franc.fc</Email>
+        <Address>Corsica,Aiacho</Address>
+        <Phone>+33 495-4648744</Phone>
+        <Orders>
+            <Order>
+                <Data>2018-02-08 21:39:14</Data>
+                <OrderNumber>003</OrderNumber>
+                <Products>
+                    <Product>
+                        <ProductName>Кусочек Русси</ProductName>
+                        <Sku>Z422AS67</Sku>
+                        <Count>2</Count>
+                        <Price>7005</Price>
+                        <PriceCurrencу>Euro</PriceCurrencу>
+                    </Product>
+                </Products>
+            </Order>
+        </Orders>
+    </Person>
+</Persons>
