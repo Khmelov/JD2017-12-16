@@ -27,23 +27,29 @@ public class DomBooks {
     }
 
     private static void printDom(String tab, Node node) {
-        String text = node.getNodeValue();
-        System.out.print(
-                tab + "<" + node.getNodeName()
-        );
-        if (node.hasAttributes()) {
-            NamedNodeMap attr = node.getAttributes();
-            for (int i = 0; i < attr.getLength(); i++) {
-                System.out.print(" " + attr.item(i));
+
+            String text = node.getNodeValue();
+            if(text!=null&&text.trim().equals(""))return;
+            if(text==null) {
+                System.out.print(
+                        tab + "<" + node.getNodeName()
+                );
+
+                if (node.hasAttributes()) {
+                    NamedNodeMap attr = node.getAttributes();
+                    for (int i = 0; i < attr.getLength(); i++) {
+                        System.out.print(" " + attr.item(i));
+                    }
+                }
+                System.out.print(">");
             }
+            System.out.println(text != null ? tab + text.trim() : "");
+            NodeList children = node.getChildNodes();
+            for (int i = 0; i < children.getLength(); i++) {
+                printDom(tab + "\t", children.item(i));
+            }
+            if(text==null)
+            System.out.println(tab + "</" + node.getNodeName() + ">");
         }
-        System.out.print(">" +
-                (text != null ? tab + text.trim() : "")
-        );
-        NodeList children = node.getChildNodes();
-        for (int i = 0; i < children.getLength(); i++) {
-            printDom(tab + "\t", children.item(i));
-        }
-        System.out.println(tab + "</" + node.getNodeName() + ">");
     }
-}
+
