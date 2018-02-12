@@ -15,7 +15,7 @@ import java.io.IOException;
 public class ValidXSD {
     public static void main(String[ ] args) {
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
-        String fileName =   "src/by/it/sendetskaya/jd02_07/Shop+XSD.xml";
+        String fileName = "src/by/it/sendetskaya/jd02_07/Shop+XSD.xml";
         String schemaName = "src/by/it/sendetskaya/jd02_07/Shop.xsd";
         SchemaFactory factory = SchemaFactory.newInstance(language);
         File schemaLocation = new File(schemaName);
