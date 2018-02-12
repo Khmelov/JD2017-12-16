@@ -34,7 +34,7 @@ public class Cashier implements Runnable {
         return "Cashier: Кассир №" + number + " ";
     }
 
-    private void printCheck(by.it.patsko.jd02_02.Buyer buyer) {
+    private void printCheck(Buyer buyer) {
         StringBuilder check = new StringBuilder();
         double sum = 0.0;
 
