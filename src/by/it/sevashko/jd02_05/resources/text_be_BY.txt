@@ -1,0 +1,3 @@
+msg.Hello = Прывітанне!
+msg.Question = Як справы?
+msg.Name = Уладзіслаў

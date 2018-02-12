@@ -1,4 +1,4 @@
-package by.it.sevashko.jd02_04;
+package by.it.sevashko.jd02_06;
 
 class Patterns {
 

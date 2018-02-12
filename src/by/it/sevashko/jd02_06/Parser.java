@@ -1,4 +1,4 @@
-package by.it.sevashko.jd02_04;
+package by.it.sevashko.jd02_06;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -30,12 +30,12 @@ public class Parser {
     }
 
     private String oneOperationCalc(String left, String operation, String right) throws CalcException {
-        Var rightVar = Var.createVar(right);
+        Var rightVar = VarFactory.createVar(right);
         if (operation.equals("=")){
             Container.setVar(left, rightVar);
             return rightVar.toString();
         }
-        Var leftVar = Var.createVar(left);
+        Var leftVar = VarFactory.createVar(left);
         if (leftVar == null || rightVar == null) {
             throw new CalcException(String.format(" Ошибка %s%s%s:", left, operation, right));
         }
