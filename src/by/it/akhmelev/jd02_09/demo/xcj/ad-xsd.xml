@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Persons xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://by.it.akhmelev.jd02_09.demo"
+          xsi:schemaLocation="http://by.it.akhmelev.jd02_09.demo">
+        <Person>
+                <Email>
+                        post@mail.ru
+                </Email>
+                <Password>
+                        ewqdsacxz
+                </Password>
+                <Nickname>
+                        post
+                </Nickname>
+                <Ads>
+                        <ad>
+                                <Description>
+                                        Уютная квартира в центре
+                                </Description>
+                                <Address>
+                                        Минск, ул. Гикало, 14, 23
+                                </Address>
+                                <Floor>4</Floor>
+                                <Floors>5</Floors>
+                                <Price>55555</Price>
+                                <Area>48.6</Area>
+                        </ad>
+                        <ad>
+                                <Description>
+                                        Уютная квартира в Уручье
+                                </Description>
+                                <Address>
+                                        Минск, ул. Городецкая, 14, 23
+                                </Address>
+                                <Floor>24</Floor>
+                                <Floors>25</Floors>
+                                <Price>77777</Price>
+                                <Area>68.6</Area>
+                        </ad>
+                </Ads>
+        </Person>
+</Persons>
