@@ -1,0 +1,43 @@
+<Persons>
+    <Person>
+        <Email>qweqwe@ya.ru</Email>
+        <Nickname>IvanA1234</Nickname>
+        <Password>qwerty</Password>
+                                            //address dostavki
+                                                //phone
+        <Ads>           /// orders
+            <Ad> order
+                <Description> products
+                    Элитная новостройка    // product
+                </Description>                  //name
+                <Address>Скрыганова 14</Address>   //price
+                <Floor>5</Floor>                        //quality
+                <Floors>6</Floors>
+                <Square>249.0</Square>
+            </Ad>
+            <Ad>
+                <Description>
+                    Убогий хрущ
+                </Description>
+                <Address>Кнорина 1</Address>
+                <Floor>1</Floor>
+                <Floors>2</Floors>
+                <Square>29.0</Square>
+            </Ad>
+        </Ads>
+    </Person>
+    <Person>
+        <Email>pppp123@ya.ru</Email>
+        <Nickname>Petr1234</Nickname>
+        <Password>zxcvbn</Password>
+        <Ad>
+            <Description>
+                Убогий хрущ
+            </Description>
+            <Address>Кнорина 1</Address>
+            <Floor>1</Floor>
+            <Floors>2</Floors>
+            <Square>29.0</Square>
+        </Ad>
+    </Person>
+</Persons>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Persons xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://it.by/helloworld Persons.xsd"
+         xmlns="http://it.by/helloworld">
+    <Person>
+        <Email>qweqwe@ya.ru</Email>
+        <Nickname>IvanA1234</Nickname>
+        <Password>qwerty</Password>
+        <Ads>
+            <Ad>
+                <Description>
+                    Элитная новостройка
+                </Description>
+                <Address>Скрыганова 14</Address>
+                <Floor>5</Floor>
+                <Floors>6</Floors>
+                <Square>249.0</Square>
+            </Ad>
+            <Ad>
+                <Description>
+                    Убогий хрущ
+                </Description>
+                <Address>Кнорина 1</Address>
+                <Floor>1</Floor>
+                <Floors>2</Floors>
+                <Square>29.0</Square>
+            </Ad>
+        </Ads>
+    </Person>
+    <Person>
+        <Email>pppsp123@yas.ru</Email>
+        <Nickname>Petr1234</Nickname>
+        <Password>zxcvbn</Password>
+        <Ads>
+            <Ad>
+                <Description>
+                    Убогий хрущ
+                </Description>
+                <Address>Кнорина 1</Address>
+                <Floor>1</Floor>
+                <Floors>2</Floors>
+                <Square>29.0</Square>
+            </Ad>
+        </Ads>
+    </Person>
+</Persons>

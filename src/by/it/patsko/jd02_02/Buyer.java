@@ -2,7 +2,7 @@ package by.it.patsko.jd02_02;
 
 
 
-class Buyer extends Thread implements IBuyer, IUseBasket {
+public class Buyer extends Thread implements IBuyer, IUseBasket {
     private Basket basket;
     private boolean pensioner;
 
