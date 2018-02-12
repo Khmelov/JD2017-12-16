@@ -28,7 +28,6 @@ public class DOM {
     private static void printDOM(String prefix, Node node) {
         String text = node.getNodeValue();
 
-
         if (text != null) {
             text = text.trim().replace("\n", "");
             if (text.length() > 0) {
