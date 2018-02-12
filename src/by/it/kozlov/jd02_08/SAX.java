@@ -41,7 +41,7 @@ public class SAX extends DefaultHandler {
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         System.out.print(tab + "[" + qName);
         for (int i = 0; i < attributes.getLength(); i++) {
-            System.out.print(attributes.getLocalName(i) + "=" + attributes.getValue(i));
+            System.out.print(" "+attributes.getLocalName(i) + "=" + attributes.getValue(i));
         }
         System.out.println("]");
         tab += "\t";

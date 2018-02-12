@@ -22,7 +22,13 @@ public class StAX {
                 int type = xmlStreamReader.next();
                 switch (type) {
                     case XMLStreamConstants.START_ELEMENT: {
-                        System.out.println(tab + "[" + xmlStreamReader.getLocalName() + "]");
+                        System.out.print(tab + "[" + xmlStreamReader.getLocalName());
+                        if (xmlStreamReader.getAttributeCount() > 0) {
+                            for (int i = 0; i < xmlStreamReader.getAttributeCount(); i++) {
+                                System.out.print(" " + xmlStreamReader.getAttributeName(i) + "=" + xmlStreamReader.getAttributeValue(i));
+                            }
+                        }
+                        System.out.println("]");
                         tab += "\t";
                         break;
                     }
