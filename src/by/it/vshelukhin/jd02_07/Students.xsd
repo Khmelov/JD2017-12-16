@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="myspace"
+        xmlns:xxx="myspace"
+        elementFormDefault="qualified">
+
+    <element name="Students">
+        <complexType>
+            <sequence>
+                <element name="Student"
+                         maxOccurs="unbounded"
+                         type="xxx:Student"
+                         />
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="Student">
+        <sequence>
+            <element name="Univer" type="string"/>
+            <element name="Kurs" type="integer"/>
+            <element name="Facultet" type="string"/>
+            <element name="Goods" type="xxx:Goods"/>
+            <element name="Price" type="string"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Goods">
+        <sequence>
+            <element name="Product"
+                     type="string"
+            minOccurs="1"
+            maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+</schema>

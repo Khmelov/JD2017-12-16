@@ -1,0 +1,21 @@
+<Students>
+    <Student>
+        <Univer>БНТУ</Univer>
+        <Kurs>1</Kurs>
+        <Facultet>ЭФ</Facultet>
+        <Goods>
+            <Product>Контрольная по химии</Product>
+            <Product>Контрольная по математике</Product>
+        </Goods>
+        <Price>35 у.е.</Price>
+    </Student>
+    <Student>
+        <Univer>БГУИР</Univer>
+        <Kurs>2</Kurs>
+        <Facultet>ИТ</Facultet>
+        <Goods>
+            <Product>Контрольная по химии</Product>
+        </Goods>
+        <Price>20 у.е.</Price>
+    </Student>
+</Students>
