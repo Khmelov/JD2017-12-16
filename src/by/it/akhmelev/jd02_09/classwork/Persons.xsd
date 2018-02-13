@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://it.by/helloworld"
-        xmlns:tns="http://it.by/helloworld"
+        targetNamespace="http://classwork.jd02_09.akhmelev.it.by"
+        xmlns:tns="http://classwork.jd02_09.akhmelev.it.by"
         elementFormDefault="qualified">
 <element name="Persons">
     <complexType>
@@ -25,12 +25,12 @@
 
 <complexType name="Ads">
     <sequence>
-        <element name="Ad" type="tns:Adttt"
+        <element name="Ad" type="tns:Ad"
         minOccurs="1" maxOccurs="unbounded" />
     </sequence>
 </complexType>
 
-<complexType name="Adttt">
+<complexType name="Ad">
     <all>
         <element name="Description" type="string"/>
         <element name="Address" type="string"/>
