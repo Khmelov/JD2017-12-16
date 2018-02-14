@@ -10,11 +10,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.util.Map;
 
 public class DomParser {
-
-    private static StringBuilder text = new StringBuilder();
 
     public static void main(String[] args) {
         String xmlFile = String.format("%s%S", System.getProperty("user.dir"), "/src/by/it/sevashko/jd02_08/Books.xml");
@@ -44,8 +41,6 @@ public class DomParser {
             }
         }
         System.out.println(']');
-        //String value = node.getTextContent();
-        //if (value != null) System.out.println(indent + value.trim());
         //вывод вложееных тегов
         if (node.hasChildNodes()) {
             NodeList children = node.getChildNodes();
@@ -58,6 +53,7 @@ public class DomParser {
                 }
             }
         }
+        //конец тега
         System.out.printf("%s[/%s]\n", indent, node.getNodeName());
     }
 }
