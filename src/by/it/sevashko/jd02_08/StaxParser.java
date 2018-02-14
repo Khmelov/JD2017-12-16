@@ -13,7 +13,7 @@ public class StaxParser{
     private static StringBuilder text = new StringBuilder();
 
     public static void main(String[] args) {
-        String xmlFile = "E:/Java/github/JD2017-12-16/src/by/it/sevashko/jd02_08/Books.xml";
+        String xmlFile = String.format("%s%S", System.getProperty("user.dir"), "/src/by/it/sevashko/jd02_08/Books.xml");
         try {
             FileInputStream fileInputStream = new FileInputStream(xmlFile);
             XMLInputFactory factory = XMLInputFactory.newInstance();
