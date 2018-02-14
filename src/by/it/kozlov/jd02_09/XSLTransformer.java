@@ -7,7 +7,7 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 public class XSLTransformer {
-    private static final String path = System.getProperty("user.dir")+"/src/by/it/kozlov/jd02_09/";
+    private static final String path = "C:/Users/skynet/IdeaProjects/JD2017-12-16/src/by/it/kozlov/jd02_09/";
 
     public static void main(String[] args) {
         try {
