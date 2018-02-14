@@ -13,10 +13,6 @@ import java.io.FileReader;
 Создайте набор Java beans классов для маршализации-демаршализации виз XML с помощью JAXB.
 Добавьте необходимые аннотации, конструкторы и методы toString.
 
-
-C:\>"Program Files\Java\jdk-9.0.1\bin\xjc.exe" D:\Программирование\Программирова
-ние_на_JAVA\JD2017-12-16\JD2017-12-16\src\by\it\patsko\jd02_09\Books.xsd -d D:\П
-рограммирование\Программирование_на_JAVA\JD2017-12-16\JD2017-12-16\src\
  */
 public class JAXBTransform {
 
