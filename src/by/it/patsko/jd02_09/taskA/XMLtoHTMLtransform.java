@@ -1,4 +1,4 @@
-package by.it.patsko.jd02_09;
+package by.it.patsko.jd02_09.taskA;
 
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
