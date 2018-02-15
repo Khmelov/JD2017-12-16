@@ -76,4 +76,8 @@ public class ObjectFactory {
         return new BookDetails();
     }
 
+    @Override
+    public String toString() {
+        return "ObjectFactory{}";
+    }
 }

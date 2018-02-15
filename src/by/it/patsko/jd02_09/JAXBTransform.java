@@ -9,11 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
-/*
-Создайте набор Java beans классов для маршализации-демаршализации виз XML с помощью JAXB.
-Добавьте необходимые аннотации, конструкторы и методы toString.
 
- */
 public class JAXBTransform {
 
     private final static String FileName=System.getProperty("user.dir")+"/src/by/it/patsko/jd02_09/Books.xml";

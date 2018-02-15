@@ -94,4 +94,11 @@ public class Category {
         this.books = value;
     }
 
+    @Override
+    public String toString() {
+        return "Category{" +
+                "categoryName='" + categoryName + '\'' +
+                ", books=" + books +
+                '}';
+    }
 }

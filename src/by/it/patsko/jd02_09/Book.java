@@ -42,6 +42,15 @@ import javax.xml.bind.annotation.XmlType;
 
 })
 public class Book {
+    @Override
+    public String toString() {
+        return "Book{" +
+                "name='" + name + '\'' +
+                ", author='" + author + '\'' +
+                ", price=" + price +
+                ", bookDetails=" + bookDetails +
+                '}';
+    }
 
     @XmlElement(name = "Name", required = true)
     protected String name;

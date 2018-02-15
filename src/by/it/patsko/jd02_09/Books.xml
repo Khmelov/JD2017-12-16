@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Catalog>
-    <Category id="1">
+<Catalog xmlns ="http://jd02_09.patsko.it.by/">
+    <Category id="a1">
         <CategoryName>
             Цифровые технологии
         </CategoryName>
         <Books>
-            <Book id="1.1">
+            <Book id="a1.1">
                 <Name>
                     Java.Эффективное программирование
                 </Name>
@@ -30,7 +30,7 @@
                     </Edition>
                 </BookDetails>
             </Book>
-            <Book id="1.2">
+            <Book id="a1.2">
                 <Name>
                     Java 8. Полное руководство
                 </Name>
@@ -58,12 +58,12 @@
         </Books>
     </Category>
 
-    <Category id="2">
+    <Category id="b2">
         <CategoryName>
             Художественная литература
         </CategoryName>
         <Books>
-            <Book id="2.1">
+            <Book id="b2.1">
                 <Name>
                     Оно
                 </Name>

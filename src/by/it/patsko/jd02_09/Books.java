@@ -73,4 +73,10 @@ public class Books {
         return this.book;
     }
 
+    @Override
+    public String toString() {
+        return "Books{" +
+                "book=" + book +
+                '}';
+    }
 }

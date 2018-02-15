@@ -148,4 +148,13 @@ public class BookDetails {
         this.edition = value;
     }
 
+    @Override
+    public String toString() {
+        return "BookDetails{" +
+                "publisher='" + publisher + '\'' +
+                ", language='" + language + '\'' +
+                ", numOfPages=" + numOfPages +
+                ", edition=" + edition +
+                '}';
+    }
 }

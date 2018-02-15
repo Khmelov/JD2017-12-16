@@ -42,6 +42,12 @@ import javax.xml.bind.annotation.XmlType;
 })
 @XmlRootElement(name = "Catalog")
 public class Catalog {
+    @Override
+    public String toString() {
+        return "Catalog{" +
+                "category=" + category +
+                '}';
+    }
 
     @XmlElement(name = "Category", required = true)
     protected List<Category> category;

@@ -18,6 +18,7 @@
             <element name="CategoryName" type="string"/>
             <element name="Books" type="tns:Books"/>
         </sequence>
+        <attribute name="id" type="ID" use="required" />
     </complexType>
 
     <complexType name="Books">
@@ -34,6 +35,7 @@
             <element name="Price" type="integer"/>
             <element name="BookDetails" type="tns:BookDetails"/>
         </all>
+        <attribute name="id" type="ID" use="required" />
     </complexType>
 
     <complexType name="BookDetails">
