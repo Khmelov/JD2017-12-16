@@ -102,6 +102,7 @@ public class C_Init {
 
             statement.executeUpdate("INSERT INTO `kozlov`.`users` (`ID`, `Login`, `Email`, `Password`, `city_ID`, `Address`, `PhoneNumber`, `roles_ID`) VALUES (1, 'bayernkraft.by', 'bmw.service@bayernkraft.by', 'bayernkraft', 7, 'ул. Панченко, 9', '+375447730077', 2);");
             statement.executeUpdate("INSERT INTO `kozlov`.`users` (`ID`, `Login`, `Email`, `Password`, `city_ID`, `Address`, `PhoneNumber`, `roles_ID`) VALUES (2, 'mercedes-benz.by', 'info@mercedes-benz.by', 'mercedes', 7, 'ул. Тимирязева, 70', '+375296039999', 2);");
+
             statement.executeUpdate("INSERT INTO `kozlov`.`cars` (`ID`, `brand_ID`, `Model`, `Class`, `Price`, `Year`, `users_ID`) VALUES (1, 1, '7 series', 'Седан', 164400, 2018, 1);\n");
             statement.executeUpdate("INSERT INTO `kozlov`.`cars` (`ID`, `brand_ID`, `Model`, `Class`, `Price`, `Year`, `users_ID`) VALUES (2, 1, 'X6', 'Кроссовер', 132000, 2018, 1);");
             statement.executeUpdate("INSERT INTO `kozlov`.`cars` (`ID`, `brand_ID`, `Model`, `Class`, `Price`, `Year`, `users_ID`) VALUES (3, 2, 'E 200 4MATIC', 'Седан', 137706, 2018, 2);");
