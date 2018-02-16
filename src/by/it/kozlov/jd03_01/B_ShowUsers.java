@@ -12,9 +12,9 @@ public class B_ShowUsers {
 
         try (Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1:2016/kozlov?useUnicode=true&characterEncoding=UTF-8", "root", "")) {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from users");
-            while (resultSet.next()) {
-                System.out.println(resultSet.getString("Login") + ", " + resultSet.getString("roles_ID"));
+            ResultSet resultSet=statement.executeQuery("select * from users");
+            while (resultSet.next()){
+                System.out.println(resultSet.getString("Login")+", "+resultSet.getString("roles_ID"));
             }
 
         } catch (SQLException e) {
