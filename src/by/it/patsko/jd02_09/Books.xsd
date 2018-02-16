@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://jd02_09.patsko.it.by/"
+        xmlns:tns="http://jd02_09.patsko.it.by/"
+        elementFormDefault="qualified">
+    <element name="Catalog">
+        <complexType>
+            <sequence>
+                <element name="Category" type="tns:Category"
+                         maxOccurs="unbounded">
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="Category">
+        <sequence>
+            <element name="CategoryName" type="string"/>
+            <element name="Books" type="tns:Books"/>
+        </sequence>
+        <attribute name="id" type="ID" use="required" />
+    </complexType>
+
+    <complexType name="Books">
+        <sequence>
+            <element name="Book" type="tns:Book"
+            maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Book">
+        <all>
+            <element name="Name" type="string"/>
+            <element name="Author" type="string"/>
+            <element name="Price" type="integer"/>
+            <element name="BookDetails" type="tns:BookDetails"/>
+        </all>
+        <attribute name="id" type="ID" use="required" />
+    </complexType>
+
+    <complexType name="BookDetails">
+        <all>
+            <element name="Publisher" type="string"/>
+            <element name="Language" type="string"/>
+            <element name="NumOfPages" type="integer"/>
+            <element name="Edition" type="integer"/>
+        </all>
+    </complexType>
+</schema>
