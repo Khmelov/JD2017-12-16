@@ -1,11 +1,8 @@
 package by.it.vshelukhin.jd02_05;
 
-import javafx.scene.input.DataFormat;
-
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class Runner {
