@@ -42,7 +42,7 @@ public class SaxParser extends DefaultHandler {
     }
 
     public static void main(String[] args) {
-        String xmlFile = String.format("%s%S", System.getProperty("user.dir"), "/src/by/it/sevashko/jd02_08/Books.xml");
+        String xmlFile = String.format("%s%S", System.getProperty("user.dir"), "/src/by/it/sevashko/jd02_08/Users.xml");
         SAXParserFactory factory = SAXParserFactory.newInstance();
         try {
             SAXParser parser = factory.newSAXParser();

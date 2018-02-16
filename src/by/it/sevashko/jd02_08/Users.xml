@@ -1,0 +1,37 @@
+<Users>                                                                              <!--Подписчики-->
+    <User login="Ivan93" password="146asv1">                                         <!--Подписчик-->
+        <name>Иван</name>                                                             <!--Имя-->
+        <lastName>Иванов</lastName>                                                     <!--Фамилия-->
+        <email>asfafaf@bdbl.ru</email>
+        <Subscriptions>                                                                 <!--Подписки-->
+            <Subscription id="43434">
+                <publication>Автодайджест</publication>                             <!--Название издания-->
+                <period>6</period>                                                  <!--Продолжительность подписки-->
+                <startSubscription>01.2018</startSubscription>                       <!--Начало подписного периода-->
+                <endSubscription>06.2018</endSubscription>                          <!--Начало подписного периода-->
+                <price>9.28</price>                                                           <!--Цена-->
+            </Subscription>
+            <Subscription id="687941">
+                <publication>Мир тяжелых моторов</publication>
+                <period>2</period>
+                <startSubscription>02.2018</startSubscription>
+                <endSubscription>03.2018</endSubscription>
+                <price>89.8</price>
+            </Subscription>
+        </Subscriptions>
+    </User>
+    <User login="Petr" password="asfas1v8">
+        <name>Петр</name>
+        <lastName>Петров</lastName>
+        <email>afavvs@vava.by</email>
+        <Subscriptions>
+            <Subscription id="2353122">
+                <publication>Транспортная безопасность</publication>
+                <period>12</period>
+                <startSubscription>01.2018</startSubscription>
+                <endSubscription>12.2018</endSubscription>
+                <price>98.0</price>
+            </Subscription>
+        </Subscriptions>
+    </User>
+</Users>

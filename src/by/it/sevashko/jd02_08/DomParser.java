@@ -14,7 +14,7 @@ import java.io.IOException;
 public class DomParser {
 
     public static void main(String[] args) {
-        String xmlFile = String.format("%s%S", System.getProperty("user.dir"), "/src/by/it/sevashko/jd02_08/Books.xml");
+        String xmlFile = String.format("%s%S", System.getProperty("user.dir"), "/src/by/it/sevashko/jd02_08/Users.xml");
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
