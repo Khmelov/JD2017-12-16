@@ -12,11 +12,11 @@ public class C_Reset {
 
         try (Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1:2016/kozlov?useUnicode=true&characterEncoding=UTF-8", "root", "")) {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("DELETE FROM `cars` WHERE 1");
-            statement.executeUpdate("DELETE FROM `users` WHERE 1");
-            statement.executeUpdate("DELETE FROM `brand` WHERE 1");
-            statement.executeUpdate("DELETE FROM `city` WHERE 1");
-            statement.executeUpdate("DELETE FROM `roles` WHERE 1");
+            statement.executeUpdate("DROP TABLE `cars`");
+            statement.executeUpdate("DROP TABLE `users`");
+            statement.executeUpdate("DROP TABLE `brand`");
+            statement.executeUpdate("DROP TABLE `city`");
+            statement.executeUpdate("DROP TABLE `roles`");
 
         } catch (SQLException e) {
             e.printStackTrace();
