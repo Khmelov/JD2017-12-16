@@ -24,7 +24,6 @@ public class Runner {
             Unmarshaller unmarshaller = context.createUnmarshaller();
             Persons persons = (Persons) unmarshaller.unmarshal(reader);
             AbstractConverter converter = ConverterFactory.convert(1);
-            converter.convert(persons);
         } catch (IOException | JAXBException e) {
             e.printStackTrace();
         }
