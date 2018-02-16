@@ -1,3 +1,5 @@
+//--add-modules java.se.ee
+
 package by.it.kozlov.jd02_10;
 
 import com.google.gson.Gson;
@@ -15,7 +17,7 @@ public class GSON {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
-        try (BufferedReader reader = new BufferedReader(new FileReader(new File(System.getProperty("user.dir")+"/src/by/it/kozlov/jd02_09/Persons XSD.xml")))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File(System.getProperty("user.dir") + "/src/by/it/kozlov/jd02_09/Persons XSD.xml")))) {
             Unmarshaller unmarshaller = context.createUnmarshaller();
             persons = (Persons) unmarshaller.unmarshal(reader);
         } catch (IOException | JAXBException e) {
@@ -24,21 +26,26 @@ public class GSON {
 
         Gson gson = new GsonBuilder().serializeNulls().setPrettyPrinting().create();
 
-        String json = gson.toJson(persons);
-        try (BufferedWriter writer=new BufferedWriter(new FileWriter(new File(System.getProperty("user.dir")+"/src/by/it/kozlov/jd02_10/Persons.json")))) {
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(new File(System.getProperty("user.dir") + "/src/by/it/kozlov/jd02_10/Persons.json")))) {
+            String json = gson.toJson(persons);
             writer.write(json);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Persons persons2 = gson.fromJson(json, Persons.class);
-        System.out.println("persons2=" + persons2.toString());
+        Persons persons2 = null;
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File(System.getProperty("user.dir") + "/src/by/it/kozlov/jd02_10/Persons.json")))) {
+            persons2 = gson.fromJson(reader, Persons.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
         try {
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(persons2, new File(System.getProperty("user.dir")+"/src/by/it/kozlov/jd02_10/Persons2.xml"));
+            marshaller.marshal(persons2, new File(System.getProperty("user.dir") + "/src/by/it/kozlov/jd02_10/Persons2.xml"));
         } catch (JAXBException e) {
             e.printStackTrace();
         }
