@@ -5,7 +5,7 @@ import com.mysql.fabric.jdbc.FabricMySQLDriver;
 import java.sql.*;
 
 public class C_Init {
-    public static final String URL_DB="jdbc:mysql://127.0.0.1:3306"+
+    public static final String URL_DB="jdbc:mysql://127.0.0.1:2016"+
             "?useUnicode=true&characterEncoding=UTF-8";
 
     public static void main(String[] args) {
