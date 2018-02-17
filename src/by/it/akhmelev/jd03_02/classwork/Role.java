@@ -2,9 +2,6 @@ package by.it.akhmelev.jd03_02.classwork;
 
 import java.io.Serializable;
 
-/**
- * @author i.sukach
- */
 class Role implements Serializable{
 
     public Role() {
