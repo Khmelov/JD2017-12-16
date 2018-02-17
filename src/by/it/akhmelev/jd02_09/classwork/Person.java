@@ -141,7 +141,7 @@ public class Person {
      */
     public void setPassword(String value) {
         this.password = value;
-    }
+}
 
     /**
      * Gets the value of the ads property.
