@@ -23,7 +23,7 @@ public class Runner {
         try (BufferedReader reader = new BufferedReader(new FileReader(new File(System.getProperty("user.dir") + "/src/by/it/kozlov/jd02_09/Persons XSD.xml")))) {
             Unmarshaller unmarshaller = context.createUnmarshaller();
             Persons persons = (Persons) unmarshaller.unmarshal(reader);
-            AbstractConverter converter = ConverterFactory.convert(1);
+            AbstractConverter converter = ConverterFactory.convert(EConverter.TO_JSON);
             converter.convert(persons);
         } catch (IOException | JAXBException e) {
             e.printStackTrace();
