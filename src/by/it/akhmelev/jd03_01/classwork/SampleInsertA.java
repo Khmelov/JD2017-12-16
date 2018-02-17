@@ -1,5 +1,7 @@
 package by.it.akhmelev.jd03_01.classwork;
 
+import com.mysql.fabric.jdbc.FabricMySQLDriver;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -9,7 +11,11 @@ public class SampleInsertA {
     public static void main(String[] args) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
+            FabricMySQLDriver fabricMySQLDriver = new FabricMySQLDriver();
+            DriverManager.registerDriver(fabricMySQLDriver);
         } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         try (
