@@ -22,9 +22,9 @@ USE `sevashko` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sevashko`.`publications` (
   `index` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Индекс издания (ID)',
-  `name` VARCHAR(150) NOT NULL COMMENT 'Наименование издания',
+  `name` VARCHAR(200) NOT NULL COMMENT 'Наименование издания',
   `periodicity` INT(11) NOT NULL COMMENT 'Количество экземпляров в полугодии',
-  `min_period` INT(11) NOT NULL COMMENT 'Минимальный подписной период (в месяцах)',
+  `minPeriod` INT(11) NOT NULL COMMENT 'Минимальный подписной период (в месяцах)',
   `price` FLOAT NOT NULL COMMENT 'Цена за минимальный подписной период',
   PRIMARY KEY (`index`))
 ENGINE = InnoDB
@@ -51,18 +51,18 @@ COMMENT = 'Роли пользователей';
 CREATE TABLE IF NOT EXISTS `sevashko`.`users` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `login` VARCHAR(45) NOT NULL COMMENT 'Логин',
+  `password` VARCHAR(20) NOT NULL COMMENT 'Пароль',
   `name` VARCHAR(45) NOT NULL COMMENT 'Имя пользователя',
   `lastName` VARCHAR(45) NOT NULL COMMENT 'Фамилия пользователя',
   `email` VARCHAR(45) NOT NULL COMMENT 'Email',
-  `password` VARCHAR(20) NOT NULL COMMENT 'Пароль',
-  `FK_role` INT(11) NOT NULL COMMENT 'Роль пользователя',
+  `role` INT(11) NOT NULL COMMENT 'Роль пользователя',
   PRIMARY KEY (`id`),
-  INDEX `FK_roles_idx` (`FK_role` ASC),
-  CONSTRAINT `FK_roles`
-    FOREIGN KEY (`FK_role`)
+  INDEX `FK_roles_idx` (`role` ASC),
+  CONSTRAINT `fk_roles`
+    FOREIGN KEY (`role`)
     REFERENCES `sevashko`.`roles` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COMMENT = 'Пользователи';
@@ -73,20 +73,21 @@ COMMENT = 'Пользователи';
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sevashko`.`subscriptions` (
   `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'ID подписки',
-  `user_id` INT(11) NOT NULL COMMENT 'Пользователь',
-  `publication_id` INT(11) NOT NULL COMMENT 'Издание',
-  `period` INT(11) NOT NULL COMMENT 'Подписной период',
+  `user` INT(11) NOT NULL COMMENT 'Пользователь',
+  `publication` INT(11) NOT NULL COMMENT 'Издание',
+  `copies` INT NOT NULL DEFAULT 1 COMMENT 'Количество экземпляров',
+  `period` INT NOT NULL COMMENT 'Подписной период',
   `start_subscription` DATE NOT NULL COMMENT 'Начало подписного периода',
   `end_subscription` DATE NOT NULL COMMENT 'Конец подписного периода',
   `price` FLOAT NOT NULL COMMENT 'Цена подписки',
   PRIMARY KEY (`id`),
-  INDEX `FK_usres_idx` (`user_id` ASC),
-  INDEX `FK_publications_idx` (`publication_id` ASC),
-  CONSTRAINT `FK_publications`
-    FOREIGN KEY (`publication_id`)
+  INDEX `FK_usres_idx` (`user` ASC),
+  INDEX `FK_publications_idx` (`publication` ASC),
+  CONSTRAINT `fk_publications`
+    FOREIGN KEY (`publication`)
     REFERENCES `sevashko`.`publications` (`index`),
-  CONSTRAINT `FK_usres`
-    FOREIGN KEY (`user_id`)
+  CONSTRAINT `fk_usres`
+    FOREIGN KEY (`user`)
     REFERENCES `sevashko`.`users` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8

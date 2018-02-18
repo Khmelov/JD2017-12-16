@@ -35,9 +35,9 @@ public class C_init {
     private static void createPublicationTable() throws SQLException {
         statement.executeUpdate("CREATE TABLE IF NOT EXISTS `sevashko`.`publications` (\n" +
                 "  `index` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'Индекс издания (ID)',\n" +
-                "  `name` VARCHAR(150) NOT NULL COMMENT 'Наименование издания',\n" +
+                "  `name` VARCHAR(200) NOT NULL COMMENT 'Наименование издания',\n" +
                 "  `periodicity` INT(11) NOT NULL COMMENT 'Количество экземпляров в полугодии',\n" +
-                "  `min_period` INT(11) NOT NULL COMMENT 'Минимальный подписной период (в месяцах)',\n" +
+                "  `minPeriod` INT(11) NOT NULL COMMENT 'Минимальный подписной период (в месяцах)',\n" +
                 "  `price` FLOAT NOT NULL COMMENT 'Цена за минимальный подписной период',\n" +
                 "  PRIMARY KEY (`index`))\n" +
                 "ENGINE = InnoDB\n" +
@@ -60,18 +60,18 @@ public class C_init {
         statement.executeUpdate("CREATE TABLE IF NOT EXISTS `sevashko`.`users` (\n" +
                 "  `id` INT(11) NOT NULL AUTO_INCREMENT,\n" +
                 "  `login` VARCHAR(45) NOT NULL COMMENT 'Логин',\n" +
+                "  `password` VARCHAR(20) NOT NULL COMMENT 'Пароль',\n" +
                 "  `name` VARCHAR(45) NOT NULL COMMENT 'Имя пользователя',\n" +
                 "  `lastName` VARCHAR(45) NOT NULL COMMENT 'Фамилия пользователя',\n" +
                 "  `email` VARCHAR(45) NOT NULL COMMENT 'Email',\n" +
-                "  `password` VARCHAR(20) NOT NULL COMMENT 'Пароль',\n" +
-                "  `FK_role` INT(11) NOT NULL COMMENT 'Роль пользователя',\n" +
+                "  `role` INT(11) NOT NULL COMMENT 'Роль пользователя',\n" +
+                "  `userscol` VARCHAR(45) NULL DEFAULT '2',\n" +
                 "  PRIMARY KEY (`id`),\n" +
-                "  INDEX `FK_roles_idx` (`FK_role` ASC),\n" +
-                "  CONSTRAINT `FK_roles`\n" +
-                "    FOREIGN KEY (`FK_role`)\n" +
-                "    REFERENCES `sevashko`.`roles` (`id`)\n" +
-                "    ON DELETE NO ACTION\n" +
-                "    ON UPDATE NO ACTION)\n" +
+                "  INDEX `FK_roles_idx` (`role` ASC),\n" +
+                "  UNIQUE INDEX `login_UNIQUE` (`login` ASC),\n" +
+                "  CONSTRAINT `fk_roles`\n" +
+                "    FOREIGN KEY (`role`)\n" +
+                "    REFERENCES `sevashko`.`roles` (`id`))\n" +
                 "ENGINE = InnoDB\n" +
                 "DEFAULT CHARACTER SET = utf8\n" +
                 "COMMENT = 'Пользователи';");
@@ -80,20 +80,21 @@ public class C_init {
     private static void createSubscriptionsTable() throws SQLException {
         statement.executeUpdate("CREATE TABLE IF NOT EXISTS `sevashko`.`subscriptions` (\n" +
                 "  `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'ID подписки',\n" +
-                "  `user_id` INT(11) NOT NULL COMMENT 'Пользователь',\n" +
-                "  `publication_id` INT(11) NOT NULL COMMENT 'Издание',\n" +
-                "  `period` INT(11) NOT NULL COMMENT 'Подписной период',\n" +
+                "  `user` INT(11) NOT NULL COMMENT 'Пользователь',\n" +
+                "  `publication` INT(11) NOT NULL COMMENT 'Издание',\n" +
+                "  `copies` INT NOT NULL DEFAULT 1 COMMENT 'Количество экземпляров',\n" +
+                "  `period` INT NOT NULL COMMENT 'Подписной период',\n" +
                 "  `start_subscription` DATE NOT NULL COMMENT 'Начало подписного периода',\n" +
                 "  `end_subscription` DATE NOT NULL COMMENT 'Конец подписного периода',\n" +
                 "  `price` FLOAT NOT NULL COMMENT 'Цена подписки',\n" +
                 "  PRIMARY KEY (`id`),\n" +
-                "  INDEX `FK_usres_idx` (`user_id` ASC),\n" +
-                "  INDEX `FK_publications_idx` (`publication_id` ASC),\n" +
-                "  CONSTRAINT `FK_publications`\n" +
-                "    FOREIGN KEY (`publication_id`)\n" +
+                "  INDEX `FK_usres_idx` (`user` ASC),\n" +
+                "  INDEX `FK_publications_idx` (`publication` ASC),\n" +
+                "  CONSTRAINT `fk_publications`\n" +
+                "    FOREIGN KEY (`publication`)\n" +
                 "    REFERENCES `sevashko`.`publications` (`index`),\n" +
-                "  CONSTRAINT `FK_usres`\n" +
-                "    FOREIGN KEY (`user_id`)\n" +
+                "  CONSTRAINT `fk_usres`\n" +
+                "    FOREIGN KEY (`user`)\n" +
                 "    REFERENCES `sevashko`.`users` (`id`))\n" +
                 "ENGINE = InnoDB\n" +
                 "DEFAULT CHARACTER SET = utf8\n" +
