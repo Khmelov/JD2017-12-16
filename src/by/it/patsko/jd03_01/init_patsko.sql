@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `patsko`.`Buyers` (
   `login` VARCHAR(45) NULL,
   `password` VARCHAR(45) NULL,
   `email` VARCHAR(45) NULL,
-  `Roles_id` INT NOT NULL,
+  `Roles_id` INT NOT NULL DEFAULT 2,
   PRIMARY KEY (`id`),
   INDEX `fk_Buyers_Roles1_idx` (`Roles_id` ASC),
   CONSTRAINT `fk_Buyers_Roles1`
