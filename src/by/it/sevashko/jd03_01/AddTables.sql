@@ -37,7 +37,7 @@ COMMENT = 'Каталог изданий';
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sevashko`.`roles` (
   `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'ID роли',
-  `role` VARCHAR(45) NOT NULL,
+  `role` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `role_UNIQUE` (`role` ASC))
 ENGINE = InnoDB
@@ -52,17 +52,16 @@ CREATE TABLE IF NOT EXISTS `sevashko`.`users` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `login` VARCHAR(45) NOT NULL COMMENT 'Логин',
   `password` VARCHAR(20) NOT NULL COMMENT 'Пароль',
-  `name` VARCHAR(45) NOT NULL COMMENT 'Имя пользователя',
-  `lastName` VARCHAR(45) NOT NULL COMMENT 'Фамилия пользователя',
+  `name` VARCHAR(20) NOT NULL COMMENT 'Имя пользователя',
+  `lastName` VARCHAR(20) NOT NULL COMMENT 'Фамилия пользователя',
   `email` VARCHAR(45) NOT NULL COMMENT 'Email',
-  `role` INT(11) NOT NULL COMMENT 'Роль пользователя',
+  `fk_role` INT(11) NOT NULL COMMENT 'Роль пользователя',
   PRIMARY KEY (`id`),
-  INDEX `FK_roles_idx` (`role` ASC),
+  UNIQUE INDEX `login_UNIQUE` (`login` ASC),
+  INDEX `FK_roles_idx` (`fk_role` ASC),
   CONSTRAINT `fk_roles`
-    FOREIGN KEY (`role`)
-    REFERENCES `sevashko`.`roles` (`id`)
-    ON DELETE RESTRICT
-    ON UPDATE RESTRICT)
+    FOREIGN KEY (`fk_role`)
+    REFERENCES `sevashko`.`roles` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COMMENT = 'Пользователи';
@@ -75,8 +74,8 @@ CREATE TABLE IF NOT EXISTS `sevashko`.`subscriptions` (
   `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'ID подписки',
   `user` INT(11) NOT NULL COMMENT 'Пользователь',
   `publication` INT(11) NOT NULL COMMENT 'Издание',
-  `copies` INT NOT NULL DEFAULT 1 COMMENT 'Количество экземпляров',
-  `period` INT NOT NULL COMMENT 'Подписной период',
+  `copies` INT(11) NOT NULL DEFAULT '1' COMMENT 'Количество экземпляров',
+  `period` INT(11) NOT NULL COMMENT 'Подписной период',
   `start_subscription` DATE NOT NULL COMMENT 'Начало подписного периода',
   `end_subscription` DATE NOT NULL COMMENT 'Конец подписного периода',
   `price` FLOAT NOT NULL COMMENT 'Цена подписки',

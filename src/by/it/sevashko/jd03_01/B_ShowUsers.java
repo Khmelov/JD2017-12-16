@@ -12,7 +12,7 @@ public class B_ShowUsers {
                         ""
                 )) {
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT login, name, lastName, role, email FROM sevashko.users"); //для запросов пользоателей
+            ResultSet result = statement.executeQuery("SELECT login, name, lastName, fk_role, email FROM sevashko.users"); //для запросов пользоателей
             Statement statement1 = connection.createStatement();  //для запрсов ролей
             while (result.next()){
                 String login = result.getString("login");

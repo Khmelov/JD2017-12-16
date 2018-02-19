@@ -16,13 +16,13 @@ public class A_AddUsers {
                     )) {
                 Statement statement = connection.createStatement();
                 statement.executeUpdate("INSERT INTO `sevashko`.`users` "
-                        + "(`login`, `password`, `name`, `lastName`, `email`, `role`) VALUES "
+                        + "(`login`, `password`, `name`, `lastName`, `email`, `fk_role`) VALUES "
                         +"('VladSV', 'qwerty1234', 'Владислав', 'Севашко', 'vladsvby@yandex.by', '1');");
                 statement.executeUpdate("INSERT INTO `sevashko`.`users` "
-                        + "(`login`, `password`, `name`, `lastName`, `email`, `role`) VALUES "
+                        + "(`login`, `password`, `name`, `lastName`, `email`, `fk_role`) VALUES "
                         +"('Ivan96', '1994ivan', 'Иван', 'Иванов', 'ivan96@mail.ru', '2');");
                 statement.executeUpdate("INSERT INTO `sevashko`.`users` "
-                        + "(`login`, `password`, `name`, `lastName`, `email`, `role`) VALUES "
+                        + "(`login`, `password`, `name`, `lastName`, `email`, `fk_role`) VALUES "
                         +"('PavelPON', 'oakf15', 'Павел', 'Борисенко', 'boris894@mail.ru', '2');");
             } catch (SQLException e) {
                 e.printStackTrace();
