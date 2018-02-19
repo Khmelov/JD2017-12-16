@@ -15,7 +15,7 @@ public class CatalogCRUD implements I_CRUD<Catalog> {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             int recCount = statement.executeUpdate(
-                    String.format("INSERT INTO `catalog`(`catalogName`) VALUES ('%s')",
+                    String.format("INSERT INTO `catalog`(`name`) VALUES ('%s')",
                             catalog.getCatalogName()),
                     Statement.RETURN_GENERATED_KEYS);
             if (1 == recCount) {

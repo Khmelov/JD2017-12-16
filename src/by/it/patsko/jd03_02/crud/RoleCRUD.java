@@ -15,7 +15,7 @@ public class RoleCRUD implements I_CRUD<Role> {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             int recCount = statement.executeUpdate(
-                    String.format("INSERT INTO `roles`(`role`) VALUES ('%s')", role.getRole()),
+                    String.format("INSERT INTO `patsko`.`roles`(`role`) VALUES ('%s')", role.getRole()),
                     Statement.RETURN_GENERATED_KEYS);
             if (1 == recCount) {
                 ResultSet keys = statement.getGeneratedKeys();

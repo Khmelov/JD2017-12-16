@@ -6,13 +6,13 @@ public class Book {
     private int id;
     private String name;
     private String author;
-    private double 	price;
+    private int 	price;
     private int Category_id;
 
     public Book() {
     }
 
-    public Book(int id, String name, String author, double price, int category_id) {
+    public Book(int id, String name, String author, int price, int category_id) {
         this.id = id;
         this.name = name;
         this.author = author;
@@ -44,11 +44,11 @@ public class Book {
         this.author = author;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
