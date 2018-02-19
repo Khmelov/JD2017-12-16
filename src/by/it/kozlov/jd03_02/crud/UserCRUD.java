@@ -15,7 +15,7 @@ public class UserCRUD implements ICRUD<User> {
         user.setId(0);
         Connection connection = ConnectionCreator.getConnection();
         Statement statement = connection.createStatement();
-        String sql = String.format("INSERT INTO `kozlov`.`users` (`login`, `email`, `password`, `cityID`, `address`, `phoneNumber`, `rolesID`) VALUES (`%s`, `%s`, `%s`, %d, `%s`, `%s`, %d);",
+        String sql = String.format("INSERT INTO `kozlov`.`users` (`login`, `email`, `password`, `cityID`, `address`, `phoneNumber`, `rolesID`) VALUES ('%s', '%s', '%s', %d, '%s', '%s', %d);",
                 user.getLogin(), user.getEmail(), user.getPassword(), user.getCityID(), user.getAddress(), user.getPhoneNumber(), user.getRolesID());
         int count = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
         if (count == 1) {
@@ -31,7 +31,7 @@ public class UserCRUD implements ICRUD<User> {
     public boolean update(User user) throws SQLException {
         Connection connection = ConnectionCreator.getConnection();
         Statement statement = connection.createStatement();
-        String sql = String.format("UPDATE `kozlov`.`users` SET `login`=[%s],`email`=[%s],`password`=[%s],`cityID`=[%d],`address`=[%s],`phoneNumber`=[%s],`rolesID`=[%d] WHERE id=%d",
+        String sql = String.format("UPDATE `kozlov`.`users` SET `login`='%s',`email`='%s',`password`='%s',`cityID`='%d',`address`='%s',`phoneNumber`='%s',`rolesID`='%d' WHERE id=%d",
                 user.getLogin(), user.getEmail(), user.getPassword(), user.getCityID(), user.getAddress(), user.getPhoneNumber(), user.getRolesID(), user.getId());
         int count = statement.executeUpdate(sql);
         return count == 1;
