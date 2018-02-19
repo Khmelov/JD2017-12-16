@@ -11,7 +11,7 @@ public class User implements Serializable {
     private int cityID;
     private String address;
     private String phoneNumber;
-    private int rilesID;
+    private int rolesID;
 
     public User(int id, String login, String email, String password, int cityID, String address, String phoneNumber, int rilesID) {
         this.id = id;
@@ -21,7 +21,7 @@ public class User implements Serializable {
         this.cityID = cityID;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.rilesID = rilesID;
+        this.rolesID = rilesID;
     }
 
     public User() {
@@ -83,12 +83,12 @@ public class User implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getRilesID() {
-        return rilesID;
+    public int getRolesID() {
+        return rolesID;
     }
 
-    public void setRilesID(int rilesID) {
-        this.rilesID = rilesID;
+    public void setRolesID(int rilesID) {
+        this.rolesID = rilesID;
     }
 
     @Override
@@ -101,7 +101,7 @@ public class User implements Serializable {
                 ", cityID=" + cityID +
                 ", address='" + address + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", rilesID=" + rilesID +
+                ", rilesID=" + rolesID +
                 '}';
     }
 
@@ -112,7 +112,7 @@ public class User implements Serializable {
         User user = (User) o;
         return id == user.id &&
                 cityID == user.cityID &&
-                rilesID == user.rilesID &&
+                rolesID == user.rolesID &&
                 Objects.equals(login, user.login) &&
                 Objects.equals(email, user.email) &&
                 Objects.equals(password, user.password) &&
@@ -123,6 +123,6 @@ public class User implements Serializable {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, login, email, password, cityID, address, phoneNumber, rilesID);
+        return Objects.hash(id, login, email, password, cityID, address, phoneNumber, rolesID);
     }
 }
