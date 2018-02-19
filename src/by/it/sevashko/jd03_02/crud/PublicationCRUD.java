@@ -16,7 +16,7 @@ public class PublicationCRUD implements CRUD<Publication> {
              Statement statement = connection.createStatement()
         ){
             String insert = String.format("INSERT INTO `sevashko`.`publications` (`name`, `periodicity`, `minPeriod`, `price`) " +
-                            "VALUES ('%s', '%d', '%d', '%f');",
+                            "VALUES ('%s', '%d', '%d', '%s');",
                     publication.getName(), publication.getPeriodicity(), publication.getMinPeriod(), publication.getPrice());
             int recCount = statement.executeUpdate(insert, Statement.RETURN_GENERATED_KEYS);
             if (recCount == 1) {

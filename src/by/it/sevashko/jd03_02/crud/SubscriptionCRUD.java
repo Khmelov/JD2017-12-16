@@ -17,7 +17,7 @@ public class SubscriptionCRUD implements CRUD<Subscription> {
         ){
             String insert = String.format("INSERT INTO `sevashko`.`subscriptions` " +
                             "(`user`, `publication`, `copies`, `period`, `start_subscription`, `end_subscription`, `price`)" +
-                            " VALUES ( '%d', '%d', '%d', '%d', '%s', '%s', '%f');",
+                            " VALUES ( '%d', '%d', '%d', '%d', '%s', '%s', '%s');",
                     subscription.getUser(), subscription.getPublication(), subscription.getCopies(),
                     subscription.getPeriod(), subscription.getStart_subscription(), subscription.getEnd_subscription(),
                     subscription.getPrice());
