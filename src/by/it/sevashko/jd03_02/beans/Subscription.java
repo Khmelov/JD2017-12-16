@@ -9,6 +9,7 @@ public class Subscription {
     private int user;
     private int publication;
     private int copies;
+    private int period;
     private Date start_subscription;
     private Date end_subscription;
     private float price;
@@ -16,11 +17,12 @@ public class Subscription {
     public Subscription() {
     }
 
-    public Subscription(int id, int user, int publication, int copies, Date start_subscription, Date end_subscription, float price) {
+    public Subscription(int id, int user, int publication, int copies, int period, Date start_subscription, Date end_subscription, float price) {
         this.id = id;
         this.user = user;
         this.publication = publication;
         this.copies = copies;
+        this.period = period;
         this.start_subscription = start_subscription;
         this.end_subscription = end_subscription;
         this.price = price;
@@ -40,6 +42,10 @@ public class Subscription {
 
     public void setCopies(int copies) {
         this.copies = copies;
+    }
+
+    public void setPeriod(int period) {
+        this.period = period;
     }
 
     public void setStart_subscription(Date start_subscription) {
@@ -70,6 +76,10 @@ public class Subscription {
         return copies;
     }
 
+    public int getPeriod() {
+        return period;
+    }
+
     public Date getStart_subscription() {
         return start_subscription;
     }
@@ -91,6 +101,7 @@ public class Subscription {
                 user == that.user &&
                 publication == that.publication &&
                 copies == that.copies &&
+                period == that.period &&
                 Float.compare(that.price, price) == 0 &&
                 Objects.equals(start_subscription, that.start_subscription) &&
                 Objects.equals(end_subscription, that.end_subscription);
@@ -99,7 +110,7 @@ public class Subscription {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, user, publication, copies, start_subscription, end_subscription, price);
+        return Objects.hash(id, user, publication, copies, period, start_subscription, end_subscription, price);
     }
 
     @Override
@@ -109,6 +120,7 @@ public class Subscription {
                 ", user=" + user +
                 ", publication=" + publication +
                 ", copies=" + copies +
+                ", period=" + period +
                 ", start_subscription=" + start_subscription +
                 ", end_subscription=" + end_subscription +
                 ", price=" + price +

@@ -36,12 +36,12 @@ public class A_AddData {
     private static void createSubscriptions() throws SQLException {
         statement.executeUpdate("INSERT INTO `sevashko`.`subscriptions` " +
                 "(`user`, `publication`, `copies`, `period`, `start_subscription`, `end_subscription`, `price`)" +
-                " VALUES ( '2', '1', '2', '4', '2018-01-01', '2018-03-30', '14.64');\n");
+                " VALUES ( '2', '1', '2', '4', '2018-01-01', '2018-03-30', '14.64');");
         statement.executeUpdate("INSERT INTO `sevashko`.`subscriptions` " +
                 "(`user`, `publication`, `period`, `start_subscription`, `end_subscription`, `price`)" +
-                " VALUES ( '2', '2', '4', '2018-01-01', '2018-03-30', '15.8');\n");
+                " VALUES ( '2', '2', '4', '2018-01-01', '2018-03-30', '15.8');");
         statement.executeUpdate("INSERT INTO `sevashko`.`subscriptions` " +
                 "(`user`, `publication`, `copies`, `period`, `start_subscription`, `end_subscription`, `price`)" +
-                " VALUES ( '2', '3', '3', '4', '2018-01-01', '2018-03-30', '98.34');\n");
+                " VALUES ( '2', '3', '3', '4', '2018-01-01', '2018-03-30', '98.34');");
     }
 }
