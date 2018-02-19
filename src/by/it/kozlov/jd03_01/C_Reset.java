@@ -12,11 +12,7 @@ public class C_Reset {
 
         try (Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1:2016/kozlov?useUnicode=true&characterEncoding=UTF-8", "root", "")) {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("DROP TABLE `cars`");
-            statement.executeUpdate("DROP TABLE `users`");
-            statement.executeUpdate("DROP TABLE `brand`");
-            statement.executeUpdate("DROP TABLE `city`");
-            statement.executeUpdate("DROP TABLE `roles`");
+            statement.executeUpdate("DROP DATABASE `kozlov`");
 
         } catch (SQLException e) {
             e.printStackTrace();

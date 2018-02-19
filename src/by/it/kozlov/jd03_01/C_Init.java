@@ -13,7 +13,7 @@ public class C_Init {
             e.printStackTrace();
         }
 
-        try (Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1:2016/kozlov?useUnicode=true&characterEncoding=UTF-8", "root", "")) {
+        try (Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://127.0.0.1:2016/?useUnicode=true&characterEncoding=UTF-8", "root", "")) {
             Statement statement = connection.createStatement();
             statement.executeUpdate("DROP SCHEMA IF EXISTS `kozlov` ;");
             statement.executeUpdate("CREATE SCHEMA IF NOT EXISTS `kozlov` DEFAULT CHARACTER SET utf8 ;");
