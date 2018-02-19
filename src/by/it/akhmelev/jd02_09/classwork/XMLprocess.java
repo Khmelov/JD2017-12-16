@@ -8,7 +8,7 @@ import java.io.File;
 
 public class XMLprocess {
 
-    private final static String path=System.getProperty("user.dir")+"/src/by/it/akhmelev/jd02_09/classwork/Persons.xml";
+    private final static String path=System.getProperty("user.dir")+"/src/by/it/akhmelev/jd02_09/classwork/Persons+XSD.xml";
     private final static String path2=System.getProperty("user.dir")+"/src/by/it/akhmelev/jd02_09/classwork/Persons2.xml";
 
     public static void main(String[] args) {
