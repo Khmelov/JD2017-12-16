@@ -16,7 +16,7 @@ public class BookCRUD implements I_CRUD<Book> {
              Statement statement = connection.createStatement()) {
             int recCount = statement.executeUpdate(
                     String.format("INSERT INTO `books`(`name`, `author`, `price`, `Category_id`) " +
-                                    "VALUES ('%s','%s','%f','%d')",
+                                    "VALUES ('%s','%s','%d','%d')",
                             book.getName(), book.getAuthor(), book.getPrice(), book.getCategory_id()),
                     Statement.RETURN_GENERATED_KEYS);
             if (1 == recCount) {
@@ -38,7 +38,7 @@ public class BookCRUD implements I_CRUD<Book> {
                         books.getInt("id"),
                         books.getString("name"),
                         books.getString("author"),
-                        books.getDouble("price"),
+                        books.getInt("price"),
                         books.getInt("Category_id")
                 );
             }
@@ -52,7 +52,7 @@ public class BookCRUD implements I_CRUD<Book> {
              Statement statement = connection.createStatement()) {
             int recCount = statement.executeUpdate(
                     String.format("UPDATE `books` " +
-                    "SET `name`='%s',`author`='%s',`price`='%f',`Category_id`='%d' WHERE id=%d",
+                    "SET `name`='%s',`author`='%s',`price`='%d',`Category_id`='%d' WHERE id=%d",
                             book.getName(),book.getAuthor(),book.getPrice(),book.getCategory_id(), book.getId()));
             return recCount == 1;
         }

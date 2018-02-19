@@ -3,7 +3,7 @@ package by.it.patsko.jd03_02.crud;
 import java.io.Serializable;
 import java.util.Objects;
 
-class Role implements Serializable {
+public class Role implements Serializable {
     private int id;
     private String role;
 
