@@ -1,5 +1,7 @@
 <?xml version='1.1' encoding='uTF-8' ?>
-<users>                                                                              <!--Подписчики-->
+<users xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.it.by/sevashko/xml/users Users.xsd"
+       xmlns="http://www.it.by/sevashko/xml/users">                                                                              <!--Подписчики-->
     <user login="Ivan93" password="146asv1">                                         <!--Подписчик-->
         <name>Иван</name>                                                             <!--Имя-->
         <lastName>Иванов</lastName>                                                     <!--Фамилия-->
@@ -8,15 +10,15 @@
             <subscription id="43434">
                 <publication>Автодайджест</publication>                             <!--Название издания-->
                 <period>6</period>                                                  <!--Продолжительность подписки-->
-                <startsubscription>01.2018</startsubscription>                       <!--Начало подписного периода-->
-                <endsubscription>06.2018</endsubscription>                          <!--Начало подписного периода-->
+                <startsubscription>2018-01-01</startsubscription>                       <!--Начало подписного периода-->
+                <endsubscription>2018-05-30</endsubscription>                          <!--Начало подписного периода-->
                 <price>9.28</price>                                                           <!--Цена-->
             </subscription>
             <subscription id="687941">
                 <publication>Мир тяжелых моторов</publication>
                 <period>2</period>
-                <startsubscription>02.2018</startsubscription>
-                <endsubscription>03.2018</endsubscription>
+                <startsubscription>2018-01-01</startsubscription>
+                <endsubscription>2018-02-28</endsubscription>
                 <price>89.8</price>
             </subscription>
         </subscriptions>
@@ -29,8 +31,8 @@
             <subscription id="2353122">
                 <publication>Транспортная безопасность</publication>
                 <period>12</period>
-                <startsubscription>01.2018</startsubscription>
-                <endsubscription>12.2018</endsubscription>
+                <startsubscription>2018-01-01</startsubscription>
+                <endsubscription>2018-12-31</endsubscription>
                 <price>98.0</price>
             </subscription>
         </subscriptions>
