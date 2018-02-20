@@ -1,7 +1,7 @@
 package by.it.sevashko.jd03_02;
 
-import by.it.sevashko.jd03_02.Helpers.Cleaner;
-import by.it.sevashko.jd03_02.Helpers.DBCreation;
+import by.it.sevashko.jd03_02.helpers.Cleaner;
+import by.it.sevashko.jd03_02.helpers.DBCreation;
 import by.it.sevashko.jd03_02.beans.Publication;
 import by.it.sevashko.jd03_02.beans.Subscription;
 import by.it.sevashko.jd03_02.beans.User;
