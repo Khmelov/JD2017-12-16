@@ -3,15 +3,19 @@
     <xsl:output method="html"/>
 
     <xsl:template match="/users/user/subscriptions">
-        <table border="1">
-            <tr>
-                <td>Название издания</td>
-                <td>Период подписки</td>
-                <td>Начало подписки</td>
-                <td>Конец подписки</td>
-            </tr>
-            <xsl:apply-templates/>
-        </table>
+        <head/>
+        <body>
+            <table border="1">
+                    <tr>
+                        <td>Название издания</td>
+                        <td>Период подписки</td>
+                        <td>Начало подписки</td>
+                        <td>Конец подписки</td>
+                        <td>Цена</td>
+                    </tr>
+                    <xsl:apply-templates/>
+            </table><br/>
+        </body>
     </xsl:template>
 
     <xsl:template match="/users/user/subscriptions/subscription">
@@ -31,7 +35,7 @@
     <xsl:template match="/users/user/subscriptions/subscription/startsubscription">
         <td><xsl:value-of select="text()"/></td>
     </xsl:template>
->
+
     <xsl:template match="/users/user/subscriptions/subscription/endsubscription">
         <td><xsl:value-of select="text()"/></td>
     </xsl:template>

@@ -1,6 +1,6 @@
 package by.it.sevashko.jd03_02.crud;
 
-import by.it.sevashko.jd03_02.Helpers.Connector;
+import by.it.sevashko.jd03_02.helpers.Connector;
 import by.it.sevashko.jd03_02.beans.Publication;
 
 import java.sql.Connection;
