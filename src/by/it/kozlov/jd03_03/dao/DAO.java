@@ -4,6 +4,8 @@ public class DAO {
     private static DAO dao;
     public UserDAO user;
     public RoleDAO role;
+    public CityDAO city;
+    public BrandDAO brand;
 
     public static DAO getDAO() {
         if (dao == null) {
@@ -12,6 +14,8 @@ public class DAO {
                     dao = new DAO();
                     dao.user = new UserDAO();
                     dao.role = new RoleDAO();
+                    dao.city = new CityDAO();
+                    dao.brand = new BrandDAO();
                 }
             }
         }

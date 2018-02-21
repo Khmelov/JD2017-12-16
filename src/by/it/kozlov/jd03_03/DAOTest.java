@@ -1,5 +1,7 @@
 package by.it.kozlov.jd03_03;
 
+import by.it.kozlov.jd03_03.beans.Brand;
+import by.it.kozlov.jd03_03.beans.City;
 import by.it.kozlov.jd03_03.beans.Role;
 import by.it.kozlov.jd03_03.beans.User;
 import by.it.kozlov.jd03_03.dao.DAO;
@@ -52,4 +54,35 @@ public class DAOTest {
 
     }
 
+    @Test
+    public void cityDAO() throws SQLException {
+        DAO dao = DAO.getDAO();
+        City city = dao.city.read(1);
+        String test = "City{id=1, city='Брестская область'}";
+        Assert.assertEquals("Error read", test, city.toString());
+        city = dao.city.read("г. Минск");
+        test = "City{id=7, city='г. Минск'}";
+        Assert.assertEquals("Error read name", test, city.toString());
+        Assert.assertFalse("Error create", dao.city.create(city));
+        Assert.assertFalse("Error update", dao.city.update(city));
+        Assert.assertFalse("Error delete", dao.city.delete(city));
+        Assert.assertNotNull("Error getAll", dao.city.getAll().get(0));
+
+    }
+
+    @Test
+    public void brandDAO() throws SQLException {
+        DAO dao = DAO.getDAO();
+        Brand brand = dao.brand.read(1);
+        String test = "Brand{id=1, brand='BMW'}";
+        Assert.assertEquals("Error read", test, brand.toString());
+        brand = dao.brand.read("Mercedes-Benz");
+        test = "Brand{id=2, brand='Mercedes-Benz'}";
+        Assert.assertEquals("Error read name", test, brand.toString());
+        Assert.assertFalse("Error create", dao.brand.create(brand));
+        Assert.assertFalse("Error update", dao.brand.update(brand));
+        Assert.assertFalse("Error delete", dao.brand.delete(brand));
+        Assert.assertNotNull("Error getAll", dao.brand.getAll().get(0));
+
+    }
 }

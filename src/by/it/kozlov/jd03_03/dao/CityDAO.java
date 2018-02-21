@@ -1,6 +1,6 @@
 package by.it.kozlov.jd03_03.dao;
 
-import by.it.kozlov.jd03_03.beans.Role;
+import by.it.kozlov.jd03_03.beans.City;
 import by.it.kozlov.jd03_03.connect.ConnectionCreator;
 
 import java.sql.Connection;
@@ -10,39 +10,39 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoleDAO implements IDAO<Role> {
+public class CityDAO implements IDAO<City> {
     @Override
-    public boolean create(Role role) throws SQLException {
+    public boolean create(City bean) throws SQLException {
         return false;
     }
 
     @Override
-    public Role read(int id) throws SQLException {
+    public City read(int id) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-            String sql = String.format("SELECT * FROM `kozlov`.`roles` WHERE id=%d",
+            String sql = String.format("SELECT * FROM `kozlov`.`city` WHERE id=%d",
                     id);
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()) {
-                return new Role(
+                return new City(
                         resultSet.getInt("id"),
-                        resultSet.getString("role")
+                        resultSet.getString("city")
                 );
             }
         }
         return null;
     }
 
-    public Role read(String role) throws SQLException {
+    public City read(String city) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-            String sql = String.format("SELECT * FROM `kozlov`.`roles` WHERE role='%s'",
-                    role);
+            String sql = String.format("SELECT * FROM `kozlov`.`city` WHERE city='%s'",
+                    city);
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()) {
-                return new Role(
+                return new City(
                         resultSet.getInt("id"),
-                        resultSet.getString("role")
+                        resultSet.getString("city")
                 );
             }
         }
@@ -50,35 +50,35 @@ public class RoleDAO implements IDAO<Role> {
     }
 
     @Override
-    public boolean update(Role role) throws SQLException {
+    public boolean update(City bean) throws SQLException {
         return false;
     }
 
     @Override
-    public boolean delete(Role role) throws SQLException {
+    public boolean delete(City bean) throws SQLException {
         return false;
     }
 
     @Override
-    public List<Role> getAll() throws SQLException {
+    public List<City> getAll() throws SQLException {
         return getAll("");
     }
 
     @Override
-    public List<Role> getAll(String WHERE) throws SQLException {
-        List<Role> roles = new ArrayList<>();
-        String sql = String.format("SELECT * FROM `kozlov`.`roles` " + WHERE + ";");
+    public List<City> getAll(String WHERE) throws SQLException {
+        List<City> citys = new ArrayList<>();
+        String sql = String.format("SELECT * FROM `kozlov`.`city` " + WHERE + ";");
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
-                Role role = new Role(
+                City city = new City(
                         resultSet.getInt("id"),
-                        resultSet.getString("role")
+                        resultSet.getString("city")
                 );
-                roles.add(role);
+                citys.add(city);
             }
         }
-        return roles;
+        return citys;
     }
 }
