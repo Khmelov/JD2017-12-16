@@ -42,11 +42,14 @@ public class DAOTest {
         Role role = dao.role.read(1);
         String test = "Role{id=1, role='admin'}";
         Assert.assertEquals("Error read", test, role.toString());
-
+        role = dao.role.read("user");
+        test = "Role{id=2, role='user'}";
+        Assert.assertEquals("Error read name", test, role.toString());
         Assert.assertFalse("Error create", dao.role.create(role));
         Assert.assertFalse("Error update", dao.role.update(role));
         Assert.assertFalse("Error delete", dao.role.delete(role));
         Assert.assertNotNull("Error getAll", dao.role.getAll().get(0));
+
     }
 
 }
