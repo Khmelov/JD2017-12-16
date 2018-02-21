@@ -1,4 +1,4 @@
-package by.it.krasutski.jd03_02;
+package by.it.krasutski.jd03_02.beans;
 
 import java.io.Serializable;
 import java.util.Objects;
