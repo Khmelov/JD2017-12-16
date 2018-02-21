@@ -80,6 +80,5 @@ public class RoleDAO implements IDAO<Role> {
             }
         }
         return roles;
-
     }
 }
