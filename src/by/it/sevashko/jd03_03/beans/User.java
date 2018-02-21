@@ -1,4 +1,4 @@
-package by.it.sevashko.jd03_03.bean;
+package by.it.sevashko.jd03_03.beans;
 
 import java.util.Objects;
 

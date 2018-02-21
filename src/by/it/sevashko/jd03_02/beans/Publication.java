@@ -8,7 +8,7 @@ public class Publication {
     private String name;
     private int periodicity;
     private int minPeriod;
-    private float price;
+    private double price;
 
     public Publication() {
     }
@@ -57,7 +57,7 @@ public class Publication {
         return minPeriod;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -69,7 +69,7 @@ public class Publication {
         return id == that.id &&
                 periodicity == that.periodicity &&
                 minPeriod == that.minPeriod &&
-                Float.compare(that.price, price) == 0 &&
+                Double.compare(that.price, price) == 0 &&
                 Objects.equals(name, that.name);
     }
 

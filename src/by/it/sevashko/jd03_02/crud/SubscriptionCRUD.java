@@ -47,7 +47,7 @@ public class SubscriptionCRUD implements CRUD<Subscription> {
                         result.getInt("publication"),
                         result.getInt("copies"),
                         result.getInt("period"),
-                        result.getDate("start_subscriptio"),
+                        result.getDate("start_subscription"),
                         result.getDate("end_subscription"),
                         result.getFloat("price"));
             }
