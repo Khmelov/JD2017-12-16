@@ -1,20 +1,20 @@
 package by.it.krasutski.jd03_02;
 
-import by.it.krasutski.jd03_01.*;
+import by.it.krasutski.jd03_01.B_AddRoles;
 import by.it.krasutski.jd03_02.beans.Ad;
 import by.it.krasutski.jd03_02.beans.User;
 import by.it.krasutski.jd03_02.crud.AdCRUD;
 import by.it.krasutski.jd03_02.crud.UserCRUD;
-import by.it.krasutski.jd03_02.database.DataBaseInit;
 import by.it.krasutski.jd03_02.database.ConnectionCreator;
+import by.it.krasutski.jd03_02.database.DataBaseInit;
+import by.it.krasutski.jd03_02.database.DataBaseReset;
 
-import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
-public class TaskA {
-
+public class TaskC {
     private static UserCRUD userCRUD = new UserCRUD();
     private static AdCRUD adCRUD = new AdCRUD();
     private static User first = new User(0,"asd","asd@it.by","asdasd",
@@ -25,12 +25,13 @@ public class TaskA {
             "Good TV lol", 569, 2,3);
 
     public static void main(String[] args) throws SQLException {
-        C_Reset.resetDB();
+        DataBaseReset.resetDB();
         DataBaseInit.initDB();
         B_AddRoles.addRoles();
         createRead();
         updateRead();
         deleteUser();
+        deleteAd();
         System.out.println("--------------Roles--------------");
         System.out.println("Administrator ID: " + findRole("Administrator"));
         System.out.println("User ID: " + findRole("User"));
@@ -65,6 +66,13 @@ public class TaskA {
             System.out.println("Can't delete user: " + second);
     }
 
+    private static void deleteAd() throws SQLException{
+        if (adCRUD.delete(ad))
+            System.out.println(ad + "deleted.");
+        else
+            System.out.println("Can't delete ad");
+    }
+
     private static int findRole(String Role) throws SQLException{
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()
@@ -78,4 +86,5 @@ public class TaskA {
         }
         return 0;
     }
+
 }

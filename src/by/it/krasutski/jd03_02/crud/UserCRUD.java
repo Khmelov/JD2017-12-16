@@ -1,4 +1,7 @@
-package by.it.krasutski.jd03_02;
+package by.it.krasutski.jd03_02.crud;
+
+import by.it.krasutski.jd03_02.database.ConnectionCreator;
+import by.it.krasutski.jd03_02.beans.User;
 
 import java.sql.Connection;
 import java.sql.SQLException;

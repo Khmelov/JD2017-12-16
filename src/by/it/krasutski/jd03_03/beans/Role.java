@@ -1,4 +1,4 @@
-package by.it.krasutski.jd03_02;
+package by.it.krasutski.jd03_03.beans;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -43,7 +43,7 @@ public class Role implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Role Role1 = (Role) o;
+        by.it.krasutski.jd03_03.beans.Role Role1 = (by.it.krasutski.jd03_03.beans.Role) o;
         return ID == Role1.ID &&
                 Objects.equals(Role, Role1.Role);
     }

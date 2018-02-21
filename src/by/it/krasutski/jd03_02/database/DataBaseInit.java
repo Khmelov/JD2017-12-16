@@ -1,11 +1,11 @@
-package by.it.krasutski.jd03_01;
+package by.it.krasutski.jd03_02.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class C_Init {
+public class DataBaseInit {
     public static void main(String[] args) {
         initDB();
     }

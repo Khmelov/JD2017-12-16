@@ -1,4 +1,4 @@
-package by.it.krasutski.jd03_02;
+package by.it.krasutski.jd03_03.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
