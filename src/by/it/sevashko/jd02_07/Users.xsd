@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.it.by/sevashko/xml/users"
+        xmlns:tns="http://www.it.by/sevashko/xml/users"
+        elementFormDefault="qualified">
+    <element name="users">
+        <complexType>
+            <sequence>
+                <element name="user"
+                         type="tns:user"
+                         maxOccurs="unbounded">
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="user">
+        <sequence>
+            <element name="name" type="string"/>
+            <element name="lastName" type="string"/>
+            <element name="email" type="string"/>
+            <element name="subscriptions" type="tns:subscriptions"/>
+        </sequence>
+        <attribute name="login" type="string" use="required"/>
+        <attribute name="password" type="string" use="required"/>
+    </complexType>
+
+    <complexType name="subscriptions">
+        <sequence>
+            <element name="subscription"
+                     type="tns:subscription"
+                     maxOccurs="unbounded">
+            </element>
+        </sequence>
+    </complexType>
+
+    <complexType name="subscription">
+        <sequence>
+            <element name="publication" type="string"/>
+            <element name="period" type="int"/>
+            <element name="startsubscription" type="date"/>
+            <element name="endsubscription" type="date"/>
+            <element name="price" type="float"/>
+        </sequence>
+        <attribute name="id" type="string" use="required"/>
+    </complexType>
+</schema>

@@ -1,0 +1,17 @@
+<?xml version='1.1' encoding='UTF-8' ?>
+<!ELEMENT users (user)+>
+<!ELEMENT user (name, lastName, email, subscriptions)>
+<!ATTLIST user
+        login ID #REQUIRED
+        password CDATA #REQUIRED>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT lastName (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT subscriptions (subscription)+>
+<!ELEMENT subscription (publication, period, startsubscription, endsubscription, price)+>
+<!ATTLIST subscription id ID #REQUIRED>
+<!ELEMENT period (#PCDATA)>
+<!ELEMENT startsubscription (#PCDATA)>
+<!ELEMENT endsubscription (#PCDATA)>
+<!ELEMENT publication (#PCDATA)>
+<!ELEMENT price (#PCDATA)>

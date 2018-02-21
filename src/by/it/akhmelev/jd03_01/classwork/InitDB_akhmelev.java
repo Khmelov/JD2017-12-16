@@ -40,7 +40,7 @@ public class InitDB_akhmelev {
                 "  `ID` INT(11) NOT NULL AUTO_INCREMENT,\n" +
                 "  `Description` VARCHAR(2000) NOT NULL,\n" +
                 "  `Address` VARCHAR(300) NOT NULL,\n" +
-                "  `Flool` INT(11) NOT NULL,\n" +
+                "  `Floor` INT(11) NOT NULL,\n" +
                 "  `Floors` INT(11) NOT NULL,\n" +
                 "  `RoomCount` INT(11) NOT NULL,\n" +
                 "  `Price` DOUBLE NOT NULL,\n" +
@@ -60,8 +60,7 @@ public class InitDB_akhmelev {
         statement.executeUpdate("INSERT INTO `akhmelev`.`roles` (`ID`, `role`) VALUES (DEFAULT, 'Guest');");
         statement.executeUpdate("INSERT INTO `akhmelev`.`users` (`ID`, `Login`, `Email`, `Password`, `FK_roles`) VALUES (DEFAULT, 'admin', 'admin@it.by', 'admin', 1);");
         statement.executeUpdate("INSERT INTO `akhmelev`.`users` (`ID`, `Login`, `Email`, `Password`, `FK_roles`) VALUES (DEFAULT, 'user', 'user@it.by', 'user', 2);");
-        statement.executeUpdate("INSERT INTO `akhmelev`.`ads` (`ID`, `Description`, `Address`, `Flool`, `Floors`, `RoomCount`, `Price`, `Area`, `FK_users`) VALUES (DEFAULT, 'Good price', 'Lenina 1', 1, 1, 1, 111111, 111, 2);");
-
+        statement.executeUpdate("INSERT INTO `akhmelev`.`ads` (`ID`, `Description`, `Address`, `Floor`, `Floors`, `RoomCount`, `Price`, `Area`, `FK_users`) VALUES (DEFAULT, 'Good price', 'Lenina 1', 1, 1, 1, 111111, 111, 2);");
 
     }
 
