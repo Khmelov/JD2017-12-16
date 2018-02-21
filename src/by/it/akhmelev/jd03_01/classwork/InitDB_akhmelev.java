@@ -62,7 +62,6 @@ public class InitDB_akhmelev {
         statement.executeUpdate("INSERT INTO `akhmelev`.`users` (`ID`, `Login`, `Email`, `Password`, `FK_roles`) VALUES (DEFAULT, 'user', 'user@it.by', 'user', 2);");
         statement.executeUpdate("INSERT INTO `akhmelev`.`ads` (`ID`, `Description`, `Address`, `Floor`, `Floors`, `RoomCount`, `Price`, `Area`, `FK_users`) VALUES (DEFAULT, 'Good price', 'Lenina 1', 1, 1, 1, 111111, 111, 2);");
 
-
     }
 
 }
