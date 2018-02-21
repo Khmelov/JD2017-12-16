@@ -105,7 +105,7 @@ public class Good_CRUD implements IBean_CRUD <Good> {
                 for (int i = 1; i < countColumn+1; i++) {
                         System.out.print(resultSetMetaData.getColumnLabel(i)+"="+
                                 resultSet.getString(i)+" ");
-//                    return new Good (
+//                    return new Buyer (
 //                            resultSet.getInt("ID"),
 //                            resultSet.getString("Name"),
 //                            resultSet.getDouble("Price"),

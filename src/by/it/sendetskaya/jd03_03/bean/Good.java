@@ -1,4 +1,4 @@
-package by.it.sendetskaya.jd03_02;
+package by.it.sendetskaya.jd03_03.bean;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -83,7 +83,7 @@ public class Good implements Serializable{
 
     @Override
     public String toString() {
-        return "Buyer {" +
+        return "Good {" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
