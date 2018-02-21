@@ -25,7 +25,7 @@ public class SampleInsertA {
                         ""
                 )) {
             Statement statement = connection.createStatement();
-            statement.executeUpdate(String.format("INSERT INTO `ads` (`ID`, `Description`, `Address`, `Flool`, `Floors`, `RoomCount`, `Price`, `Area`, `FK_users`) VALUES (DEFAULT, 'Good price', 'Lenina 1', 1, 1, 1, 111111, 111, 2);"));
+            statement.executeUpdate(String.format("INSERT INTO `ads` (`ID`, `Description`, `Address`, `Floor`, `Floors`, `RoomCount`, `Price`, `Area`, `FK_users`) VALUES (DEFAULT, 'Good price', 'Lenina 1', 1, 1, 1, 111111, 111, 2);"));
 
         } catch (SQLException e) {
             e.printStackTrace();
