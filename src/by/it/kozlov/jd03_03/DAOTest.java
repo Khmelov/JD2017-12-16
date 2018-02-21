@@ -1,9 +1,6 @@
 package by.it.kozlov.jd03_03;
 
-import by.it.kozlov.jd03_03.beans.Brand;
-import by.it.kozlov.jd03_03.beans.City;
-import by.it.kozlov.jd03_03.beans.Role;
-import by.it.kozlov.jd03_03.beans.User;
+import by.it.kozlov.jd03_03.beans.*;
 import by.it.kozlov.jd03_03.dao.DAO;
 import org.junit.Assert;
 import org.junit.Test;
@@ -83,6 +80,30 @@ public class DAOTest {
         Assert.assertFalse("Error update", dao.brand.update(brand));
         Assert.assertFalse("Error delete", dao.brand.delete(brand));
         Assert.assertNotNull("Error getAll", dao.brand.getAll().get(0));
+    }
 
+    @Test
+    public void carDAO() throws SQLException {
+        DAO dao = DAO.getDAO();
+        Car car = dao.car.read(1);
+        String test = "Car{id=1, brandID=1, model='7 series', carClass='Седан', price=164400.0, year=2018, usersID=1}";
+        Assert.assertEquals("Error read", test, car.toString());
+
+        car.setModel("X20");
+        dao.car.create(car);
+        car = dao.car.read(car.getId());
+        test = String.format("Car{id=%d, brandID=1, model='X20', carClass='Седан', price=164400.0, year=2018, usersID=1}", car.getId());
+        Assert.assertEquals("Error create", test, car.toString());
+
+        car.setModel("X40");
+        dao.car.update(car);
+        car = dao.car.read(car.getId());
+        test = String.format("Car{id=%d, brandID=1, model='X40', carClass='Седан', price=164400.0, year=2018, usersID=1}", car.getId());
+        Assert.assertEquals("Error update", test, car.toString());
+        int id = car.getId();
+        dao.car.delete(car);
+        car = dao.car.read(id);
+        Assert.assertNull("Error delete", car);
+        Assert.assertNotNull("Error getAll", dao.car.getAll().get(0));
     }
 }
