@@ -11,7 +11,7 @@ public class DAO {
     public RoleDAO roleDAO;
     public BuyerDAO buyerDAO;
     public ListOfPurchasesDAO listOfPurchasesDAO;
-    public BookDAO bookDAO;
+    public UniversalDAO<Book> bookDAO;
     public CategoryDAO categoryDAO;
     public CatalogDAO catalogDAO;
 
@@ -22,7 +22,7 @@ public class DAO {
             dao.roleDAO = new RoleDAO();
             dao.buyerDAO = new BuyerDAO();
             dao.listOfPurchasesDAO = new ListOfPurchasesDAO();
-            dao.bookDAO = new BookDAO();
+            dao.bookDAO = new UniversalDAO<>(new Book(),"books");
             dao.categoryDAO = new CategoryDAO();
             dao.catalogDAO = new CatalogDAO();
         }

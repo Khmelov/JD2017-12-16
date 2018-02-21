@@ -2,6 +2,7 @@ package by.it.patsko.jd03_03;
 
 import by.it.patsko.jd03_03.beens.Book;
 import by.it.patsko.jd03_03.beens.Buyer;
+import by.it.patsko.jd03_03.beens.ListOfPurchases;
 import by.it.patsko.jd03_03.beens.Role;
 import by.it.patsko.jd03_03.dao.DAO;
 
@@ -31,6 +32,17 @@ public class Runner {
         for (Book b : ads) {
             System.out.println(b);
         }
+        System.out.println();
+        Book book=dao.bookDAO.read(1);
+        System.out.println(book);
+        System.out.println();
 
+        System.out.println("чтение:\n");
+        ListOfPurchases list=dao.listOfPurchasesDAO.read(1);
+        System.out.println(list);
+        list.setBooks_id(2);
+        System.out.println("обнавление: "+dao.listOfPurchasesDAO.update(list)+"\n"+list);
+        System.out.println("удаление: "+dao.listOfPurchasesDAO.delete(list));
+        System.out.println("создание: "+dao.listOfPurchasesDAO.create(new ListOfPurchases(10,1,1)));
     }
 }
