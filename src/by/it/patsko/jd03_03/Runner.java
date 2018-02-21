@@ -37,7 +37,7 @@ public class Runner {
         System.out.println(book);
         System.out.println();
 
-        System.out.println("чтение:\n");
+        System.out.println("чтение:");
         ListOfPurchases list=dao.listOfPurchasesDAO.read(1);
         System.out.println(list);
         list.setBooks_id(2);
