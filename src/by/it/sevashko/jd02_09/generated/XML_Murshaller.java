@@ -8,19 +8,19 @@ import java.io.File;
 
 public class XML_Murshaller {
 
-    private final static String path=System.getProperty("user.dir")+"/src/by/it/sevashko/jd02_09/generated/Users+XSD.xml";
-    private final static String path2=System.getProperty("user.dir")+"/src/by/it/sevashko/jd02_09/generated/Users_OUT.xml";
-
     public static void main(String[] args) {
+        String root = System.getProperty("user.dir");
+        String in = root + "/src/by/it/sevashko/jd02_09/generated/Users+XSD.xml";
+        String out = root + "/src/by/it/sevashko/jd02_09/generated/Users_OUT.xml";
         try {
             JAXBContext context=JAXBContext.newInstance(Users.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            Users Users=(Users)unmarshaller.unmarshal(new File(path));
+            Users Users=(Users)unmarshaller.unmarshal(new File(in));
             System.out.println(Users);
 
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,true);
-            marshaller.marshal(Users,new File(path2));
+            marshaller.marshal(Users,new File(out));
 
         } catch (JAXBException e) {
             e.printStackTrace();
