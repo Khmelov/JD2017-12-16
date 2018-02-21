@@ -1,4 +1,4 @@
-package by.it.sevashko.jd03_02.Helpers;
+package by.it.sevashko.jd03_02.helpers;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

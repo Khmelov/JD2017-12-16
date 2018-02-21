@@ -1,4 +1,4 @@
-package by.it.sevashko.jd03_02.beans;
+package by.it.sevashko.jd03_03.beans;
 
 import java.util.Date;
 import java.util.Objects;
@@ -56,7 +56,7 @@ public class Subscription {
         this.end_subscription = end_subscription;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

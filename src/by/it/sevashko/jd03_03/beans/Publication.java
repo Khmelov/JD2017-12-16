@@ -1,4 +1,4 @@
-package by.it.sevashko.jd03_02.beans;
+package by.it.sevashko.jd03_03.beans;
 
 import java.util.Objects;
 
@@ -37,7 +37,7 @@ public class Publication {
         this.minPeriod = minPeriod;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

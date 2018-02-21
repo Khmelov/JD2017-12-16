@@ -1,6 +1,6 @@
 package by.it.sevashko.jd03_02;
 
-import by.it.sevashko.jd03_02.Helpers.Connector;
+import by.it.sevashko.jd03_02.helpers.Connector;
 
 import java.sql.*;
 

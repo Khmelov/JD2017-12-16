@@ -14,7 +14,7 @@ public class Validator {
     public static void main(String[] args) {
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
         String xsdPath = "src/by/it/sevashko/jd02_07/Users.xsd";
-        String xmlFile = "src/by/it/sevashko/jd02_07/Users+XSD.xml";
+        String xmlFile = "src/by/it/sevashko/jd02_07/Users.xml";
         File xsdFile = new File(xsdPath);
         SchemaFactory factory = SchemaFactory.newInstance(language);
         try {

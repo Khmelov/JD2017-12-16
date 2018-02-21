@@ -1,6 +1,6 @@
 package by.it.sevashko.jd03_02.crud;
 
-import by.it.sevashko.jd03_02.Helpers.Connector;
+import by.it.sevashko.jd03_02.helpers.Connector;
 import by.it.sevashko.jd03_02.beans.Subscription;
 
 import java.sql.Connection;
@@ -47,7 +47,7 @@ public class SubscriptionCRUD implements CRUD<Subscription> {
                         result.getInt("publication"),
                         result.getInt("copies"),
                         result.getInt("period"),
-                        result.getDate("start_subscriptio"),
+                        result.getDate("start_subscription"),
                         result.getDate("end_subscription"),
                         result.getFloat("price"));
             }
