@@ -1,9 +1,12 @@
 package by.it.sendetskaya.jd03_02;
 
-import by.it.sendetskaya.jd03_01.CN;
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
+import java.sql.Connection;
 
 import java.sql.*;
+
+import by.it.sendetskaya.jd03_02.CN;
+
 
 public class CreateNewSchema {
 
