@@ -10,7 +10,7 @@ import java.io.Serializable;
      private  String role;
     public Role() {
     }
-public  Role (int id, String role){
+public Role(int id, String role){
         this.id=id;
         this.role=role;
 }
