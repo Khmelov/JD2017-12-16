@@ -107,7 +107,7 @@ file:Test_Var_jd01_07.java
 file:Var.java
 file:Vector.java
 dir:jd01_10
-file:Bean.java
+file:T.java
 file:BeanTester.java
 file:Param.java
 file:PrintMath.java

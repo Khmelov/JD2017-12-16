@@ -21,7 +21,7 @@ Options:
   -no-header         :  suppress generation of a file header with timestamp
   -target (2.0|2.1)  :  behave like XJC 2.0 or 2.1 and generate code that doesnt use any 2.2 features.
   -encoding <encoding> :  specify character encoding for generated source files
-  -enableIntrospection :  enable correct generation of Boolean getters/setters to enable Bean Introspection apis 
+  -enableIntrospection :  enable correct generation of Boolean getters/setters to enable T Introspection apis
   -contentForWildcard  :  generates content property for types with multiple xs:any derived elements 
   -xmlschema         :  treat input as W3C XML Schema (default)
   -relaxng           :  treat input as RELAX NG (experimental,unsupported)
