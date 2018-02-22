@@ -2,6 +2,6 @@ package by.it.patsko.project.java;
 
 import javax.servlet.http.HttpServletRequest;
 
-interface ActionCommand {
+public interface ActionCommand {
     String execute(HttpServletRequest req);
 }

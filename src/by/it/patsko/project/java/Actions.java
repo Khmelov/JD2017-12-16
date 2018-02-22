@@ -1,6 +1,6 @@
 package by.it.patsko.project.java;
 
-enum Actions {
+public enum Actions {
     LOGIN {
         {
             this.command = new CommandLogIn();
