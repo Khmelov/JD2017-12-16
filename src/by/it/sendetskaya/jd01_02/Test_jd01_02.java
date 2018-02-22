@@ -59,14 +59,14 @@ public class Test_jd01_02 {
     @Test(timeout = 1500)
     public void testTaskB() throws Exception {
         System.out.println("\n\nПроверка на вывод матрицы 5 x 5");
-        checkMethod("TaskB", "step1");
+        checkMethod("SelectRequest", "step1");
         run("0 1 2 3")
                 .include("1  2  3  4  5").include("6  7  8  9")
                 .include("11 12 13 14 15").include("16 17 18 19 20")
                 .include("21 22 23 24 25");
         ;
         System.out.println("\n\nПроверка на ввод номера месяца");
-        checkMethod("TaskB", "step2", int.class);
+        checkMethod("SelectRequest", "step2", int.class);
         run("0 2 3 4").include("нет такого месяца");
         run("1 2 3 4").include("январь");
         run("2 2 3 4").include("февраль");
@@ -83,7 +83,7 @@ public class Test_jd01_02 {
         run("13 2 3 4").include("нет такого месяца");
 
         System.out.println("\n\nПроверка на решение квадратного уравнения");
-        checkMethod("TaskB", "step3", double.class, double.class, double.class);
+        checkMethod("SelectRequest", "step3", double.class, double.class, double.class);
         run("0 2 4 2").include("-1");
         run("0 2 4 0").include("0.0").include("-2.0");
         run("0 2 4 4").include("корней нет");
