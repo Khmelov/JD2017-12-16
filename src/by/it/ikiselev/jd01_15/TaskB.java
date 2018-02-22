@@ -12,7 +12,7 @@ public class TaskB {
     public static void main(String[] args) throws IOException {
         //путь к файлу от корня проекта, здесь корень System.getProperty("user.dir")
         String src=System.getProperty("user.dir")+"/src/by/it/ikiselev/";
-        String filename = src+"jd01_15/TaskB.java";
+        String filename = src+"jd01_15/TaskB2.java";
         StringBuilder out = new StringBuilder();
        // int oneStr=0;
         int manyStrBegin=0;
@@ -58,7 +58,7 @@ public class TaskB {
         } catch (IOException e) {
             throw new IOException("Not read "+filename,e);
         }
-        String fileOutTxt = src+"JD01_15/TaskB.txt";
+        String fileOutTxt = src+"JD01_15/TaskB2.txt";
         try (PrintWriter printer=
                      new PrintWriter(
                              new FileWriter(fileOutTxt))){
