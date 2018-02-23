@@ -44,13 +44,13 @@ public class Test_jd01_15 {
     @Test(timeout = 1500)
     public void testTaskB() throws Exception {
         run("");
-        String s1 = getText("TaskB.txt").trim();
+        String s1 = getText("TaskB2.txt").trim();
         String s2 = s1.replaceAll("(?s)/\\*.*?\\*/", "(это было удалено тестом)");
         String s3 = s1.replaceAll("//[^\\n]*+", "(это было удалено тестом)\\\n");
         assertTrue("Удалены не все многострочные комментарии", s1.equals(s2));
         assertTrue("Удалены не все однострочные комментарии", s1.equals(s3));
 
-        String s0 = getText("TaskB.java").trim();
+        String s0 = getText("TaskB2.java").trim();
         s0 = s0.replaceAll("(?s)/\\*.*?\\*/", "");
         s0 = s0.replaceAll("//[^\\n]*+", "");
         char[] ch0 = s0.replaceAll("\r", "").toCharArray();
