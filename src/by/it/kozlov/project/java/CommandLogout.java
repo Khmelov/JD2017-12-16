@@ -2,9 +2,9 @@ package by.it.kozlov.project.java;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class ComandLogout implements ActionComand{
+public class CommandLogout implements ActionCommand {
     @Override
     public String execute(HttpServletRequest req) {
-        return null;
+        return Actions.LOGOUT.jsp;
     }
 }

@@ -2,9 +2,9 @@ package by.it.kozlov.project.java;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class ComandError implements ActionComand{
+public class CommandLogin implements ActionCommand {
     @Override
     public String execute(HttpServletRequest req) {
-        return null;
+        return Actions.LOGIN.jsp;
     }
 }

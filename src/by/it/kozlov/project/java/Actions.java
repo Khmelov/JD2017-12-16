@@ -1,20 +1,26 @@
 package by.it.kozlov.project.java;
 
 public enum Actions {
-    LOGIN{{
-        this.comand=new ComandLogin();
-        this.jsp="";
-    }}, LOGOUT {
-
+    LOGIN {
+        {
+            this.command = new CommandLogin();
+            this.jsp = "/login.jsp";
+        }
+    }, LOGOUT {
+        {
+            this.command = new CommandLogout();
+            this.jsp = "/logout.jsp";
+        }
     }, ERROR {
-
-
-
+        {
+            this.command = new CommandError();
+            this.jsp = "/error.jsp";
+        }
     };
     public String jsp = "error.jsp";
-    public ActionComand comand;
+    public ActionCommand command;
 
-    public ActionComand getComand() {
-        return comand;
+    public ActionCommand getCommand() {
+        return command;
     }
 }

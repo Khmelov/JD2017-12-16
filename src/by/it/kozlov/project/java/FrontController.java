@@ -1,5 +1,7 @@
 package by.it.kozlov.project.java;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +21,11 @@ public class FrontController extends HttpServlet {
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        ActionFactory actionFactory = new ActionFactory();
+        ActionCommand command = actionFactory.defineCommand(req);
+        String viewJsp = command.execute(req);
+        ServletContext servletContext = getServletContext();
+        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(viewJsp);
+        dispatcher.forward(req, resp);
     }
 }

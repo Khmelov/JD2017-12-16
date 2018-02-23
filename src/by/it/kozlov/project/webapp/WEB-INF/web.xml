@@ -10,26 +10,26 @@
     Важно чтобы внутри каждого из этих тегов были теги servlet-name
     и имя сервлета в них было одинаковым!!! Здесь это имя HelloWorld
     -->
-    <servlet>
-        <servlet-name>HelloWorld</servlet-name>
-        <servlet-class>by.it.kozlov.project.java.HelloServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>HelloWorld</servlet-name>
-        <url-pattern>/hello</url-pattern>
-    </servlet-mapping>
+    <!--<servlet>-->
+        <!--<servlet-name>HelloWorld</servlet-name>-->
+        <!--<servlet-class>by.it.kozlov.project.java.HelloServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>HelloWorld</servlet-name>-->
+        <!--<url-pattern>/hello</url-pattern>-->
+    <!--</servlet-mapping>-->
 
     <!--
     Подключим точно так же второй сервлета-контроллер с именем FrontControllerServlet
     -->
-    <!--<servlet>-->
-        <!--<servlet-name>FrontControllerServlet</servlet-name>-->
-        <!--<servlet-class>by.it.akhmelev.jd03_04.java.sample_controller.FrontController</servlet-class>-->
-    <!--</servlet>-->
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>FrontControllerServlet</servlet-name>-->
-        <!--<url-pattern>/do</url-pattern>-->
-    <!--</servlet-mapping>-->
+    <servlet>
+        <servlet-name>FrontControllerServlet</servlet-name>
+        <servlet-class>by.it.kozlov.project.java.FrontController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FrontControllerServlet</servlet-name>
+        <url-pattern>/do</url-pattern>
+    </servlet-mapping>
 
 
 
