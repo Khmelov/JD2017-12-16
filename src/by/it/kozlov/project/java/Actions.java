@@ -8,6 +8,8 @@ public enum Actions {
 
     }, ERROR {
 
+
+
     };
     public String jsp = "error.jsp";
     public ActionComand comand;
