@@ -16,18 +16,19 @@ public class UserDAO implements IDAO<User> {
     @Override
     public boolean create(User user) throws SQLException {
         user.setId(0);
-        Connection connection = ConnectionCreator.getConnection();
-        Statement statement = connection.createStatement();
-        String sql = String.format("INSERT INTO `kozlov`.`users` (`login`, `email`, `password`, `cityID`, `address`, `phoneNumber`, `rolesID`) VALUES ('%s', '%s', '%s', %d, '%s', '%s', %d);",
-                user.getLogin(), user.getEmail(), user.getPassword(), user.getCityID(), user.getAddress(), user.getPhoneNumber(), user.getRolesID());
-        int count = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
-        if (count == 1) {
-            ResultSet key = statement.getGeneratedKeys();
-            if (key.next()) {
-                user.setId(key.getInt(1));
+        try (Connection connection = ConnectionCreator.getConnection();
+             Statement statement = connection.createStatement()) {
+            String sql = String.format("INSERT INTO `kozlov`.`users` (`login`, `email`, `password`, `cityID`, `address`, `phoneNumber`, `rolesID`) VALUES ('%s', '%s', '%s', %d, '%s', '%s', %d);",
+                    user.getLogin(), user.getEmail(), user.getPassword(), user.getCityID(), user.getAddress(), user.getPhoneNumber(), user.getRolesID());
+            int count = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+            if (count == 1) {
+                ResultSet key = statement.getGeneratedKeys();
+                if (key.next()) {
+                    user.setId(key.getInt(1));
+                }
             }
+            return count == 1;
         }
-        return count == 1;
     }
 
     @Override
