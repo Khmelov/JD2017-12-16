@@ -112,7 +112,6 @@ public class Car implements Serializable {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(id, brandID, model, carClass, price, year, usersID);
     }
 }
