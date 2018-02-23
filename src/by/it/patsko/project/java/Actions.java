@@ -15,6 +15,11 @@ public enum Actions {
             this.command = new CommandError();
             this.jsp="/error.jsp";
         }
+    },SIGNUP{
+        {
+            this.command = new CommandSignUP();
+            this.jsp="/signup.jsp";
+        }
     };
 
     public String jsp="error.jsp";
