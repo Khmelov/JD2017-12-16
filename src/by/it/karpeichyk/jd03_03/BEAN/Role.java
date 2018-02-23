@@ -1,15 +1,17 @@
-package by.it.karpeichyk.jd03_02;
+package by.it.karpeichyk.jd03_03.BEAN;
 
 import java.io.Serializable;
 
 /**
  * Created by user on 19.02.2018.
  */
- class Role implements Serializable {
+  public class Role implements  Serializable {
      private  int id;
      private  String role;
+
     public Role() {
     }
+
 public Role(int id, String role){
         this.id=id;
         this.role=role;
