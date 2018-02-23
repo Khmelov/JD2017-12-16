@@ -10,10 +10,10 @@ import java.util.List;
 public class Runner {
     public static void main(String[] args) throws SQLException {
         DAO dao = DAO.getDAO();
-        Role role=dao.roleDAO.read(2);
+       Role role=dao.roleDAO.read(2);
         System.out.println(role);
         System.out.println("===================================");
-        User user=dao.userDAO.read(1);
+       User user=dao.userDAO.read(1);
         System.out.println(user);
         System.out.println("===================================");
         user.setLogin("Vasya");
