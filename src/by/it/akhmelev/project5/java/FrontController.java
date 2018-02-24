@@ -1,8 +1,5 @@
 package by.it.akhmelev.project5.java;
 
-import by.it.akhmelev.project5.java.ActionCommand;
-import by.it.akhmelev.project5.java.ActionFactory;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -26,7 +23,13 @@ public class FrontController extends HttpServlet {
     private void  process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         ActionFactory actionFactory=new ActionFactory();
         ActionCommand command=actionFactory.defineCommand(req);
-        String viewJsp=command.execute(req);
+        String viewJsp= null;
+        try {
+            viewJsp = command.execute(req);
+        } catch (Exception e) {
+            req.setAttribute(Msg.ERROR,"FC:"+e.getMessage());
+            viewJsp=Actions.ERROR.jsp;
+        }
 
         ServletContext servletContext=getServletContext();
         RequestDispatcher dispatcher=servletContext.getRequestDispatcher(viewJsp);

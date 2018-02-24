@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
-<form class="form-horizontal">
+<form class="form-horizontal"  action="do?command=Login" method="post">
     <fieldset>
 
         <!-- Form Name -->
@@ -18,9 +18,9 @@
 
         <!-- Password input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="passwordinput">Password Input</label>
+            <label class="col-md-4 control-label" for="Password">Password Input</label>
             <div class="col-md-4">
-                <input id="passwordinput" name="passwordinput" type="password" placeholder="placeholder" class="form-control input-md" required="">
+                <input id="Password" name="Password" type="password" placeholder="placeholder" class="form-control input-md" required="">
                 <span class="help-block">(min 6 symbols)</span>
             </div>
         </div>
