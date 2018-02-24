@@ -18,7 +18,8 @@ public class UserCRUD implements BeanCRUD<User> {
     public boolean update(User user) throws SQLException {
         try (Connection cnc = My_Connection_DB.getConnection();
              Statement statement = cnc.createStatement()){
-            String sql = String.format("UPDATE `users` SET `Login`='%s',`Email`='%s', `Password`='%s', " +
+
+            String sql = String.format("UPDATE `users` SET `Login`='%s',`Email`='%s', `Pasword`='%s', " +
                     "`FK_roles`=%d WHERE ID=%d",user.getLogin(),user.getEmail(),
                     user.getPasword(),user.getFk_roles(), user.getId());
             int recCount = statement.executeUpdate(sql);

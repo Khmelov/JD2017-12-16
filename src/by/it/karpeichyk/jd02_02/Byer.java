@@ -36,14 +36,14 @@ package by.it.karpeichyk.jd02_02;
     }
     @Override
     public void TakeBasket(){
-        by.it.karpeichyk.jd02_02.Helper.sleep(100,200);
+        Helper.sleep(100,200);
         System.out.println(this+"взял корзину");
     }
     @Override
     public  void   PutGoodsToBacket(){
-        for (int i = 2; i < by.it.karpeichyk.jd02_02.Helper.getRandom(5) ; i++) {
-            by.it.karpeichyk.jd02_02.Helper.sleep(100,200);
-            String goodName= by.it.karpeichyk.jd02_02.Goods.rndGoodName();
+        for (int i = 2; i < Helper.getRandom(5) ; i++) {
+            Helper.sleep(100,200);
+            String goodName= Goods.rndGoodName();
             Double goodPrice = Goods.getPrice(goodName);
             System.out.println(this+"товар "+goodName+" цена" + goodPrice+ " положил в корзину");
 

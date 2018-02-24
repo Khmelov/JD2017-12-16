@@ -43,12 +43,12 @@ public class Test_jd01_13 {
                 .include("NumberFormatException")
                 .exclude("ArithmeticException")
                 .include("line:")
-                .include(".jd01_13.TaskB")
+                .include(".jd01_13.TaskB2")
         ;
         run("-2.0\n6.0\nEND\n")
                 .include("ArithmeticException")
                 .include("line:")
-                .include(".jd01_13.TaskB")
+                .include(".jd01_13.TaskB2")
                 .exclude("NumberFormatException")
         ;
     }

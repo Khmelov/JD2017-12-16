@@ -7,20 +7,25 @@ import java.sql.SQLException;
 public class Runner {
     public static void main(String[] args) throws SQLException {
         RoleCRUD roleCRUD= new RoleCRUD();
-        Role role = roleCRUD.read(1);
+        Role role = roleCRUD.read(8);
         System.out.println(role);
 
-        UserCRUD userCRUD=new UserCRUD();
-        User user=userCRUD.read(2);
+       UserCRUD userCRUD=new UserCRUD();
+        User user=userCRUD.read(1);
         System.out.println("read"+user);
 
-        user.setLogin("Kuku");
+        user.setLogin("Lala");
         userCRUD.create(user);
         System.out.println("create"+user);
 
-        user.setLogin("Kuku2");
-        userCRUD.update(user);
-        System.out.println("create"+user);
+        user.setLogin("laland");
+        Role role1= roleCRUD.read(1);
+        System.out.println(role1);
+
+        UserCRUD userCRUD1=new UserCRUD();
+        User user1=userCRUD1.read(2);
+        System.out.println("read"+user1);
+
 
         userCRUD.delete(user);
         System.out.println("delete"+user);

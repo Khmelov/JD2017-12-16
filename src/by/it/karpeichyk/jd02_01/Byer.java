@@ -51,9 +51,9 @@ package by.it.karpeichyk.jd02_01;
 
     @Override
     public  void goToOut(){
-        by.it.karpeichyk.jd02_01.Runner.queue.remove(this);
+        Runner.queue.remove(this);
         System.out.println(this+"вышел из магазина");
-        System.out.println("В очереди осталось"+ by.it.karpeichyk.jd02_01.Runner.queue.size());
+        System.out.println("В очереди осталось"+ Runner.queue.size());
     }
     @Override
     public String toString() {
