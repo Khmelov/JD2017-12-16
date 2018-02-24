@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
-    <title>Hello, world!</title>
+    <title>Hello JSP!</title>
 </head>
 <body>
 <div class="container">
