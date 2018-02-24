@@ -12,6 +12,12 @@ public enum Actions {
             this.jsp = "/signup.jsp";
         }
     },
+    RESETDB {
+        {
+            this.command = new CommandResetDB();
+            this.jsp = "/resetdb.jsp";
+        }
+    },
     LOGIN {
         {
             this.command = new CommandLogin();

@@ -5,7 +5,7 @@
     <fieldset>
 
         <!-- Form Name -->
-        <legend>Form Name</legend>
+        <legend>Form Signup</legend>
 
         <!-- Text input-->
         <div class="form-group">
@@ -49,7 +49,7 @@
 </form>
 
 
-<p>SIGN-UP MESSAGE: ${message}</p>
+<p>SIGN-UP MESSAGE: <b>${message}</b></p>
 
 <%@ include file="include/end-html.jsp" %>
 

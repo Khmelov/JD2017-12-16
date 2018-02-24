@@ -12,15 +12,18 @@ public class CommandLogin implements ActionCommand {
     @Override
     public String execute(HttpServletRequest req) throws Exception{
         if (!FormUtil.isPost(req))
-            return Actions.SIGNUP.jsp;
+            return Actions.LOGIN.jsp;
         String login =
                 FormUtil.getString(req.getParameter("Login"), ".+");
         String password =
                 FormUtil.getString(req.getParameter("Password"), ".+");
         DAO dao=DAO.getDAO();
-        List<User> list=dao.userDAO.getAll(" where Login="+login+" and Password="+password);
+        List<User> list=dao.userDAO.getAll(" where Login='"+login+"' and Password='"+password+"'");
         if (list.size()>0)
-            req.setAttribute(Msg.MESSAGE,"пользователь найден");
+            req.setAttribute(Msg.MESSAGE,"пользователь "+login+" найден");
+        else
+            req.setAttribute(Msg.ERROR,"пользователь "+login+" НЕ найден");
+
         return Actions.LOGIN.jsp;
 
     }
