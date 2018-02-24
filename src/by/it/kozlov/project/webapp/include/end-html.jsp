@@ -1,3 +1,4 @@
+<%@page language="java" pageEncoding="utf-8" %>
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
