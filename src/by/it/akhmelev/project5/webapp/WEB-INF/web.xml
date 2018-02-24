@@ -23,11 +23,11 @@
     Подключим точно так же второй сервлета-контроллер с именем FrontControllerServlet
     -->
     <servlet>
-        <servlet-name>FrontControllerServlet</servlet-name>
+        <servlet-name>FrontControllerServlet5</servlet-name>
         <servlet-class>by.it.akhmelev.project5.java.FrontController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>FrontControllerServlet</servlet-name>
+        <servlet-name>FrontControllerServlet5</servlet-name>
         <url-pattern>/do</url-pattern>
     </servlet-mapping>
 
