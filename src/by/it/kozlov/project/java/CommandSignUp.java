@@ -24,9 +24,8 @@ public class CommandSignUp implements ActionCommand {
                 2
         );
         DAO dao = DAO.getDAO();
-        dao.user.create(user);
-        if (user.getId() > 0) {
-            return Actions.INDEX.jsp;
+        if (dao.user.create(user)) {
+            return Actions.LOGIN.jsp;
         } else {
             request.setAttribute(Message.MESSAGE, "Ошибка добавления пользователя");
             return Actions.SIGNUP.jsp;
