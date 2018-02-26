@@ -1,5 +1,10 @@
 package by.it.patsko.project.java;
 
+import by.it.patsko.project.java.commands.CommandError;
+import by.it.patsko.project.java.commands.CommandLogIn;
+import by.it.patsko.project.java.commands.CommandLogOut;
+import by.it.patsko.project.java.commands.CommandSignUP;
+
 public enum Actions {
     LOGIN {
         {
@@ -22,7 +27,7 @@ public enum Actions {
         }
     };
 
-    public String jsp="error.jsp";
+    public String jsp="/error.jsp";
     public ActionCommand command;
 
     public ActionCommand getCommand() {

@@ -1,41 +1,43 @@
+<%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
-<form class="form-horizontal">
-<fieldset>
+<form class="form-horizontal"  action="do?command=Login" method="post">
+    <fieldset>
 
-<!-- Form Name -->
-<legend>Form Name</legend>
+        <!-- Form Name -->
+        <legend>Form Login</legend>
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Enter login</label>
-  <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="login" class="form-control input-md" required="">
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Login">Login</label>
+            <div class="col-md-4">
+                <input id="Login" name="Login" type="text" placeholder="" class="form-control input-md" required=""
+                value="TestLogin">
+            </div>
+        </div>
 
-  </div>
-</div>
+        <!-- Password input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Password">Password</label>
+            <div class="col-md-4">
+                <input id="Password" name="Password" type="text" placeholder="placeholder" class="form-control input-md" required=""
+                value="TestPassword">
+            </div>
+        </div>
 
-<!-- Password input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="passwordinput">Enter password</label>
-  <div class="col-md-4">
-    <input id="passwordinput" name="passwordinput" type="password" placeholder="password" class="form-control input-md" required="">
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="singlebutton"></label>
+            <div class="col-md-4">
+                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Войти</button>
+            </div>
+        </div>
 
-  </div>
-</div>
-
-<!-- Button (Double) -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="button1id"></label>
-  <div class="col-md-8">
-    <button id="button1id" name="button1id" class="btn btn-success">Sign in</button>
-    <button id="button2id" name="button2id" class="btn btn-danger">Sign up</button>
-  </div>
-</div>
-
-</fieldset>
+    </fieldset>
 </form>
 
 
+
+<p>Cmd Login: <b>${message}</b></p>
 
 <%@ include file="include/end-html.jsp" %>
