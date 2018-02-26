@@ -9,7 +9,7 @@ public class DAO {
     public RoleDAO role;
     public CityDAO city;
     public BrandDAO brand;
-    public DAOCRUD car;
+    public CarDAO car;
 
     public static DAO getDAO() {
         if (dao == null) {
@@ -20,7 +20,7 @@ public class DAO {
                     dao.role = new RoleDAO();
                     dao.city = new CityDAO();
                     dao.brand = new BrandDAO();
-                    dao.car = new DAOCRUD(new Car(),"kozlov","cars");
+                    dao.car = new CarDAO();
                 }
             }
         }
