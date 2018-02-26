@@ -18,9 +18,9 @@ public class CommandSignUp implements ActionCommand {
                 FormUtil.getString(request.getParameter("Login"), ".+"),
                 FormUtil.getString(request.getParameter("Email"), ".+"),
                 FormUtil.getString(request.getParameter("Password"), ".+"),
-                Integer.parseInt(request.getParameter("00")),
-                FormUtil.getString(request.getParameter("Login"), ".+"),
-                FormUtil.getString(request.getParameter("Login"), ".+"),
+                Integer.parseInt(request.getParameter("City")),
+                FormUtil.getString(request.getParameter("Address"), ".+"),
+                FormUtil.getString(request.getParameter("PhoneNumber"), ".+"),
                 2
         );
         DAO dao = DAO.getDAO();
