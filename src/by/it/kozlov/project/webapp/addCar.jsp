@@ -1,6 +1,6 @@
 <%@page language="java" pageEncoding="utf-8" %>
 <%@ include file="include/begin-html.jsp" %>
-<form class="form-horizontal">
+<form class="form-horizontal" action="do?command=addCar" method="POST">
     <fieldset>
 
         <!-- Form Name -->
