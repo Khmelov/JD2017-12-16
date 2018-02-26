@@ -83,27 +83,27 @@ public class DAOTest {
     }
 
     @Test
-    public void carDAO() throws SQLException {
+    public void carDAO() throws SQLException, IllegalAccessException, InstantiationException {
         DAO dao = DAO.getDAO();
-        Car car = dao.car.read(1);
+        Car car = (Car) dao.car.read(1);
         String test = "Car{id=1, brandID=1, model='7 series', carClass='Седан', price=164400.0, year=2018, usersID=1}";
         Assert.assertEquals("Error read", test, car.toString());
 
         car.setModel("X20");
         dao.car.create(car);
-        car = dao.car.read(car.getId());
+        car = (Car) dao.car.read(car.getId());
         test = String.format("Car{id=%d, brandID=1, model='X20', carClass='Седан', price=164400.0, year=2018, usersID=1}", car.getId());
         Assert.assertEquals("Error create", test, car.toString());
 
         car.setModel("X40");
         dao.car.update(car);
-        car = dao.car.read(car.getId());
+        car = (Car) dao.car.read(car.getId());
         test = String.format("Car{id=%d, brandID=1, model='X40', carClass='Седан', price=164400.0, year=2018, usersID=1}", car.getId());
         Assert.assertEquals("Error update", test, car.toString());
         int id = car.getId();
         dao.car.delete(car);
-        car = dao.car.read(id);
+        car = (Car) dao.car.read(id);
         Assert.assertNull("Error delete", car);
-        Assert.assertNotNull("Error getAll", dao.car.getAll().get(0));
+        Assert.assertNotNull("Error getAll", dao.car.getAll("").get(0));
     }
 }

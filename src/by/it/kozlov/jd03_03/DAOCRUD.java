@@ -29,14 +29,14 @@ public class DAOCRUD<T> {
         String values = "";
         String delimiter = "";
         int result;
-        for (int i = 0; i < fields.length; i++) {
+        for (int i = 1; i < fields.length; i++) {
             Field field = fields[i];
             field.setAccessible(true);
             names = names.concat(delimiter + field.getName());
             values = values.concat(delimiter + "'" + field.get(bean) + "'");
             delimiter = ", ";
         }
-        String sql = "INSERT INTO `" + baseName + "`.`" + tableName + "' (" + names + ") values(" + values + ")";
+        String sql = "INSERT INTO `" + baseName + "` . `" + tableName + "` (" + names + ") values(" + values + ")";
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             int count = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
