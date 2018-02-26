@@ -31,10 +31,10 @@
             <label class="col-md-4 control-label" for="CarClass">Класс</label>
             <div class="col-md-4">
                 <select id="CarClass" name="CarClass" class="form-control">
-                    <option value="Хэтчбек">Хэтчбек</option>
-                    <option value="Седан">Седан</option>
-                    <option value="Кроссовер">Кроссовер</option>
-                    <option value="Внедорожник">Внедорожник</option>
+                    <option value="Hatchback">Хэтчбек</option>
+                    <option value="Sedan">Седан</option>
+                    <option value="Crossover">Кроссовер</option>
+                    <option value="SUV">Внедорожник</option>
                 </select>
             </div>
         </div>

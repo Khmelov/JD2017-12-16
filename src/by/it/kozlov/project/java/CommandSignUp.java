@@ -10,7 +10,6 @@ import java.text.ParseException;
 public class CommandSignUp implements ActionCommand {
     @Override
     public String execute(HttpServletRequest request) throws ParseException, SQLException {
-
         if (!FormUtil.isPost(request)) {
             return Actions.SIGNUP.jsp;
         }
