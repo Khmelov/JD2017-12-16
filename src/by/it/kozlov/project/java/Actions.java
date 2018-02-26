@@ -16,16 +16,20 @@ public enum Actions {
             this.command = new CommandError();
             this.jsp = "/error.jsp";
         }
-    },
-    SIGNUP {
+    }, SIGNUP {
         {
             this.command = new CommandSignUp();
             this.jsp = "/signup.jsp";
         }
-    }, INDEX{
+    }, INDEX {
         {
             this.command = new CommandIndex();
             this.jsp = "/index.jsp";
+        }
+    }, ADDCAR {
+        {
+            this.command = new CommandAddCar();
+            this.jsp = "/addCar.jsp";
         }
     };
     public String jsp = "error.jsp";

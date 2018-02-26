@@ -23,7 +23,7 @@
             <a class="navbar-brand" href="do?command=Index">Каталог</a>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="do?command=CreateAd">Добавить автомобиль</a>
+                    <a class="nav-link" href="do?command=AddCar">Добавить автомобиль</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="do?command=ListAd">Показать весь список авто</a>
