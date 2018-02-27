@@ -1,6 +1,7 @@
 package by.it.patsko.project.java.dao;
 
 
+import by.it.patsko.project.java.dao.beanDao.BuyerDAO;
 import by.it.patsko.project.java.dao.beanDao.DAO;
 import by.it.patsko.project.java.dao.beens.Book;
 import by.it.patsko.project.java.dao.beens.Buyer;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class Runner {
     public static void main(String[] args) throws SQLException {
-        DAO dao = DAO.getDAO();
+        /*DAO dao = DAO.getDAO();
         Role role=dao.roleDAO.read(2);
         System.out.println(role+"\n");
         Buyer buyer=dao.buyerDAO.read(1);
@@ -44,6 +45,7 @@ public class Runner {
         list.setBooks_id(2);
         System.out.println("обнавление: "+dao.listOfPurchasesDAO.update(list)+"\n"+list);
         System.out.println("удаление: "+dao.listOfPurchasesDAO.delete(list));
-        System.out.println("создание: "+dao.listOfPurchasesDAO.create(new ListOfPurchases(10,1,1)));
+        System.out.println("создание: "+dao.listOfPurchasesDAO.create(new ListOfPurchases(10,1,1)));*/
+        System.out.println(new BuyerDAO().read("TestLogin","TestPassword"));
     }
 }

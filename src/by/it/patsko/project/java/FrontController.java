@@ -23,6 +23,8 @@ public class FrontController extends HttpServlet {
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute(Msg.BUYER,LogInBuyer.currentBuyer!=null?LogInBuyer.currentBuyer.getLogin():"");
+
         ActionFactory factory = new ActionFactory();
         ActionCommand command = factory.defineCommand(req);
         String viewJSP = null;

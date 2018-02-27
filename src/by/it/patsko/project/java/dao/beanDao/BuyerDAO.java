@@ -28,6 +28,11 @@ public class BuyerDAO extends DAO implements I_DAO<Buyer> {
         List<Buyer> buyerList = getAll(" where id=" + id);
         return !buyerList.isEmpty() ? buyerList.get(0) : null;
     }
+    public int read(String login, String password) throws SQLException {
+        List<Buyer> buyerList = getAll(" where login='" + login+"' AND password='"+password+"'");
+        return !buyerList.isEmpty() ? buyerList.get(0).getId() : null;
+
+    }
 
     @Override
     public boolean update(Buyer buyer) throws SQLException {

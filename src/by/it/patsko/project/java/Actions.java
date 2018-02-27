@@ -1,9 +1,6 @@
 package by.it.patsko.project.java;
 
-import by.it.patsko.project.java.commands.CommandError;
-import by.it.patsko.project.java.commands.CommandLogIn;
-import by.it.patsko.project.java.commands.CommandLogOut;
-import by.it.patsko.project.java.commands.CommandSignUP;
+import by.it.patsko.project.java.commands.*;
 
 public enum Actions {
     LOGIN {
@@ -24,6 +21,26 @@ public enum Actions {
         {
             this.command = new CommandSignUP();
             this.jsp="/signup.jsp";
+        }
+    },CATALOG{
+        {
+            this.command = new CommandCatalog();
+            this.jsp="/catalog.jsp";
+        }
+    },INITDB{
+        {
+            this.command = new CommandInitDB();
+            this.jsp="/initdb.jsp";
+        }
+    },RESETDB{
+        {
+            this.command = new CommandResetDB();
+            this.jsp="/resetdb.jsp";
+        }
+    },PROFILE{
+        {
+            this.command = new CommandProfile();
+            this.jsp="/profile.jsp";
         }
     };
 
