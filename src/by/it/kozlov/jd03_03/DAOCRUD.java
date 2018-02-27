@@ -42,9 +42,11 @@ public class DAOCRUD<T> {
             int count = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet resultSet = statement.getGeneratedKeys();
             if (count == 1) {
-                result = resultSet.getInt(1);
-                fields[0].setAccessible(true);
-                fields[0].set(bean, result);
+                if (resultSet.next()) {
+                    result = resultSet.getInt(1);
+                    fields[0].setAccessible(true);
+                    fields[0].set(bean, result);
+                }
             }
             return count == 1;
         }
