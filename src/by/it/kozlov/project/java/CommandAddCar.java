@@ -15,8 +15,8 @@ public class CommandAddCar implements ActionCommand {
         }
         Car car = new Car(0,
                 Integer.parseInt(request.getParameter("Brand")),
-                FormUtil.getString(request.getParameter("Model"), ".+"),
-                FormUtil.getString(request.getParameter("CarClass"), ".+"),
+                FormUtil.getString(request.getParameter("Model"), "[A-Za-z0-9_А-Яа-яЁё]"),
+                FormUtil.getString(request.getParameter("CarClass"), "[A-Za-z0-9_А-Яа-яЁё]"),
                 Double.parseDouble(request.getParameter("Price")),
                 Integer.parseInt(request.getParameter("Year")),
                 1

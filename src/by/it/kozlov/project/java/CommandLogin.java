@@ -17,12 +17,12 @@ public class CommandLogin implements ActionCommand {
             request.setAttribute(Message.MESSAGE, "Введите имя пользователя и пароль");
             return Actions.LOGIN.jsp;
         }
-        String login = FormUtil.getString(request.getParameter("Login"), ".+");
+        String login = FormUtil.getString(request.getParameter("Login"), "[A-Za-z0-9_@.]");
         DAO dao = DAO.getDAO();
         List<User> users = dao.user.getAll(String.format("WHERE login='%s'", login));
         if (users.size() == 1) {
             User user = users.get(0);
-            String password = FormUtil.getString(request.getParameter("Password"), ".+");
+            String password = FormUtil.getString(request.getParameter("Password"), "[A-Za-z0-9_А-Яа-яЁё]");
             if (user.getPassword().equals(password)) {
                 if (request.getParameter("Button").equals("Delete")) {
                     if (dao.user.delete(user)) {

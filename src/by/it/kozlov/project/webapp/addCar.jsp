@@ -22,7 +22,6 @@
             <label class="col-md-4 control-label" for="Model">Модель</label>
             <div class="col-md-4">
                 <input id="Model" name="Model" type="text" placeholder="Модель" class="form-control input-md">
-
             </div>
         </div>
 
