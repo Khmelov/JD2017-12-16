@@ -24,11 +24,12 @@
             </div>
         </div>
 
-        <!-- Button -->
+        <!-- Button (Double) -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="LoginButton"></label>
-            <div class="col-md-4">
-                <button id="LoginButton" name="LoginButton" class="btn btn-primary">Войти</button>
+            <label class="col-md-4 control-label" for="button1id"></label>
+            <div class="col-md-8">
+                <button id="button1id" name="Button" type="text" value="Login" class="btn btn-success">Войти</button>
+                <button id="button2id" name="Button" type="text" value="Delete" class="btn btn-danger">Удалить пользователя</button>
             </div>
         </div>
 

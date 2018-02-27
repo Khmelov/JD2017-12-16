@@ -13,6 +13,9 @@ public class CommandLogin implements ActionCommand {
     public String execute(HttpServletRequest request) throws ParseException, SQLException {
         if (!FormUtil.isPost(request)) {
             return Actions.LOGIN.jsp;
+        } else if (request.getParameter("Login").equals("")) {
+            request.setAttribute(Message.MESSAGE, "Введите имя пользователя и пароль");
+            return Actions.LOGIN.jsp;
         }
         String login = FormUtil.getString(request.getParameter("Login"), ".+");
         DAO dao = DAO.getDAO();
@@ -21,8 +24,17 @@ public class CommandLogin implements ActionCommand {
             User user = users.get(0);
             String password = FormUtil.getString(request.getParameter("Password"), ".+");
             if (user.getPassword().equals(password)) {
-                request.setAttribute(Message.MESSAGE, "Пользователь найден");
-                return Actions.LOGIN.jsp;
+                if (request.getParameter("Button").equals("Delete")) {
+                    if (dao.user.delete(user)) {
+                        request.setAttribute(Message.MESSAGE, "Пользователь удалён");
+                        return Actions.LOGIN.jsp;
+                    }
+                    request.setAttribute(Message.MESSAGE, "Ошибка удаления пользователя");
+                    return Actions.LOGIN.jsp;
+                } else {
+                    request.setAttribute(Message.MESSAGE, "Пользователь найден");
+                    return Actions.LOGIN.jsp;
+                }
             } else {
                 request.setAttribute(Message.MESSAGE, "Неверный пароль");
                 return Actions.LOGIN.jsp;
