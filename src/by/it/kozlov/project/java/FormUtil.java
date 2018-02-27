@@ -9,7 +9,7 @@ public class FormUtil {
     }
 
     static String getString(String string, String regxp) throws ParseException {
-        if (string.matches(regxp)) {
+        if (string.trim().matches(regxp)) {
             return string;
         } else {
             throw new ParseException("Ошибка проверки выражения", 1);

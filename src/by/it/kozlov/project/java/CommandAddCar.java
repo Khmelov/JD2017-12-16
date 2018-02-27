@@ -24,7 +24,8 @@ public class CommandAddCar implements ActionCommand {
         );
         DAO dao = DAO.getDAO();
         if (dao.car.create(car)) {
-            return Actions.INDEX.jsp;
+            request.setAttribute(Message.MESSAGE, "Автомобиль добавлен");
+            return Actions.ADDCAR.jsp;
         } else {
             request.setAttribute(Message.MESSAGE, "Ошибка добавления машины");
             return Actions.ADDCAR.jsp;

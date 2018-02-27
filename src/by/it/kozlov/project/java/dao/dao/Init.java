@@ -108,7 +108,6 @@ public class Init {
             statement.executeUpdate("INSERT INTO `kozlov`.`cars` (`brandID`, `model`, `carClass`, `price`, `year`, `usersID`) VALUES (1, 'X6', 'Кроссовер', 132000, 2018, 1);");
             statement.executeUpdate("INSERT INTO `kozlov`.`cars` (`brandID`, `model`, `carClass`, `price`, `year`, `usersID`) VALUES (2, 'E 200 4MATIC', 'Седан', 137706, 2018, 2);");
             statement.executeUpdate("INSERT INTO `kozlov`.`cars` (`brandID`, `model`, `carClass`, `price`, `year`, `usersID`) VALUES (2, 'GLS', 'Внедорожник', 164700, 2018, 2);");
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
