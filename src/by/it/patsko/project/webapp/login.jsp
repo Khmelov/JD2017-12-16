@@ -32,12 +32,10 @@
                 <button id="singlebutton" name="singlebutton" class="btn btn-primary">Войти</button>
             </div>
         </div>
+        <p>${message}</p>
+
 
     </fieldset>
 </form>
-
-
-
-<p>Cmd Login: <b>${message}</b></p>
 
 <%@ include file="include/end-html.jsp" %>

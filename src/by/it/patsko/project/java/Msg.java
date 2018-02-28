@@ -7,4 +7,6 @@ public interface Msg {
 
     String PROFILE_LOGIN="profile_login";
     String PROFILE_PASSWORD="profile_password";
+
+    String ERROR_DETAILS="error_details";
 }

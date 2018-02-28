@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.Arrays;
 
 public class FrontController extends HttpServlet {
     @Override
@@ -30,13 +31,15 @@ public class FrontController extends HttpServlet {
         String viewJSP = null;
         try {
             viewJSP = command.execute(req);
-            ServletContext servletContext = getServletContext();
-            RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(viewJSP);
-            requestDispatcher.forward(req, resp);
-        } catch (SQLException | ParseException e) {
+
+        } catch (SQLException | ParseException | NullPointerException e) {
             req.setAttribute(Msg.ERROR,"FC:"+e.getMessage());
+            req.setAttribute(Msg.ERROR_DETAILS,"<h5>details:</h5>"+ Arrays.toString(e.getStackTrace()));
             viewJSP=Actions.ERROR.jsp;
         }
+        ServletContext servletContext = getServletContext();
+        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(viewJSP);
+        requestDispatcher.forward(req, resp);
 
     }
 }

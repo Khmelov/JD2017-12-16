@@ -42,6 +42,11 @@ public enum Actions {
             this.command = new CommandProfile();
             this.jsp="/profile.jsp";
         }
+    },CHANGELOGIN{
+        {
+            this.command = new CommandChangeLogin();
+            this.jsp="/profile.jsp";
+        }
     };
 
     public String jsp="/error.jsp";

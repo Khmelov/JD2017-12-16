@@ -8,13 +8,11 @@
         <legend>Init DB</legend>
 
         <div class="alert alert-success" role="alert">
-          <h4 class="alert-heading">База данных восстановлена!!!</h4>
+          <h4 class="alert-heading">${message}</h4>
         </div>
 
 
     </fieldset>
 </form>
-
-<p>Cmd Init DB: <b>${message}</b></p>
 
 <%@ include file="include/end-html.jsp" %>

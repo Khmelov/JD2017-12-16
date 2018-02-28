@@ -77,9 +77,6 @@
         <li class="nav-item active">
             <a class="nav-link" href="do?command=SignUp">SignUp <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="do?command=Logout">Logout <span class="sr-only">(current)</span></a>
-        </li>
 
     </ul>
 </nav>

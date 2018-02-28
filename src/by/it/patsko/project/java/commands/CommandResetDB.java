@@ -11,7 +11,7 @@ public class CommandResetDB implements ActionCommand {
     public String execute(HttpServletRequest req) throws ParseException, SQLException {
         if (!FormUtil.isPost(req)) {
             C_Reset.main(null);
-            req.setAttribute(Msg.MESSAGE, "База данных удалена");
+            req.setAttribute(Msg.MESSAGE, "База данных удалена!!!");
         }
         return Actions.RESETDB.jsp;
     }

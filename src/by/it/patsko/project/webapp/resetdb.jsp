@@ -8,12 +8,10 @@
         <legend>Reset DB</legend>
 
         <div class="alert alert-success" role="alert">
-                  <h4 class="alert-heading">База данных удалена</h4>
+                  <h4 class="alert-heading">${message}</h4>
         </div>
 
     </fieldset>
 </form>
-
-<p>Cmd Reset DB: <b>${message}</b></p>
 
 <%@ include file="include/end-html.jsp" %>
