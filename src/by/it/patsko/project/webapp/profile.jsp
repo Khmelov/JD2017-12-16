@@ -43,13 +43,14 @@
                     </div>
                   </div>
                 </div>
+</fieldset>
+</form>
 
 
-
-
+<form class="form-horizontal"  action="do?command=profile" method="post">
+    <fieldset>
 
             <p>Ваш пароль: ${profile_password}<p>
-
                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalTwo">
                                   изменить пароль
@@ -65,7 +66,7 @@
                                         </button>
                                       </div>
                                       <div class="modal-body">
-                                            <!-- Login input-->
+                                            <!-- Password input-->
                                             <div class="form-group">
                                                 <label class="col-md-4 control-label" for="newPassword">Password</label>
                                                 <div class="col-md-4">
@@ -76,7 +77,7 @@
                                             <div class="form-group">
                                             <label class="col-md-4 control-label" for="singlebuttonTwo"></label>
                                                 <div class="col-md-4">
-                                                <butto  n id="singlebuttonTwo" name="singlebuttonTwo" class="btn btn-primary">Сохранить пароль</button>
+                                                    <button id="singlebuttonTwo" name="singlebuttonTwo" class="btn btn-primary">Сохранить пароль</button>
                                                 </div>
                                             </div>
                                       </div>
@@ -84,17 +85,10 @@
                                   </div>
                                 </div>
 
-
-
-
-
-
-
-
-
-        <a class="btn btn-outline-primary btn-lg btn-block" href="do?command=Logout" role="button">Logout</a>
-    </fieldset>
+</fieldset>
 </form>
+        <a class="btn btn-outline-primary btn-lg btn-block" href="do?command=Logout" role="button">Logout</a>
+
 
 
 

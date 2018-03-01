@@ -42,10 +42,20 @@ public enum Actions {
             this.command = new CommandProfile();
             this.jsp="/profile.jsp";
         }
-    },CHANGELOGIN{
+    },CATEGORYCS{
         {
-            this.command = new CommandChangeLogin();
-            this.jsp="/profile.jsp";
+            this.command = new CommandCategoryCS();
+            this.jsp="/category_cs.jsp";
+        }
+    },CATEGORYFICTION{
+        {
+            this.command = new CommandCategoryFiction();
+            this.jsp="/category_fiction.jsp";
+        }
+    },TOBASKET{
+        {
+            this.command = new CommandToBasket();
+            this.jsp="/category_cs.jsp";
         }
     };
 

@@ -12,7 +12,8 @@ public class CommandLogOut implements ActionCommand {
     public String execute(HttpServletRequest req) {
         LogInBuyer.resetInstance();
 
-        req.setAttribute(Msg.BUYER,LogInBuyer.currentBuyer!=null?LogInBuyer.currentBuyer.getLogin():"");
+        req.setAttribute(Msg.PROFILE_LOGIN,LogInBuyer.currentBuyer!=null?LogInBuyer.currentBuyer.getLogin():"");
+//        req.setAttribute(Msg.BUYER,LogInBuyer.currentBuyer!=null?LogInBuyer.currentBuyer.getLogin():"");
 
         return Actions.LOGOUT.jsp;
     }

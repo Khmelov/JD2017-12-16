@@ -27,7 +27,8 @@ public class CommandLogIn implements ActionCommand {
             Buyer buyer = new BuyerDAO().read(new BuyerDAO().read(testLogin, testPassword));
             LogInBuyer.getInstance(buyer);
 
-            req.setAttribute(Msg.BUYER, LogInBuyer.currentBuyer.getLogin());
+            req.setAttribute(Msg.PROFILE_LOGIN, LogInBuyer.currentBuyer.getLogin());
+//            req.setAttribute(Msg.BUYER, LogInBuyer.currentBuyer.getLogin());
 
             req.setAttribute(Msg.MESSAGE, "Залогинился пользователь" + LogInBuyer.currentBuyer);
         } catch (ParseException | NullPointerException e) {
