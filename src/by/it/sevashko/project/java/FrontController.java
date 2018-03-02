@@ -25,6 +25,8 @@ public class FrontController extends HttpServlet {
         ActionCommand command = factory.defineCommand(req);
         String viewJsp = command.execute(req);
 
+        resp.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+        resp.addHeader("Cache-Control", "post-check=0, pre-check=0");
         ServletContext servletContext=getServletContext();
         RequestDispatcher dispatcher=servletContext.getRequestDispatcher(viewJsp);
         dispatcher.forward(req,resp);
