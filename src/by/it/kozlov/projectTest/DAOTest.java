@@ -1,7 +1,7 @@
-package by.it.kozlov.jd03_03;
+package by.it.kozlov.projectTest;
 
-import by.it.kozlov.jd03_03.beans.*;
-import by.it.kozlov.jd03_03.dao.DAO;
+import by.it.kozlov.project.java.dao.beans.*;
+import by.it.kozlov.project.java.dao.dao.DAO;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -104,6 +104,6 @@ public class DAOTest {
         dao.car.delete(car);
         car = dao.car.read(id);
         Assert.assertNull("Error delete", car);
-        Assert.assertNotNull("Error getAll", dao.car.getAll().get(0));
+        Assert.assertNotNull("Error getAll", dao.car.getAll("").get(0));
     }
 }
