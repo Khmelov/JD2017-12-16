@@ -1,0 +1,50 @@
+{
+  "user": [
+    {
+      "name": "Иван",
+      "lastName": "Иванов",
+      "email": "asfafaf@bdbl.ru",
+      "subscriptions": {
+        "subscription": [
+          {
+            "publication": "Автодайджест",
+            "period": 6,
+            "startsubscription": 1,
+            "endsubscription": 5,
+            "price": 9.28,
+            "id": "43434"
+          },
+          {
+            "publication": "Мир тяжелых моторов",
+            "period": 2,
+            "startsubscription": 1,
+            "endsubscription": 2,
+            "price": 89.8,
+            "id": "687941"
+          }
+        ]
+      },
+      "login": "Ivan93",
+      "password": "146asv1"
+    },
+    {
+      "name": "Петр",
+      "lastName": "Петров",
+      "email": "afavvs@vava.by",
+      "subscriptions": {
+        "subscription": [
+          {
+            "publication": "Транспортная безопасность",
+            "period": 12,
+            "startsubscription": 1,
+            "endsubscription": 12,
+            "price": 98.0,
+            "id": "2353122"
+          }
+        ]
+      },
+      "login": "Petr",
+      "password": "asfas1v8"
+    }
+  ]
+}

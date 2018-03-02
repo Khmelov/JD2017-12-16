@@ -20,10 +20,10 @@ public enum Actions {
             this.jsp = "/error.jsp";
         }
     },
-    SIGNIN{
+    SIGNUP{
         {
-            this.command = new CommandError();
-            this.jsp = "/error.jsp";
+            this.command = new CommandSignup();
+            this.jsp = "/signup.jsp";
         }
     };
 
