@@ -57,6 +57,11 @@ public enum Actions {
             this.command = new CommandToBasket();
             this.jsp="/category_cs.jsp";
         }
+    },BASKET{
+        {
+            this.command = new CommandBasket();
+            this.jsp="/basket.jsp";
+        }
     };
 
     public String jsp="/error.jsp";

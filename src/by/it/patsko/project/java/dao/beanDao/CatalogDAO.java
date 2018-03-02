@@ -23,7 +23,7 @@ public class CatalogDAO extends DAO implements I_DAO<Catalog> {
 
     @Override
     public Catalog read(int id) throws SQLException {
-        List<Catalog> catalogList = getAll(" where id=" + id);
+        List<Catalog> catalogList = getAll(" where id='" + id+"'");
         return !catalogList.isEmpty() ? catalogList.get(0) : null;
     }
 

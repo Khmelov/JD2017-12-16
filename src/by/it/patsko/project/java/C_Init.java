@@ -47,7 +47,7 @@ public class C_Init {
             statement.executeUpdate("DROP TABLE IF EXISTS `patsko`.`Catalog` ;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `patsko`.`Catalog` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
-                    "  `name` VARCHAR(100) NULL,\n" +
+                    "  `catalogName` VARCHAR(100) NULL,\n" +
                     "  PRIMARY KEY (`id`))\n" +
                     "ENGINE = InnoDB;");
             statement.executeUpdate("DROP TABLE IF EXISTS `patsko`.`Category` ;");
@@ -105,11 +105,11 @@ public class C_Init {
                     "VALUES (DEFAULT, 'buyer1', 'qwerty', 'buyer1@buyer.by', 2);\n");
             statement.executeUpdate("INSERT INTO `patsko`.`Buyers` (`id`, `login`, `password`, `email`, `Roles_id`) " +
                     "VALUES (DEFAULT, 'buyer2', '12345', 'buyer2@buyer.by', 2);\n");
-            statement.executeUpdate("INSERT INTO `patsko`.`Catalog` (`id`, `name`) VALUES (DEFAULT, 'Каталог книг');");
+            statement.executeUpdate("INSERT INTO `patsko`.`Catalog` (`id`, `catalogName`) VALUES (DEFAULT, 'Каталог книг');");
             statement.executeUpdate("INSERT INTO `patsko`.`Category` (`id`, `CategoryName`, `Catalog_id`) " +
-                    "VALUES (DEFAULT, 'Цифровые технологии', 1);\n");
+                    "VALUES (DEFAULT, 'CS', 1);\n");
             statement.executeUpdate("INSERT INTO `patsko`.`Category` (`id`, `CategoryName`, `Catalog_id`) " +
-                    "VALUES (DEFAULT, 'Художественная литература', 1);\n");
+                    "VALUES (DEFAULT, 'Fiction', 1);\n");
             statement.executeUpdate("INSERT INTO `patsko`.`Books` (`id`, `name`, `author`, `price`, `Category_id`) " +
                     "VALUES (DEFAULT, 'Java. Эффективное программирование', 'Джошуа Блох', 200, 1);\n");
             statement.executeUpdate("INSERT INTO `patsko`.`Books` (`id`, `name`, `author`, `price`, `Category_id`) " +

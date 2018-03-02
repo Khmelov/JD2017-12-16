@@ -36,7 +36,7 @@ public class CommandLogIn implements ActionCommand {
             req.setAttribute(Msg.ERROR_DETAILS, "<h5>details:</h5>" + Arrays.toString(e.getStackTrace()));
             return Actions.ERROR.jsp;
         }
-        return Actions.CATALOG.jsp;
+        return Actions.PROFILE.jsp;
 //        return null;
     }
 }

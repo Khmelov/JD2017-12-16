@@ -12,6 +12,7 @@ import java.text.ParseException;
 import java.util.Arrays;
 
 public class FrontController extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         process(req, resp);
