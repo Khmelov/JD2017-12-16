@@ -1,4 +1,4 @@
-package by.it.krasutski.project.java;
+package by.it.krasutski.project.java.commands;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;

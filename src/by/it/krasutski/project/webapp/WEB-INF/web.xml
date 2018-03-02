@@ -10,7 +10,7 @@
     -->
     <servlet>
         <servlet-name>FrontControllerServlet</servlet-name>
-        <servlet-class>by.it.krasutski.project.java.FrontController</servlet-class>
+        <servlet-class>by.it.krasutski.project.java.commands.FrontController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>FrontControllerServlet</servlet-name>
@@ -19,13 +19,11 @@
     <!--Подключение фильтра CacheControl-->
     <filter>
         <filter-name>CacheControl</filter-name>
-        <filter-class>by.it.krasutski.project.java.CacheControl</filter-class>
+        <filter-class>by.it.krasutski.project.java.commands.CacheControl</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>CacheControl</filter-name>
         <url-pattern>/do</url-pattern>
     </filter-mapping>
-
-
 
 </web-app>

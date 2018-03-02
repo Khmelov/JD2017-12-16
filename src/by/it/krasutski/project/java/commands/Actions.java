@@ -1,4 +1,4 @@
-package by.it.krasutski.project.java;
+package by.it.krasutski.project.java.commands;
 
 public enum Actions {
     LOGIN {
@@ -31,7 +31,7 @@ public enum Actions {
             this.jsp = "/listads.jsp";
         }
     },
-    MAIN {
+    HOME {
         {
             this.command = new CommandHome();
             this.jsp = "/home.jsp";
