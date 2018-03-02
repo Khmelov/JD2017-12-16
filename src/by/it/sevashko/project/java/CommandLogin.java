@@ -6,6 +6,6 @@ public class CommandLogin implements ActionCommand {
 
     @Override
     public String execute(HttpServletRequest req) {
-        return null;
+        return Actions.LOGIN.jsp;
     }
 }

@@ -12,7 +12,7 @@
             <label class="col-md-4 control-label" for="Login">Login</label>
             <div class="col-md-4">
                 <input id="Login" name="Login" type="text" placeholder="" class="form-control input-md" required=""
-                value="TestLogin">
+                       value="TestLogin">
                 <span class="help-block">Login (hint)</span>
             </div>
         </div>
@@ -22,7 +22,7 @@
             <label class="col-md-4 control-label" for="Email">Email</label>
             <div class="col-md-4">
                 <input id="Email" name="Email" type="text" placeholder="your Email" class="form-control input-md" required=""
-                value="TestEmail@google.com" >
+                       value="TestEmail@google.com" >
                 <span class="help-block">Email (hint)</span>
             </div>
         </div>
@@ -32,7 +32,7 @@
             <label class="col-md-4 control-label" for="Password">Password Input</label>
             <div class="col-md-4">
                 <input id="Password" name="Password" type="text" placeholder="placeholder" class="form-control input-md" required=""
-                value="TestPassword">
+                       value="TestPassword">
                 <span class="help-block">(min 6 symbols)</span>
             </div>
         </div>
