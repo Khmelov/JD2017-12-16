@@ -4,6 +4,7 @@ import com.mysql.fabric.jdbc.FabricMySQLDriver;
 import java.sql.Connection;
 
 import java.sql.*;
+import java.util.Locale;
 
 import by.it.sendetskaya.jd03_02.CN;
 
@@ -148,7 +149,7 @@ public class CreateNewSchema {
         try (Connection connection = DriverManager.getConnection
                 (URL_DB, CN.USER_DB, CN.PASSWORD_DB);
              Statement statement = connection.createStatement()) {
-            String sql=String.format("INSERT INTO sendetskaya.roles (Role) VALUES ('Администратор');");
+            String sql=String.format(Locale.US,"INSERT INTO sendetskaya.roles (Role) VALUES ('Администратор');");
             statement.executeUpdate(sql);
 
            sql=String.format("INSERT INTO sendetskaya.roles (Role) VALUES ('Пользователь');");
@@ -177,11 +178,11 @@ public class CreateNewSchema {
                     "VALUES ('qwe@qwe.ru','qwe','qweqwe',1);");
             statement.executeUpdate(sql);
 
-            sql=String.format("INSERT INTO sendetskaya.goods (Name, Price, Size, Colour, Structure, Description)" +
+            sql=String.format(Locale.US,"INSERT INTO sendetskaya.goods (Name, Price, Size, Colour, Structure, Description)" +
                     " VALUES ('кофта',2.30,'s','красный','хлопок','Отменная кофта');");
             statement.executeUpdate(sql);
 
-            sql=String.format("INSERT INTO sendetskaya.baskets (Quantity, Sum, FK_buyers, FK_goods) " +
+            sql=String.format(Locale.US,"INSERT INTO sendetskaya.baskets (Quantity, Sum, FK_buyers, FK_goods) " +
                     "VALUES (2,4.60,1,1);");
             statement.executeUpdate(sql);
         }
