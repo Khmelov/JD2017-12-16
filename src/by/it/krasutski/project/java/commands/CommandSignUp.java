@@ -27,6 +27,7 @@ public class  CommandSignUp implements ActionCommand {
         if (user.getID() > 0)
             return Actions.LOGIN.jsp;
         else {
+            req.setAttribute(Msg.ERROR, "Fail to create.");
             req.setAttribute(Msg.MESSAGE, "User already exist.");
             return Actions.SIGNUP.jsp;
         }
