@@ -12,8 +12,8 @@
 }
 body, html{
      height: 100%;
- 	background-repeat: no-repeat;
- 	background:url(https://i.ytimg.com/vi/4kfXjatgeEU/maxresdefault.jpg);
+ 	background-repeat: repeat;
+ 	background: url(https://avatanplus.com/files/resources/original/5786d48a264aa155e6ae3bad.jpg);
  	font-family: 'Oxygen', sans-serif;
 	    background-size: cover;
 }
