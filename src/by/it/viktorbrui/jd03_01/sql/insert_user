@@ -1,0 +1,2 @@
+INSERT INTO `user` (`ID`, `nickname`, `email`, `password`, `address`, `phone`, `FK_Roles`)
+VALUES (NULL, 'User', 'User@mail.ru', 'User1234', 'UserCenter', '2222222', '2') ;
