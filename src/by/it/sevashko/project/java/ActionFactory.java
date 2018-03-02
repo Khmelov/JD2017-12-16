@@ -4,15 +4,14 @@ import javax.servlet.http.HttpServletRequest;
 
 public class ActionFactory {
 
-    ActionCommand defineCommand(HttpServletRequest request){
-        ActionCommand command = Actions.ERROR.command;
-        String action = request.getParameter("command");
-        Actions currentEnum = Actions.valueOf(action.toUpperCase());
+    ActionCommand defineCommand(HttpServletRequest req){
+        ActionCommand command;
+        String action = req.getParameter("command");
         try {
-            command = Actions.ERROR.command;
+            Actions currentEnum = Actions.valueOf(action.toUpperCase());
             command = currentEnum.getCommand();
-        } catch (NullPointerException e){
-            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            command = Actions.ERROR.command;
         }
         return command;
     }

@@ -1,6 +1,7 @@
 package by.it.sevashko.project.java;
 
 public enum Actions {
+
     LOGIN{
         {
             this.command = new CommandLogin();
@@ -9,7 +10,7 @@ public enum Actions {
     },
     LOGOUT{
         {
-            this.command = new CommandLogout();
+            this.command = new CommandLogin();
             this.jsp = "/logout.jsp";
         }
     },
@@ -18,12 +19,16 @@ public enum Actions {
             this.command = new CommandError();
             this.jsp = "/error.jsp";
         }
+    },
+    SIGNUP{
+        {
+            this.command = new CommandSignup();
+            this.jsp = "/signup.jsp";
+        }
     };
 
-    public String jsp = "error.jsp";
-
+    public String jsp;
     public ActionCommand command;
-
     public ActionCommand getCommand() {
         return command;
     }
