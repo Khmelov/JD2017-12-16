@@ -3,7 +3,7 @@ package by.it.akhmelev.project6.java.controller;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 
-public class FormUtil {
+class FormUtil {
     static String getString(HttpServletRequest req, String field, String regxp) throws ParseException {
         String value=req.getParameter(field);
         if (value.matches(regxp))

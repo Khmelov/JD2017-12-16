@@ -5,7 +5,7 @@ import by.it.akhmelev.project6.java.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class CommandSignup extends Action {
+class CommandSignup extends Action {
     @Override
     public Action execute(HttpServletRequest req) throws Exception {
         if (!FormUtil.isPost(req))

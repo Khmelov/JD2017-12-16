@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-public class CommandProfile extends Action {
+class CommandProfile extends Action {
     @Override
     Action execute(HttpServletRequest req) throws Exception {
         HttpSession session = req.getSession();

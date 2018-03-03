@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-public class CommandLogin extends Action {
+class CommandLogin extends Action {
     @Override
     public Action execute(HttpServletRequest req) throws Exception {
         if (!FormUtil.isPost(req))
