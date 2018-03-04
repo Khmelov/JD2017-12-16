@@ -35,7 +35,7 @@ public class FrontController extends HttpServlet {
             viewJSP = command.execute(req);
 
         } catch (SQLException | ParseException | NullPointerException e) {
-            req.setAttribute(Msg.ERROR,"FC:"+e.getMessage());
+            req.setAttribute(Msg.ERROR,"FC:"+e);
             req.setAttribute(Msg.ERROR_DETAILS,"<h5>details:</h5>"+ Arrays.toString(e.getStackTrace()));
             viewJSP=Actions.ERROR.jsp;
         }

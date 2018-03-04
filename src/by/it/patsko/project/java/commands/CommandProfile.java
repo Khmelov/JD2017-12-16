@@ -16,9 +16,8 @@ public class CommandProfile implements ActionCommand {
         req.setAttribute(Msg.PROFILE_LOGIN, LogInBuyer.currentBuyer.getLogin());
         req.setAttribute(Msg.PROFILE_PASSWORD, LogInBuyer.currentBuyer.getPassword());
         if (FormUtil.isPost(req)) {
-            try {
-                String login = FormUtil.getString(req.getParameter("newLogin"), Pattern.LOGIN);
-                if (login != null) {
+            String login = FormUtil.getString(req.getParameter("newLogin"), Pattern.LOGIN);
+            if (login != null) {
                     LogInBuyer.currentBuyer.setLogin(login);
                     new BuyerDAO().update(LogInBuyer.currentBuyer);
                     req.setAttribute(Msg.PROFILE_LOGIN, LogInBuyer.currentBuyer.getLogin());
@@ -27,9 +26,7 @@ public class CommandProfile implements ActionCommand {
 //                req.setAttribute(Msg.ERROR_DETAILS, "<h5>details:</h5>" + Arrays.toString(new Exception().getStackTrace()));
                     return Actions.PROFILE.jsp;
                 } else req.setAttribute(Msg.MESSAGE, "login==null");
-            } catch (NullPointerException e) {//?????????????????????????????????????????
-                req.setAttribute(Msg.MESSAGE, "Перехвачен NullPointerException");
-            }
+
 
             String password = FormUtil.getString(req.getParameter("newPassword"), Pattern.PASSWORD);
             if (password != null) {

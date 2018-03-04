@@ -7,7 +7,6 @@
         <!-- Form Name -->
         <legend>Profile</legend>
 
-
             <p>Ваш логин: ${profile_login}<p>
 
                 <!-- Button trigger modal -->
