@@ -1,6 +1,6 @@
-package by.it.kozlov.project.java;
+package by.it.kozlov.project.java.controller;
 
-import by.it.kozlov.project.java.dao.beans.User;
+import by.it.kozlov.project.java.entity.User;
 import by.it.kozlov.project.java.dao.dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,14 +8,14 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
-public class CommandLogin implements ActionCommand {
+public class CommandLogin extends Action {
     @Override
-    public String execute(HttpServletRequest request) throws ParseException, SQLException {
+    public Action execute(HttpServletRequest request) throws ParseException, SQLException {
         if (!FormUtil.isPost(request)) {
-            return Actions.LOGIN.jsp;
+            return Actions.LOGIN.command;
         } else if (request.getParameter("Login").equals("")) {
             request.setAttribute(Message.MESSAGE, "Введите имя пользователя и пароль");
-            return Actions.LOGIN.jsp;
+            return Actions.LOGIN.command;
         }
         String login = FormUtil.getString(request.getParameter("Login"), "[A-Za-z0-9_@.]");
         DAO dao = DAO.getDAO();
@@ -27,24 +27,24 @@ public class CommandLogin implements ActionCommand {
                 if (request.getParameter("Button").equals("Delete")) {
                     if (dao.user.delete(user)) {
                         request.setAttribute(Message.MESSAGE, "Пользователь удалён");
-                        return Actions.LOGIN.jsp;
+                        return Actions.LOGIN.command;
                     }
                     request.setAttribute(Message.MESSAGE, "Ошибка удаления пользователя");
-                    return Actions.LOGIN.jsp;
+                    return Actions.LOGIN.command;
                 } else {
                     request.setAttribute(Message.MESSAGE, "Пользователь найден");
-                    return Actions.LOGIN.jsp;
+                    return Actions.LOGIN.command;
                 }
             } else {
                 request.setAttribute(Message.MESSAGE, "Неверный пароль");
-                return Actions.LOGIN.jsp;
+                return Actions.LOGIN.command;
             }
         } else if (users.size() == 0) {
             request.setAttribute(Message.MESSAGE, "Пользователя с таким именем не существует");
-            return Actions.LOGIN.jsp;
+            return Actions.LOGIN.command;
         } else {                      //Убрать когда поле логин будет уникальным
             request.setAttribute(Message.MESSAGE, "Найдено больше одного пользователя");
-            return Actions.LOGIN.jsp;
+            return Actions.LOGIN.command;
         }
     }
 }

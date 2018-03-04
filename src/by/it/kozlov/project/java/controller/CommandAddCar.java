@@ -1,17 +1,17 @@
-package by.it.kozlov.project.java;
+package by.it.kozlov.project.java.controller;
 
-import by.it.kozlov.project.java.dao.beans.Car;
+import by.it.kozlov.project.java.entity.Car;
 import by.it.kozlov.project.java.dao.dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-public class CommandAddCar implements ActionCommand {
+public class CommandAddCar extends Action {
     @Override
-    public String execute(HttpServletRequest request) throws ParseException, SQLException {
+    public Action execute(HttpServletRequest request) throws ParseException, SQLException {
         if (!FormUtil.isPost(request)) {
-            return Actions.ADDCAR.jsp;
+            return Actions.ADDCAR.command;
         }
         Car car = new Car(0,
                 Integer.parseInt(request.getParameter("Brand")),
@@ -25,10 +25,10 @@ public class CommandAddCar implements ActionCommand {
         DAO dao = DAO.getDAO();
         if (dao.car.create(car)) {
             request.setAttribute(Message.MESSAGE, "Автомобиль добавлен");
-            return Actions.ADDCAR.jsp;
+            return Actions.ADDCAR.command;
         } else {
             request.setAttribute(Message.MESSAGE, "Ошибка добавления машины");
-            return Actions.ADDCAR.jsp;
+            return Actions.ADDCAR.command;
         }
     }
 }

@@ -1,17 +1,17 @@
-package by.it.kozlov.project.java;
+package by.it.kozlov.project.java.controller;
 
-import by.it.kozlov.project.java.dao.beans.User;
+import by.it.kozlov.project.java.entity.User;
 import by.it.kozlov.project.java.dao.dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-public class CommandSignUp implements ActionCommand {
+public class CommandSignUp extends Action {
     @Override
-    public String execute(HttpServletRequest request) throws SQLException {
+    public Action execute(HttpServletRequest request) throws SQLException {
         if (!FormUtil.isPost(request)) {
-            return Actions.SIGNUP.jsp;
+            return Actions.SIGNUP.command;
         }
         try {
             User user = new User(0,
@@ -27,14 +27,14 @@ public class CommandSignUp implements ActionCommand {
             DAO dao = DAO.getDAO();
             if (dao.user.create(user)) {
                 request.setAttribute(Message.MESSAGE, "Пользователь зарегестрирован");
-                return Actions.LOGIN.jsp;
+                return Actions.LOGIN.command;
             } else {
                 request.setAttribute(Message.MESSAGE, "Ошибка добавления пользователя");
-                return Actions.SIGNUP.jsp;
+                return Actions.SIGNUP.command;
             }
         } catch (ParseException e) {
             request.setAttribute(Message.MESSAGE, "Введены недопустимые символы");
-            return Actions.SIGNUP.jsp;
+            return Actions.SIGNUP.command;
         }
     }
 }

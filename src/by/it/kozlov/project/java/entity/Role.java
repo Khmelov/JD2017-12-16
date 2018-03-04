@@ -1,18 +1,18 @@
-package by.it.kozlov.project.java.dao.beans;
+package by.it.kozlov.project.java.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public class City implements Serializable{
+public class Role implements Serializable {
     private int id;
-    private String city;
+    private String role;
 
-    public City(int id, String city) {
+    public Role(int id, String role) {
         this.id = id;
-        this.city = city;
+        this.role = role;
     }
 
-    public City() {
+    public Role() {
     }
 
     public int getId() {
@@ -23,19 +23,19 @@ public class City implements Serializable{
         this.id = id;
     }
 
-    public String getCity() {
-        return city;
+    public String getRole() {
+        return role;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
     public String toString() {
-        return "City{" +
+        return "Role{" +
                 "id=" + id +
-                ", city='" + city + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 
@@ -43,13 +43,13 @@ public class City implements Serializable{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        City city1 = (City) o;
-        return id == city1.id &&
-                Objects.equals(city, city1.city);
+        Role role1 = (Role) o;
+        return id == role1.id &&
+                Objects.equals(role, role1.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, city);
+        return Objects.hash(id, role);
     }
 }

@@ -1,4 +1,4 @@
-package by.it.kozlov.project.java.dao.beans;
+package by.it.kozlov.project.java.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
