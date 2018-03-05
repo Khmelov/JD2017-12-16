@@ -1,6 +1,5 @@
-package by.it.patsko.project.java;
+package by.it.patsko.project.java.controller;
 
-import by.it.patsko.project.java.dao.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,7 +14,6 @@ public class C_Reset {
     private static final String PASSWORD_DB = "";
 
     public static void main(String[] args) {
-
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {

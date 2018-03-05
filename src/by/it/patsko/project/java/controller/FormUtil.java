@@ -1,4 +1,4 @@
-package by.it.patsko.project.java;
+package by.it.patsko.project.java.controller;
 
 import javax.servlet.http.HttpServletRequest;
 

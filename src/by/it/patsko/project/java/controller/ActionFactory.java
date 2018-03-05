@@ -1,4 +1,6 @@
-package by.it.patsko.project.java;
+package by.it.patsko.project.java.controller;
+
+import by.it.patsko.project.java.controller.commands.ActionCommand;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,9 +10,9 @@ public class ActionFactory {
         String action=req.getParameter("command");
         try {
             Actions currentEnum = Actions.valueOf(action.toUpperCase());
-            command=currentEnum.getCommand();
+            command=currentEnum.command;
         }catch (IllegalArgumentException e){
-            command=Actions.ERROR.getCommand();
+            command=Actions.ERROR.command;
         }
         return command;
     }

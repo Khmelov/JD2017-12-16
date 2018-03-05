@@ -91,6 +91,7 @@
 
 
 
-<p>Cmd Login: <b>${message}</b></p>
-
+<p>Cmd Cookie: ${cookie}</p>
+<p>Cmd ERROR: ${error}</p>
+<p>Cmd Message: ${message}</p>
 <%@ include file="include/end-html.jsp" %>
