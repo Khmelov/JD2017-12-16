@@ -18,7 +18,7 @@ public class CommandLogin extends Action {
             request.setAttribute(Message.MESSAGE, "Введите имя пользователя и пароль");
             return Actions.LOGIN.command;
         }
-        String login = FormUtil.getString(request.getParameter("Login"), "[A-Za-z0-9_@.]+");
+        String login = FormUtil.getString(request.getParameter("Login"), "[A-Za-z0-9_@.-]+");
         DAO dao = DAO.getDAO();
         List<User> users = dao.user.getAll(String.format("WHERE login='%s'", login));
         if (users.size() == 1) {
@@ -35,7 +35,8 @@ public class CommandLogin extends Action {
                 } else {
                     HttpSession session = request.getSession();
                     session.setAttribute("user", user);
-                    return Actions.ADDCAR.command;
+                    request.setAttribute(Message.MESSAGE,"Вы вошли");
+                    return null;
                 }
             } else {
                 request.setAttribute(Message.MESSAGE, "Неверный пароль");

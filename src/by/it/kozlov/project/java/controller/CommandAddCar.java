@@ -18,6 +18,7 @@ public class CommandAddCar extends Action {
         if (o != null) {
             user = (User) o;
         } else {
+            request.setAttribute(Message.MESSAGE,"Войдите чтобы добавить объявление");
             return Actions.LOGIN.command;
         }
         if (FormUtil.isPost(request)) {

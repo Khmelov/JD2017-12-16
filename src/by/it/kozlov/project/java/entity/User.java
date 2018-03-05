@@ -13,7 +13,7 @@ public class User implements Serializable {
     private String phoneNumber;
     private int rolesID;
 
-    public User(int id, String login, String email, String password, int cityID, String address, String phoneNumber, int rilesID) {
+    public User(int id, String login, String email, String password, int cityID, String address, String phoneNumber, int rolesID) {
         this.id = id;
         this.login = login;
         this.email = email;
@@ -21,7 +21,7 @@ public class User implements Serializable {
         this.cityID = cityID;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.rolesID = rilesID;
+        this.rolesID = rolesID;
     }
 
     public User() {

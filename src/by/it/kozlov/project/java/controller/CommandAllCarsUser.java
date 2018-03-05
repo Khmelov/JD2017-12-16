@@ -19,6 +19,7 @@ public class CommandAllCarsUser extends Action {
         if (o != null) {
             user = (User) o;
         } else {
+            request.setAttribute(Message.MESSAGE,"Войдите чтобы просмотреть объявления");
             return Actions.LOGIN.command;
         }
         List<Car> cars = DAO.getDAO().car.getAll(String.format("WHERE usersID=%d", user.getId()));

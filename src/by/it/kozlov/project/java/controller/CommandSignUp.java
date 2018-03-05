@@ -4,6 +4,7 @@ import by.it.kozlov.project.java.entity.User;
 import by.it.kozlov.project.java.dao.dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.text.ParseException;
 
@@ -27,6 +28,8 @@ public class CommandSignUp extends Action {
             DAO dao = DAO.getDAO();
             if (dao.user.create(user)) {
                 request.setAttribute(Message.MESSAGE, "Пользователь зарегестрирован");
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
                 return Actions.LOGIN.command;
             } else {
                 request.setAttribute(Message.MESSAGE, "Ошибка добавления пользователя");

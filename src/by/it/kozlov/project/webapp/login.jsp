@@ -1,7 +1,10 @@
 <%@page language="java" pageEncoding="utf-8" %>
 <%@ include file="include/begin-html.jsp" %>
+<p>${message}</p>
 <form class="form-horizontal" action="do?command=Login" method="POST">
     <fieldset>
+
+
 
         <!-- Form Name -->
         <legend>Войти</legend>
@@ -35,7 +38,5 @@
 
     </fieldset>
 </form>
-
-<p>Cmd Login: ${message}</p>
 
 <%@ include file="include/end-html.jsp" %>
