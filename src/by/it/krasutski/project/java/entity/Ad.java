@@ -1,4 +1,4 @@
-package by.it.krasutski.project.java.dao.beans;
+package by.it.krasutski.project.java.entity;
 
 import java.io.Serializable;
 import java.util.Objects;

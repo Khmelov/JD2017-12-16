@@ -29,17 +29,23 @@ public class FrontController extends HttpServlet {
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-        ActionFactory actionFactory=new ActionFactory();
-        ActionCommand command=actionFactory.defineCommand(req);
-        String viewJsp= null;
+        ActionFactory actionFactory = new ActionFactory();
+        Action command = actionFactory.defineCommand(req);
+        Action nextStep = null;
+        ServletContext servletContext = getServletContext();
         try {
-            viewJsp = command.execute(req);
+            nextStep = command.execute(req);
         } catch (Exception e) {
-            req.setAttribute(Msg.ERROR,"FC:"+e.getMessage());
-            viewJsp=Actions.ERROR.jsp;
+            req.setAttribute(Msg.ERROR, "FC:" + e.getMessage());
+            String errorJsp = Actions.ERROR.command.getJsp();
+            RequestDispatcher dispatcher = servletContext.getRequestDispatcher(errorJsp);
         }
-        ServletContext servletContext=getServletContext();
-        RequestDispatcher dispatcher=servletContext.getRequestDispatcher(viewJsp);
-        dispatcher.forward(req,resp);
+        if (nextStep == null || nextStep == command) {
+            String viewJsp = command.getJsp();
+            RequestDispatcher dispatcher = servletContext.getRequestDispatcher(viewJsp);
+            dispatcher.forward(req, resp);
+        } else {
+            resp.sendRedirect("do?command=" + nextStep);
+        }
     }
 }

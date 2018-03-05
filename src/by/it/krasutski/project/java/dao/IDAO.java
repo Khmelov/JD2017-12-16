@@ -1,4 +1,4 @@
-package by.it.krasutski.project.java.dao.beansDAO;
+package by.it.krasutski.project.java.dao;
 
 import java.sql.SQLException;
 import java.util.List;

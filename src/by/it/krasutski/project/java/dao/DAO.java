@@ -1,4 +1,4 @@
-package by.it.krasutski.project.java.dao.beansDAO;
+package by.it.krasutski.project.java.dao;
 
 public class DAO {
 

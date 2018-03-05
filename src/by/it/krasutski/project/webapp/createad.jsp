@@ -38,12 +38,11 @@
             </div>
         </div>
 
-        <!-- Text input-->
+        <!-- Textarea-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="Description">Description</label>
             <div class="col-md-4">
-                <input id="Description" name="Description" type="text" placeholder="" class="form-control input-md"
-                       required="">
+                <textarea class="form-control" id="Description" name="Description" type="text" rows="3"></textarea>
             </div>
         </div>
 

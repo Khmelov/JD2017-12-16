@@ -20,7 +20,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="Password">Password Input</label>
             <div class="col-md-4">
-                <input id="Password" name="Password" type="text" placeholder="put your password here" class="form-control input-md" required="">
+                <input id="Password" name="Password" type="password" placeholder="put your password here" class="form-control input-md" required="">
                 <span class="help-block">(min 6 symbols)</span>
             </div>
         </div>

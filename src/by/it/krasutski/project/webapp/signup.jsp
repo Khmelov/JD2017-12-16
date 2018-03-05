@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
-<form class="form-horizontal" action="do?command=Signup" method="post">
+<form class="form-horizontal" action="do?command=SignUp" method="post">
     <fieldset>
 
         <legend>Hello new Bonjo user!</legend>

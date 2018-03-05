@@ -2,10 +2,11 @@ package by.it.krasutski.project.java.commands;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class CommandLogout implements ActionCommand {
+public class CommandLogout extends Action {
 
     @Override
-    public String execute(HttpServletRequest req) {
-        return Actions.HOME.jsp;
+    public Action execute(HttpServletRequest req) {
+        req.getSession().invalidate();
+        return Actions.LOGIN.command;
     }
 }
