@@ -6,6 +6,9 @@ class ActionFactory {
     Action defineCommand(HttpServletRequest request) {
         Action command;
         String action = request.getParameter("command");
+        if (action == null) {
+            action = "index";
+        }
         try {
             Actions actEnum = Actions.valueOf(action.toUpperCase());
             command = actEnum.command;
