@@ -1,35 +1,40 @@
 package by.it.krasutski.project.java.commands;
 
-import by.it.krasutski.project.java.dao.beans.User;
-import by.it.krasutski.project.java.dao.beansDAO.DAO;
+import by.it.krasutski.project.java.entity.User;
+import by.it.krasutski.project.java.dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
 
-public class  CommandSignUp implements ActionCommand {
+public class CommandSignUp extends Action {
     @Override
-    public String execute(HttpServletRequest req) throws Exception {
-        if (FormUtil.isPost(req))
-            return Actions.SIGNUP.jsp;
-        String login =
-                FormUtil.getString(req.getParameter("Login"), Patterns.LOGIN);
-        String email =
-                FormUtil.getString(req.getParameter("Email"), Patterns.EMAIL);
-        String password =
-                FormUtil.getString(req.getParameter("Password"), Patterns.PASSWORD);
-        String nickname =
-                FormUtil.getString(req.getParameter("Nickname"), Patterns.NICKNAME);
-        String phonenumber =
-                FormUtil.getString(req.getParameter("PhoneNumber"), ".+");
+    public Action execute(HttpServletRequest req) throws Exception {
+        if (!FormUtil.isPost(req))
+            return null;
+        try {
+            String login =
+                    FormUtil.getString(req, "Login", Patterns.LOGIN);
+            String email =
+                    FormUtil.getString(req, "Email", Patterns.EMAIL);
+            String password =
+                    FormUtil.getString(req, "Password", Patterns.PASSWORD);
+            String nickname =
+                    FormUtil.getString(req, "Nickname", Patterns.NICKNAME);
+            String phonenumber =
+                    FormUtil.getString(req, "PhoneNumber", ".+");
 
-        User user = new User(0, login, email, password, nickname, phonenumber, 2);
-        DAO dao = DAO.getDAO();
-        dao.userDAO.create(user);
-        if (user.getID() > 0)
-            return Actions.LOGIN.jsp;
-        else {
-            req.setAttribute(Msg.ERROR, "Fail to create.");
-            req.setAttribute(Msg.MESSAGE, "User already exist.");
-            return Actions.SIGNUP.jsp;
+            User user = new User(0, login, email, password, nickname, phonenumber, 2);
+            DAO dao = DAO.getDAO();
+            if (dao.userDAO.create(user)) {
+                req.setAttribute(Msg.MESSAGE, "User" + login + "created.");
+                return Actions.LOGIN.command;
+            } else {
+                req.setAttribute(Msg.MESSAGE, "Can't create user.");
+                return Actions.SIGNUP.command;
+            }
+        } catch (ParseException e) {
+            req.setAttribute(Msg.MESSAGE, "Check your inputs.");
+            return Actions.SIGNUP.command;
         }
     }
 }

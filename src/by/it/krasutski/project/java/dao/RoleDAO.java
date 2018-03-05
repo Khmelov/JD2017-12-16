@@ -1,7 +1,7 @@
-package by.it.krasutski.project.java.dao.beansDAO;
+package by.it.krasutski.project.java.dao;
 
-import by.it.krasutski.project.java.dao.beans.Role;
-import by.it.krasutski.project.java.dao.database.ConnectionCreator;
+import by.it.krasutski.project.java.entity.Role;
+import by.it.krasutski.project.java.database.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

@@ -1,4 +1,4 @@
-package by.it.krasutski.project.java.dao.database;
+package by.it.krasutski.project.java.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

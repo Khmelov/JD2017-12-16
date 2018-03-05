@@ -1,11 +1,17 @@
 package by.it.krasutski.project.java.commands;
 
-import javax.servlet.http.HttpServletRequest;
+import by.it.krasutski.project.java.entity.Ad;
+import by.it.krasutski.project.java.dao.DAO;
 
-public class CommandHome implements ActionCommand {
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+public class CommandHome extends Action {
 
     @Override
-    public String execute(HttpServletRequest req) {
-        return Actions.HOME.jsp;
+    Action execute(HttpServletRequest req) throws Exception {
+        List<Ad> ads = DAO.getDAO().adDAO.getAll("");
+        req.setAttribute("ads",ads);
+        return null;
     }
 }

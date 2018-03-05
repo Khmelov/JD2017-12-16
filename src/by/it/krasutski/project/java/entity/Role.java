@@ -1,4 +1,4 @@
-package by.it.krasutski.project.java.dao.beans;
+package by.it.krasutski.project.java.entity;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -43,7 +43,7 @@ public class Role implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        by.it.krasutski.project.java.dao.beans.Role Role1 = (by.it.krasutski.project.java.dao.beans.Role) o;
+        by.it.krasutski.project.java.entity.Role Role1 = (by.it.krasutski.project.java.entity.Role) o;
         return ID == Role1.ID &&
                 Objects.equals(Role, Role1.Role);
     }
