@@ -1,4 +1,4 @@
-package by.it.kozlov.project.java;
+package by.it.kozlov.project.java.controller;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -32,10 +32,28 @@ public class FrontController extends HttpServlet {
 
     private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, ParseException, SQLException {
         ActionFactory actionFactory = new ActionFactory();
-        ActionCommand command = actionFactory.defineCommand(req);
-        String viewJsp = command.execute(req);
+        Action command = actionFactory.defineCommand(req);
+        Action nextStep = null;
         ServletContext servletContext = getServletContext();
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(viewJsp);
-        dispatcher.forward(req, resp);
+        try {
+            nextStep = command.execute(req, resp);
+        } catch (Exception e) {
+            req.setAttribute(Message.ERROR, e.getMessage());
+            String errorJsp = Actions.ERROR.command.getJsp();
+            RequestDispatcher dispatcher = servletContext.getRequestDispatcher(errorJsp);
+            dispatcher.forward(req, resp);
+        }
+        if (nextStep == null || nextStep == command) {
+            String viewJsp = command.getJsp();
+            RequestDispatcher dispatcher = servletContext.getRequestDispatcher(viewJsp);
+            dispatcher.forward(req, resp);
+        } else {
+
+
+            String viewJsp = nextStep.getJsp();
+            RequestDispatcher dispatcher = servletContext.getRequestDispatcher(viewJsp);
+            dispatcher.forward(req, resp);
+            resp.sendRedirect("do?command=" + nextStep);
+        }
     }
 }

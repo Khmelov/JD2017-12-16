@@ -26,7 +26,7 @@
                     <a class="nav-link" href="do?command=AddCar">Добавить автомобиль</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="do?command=ListAd">Показать весь список авто</a>
+                    <a class="nav-link" href="do?command=AllCarsUser">Автомобили пользователя</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="do?command=Login">Войти</a>

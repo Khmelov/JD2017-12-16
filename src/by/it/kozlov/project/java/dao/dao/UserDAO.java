@@ -1,6 +1,6 @@
 package by.it.kozlov.project.java.dao.dao;
 
-import by.it.kozlov.project.java.dao.beans.User;
+import by.it.kozlov.project.java.entity.User;
 import by.it.kozlov.project.java.dao.connect.ConnectionCreator;
 
 import java.sql.Connection;

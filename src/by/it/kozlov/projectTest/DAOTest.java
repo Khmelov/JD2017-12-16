@@ -1,7 +1,7 @@
 package by.it.kozlov.projectTest;
 
-import by.it.kozlov.project.java.dao.beans.*;
 import by.it.kozlov.project.java.dao.dao.DAO;
+import by.it.kozlov.project.java.entity.*;
 import org.junit.Assert;
 import org.junit.Test;
 

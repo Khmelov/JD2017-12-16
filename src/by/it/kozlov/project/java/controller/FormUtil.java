@@ -1,4 +1,4 @@
-package by.it.kozlov.project.java;
+package by.it.kozlov.project.java.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;

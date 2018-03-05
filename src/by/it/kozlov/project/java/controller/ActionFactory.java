@@ -1,14 +1,17 @@
-package by.it.kozlov.project.java;
+package by.it.kozlov.project.java.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class ActionFactory {
-    ActionCommand defineCommand(HttpServletRequest request) {
-        ActionCommand command;
+class ActionFactory {
+    Action defineCommand(HttpServletRequest request) {
+        Action command;
         String action = request.getParameter("command");
+        if (action == null) {
+            action = "index";
+        }
         try {
             Actions actEnum = Actions.valueOf(action.toUpperCase());
-            command = actEnum.getCommand();
+            command = actEnum.command;
         } catch (IllegalArgumentException e) {
             command = Actions.ERROR.command;
         }
