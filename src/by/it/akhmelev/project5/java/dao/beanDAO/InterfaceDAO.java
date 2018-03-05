@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface InterfaceDAO<T> {
 
-  public   boolean create(T bean) throws SQLException;
+    boolean create(T bean) throws SQLException;
     boolean update(T bean) throws SQLException;
     boolean delete(T bean) throws SQLException;
     T read(int id) throws SQLException;
