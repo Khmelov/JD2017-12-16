@@ -36,7 +36,7 @@ public class FrontController extends HttpServlet {
         Action nextStep = null;
         ServletContext servletContext = getServletContext();
         try {
-            nextStep = command.execute(req);
+            nextStep = command.execute(req, resp);
         } catch (Exception e) {
             req.setAttribute(Message.ERROR, e.getMessage());
             String errorJsp = Actions.ERROR.command.getJsp();

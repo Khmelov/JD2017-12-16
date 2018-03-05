@@ -2,16 +2,26 @@ package by.it.kozlov.project.java.controller;
 
 import by.it.kozlov.project.java.entity.User;
 import by.it.kozlov.project.java.dao.dao.DAO;
+import by.it.kozlov.project.java.filters.CookiesUser;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CommandLogin extends Action {
     @Override
-    public Action execute(HttpServletRequest request) throws ParseException, SQLException {
+    public Action execute(HttpServletRequest request, HttpServletResponse resp) throws ParseException, SQLException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, UnsupportedEncodingException, InvalidKeyException {
         if (!FormUtil.isPost(request)) {
             return Actions.LOGIN.command;
         } else if (request.getParameter("Login").equals("")) {
@@ -35,7 +45,9 @@ public class CommandLogin extends Action {
                 } else {
                     HttpSession session = request.getSession();
                     session.setAttribute("user", user);
-                    request.setAttribute(Message.MESSAGE,"Вы вошли");
+                    session.setMaxInactiveInterval(30);
+                    request.setAttribute(Message.MESSAGE, "Вы вошли");
+                    CookiesUser.setCookie(resp, user);
                     return null;
                 }
             } else {

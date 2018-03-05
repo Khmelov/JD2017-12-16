@@ -4,13 +4,14 @@ import by.it.kozlov.project.java.entity.User;
 import by.it.kozlov.project.java.dao.dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.text.ParseException;
 
 public class CommandSignUp extends Action {
     @Override
-    public Action execute(HttpServletRequest request) throws SQLException {
+    public Action execute(HttpServletRequest request, HttpServletResponse resp) throws SQLException {
         if (!FormUtil.isPost(request)) {
             return null;
         }
