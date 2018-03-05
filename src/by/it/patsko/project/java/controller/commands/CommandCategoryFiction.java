@@ -1,8 +1,7 @@
-package by.it.patsko.project.java.commands;
+package by.it.patsko.project.java.controller.commands;
 
-import by.it.patsko.project.java.ActionCommand;
-import by.it.patsko.project.java.Actions;
-import by.it.patsko.project.java.Msg;
+import by.it.patsko.project.java.controller.Actions;
+import by.it.patsko.project.java.controller.Msg;
 import by.it.patsko.project.java.dao.beanDao.BookDAO;
 import by.it.patsko.project.java.dao.beanDao.CategoryDAO;
 import by.it.patsko.project.java.dao.beens.Book;
@@ -12,16 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.util.List;
 
-public class CommandCategoryFiction implements ActionCommand  {
+public class CommandCategoryFiction extends ActionCommand  {
     @Override
-    public String execute(HttpServletRequest req) throws SQLException {
+    public ActionCommand execute(HttpServletRequest req) throws SQLException {
         Category category = new CategoryDAO().read(2);
         List<Book> books = new BookDAO().getAll("WHERE category_id="+category.getId());
 
 
 
         req.setAttribute(Msg.FICTION_TABLE, findCategoryTable(category,books));
-        return Actions.CATEGORYFICTION.jsp;
+        return Actions.CATEGORYFICTION.command;
     }
     private String findCategoryTable(Category category,List<Book> books) {
         StringBuilder sb = new StringBuilder();

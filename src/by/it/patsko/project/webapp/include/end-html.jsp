@@ -1,6 +1,4 @@
 
-Error: <b>${error}</b>
-
 </div> <!-- container -->
 
 

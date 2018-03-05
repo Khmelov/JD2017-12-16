@@ -7,7 +7,6 @@
         <!-- Form Name -->
         <legend>Profile</legend>
 
-
             <p>Ваш логин: ${profile_login}<p>
 
                 <!-- Button trigger modal -->
@@ -92,6 +91,7 @@
 
 
 
-<p>Cmd Login: <b>${message}</b></p>
-
+<p>Cmd Cookie: ${cookie}</p>
+<p>Cmd ERROR: ${error}</p>
+<p>Cmd Message: ${message}</p>
 <%@ include file="include/end-html.jsp" %>
