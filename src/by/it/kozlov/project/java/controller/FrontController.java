@@ -41,6 +41,7 @@ public class FrontController extends HttpServlet {
             req.setAttribute(Message.ERROR, e.getMessage());
             String errorJsp = Actions.ERROR.command.getJsp();
             RequestDispatcher dispatcher = servletContext.getRequestDispatcher(errorJsp);
+            dispatcher.forward(req, resp);
         }
         if (nextStep == null || nextStep == command) {
             String viewJsp = command.getJsp();

@@ -25,6 +25,10 @@ public enum Actions {
         {
             this.command = new CommandAddCar();
         }
+    }, ALLCARSUSER{
+        {
+            this.command=new CommandAllCarsUser();
+        }
     };
 
     public Action command;

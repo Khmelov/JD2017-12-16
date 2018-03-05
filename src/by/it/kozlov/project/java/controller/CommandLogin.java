@@ -4,6 +4,7 @@ import by.it.kozlov.project.java.entity.User;
 import by.it.kozlov.project.java.dao.dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
@@ -17,12 +18,12 @@ public class CommandLogin extends Action {
             request.setAttribute(Message.MESSAGE, "Введите имя пользователя и пароль");
             return Actions.LOGIN.command;
         }
-        String login = FormUtil.getString(request.getParameter("Login"), "[A-Za-z0-9_@.]");
+        String login = FormUtil.getString(request.getParameter("Login"), "[A-Za-z0-9_@.]+");
         DAO dao = DAO.getDAO();
         List<User> users = dao.user.getAll(String.format("WHERE login='%s'", login));
         if (users.size() == 1) {
             User user = users.get(0);
-            String password = FormUtil.getString(request.getParameter("Password"), "[A-Za-z0-9_А-Яа-яЁё]");
+            String password = FormUtil.getString(request.getParameter("Password"), "[A-Za-z0-9_А-Яа-яЁё]+");
             if (user.getPassword().equals(password)) {
                 if (request.getParameter("Button").equals("Delete")) {
                     if (dao.user.delete(user)) {
@@ -32,8 +33,9 @@ public class CommandLogin extends Action {
                     request.setAttribute(Message.MESSAGE, "Ошибка удаления пользователя");
                     return Actions.LOGIN.command;
                 } else {
-                    request.setAttribute(Message.MESSAGE, "Пользователь найден");
-                    return Actions.LOGIN.command;
+                    HttpSession session = request.getSession();
+                    session.setAttribute("user", user);
+                    return Actions.ADDCAR.command;
                 }
             } else {
                 request.setAttribute(Message.MESSAGE, "Неверный пароль");

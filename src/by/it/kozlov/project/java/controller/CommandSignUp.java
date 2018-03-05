@@ -11,16 +11,16 @@ public class CommandSignUp extends Action {
     @Override
     public Action execute(HttpServletRequest request) throws SQLException {
         if (!FormUtil.isPost(request)) {
-            return Actions.SIGNUP.command;
+            return null;
         }
         try {
             User user = new User(0,
-                    FormUtil.getString(request.getParameter("Login"), "[A-Za-z0-9_@.]"),
-                    FormUtil.getString(request.getParameter("Email"), "[A-Za-z0-9_@.]"),
-                    FormUtil.getString(request.getParameter("Password"), "[A-Za-z0-9_А-Яа-яЁё]"),
+                    FormUtil.getString(request.getParameter("Login"), "[A-Za-z0-9_@.]+"),
+                    FormUtil.getString(request.getParameter("Email"), "([A-Za-z0-9_]*)[@a-z0-9_\\.]+"),
+                    FormUtil.getString(request.getParameter("Password"), "[A-Za-z0-9_А-Яа-яЁё]+"),
                     Integer.parseInt(request.getParameter("City")),
-                    FormUtil.getString(request.getParameter("Address"), "[A-Za-z0-9_А-Яа-яЁё -]"),
-                    FormUtil.getString(request.getParameter("PhoneNumber"), "[0-9+]"),
+                    FormUtil.getString(request.getParameter("Address"), "[A-Za-z0-9_А-Яа-яЁё -]+"),
+                    FormUtil.getString(request.getParameter("PhoneNumber"), "[0-9+]*"),
                     2
             );
 
