@@ -19,7 +19,7 @@ import java.text.ParseException;
 
 public class CommandAddCar extends Action {
     @Override
-    public Action execute(HttpServletRequest request, HttpServletResponse resp) throws ParseException, SQLException, NoSuchPaddingException, NoSuchAlgorithmException, IOException, BadPaddingException, IllegalBlockSizeException, InvalidKeyException {
+    public Action execute(HttpServletRequest request, HttpServletResponse response) throws ParseException, SQLException, NoSuchPaddingException, NoSuchAlgorithmException, IOException, BadPaddingException, IllegalBlockSizeException, InvalidKeyException {
         HttpSession session = request.getSession();
         Object o = session.getAttribute("user");
         User user = null;

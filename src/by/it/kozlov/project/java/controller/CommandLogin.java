@@ -11,6 +11,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class CommandLogin extends Action {
     @Override
-    public Action execute(HttpServletRequest request, HttpServletResponse resp) throws ParseException, SQLException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, UnsupportedEncodingException, InvalidKeyException {
+    public Action execute(HttpServletRequest request, HttpServletResponse response) throws ParseException, SQLException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, IOException, InvalidKeyException {
         if (!FormUtil.isPost(request)) {
             return Actions.LOGIN.command;
         } else if (request.getParameter("Login").equals("")) {
@@ -47,8 +48,9 @@ public class CommandLogin extends Action {
                     session.setAttribute("user", user);
                     session.setMaxInactiveInterval(30);
                     request.setAttribute(Message.MESSAGE, "Вы вошли");
-                    CookiesUser.setCookie(resp, user);
-                    return null;
+                    CookiesUser.setCookie(response, user);
+                    response.sendRedirect("profile");
+                    return Actions.PROFILE.command;
                 }
             } else {
                 request.setAttribute(Message.MESSAGE, "Неверный пароль");
