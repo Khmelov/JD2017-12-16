@@ -48,9 +48,6 @@ public class FrontController extends HttpServlet {
             RequestDispatcher dispatcher = servletContext.getRequestDispatcher(viewJsp);
             dispatcher.forward(request, response);
         } else {
-            String viewJsp = nextStep.getJsp();
-            RequestDispatcher dispatcher = servletContext.getRequestDispatcher(viewJsp);
-            dispatcher.forward(request, response);
             response.sendRedirect("do?command=" + nextStep);
         }
     }
