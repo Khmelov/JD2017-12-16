@@ -1,6 +1,5 @@
 package by.it.kozlov.project.java.filters;
 
-
 import by.it.kozlov.project.java.dao.dao.DAO;
 import by.it.kozlov.project.java.entity.User;
 
@@ -10,7 +9,6 @@ import javax.crypto.NoSuchPaddingException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
@@ -21,19 +19,6 @@ import java.util.List;
 
 public class CookiesUser {
 
-    public static void getSession(HttpServletRequest request) throws NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IOException, SQLException, IllegalBlockSizeException, InvalidKeyException {
-        HttpSession session = request.getSession();
-        Object o = session.getAttribute("user");
-        if (o != null) {
-            session.setAttribute("user", (User) o);
-        } else {
-            User user = CookiesUser.getCookie(request);
-            if (user != null) {
-                session.setAttribute("user", user);
-            }
-        }
-    }
-
     public static void setCookie(HttpServletResponse response, User user) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
         DesEncrypter encrypter = DesEncrypter.getInstance();
         List<Cookie> cookies = new ArrayList<>();
@@ -41,7 +26,7 @@ public class CookiesUser {
         cookies.add(new Cookie("password", encrypter.encrypt(user.getPassword())));
         for (int i = 0; i < cookies.size(); i++) {
             Cookie cookie = cookies.get(i);
-            cookie.setMaxAge(3600 * 60 * 60);
+            cookie.setMaxAge(60);
             response.addCookie(cookie);
         }
     }

@@ -3,27 +3,20 @@ package by.it.kozlov.project.java.controller;
 import by.it.kozlov.project.java.entity.City;
 import by.it.kozlov.project.java.entity.User;
 import by.it.kozlov.project.java.dao.dao.DAO;
-import by.it.kozlov.project.java.filters.CookiesUser;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.UnsupportedEncodingException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
 public class CommandSignUp extends Action {
     @Override
-    public Action execute(HttpServletRequest request, HttpServletResponse response) throws SQLException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, UnsupportedEncodingException, InvalidKeyException {
-        List<City> cities = DAO.getDAO().city.getAll();
-        request.setAttribute("cities", cities);
+    public Action execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         if (!FormUtil.isPost(request)) {
+            List<City> cities = DAO.getDAO().city.getAll();
+            request.setAttribute("cities", cities);
             return null;
         }
         try {
@@ -42,8 +35,6 @@ public class CommandSignUp extends Action {
                 request.setAttribute(Message.MESSAGE, "Пользователь зарегестрирован");
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                session.setMaxInactiveInterval(60);
-                CookiesUser.setCookie(response, user);
                 return Actions.PROFILE.command;
             } else {
                 request.setAttribute(Message.MESSAGE, "Ошибка добавления пользователя");
