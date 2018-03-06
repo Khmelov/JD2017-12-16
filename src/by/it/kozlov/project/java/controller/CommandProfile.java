@@ -14,8 +14,6 @@ import java.util.List;
 public class CommandProfile extends Action {
     @Override
     public Action execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-        List<Car> cars = DAO.getDAO().car.getAll();
-        request.setAttribute("cars", cars);
         List<Brand> brands = DAO.getDAO().brand.getAll();
         request.setAttribute("brands", brands);
         List<City> cities = DAO.getDAO().city.getAll();

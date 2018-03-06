@@ -49,7 +49,6 @@ public class CommandLogin extends Action {
                     session.setMaxInactiveInterval(30);
                     request.setAttribute(Message.MESSAGE, "Вы вошли");
                     CookiesUser.setCookie(response, user);
-                    response.sendRedirect("profile");
                     return Actions.PROFILE.command;
                 }
             } else {
