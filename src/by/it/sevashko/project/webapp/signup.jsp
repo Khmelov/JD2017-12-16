@@ -1,18 +1,20 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
+<link rel="stylesheet" href="css/signup.css">
+<%@ include file="include/navbar.jsp" %>
 
 <div class="container">
 			<div class="row main">
 				<div class="main-login main-center">
 				<h5>Регистрация нового пользователя</h5>
-					<form class="" method="post" action="#">
+					<form class="" method="post" action="do?command=Signup">
 
 						<div class="form-group">
 							<label for="name" class="cols-sm-2 control-label">Логин</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="login" id="login"  placeholder="Придумайте логин"/>
+									<input type="text" class="form-control" name="login" id="login"  placeholder="Придумайте логин" value="VladSV"/>
 								</div>
 							</div>
 						</div>
@@ -22,7 +24,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="password"  placeholder="Придумайте пароль"/>
+									<input type="password" class="form-control" name="password" id="password"  placeholder="Придумайте пароль" value="qwerty"/>
 								</div>
 							</div>
 						</div>
@@ -32,7 +34,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="name" id="name"  placeholder="Введите своё имя"/>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Введите своё имя" value="Владислав"/>
 								</div>
 							</div>
 						</div>
@@ -42,7 +44,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="lastName" id="lastName"  placeholder="Введите свою фамилию"/>
+									<input type="text" class="form-control" name="lastName" id="lastName"  placeholder="Введите свою фамилию" value="Севашко"/>
 								</div>
 							</div>
 						</div>
@@ -52,13 +54,13 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="email" id="email"  placeholder="Введите свой Email"/>
+									<input type="text" class="form-control" name="email" id="email"  placeholder="Введите свой Email" value="asdf@asdf.com"/>
 								</div>
 							</div>
 						</div>
 
 						<div class="form-group ">
-							<a href="http://deepak646.blogspot.in" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Зарегистрироваться</a>
+							<button  id="button" class="btn btn-primary btn-lg btn-block login-button">Зарегистрироваться</a>
 						</div>
 
 					</form>
