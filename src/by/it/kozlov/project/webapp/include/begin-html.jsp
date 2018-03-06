@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page language="java" pageEncoding="utf-8" %>
 <!doctype html>
 <html lang="en">
@@ -22,25 +23,39 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <a class="navbar-brand" href="do?command=Index">Каталог</a>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+                <c:if test="${user!=null}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="do?command=AddCar">Добавить автомобиль</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="do?command=AllCarsUser">Автомобили пользователя</a>
+                    </li>
+                </c:if>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="do?command=AddCar">Добавить автомобиль</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="do?command=AllCarsUser">Автомобили пользователя</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="do?command=Login">Войти</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="do?command=SignUp">Зарегистрироваться</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="do?command=Logout">Выйти</a>
+                    <a class="nav-link" href="do?command=DBReset">Сброс базы данных</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <div align="right">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0" align="right">
+                    <c:if test="${user==null}">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="do?command=Login">Войти</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="do?command=SignUp">Зарегистрироваться</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${user!=null}">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="do?command=Profile">${user.login}</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="do?command=Logout">Выйти</a>
+                        </li>
+                    </c:if>
+                </ul>
+            </div>
         </div>
     </nav>

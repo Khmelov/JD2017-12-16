@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class CommandError extends Action {
     @Override
-    public Action execute(HttpServletRequest req, HttpServletResponse resp) {
+    public Action execute(HttpServletRequest request, HttpServletResponse response) {
         return Actions.ERROR.command;
     }
 }

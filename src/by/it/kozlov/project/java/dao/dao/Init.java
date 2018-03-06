@@ -98,8 +98,8 @@ public class Init {
             statement.executeUpdate("INSERT INTO `kozlov`.`city` (`city`) VALUES ('Могилевская область');");
             statement.executeUpdate("INSERT INTO `kozlov`.`city` (`city`) VALUES ('г. Минск');");
 
-            statement.executeUpdate("INSERT INTO `kozlov`.`roles` (`role`) VALUES ('admin');");
-            statement.executeUpdate("INSERT INTO `kozlov`.`roles` (`role`) VALUES ('user');");
+            statement.executeUpdate("INSERT INTO `kozlov`.`roles` (`role`) VALUES ('Администратор');");
+            statement.executeUpdate("INSERT INTO `kozlov`.`roles` (`role`) VALUES ('Пользователь');");
 
             statement.executeUpdate("INSERT INTO `kozlov`.`users` (`login`, `email`, `password`, `cityID`, `address`, `phoneNumber`, `rolesID`) VALUES ('bayernkraft.by', 'bmw.service@bayernkraft.by', 'bayernkraft', 7, 'ул. Панченко, 9', '+375447730077', 2);");
             statement.executeUpdate("INSERT INTO `kozlov`.`users` (`login`, `email`, `password`, `cityID`, `address`, `phoneNumber`, `rolesID`) VALUES ('mercedes-benz.by', 'info@mercedes-benz.by', 'mercedes', 7, 'ул. Тимирязева, 70', '+375296039999', 2);");

@@ -1,34 +1,39 @@
 <%@page language="java" pageEncoding="utf-8" %>
 <%@ include file="include/begin-html.jsp" %>
-<form class="form-horizontal" action="do?command=Signup" method="POST">
-    <fieldset>
 
+
+<form class="form-horizontal">
+    <fieldset>
         <!-- Form Name -->
-        <legend>Form Name</legend>
+        <legend>Изменить данные</legend>
 
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="Login">Login</label>
-            <div class="col-md-4">
-                <input id="Login" name="Login" type="text" placeholder="Login" class="form-control input-md">
-
+            <div class="col-md-12">
+                <h5>
+                    <c:forEach items="${roles}" var="role">
+                        <c:if test="${role.id==user.rolesID}">
+                            ${role.role}
+                        </c:if>
+                    </c:forEach>
+                    ${user.login}
+                </h5>
             </div>
         </div>
 
-        <!-- Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="Email">Email</label>
             <div class="col-md-4">
-                <input id="Email" name="Email" type="text" placeholder="Email" class="form-control input-md">
+                <input id="Email" name="Email" type="text" placeholder="${user.email}" class="form-control input-md">
 
             </div>
         </div>
 
         <!-- Password input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="Password">Password</label>
+            <label class="col-md-4 control-label" for="Password ">Пароль</label>
             <div class="col-md-4">
-                <input id="Password" name="Password" type="password" placeholder="Password"
+                <input id="Password " name="Password " type="password" placeholder="${user.password}"
                        class="form-control input-md">
 
             </div>
@@ -46,20 +51,19 @@
             </div>
         </div>
 
-        <!-- Text input-->
+        <!-- Textarea -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="Address">Адрес</label>
+            <label class="col-md-4 control-label" for="address">Адрес</label>
             <div class="col-md-4">
-                <input id="Address" name="Address" type="text" placeholder="Address" class="form-control input-md">
-
+                <textarea class="form-control" id="address" name="address">${user.address}</textarea>
             </div>
         </div>
 
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="PhoneNumber">Номер телефона</label>
+            <label class="col-md-4 control-label" for="phoneNumber">Номер телефона</label>
             <div class="col-md-4">
-                <input id="PhoneNumber" name="PhoneNumber" type="text" placeholder="PhoneNumber"
+                <input id="phoneNumber" name="phoneNumber" type="text" placeholder="${user.phoneNumber}"
                        class="form-control input-md">
 
             </div>
@@ -67,17 +71,14 @@
 
         <!-- Button -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="singlebutton"></label>
+            <label class="col-md-4 control-label" for="editpassword"></label>
             <div class="col-md-4">
-                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Зарегистрироваться</button>
+                <button id="editpassword" name="editpassword" class="btn btn-success">Сохранить изменения</button>
             </div>
         </div>
 
     </fieldset>
 </form>
 
-<p>Cmd SignUp: ${message}</p>
 
 <%@ include file="include/end-html.jsp" %>
-
-

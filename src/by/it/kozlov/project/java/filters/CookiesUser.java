@@ -19,7 +19,7 @@ import java.util.List;
 
 public class CookiesUser {
 
-    public static void setCookie(HttpServletResponse resp, User user) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
+    public static void setCookie(HttpServletResponse response, User user) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException {
         DesEncrypter encrypter = DesEncrypter.getInstance();
         List<Cookie> cookies = new ArrayList<>();
         cookies.add(new Cookie("login", user.getLogin()));
@@ -27,7 +27,7 @@ public class CookiesUser {
         for (int i = 0; i < cookies.size(); i++) {
             Cookie cookie = cookies.get(i);
             cookie.setMaxAge(60);
-            resp.addCookie(cookie);
+            response.addCookie(cookie);
         }
     }
 
