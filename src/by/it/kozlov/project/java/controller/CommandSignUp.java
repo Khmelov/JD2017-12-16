@@ -1,5 +1,6 @@
 package by.it.kozlov.project.java.controller;
 
+import by.it.kozlov.project.java.entity.City;
 import by.it.kozlov.project.java.entity.User;
 import by.it.kozlov.project.java.dao.dao.DAO;
 
@@ -8,11 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.List;
 
 public class CommandSignUp extends Action {
     @Override
-    public Action execute(HttpServletRequest request, HttpServletResponse resp) throws SQLException {
+    public Action execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
         if (!FormUtil.isPost(request)) {
+            List<City> cities = DAO.getDAO().city.getAll();
+            request.setAttribute("cities", cities);
             return null;
         }
         try {
@@ -31,7 +35,7 @@ public class CommandSignUp extends Action {
                 request.setAttribute(Message.MESSAGE, "Пользователь зарегестрирован");
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                return Actions.LOGIN.command;
+                return Actions.PROFILE.command;
             } else {
                 request.setAttribute(Message.MESSAGE, "Ошибка добавления пользователя");
                 return Actions.SIGNUP.command;

@@ -1,6 +1,7 @@
 package by.it.kozlov.project.java.controller;
 
 import by.it.kozlov.project.java.dao.dao.DAO;
+import by.it.kozlov.project.java.entity.Brand;
 import by.it.kozlov.project.java.entity.Car;
 import by.it.kozlov.project.java.entity.User;
 import by.it.kozlov.project.java.filters.CookiesUser;
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class CommandAllCarsUser extends Action {
     @Override
-    Action execute(HttpServletRequest request, HttpServletResponse resp) throws SQLException, NoSuchPaddingException, NoSuchAlgorithmException, IOException, BadPaddingException, IllegalBlockSizeException, InvalidKeyException {
+    Action execute(HttpServletRequest request, HttpServletResponse response) throws SQLException, NoSuchPaddingException, NoSuchAlgorithmException, IOException, BadPaddingException, IllegalBlockSizeException, InvalidKeyException {
         HttpSession session = request.getSession();
         Object o = session.getAttribute("user");
         User user = null;
@@ -34,6 +35,8 @@ public class CommandAllCarsUser extends Action {
         }
         List<Car> cars = DAO.getDAO().car.getAll(String.format("WHERE usersID=%d", user.getId()));
         request.setAttribute("cars", cars);
+        List<Brand> brands = DAO.getDAO().brand.getAll();
+        request.setAttribute("brands", brands);
         return null;
     }
 }
