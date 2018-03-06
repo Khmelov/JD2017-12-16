@@ -39,7 +39,7 @@ public class FrontController extends HttpServlet {
         ActionCommand nextStep = null;
         ServletContext servletContext = getServletContext();
         try {
-            nextStep = command.execute(req);
+            nextStep = command.execute(req,resp);
         } catch (SQLException | ParseException | NullPointerException e) {
             req.setAttribute(Msg.ERROR, "FC:" + e);
             req.setAttribute(Msg.ERROR_DETAILS, "<h5>details:</h5>" + Arrays.toString(e.getStackTrace()));

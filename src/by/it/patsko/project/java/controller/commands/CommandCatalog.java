@@ -8,13 +8,14 @@ import by.it.patsko.project.java.dao.beens.Catalog;
 import by.it.patsko.project.java.dao.beens.Category;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
 import java.text.ParseException;
 import java.util.List;
 
 public class CommandCatalog extends ActionCommand {
     @Override
-    public ActionCommand execute(HttpServletRequest req) throws ParseException, SQLException {
+    public ActionCommand execute(HttpServletRequest req, HttpServletResponse resp) throws ParseException, SQLException {
         List<Catalog> catalogs = new CatalogDAO().getAll("");
         List<Category> categories = new CategoryDAO().getAll("");
 
