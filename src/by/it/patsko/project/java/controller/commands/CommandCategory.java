@@ -13,7 +13,7 @@ import java.sql.*;
 import java.util.Enumeration;
 import java.util.List;
 
-public class CommandCategoryCS extends ActionCommand  {
+public class CommandCategory extends ActionCommand  {
     @Override
     public ActionCommand execute(HttpServletRequest req, HttpServletResponse resp) throws SQLException {
         Category category = new CategoryDAO().read(1);
@@ -22,7 +22,7 @@ public class CommandCategoryCS extends ActionCommand  {
         req.setAttribute(Msg.CS_TABLE, findCategoryTable(category,books));
 
 
-        return Actions.CATEGORYCS.command;
+        return Actions.CATEGORY.command;
     }
     private String findCategoryTable(Category category,List<Book> books) {
         StringBuilder sb = new StringBuilder();

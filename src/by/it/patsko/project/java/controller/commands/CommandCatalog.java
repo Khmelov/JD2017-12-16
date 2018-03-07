@@ -19,7 +19,8 @@ public class CommandCatalog extends ActionCommand {
         List<Catalog> catalogs = new CatalogDAO().getAll("");
         List<Category> categories = new CategoryDAO().getAll("");
 
-        req.setAttribute(Msg.CATALOG_TABLE, findCatalogTable(catalogs, categories));
+        req.setAttribute(Msg.CATALOGS, catalogs);
+        req.setAttribute(Msg.CATEGORIES, categories);
         return Actions.CATALOG.command;
     }
 
@@ -28,17 +29,17 @@ public class CommandCatalog extends ActionCommand {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < catalogs.size(); i++) {
-            sb.append("<p><b>")
-                    .append(catalogs.get(i).getCatalogName())
-                    .append("</p></b>")
-                    .append("<table class=\"table\">\n" +
-                            "          <thead>\n" +
-                            "            <tr>\n" +
-                            "              <th scope=\"col\">№</th>\n" +
-                            "              <th scope=\"col\">Категория</th>\n" +
-                            "            </tr>\n" +
-                            "          </thead>")
-                    .append("<tbody>\n");
+//            sb.append("<p><b>")
+//                    .append(catalogs.get(i).getCatalogName())
+//                    .append("</p></b>")
+//                    .append("<table class=\"table\">\n" +
+//                            "          <thead>\n" +
+//                            "            <tr>\n" +
+//                            "              <th scope=\"col\">№</th>\n" +
+//                            "              <th scope=\"col\">Категория</th>\n" +
+//                            "            </tr>\n" +
+//                            "          </thead>")
+//                    .append("<tbody>\n");
             for (int j = 0; j < categories.size(); j++) {
                 sb.append("<tr>\n" +
                         "              <td>")

@@ -46,8 +46,6 @@ public class CommandLogIn extends ActionCommand {
     }
 
     void setCookies(HttpServletResponse resp, Buyer buyer) {
-        System.out.println(buyer.getLogin() + "\n" +
-                buyer.getPassword());
         List<Cookie> cookies = new ArrayList<>(2);
         cookies.add(new Cookie("loginCookie", encodeCookie(buyer.getLogin())));
         cookies.add(new Cookie("passwordCookie", encodeCookie(buyer.getPassword())));

@@ -11,9 +11,12 @@ public interface Msg {
     String PROFILE_LOGIN="profile_login";
     String PROFILE_PASSWORD="profile_password";
 
-    String CATALOG_TABLE="catalog_table";
+//    String CATALOG_TABLE="catalog_table";
+    String CATALOGS="catalogs";
+    String CATEGORIES="categories";
     String CS_TABLE="cs_table";
     String FICTION_TABLE="fiction_table";
-    String PURCHASES_TABLE="purchases_table";
+//    String PURCHASES_TABLE="purchases_table";
+    String PURCHASES="purchases";   //список покупок
 
 }

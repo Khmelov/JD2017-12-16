@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.Arrays;
 
 public class CommandProfile extends ActionCommand {
 
@@ -23,7 +22,6 @@ public class CommandProfile extends ActionCommand {
             req.setAttribute(Msg.PROFILE_LOGIN, buyer.getLogin());
             req.setAttribute(Msg.PROFILE_PASSWORD, buyer.getPassword());
 
-            System.out.println(Arrays.toString(req.getCookies()));
 
             if (FormUtil.isPost(req)) {
                 String login = FormUtil.getString(req.getParameter("newLogin"), Pattern.LOGIN);

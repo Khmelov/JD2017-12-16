@@ -35,9 +35,9 @@ public enum Actions {
         {
             this.command = new CommandProfile();
         }
-    },CATEGORYCS{
+    },CATEGORY{
         {
-            this.command = new CommandCategoryCS();
+            this.command = new CommandCategory();
         }
     },CATEGORYFICTION{
         {
