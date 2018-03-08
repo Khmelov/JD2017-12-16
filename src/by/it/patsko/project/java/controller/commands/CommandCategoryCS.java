@@ -13,10 +13,11 @@ import by.it.patsko.project.java.dao.beens.ListOfPurchases;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.Enumeration;
 import java.util.List;
 
-public class CommandCategoryFiction extends ActionCommand {
+public class CommandCategoryCS extends ActionCommand {
     @Override
     public ActionCommand execute(HttpServletRequest req, HttpServletResponse resp) throws SQLException {
         if (req.getParameter("toBasket") != null) {
@@ -31,7 +32,7 @@ public class CommandCategoryFiction extends ActionCommand {
                 return Actions.ERROR.command;
             }
         }
-        Category category = new CategoryDAO().read(2);
+        Category category = new CategoryDAO().read(1);
         List<Book> books = new BookDAO().getAll("WHERE category_id=" + category.getId());
 
         req.setAttribute(Msg.CATEGORIES, category);

@@ -23,11 +23,13 @@ public class CommandBasket extends ActionCommand {
         if ((buyer=(Buyer) req.getSession().getAttribute(Msg.BUYER)) != null) {
             List<ListOfPurchases> purchasesList =
                     new ListOfPurchasesDAO().getAll("WHERE Buyers_id=" + buyer.getId());
-
+            System.out.println(purchasesList);
+            System.out.println();
             List<Book> booksInBasket = new ArrayList<>(purchasesList.size());
             for (int i = 0; i < purchasesList.size(); i++) {
-                booksInBasket.add(DAO.getDAO().bookDAO.read(purchasesList.get(0).getBooks_id()));
+                booksInBasket.add(DAO.getDAO().bookDAO.read(purchasesList.get(i).getBooks_id()));
             }
+            System.out.println(booksInBasket);
             req.setAttribute(Msg.PURCHASES, booksInBasket);
 
             return Actions.BASKET.command;

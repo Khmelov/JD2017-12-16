@@ -20,11 +20,13 @@
                 </c:forEach>
             </tbody>
         </table>
-        <div class=col-md-1>
-            <button id="No action" value="No action" name="No action" class="btn btn-success" disabled>
-                Оформить заказ
-            </button>
-        </div>
+        <br><br>
+            <c:if test="${buyer!=null}">
+                <button id="No action" value="No action" name="No action" class="btn btn-success" disabled>
+                    Оформить заказ
+                </button>
+            </c:if>
+        <br><br>
 
 <!--<p><b>${purchases_table}</b></p>-->
 

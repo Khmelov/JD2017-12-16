@@ -23,6 +23,10 @@ public enum Actions {
         {
             this.command = new CommandCatalog();
         }
+    },INDEX{
+        {
+            this.command = new CommandIndex();
+        }
     },INITDB{
         {
             this.command = new CommandInitDB();
@@ -35,17 +39,13 @@ public enum Actions {
         {
             this.command = new CommandProfile();
         }
-    },CATEGORY{
+    },CATEGORYCS{
         {
-            this.command = new CommandCategory();
+            this.command = new CommandCategoryCS();
         }
     },CATEGORYFICTION{
         {
             this.command = new CommandCategoryFiction();
-        }
-    },TOBASKET{
-        {
-            this.command = new CommandToBasket();
         }
     },BASKET{
         {

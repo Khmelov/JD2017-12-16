@@ -14,8 +14,8 @@
            </thead>
            <tbody>
                <c:forEach items="${books_in_category}" var="book">
-                <form class="form-horizontal" action="do?command=categoryfiction" method="post">
-                    <tr>
+                   <form class="form-horizontal" action="do?command=categorycs" method="post">
+                       <tr>
                            <td>${book.author}</td>
                            <td>${book.name}</td>
                            <td>${book.price}</td>
@@ -23,11 +23,11 @@
                                <input id="id" class="form-control input-md" name="id" value="${book.id}" hidden/>
                            </td>
                            <td>
-                              <c:if test="${buyer!=null}">
-                                  <button id="toBasket" value="toBasket" name="toBasket" class="btn btn-success">
-                                      в корзину
-                                  </button>
-                              </c:if>
+                               <c:if test="${buyer!=null}">
+                                   <button id="toBasket" value="toBasket" name="toBasket" class="btn btn-success">
+                                       в корзину
+                                   </button>
+                               </c:if>
                            </td>
                        </tr>
                    </form>

@@ -14,7 +14,9 @@ public interface Msg {
 //    String CATALOG_TABLE="catalog_table";
     String CATALOGS="catalogs";
     String CATEGORIES="categories";
-    String CS_TABLE="cs_table";
+    String BOOKS_IN_CATEGORY="books_in_category";
+    String CATEGORY_NAME="category_name";
+//    String CS_TABLE="cs_table";
     String FICTION_TABLE="fiction_table";
 //    String PURCHASES_TABLE="purchases_table";
     String PURCHASES="purchases";   //список покупок

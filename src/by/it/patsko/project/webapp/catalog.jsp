@@ -1,6 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
-<form class="form-horizontal" action="do?command=Catalog" method="post">
+
+<form class="form-horizontal" action="." method="post">
     <fieldset>
 
     <p>${catalog_table}</p>
@@ -19,7 +20,7 @@
                     <c:forEach items="${categories}" var="category">
                         <tr>
                             <td>${category.id}</td>
-                            <td><a id="${category.id}" href="do?command=category">${category.categoryName}</a></td>
+                            <td><a id="${category.id}" href="do?command=category${category.categoryName.toLowerCase()}">${category.categoryName}</a></td>
                         </tr>
                     </c:forEach>
                 </tbody>
