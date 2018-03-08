@@ -22,17 +22,11 @@ public class CommandAllCarsUser extends Action {
     @Override
     Action execute(HttpServletRequest request, HttpServletResponse response) throws SQLException, NoSuchPaddingException, NoSuchAlgorithmException, IOException, BadPaddingException, IllegalBlockSizeException, InvalidKeyException {
         HttpSession session = request.getSession();
-        Object o = session.getAttribute("user");
-        User user = null;
-        if (o != null) {
-            user = (User) o;
-        } else if (o == null) {
-            user = CookiesUser.getCookie(request);
+        User user = (User)session.getAttribute("user");
             if (user == null) {
                 request.setAttribute(Message.MESSAGE, "Войдите чтобы просмотреть объявления");
                 return Actions.LOGIN.command;
             }
-        }
         List<Car> cars = DAO.getDAO().car.getAll(String.format("WHERE usersID=%d", user.getId()));
         request.setAttribute("cars", cars);
         List<Brand> brands = DAO.getDAO().brand.getAll();
