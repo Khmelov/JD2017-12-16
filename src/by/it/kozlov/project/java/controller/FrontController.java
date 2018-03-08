@@ -1,5 +1,10 @@
 package by.it.kozlov.project.java.controller;
 
+import by.it.kozlov.project.java.filters.CookiesUser;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -7,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.text.ParseException;
 
@@ -35,6 +42,11 @@ public class FrontController extends HttpServlet {
         Action command = actionFactory.defineCommand(request);
         Action nextStep = null;
         ServletContext servletContext = getServletContext();
+        try {
+            CookiesUser.getSession(request);
+        } catch (NoSuchPaddingException | BadPaddingException | NoSuchAlgorithmException | IllegalBlockSizeException | InvalidKeyException e) {
+            e.printStackTrace();
+        }
         try {
             nextStep = command.execute(request, response);
         } catch (Exception e) {

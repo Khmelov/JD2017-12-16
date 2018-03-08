@@ -29,28 +29,25 @@ public class CommandLogin extends Action {
             request.setAttribute(Message.MESSAGE, "Введите имя пользователя и пароль");
             return Actions.LOGIN.command;
         }
-        String login = FormUtil.getString(request.getParameter("Login"), "[A-Za-z0-9_@.-]+");
+        String login = "";
+        try {
+            login = FormUtil.getString(request.getParameter("Login"), "[A-Za-z0-9_@.-]+");
+        } catch (ParseException e) {
+            request.setAttribute(Message.MESSAGE, "Введены недопустимые символы");
+            return Actions.LOGIN.command;
+        }
+
         DAO dao = DAO.getDAO();
         List<User> users = dao.user.getAll(String.format("WHERE login='%s'", login));
         if (users.size() == 1) {
             User user = users.get(0);
             String password = FormUtil.getString(request.getParameter("Password"), "[A-Za-z0-9_А-Яа-яЁё]+");
             if (user.getPassword().equals(password)) {
-                if (request.getParameter("Button").equals("Delete")) {
-                    if (dao.user.delete(user)) {
-                        request.setAttribute(Message.MESSAGE, "Пользователь удалён");
-                        return Actions.LOGIN.command;
-                    }
-                    request.setAttribute(Message.MESSAGE, "Ошибка удаления пользователя");
-                    return Actions.LOGIN.command;
-                } else {
-                    HttpSession session = request.getSession();
-                    session.setAttribute("user", user);
-                    session.setMaxInactiveInterval(30);
-                    request.setAttribute(Message.MESSAGE, "Вы вошли");
-                    CookiesUser.setCookie(response, user);
-                    return Actions.PROFILE.command;
-                }
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
+                session.setMaxInactiveInterval(60);
+                CookiesUser.setCookie(response, user);
+                return Actions.PROFILE.command;
             } else {
                 request.setAttribute(Message.MESSAGE, "Неверный пароль");
                 return Actions.LOGIN.command;

@@ -1,8 +1,8 @@
 <%@page language="java" pageEncoding="utf-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
-
-<form class="form-horizontal">
+<p>${message}</p>
+<form class="form-horizontal" action="do?command=Profile" method="POST">
     <fieldset>
         <!-- Form Name -->
         <legend>Изменить данные</legend>
@@ -31,11 +31,9 @@
 
         <!-- Password input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="Password ">Пароль</label>
+            <label class="col-md-4 control-label" for="Password">Пароль</label>
             <div class="col-md-4">
-                <input id="Password " name="Password " type="password" placeholder="${user.password}"
-                       class="form-control input-md">
-
+                <input id="Password" name="Password" type="password" placeholder="******" class="form-control input-md">
             </div>
         </div>
 
@@ -71,9 +69,9 @@
 
         <!-- Button -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="editpassword"></label>
+            <label class="col-md-4 control-label" for="button"></label>
             <div class="col-md-4">
-                <button id="editpassword" name="editpassword" class="btn btn-success">Сохранить изменения</button>
+                <button id="button" name="button" class="btn btn-success">Сохранить изменения</button>
             </div>
         </div>
 
