@@ -33,6 +33,10 @@ public enum Actions {
         {
             this.command = new CommandProfile();
         }
+    }, DBRESET {
+        {
+            this.command = new CommandDBReset();
+        }
     };
 
     public Action command;
