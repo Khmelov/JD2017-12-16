@@ -8,13 +8,14 @@ import by.it.patsko.project.java.dao.beens.Book;
 import by.it.patsko.project.java.dao.beens.Category;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
 import java.util.Enumeration;
 import java.util.List;
 
 public class CommandCategoryCS extends ActionCommand  {
     @Override
-    public ActionCommand execute(HttpServletRequest req) throws SQLException {
+    public ActionCommand execute(HttpServletRequest req, HttpServletResponse resp) throws SQLException {
         Category category = new CategoryDAO().read(1);
         List<Book> books = new BookDAO().getAll("WHERE category_id="+category.getId());
 

@@ -9,13 +9,14 @@ import by.it.patsko.project.java.dao.beens.Buyer;
 import by.it.patsko.project.java.dao.beens.ListOfPurchases;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
 public class CommandBasket extends ActionCommand {
     @Override
-    public ActionCommand execute(HttpServletRequest req) throws SQLException {
+    public ActionCommand execute(HttpServletRequest req, HttpServletResponse resp) throws SQLException {
         Buyer buyer;
         if ((buyer=(Buyer) req.getSession().getAttribute(Msg.BUYER)) != null) {
             List<ListOfPurchases> purchasesList =
