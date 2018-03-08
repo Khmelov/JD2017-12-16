@@ -23,16 +23,14 @@
             <label class="col-md-4 control-label" for="Password">Password</label>
             <div class="col-md-4">
                 <input id="Password" name="Password" type="password" placeholder="Password" class="form-control input-md">
-
             </div>
         </div>
 
-        <!-- Button (Double) -->
+        <!-- Button -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="button1id"></label>
-            <div class="col-md-8">
-                <button id="button1id" name="Button" type="text" value="Login" class="btn btn-success">Войти</button>
-                <button id="button2id" name="Button" type="text" value="Delete" class="btn btn-danger">Удалить пользователя</button>
+            <label class="col-md-4 control-label" for="button"></label>
+            <div class="col-md-4">
+                <button id="button" name="button" class="btn btn-success">Войти</button>
             </div>
         </div>
 

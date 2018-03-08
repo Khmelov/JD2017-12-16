@@ -21,26 +21,22 @@ public class CommandAddCar extends Action {
     @Override
     public Action execute(HttpServletRequest request, HttpServletResponse response) throws ParseException, SQLException, NoSuchPaddingException, NoSuchAlgorithmException, IOException, BadPaddingException, IllegalBlockSizeException, InvalidKeyException {
         HttpSession session = request.getSession();
-        Object o = session.getAttribute("user");
-        User user = null;
-        if (o != null) {
-            user = (User) o;
-        } else if (o == null) {
-            user = CookiesUser.getCookie(request);
-            if (user == null) {
-                request.setAttribute(Message.MESSAGE, "Войдите чтобы добавить объявление");
-                return Actions.LOGIN.command;
-            }
-        }
+        User user = (User) session.getAttribute("user");
         if (FormUtil.isPost(request)) {
-            Car car = new Car(0,
-                    Integer.parseInt(request.getParameter("Brand")),
-                    FormUtil.getString(request.getParameter("Model"), "[A-Za-z0-9_А-Яа-яЁё]+"),
-                    FormUtil.getString(request.getParameter("CarClass"), "[A-Za-z0-9_А-Яа-яЁё]+"),
-                    Double.parseDouble(request.getParameter("Price")),
-                    Integer.parseInt(request.getParameter("Year")),
-                    user.getId()
-            );
+            Car car;
+            try {
+                car = new Car(0,
+                        Integer.parseInt(request.getParameter("Brand")),
+                        FormUtil.getString(request.getParameter("Model"), "[A-Za-z0-9_А-Яа-яЁё]+"),
+                        FormUtil.getString(request.getParameter("CarClass"), "[A-Za-z0-9_А-Яа-яЁё]+"),
+                        Double.parseDouble(request.getParameter("Price")),
+                        Integer.parseInt(request.getParameter("Year")),
+                        user.getId()
+                );
+            } catch (ParseException e) {
+                request.setAttribute(Message.MESSAGE, "Введены недопустимые символы");
+                return null;
+            }
             DAO dao = DAO.getDAO();
             if (dao.car.create(car)) {
                 request.setAttribute(Message.MESSAGE, "Автомобиль добавлен");
