@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class CommandError extends ActionCommand {
-    static String errorMassage;
-    static String errorDetails;
+    public static String errorMassage;
+    public static String errorDetails;
 
     @Override
     public ActionCommand execute(HttpServletRequest req, HttpServletResponse resp) {

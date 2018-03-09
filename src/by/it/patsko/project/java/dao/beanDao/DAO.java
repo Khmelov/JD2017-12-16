@@ -9,7 +9,7 @@ public class DAO {
     private static DAO dao;
 
     public RoleDAO roleDAO;
-    public BuyerDAO buyerDAO;
+    public UserDAO userDAO;
     public ListOfPurchasesDAO listOfPurchasesDAO;
     public BookDAO bookDAO;
     /*public UniversalDAO<ListOfPurchases> listOfPurchasesDAO;
@@ -21,7 +21,7 @@ public class DAO {
         if (dao == null) {
             dao = new DAO();
             dao.roleDAO = new RoleDAO();
-            dao.buyerDAO = new BuyerDAO();
+            dao.userDAO = new UserDAO();
             /*beanDao.listOfPurchasesDAO =new UniversalDAO<>(new ListOfPurchases(),"list of purchases");
             beanDao.bookDAO = new UniversalDAO<>(new Book(),"books");*/
             dao.listOfPurchasesDAO =new ListOfPurchasesDAO();

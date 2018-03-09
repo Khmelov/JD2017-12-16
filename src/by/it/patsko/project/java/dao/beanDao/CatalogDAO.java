@@ -15,7 +15,7 @@ public class CatalogDAO extends DAO implements I_DAO<Catalog> {
     @Override
     public boolean create(Catalog catalog) throws SQLException {
         catalog.setId(0);
-        int id = executeUpdate(String.format("INSERT INTO `catalog`(`name`) VALUES ('%s')",
+        int id = executeUpdate(String.format("INSERT INTO `catalog`(`catalogName`) VALUES ('%s')",
                 catalog.getCatalogName()));
         if (id > 0) catalog.setId(id);
         return id > 0;
@@ -30,7 +30,7 @@ public class CatalogDAO extends DAO implements I_DAO<Catalog> {
     @Override
     public boolean update(Catalog catalog) throws SQLException {
         return 1 == executeUpdate(
-                String.format("UPDATE `catalog` SET `name`='%s' WHERE id=%d",
+                String.format("UPDATE `catalog` SET `catalogName`='%s' WHERE id=%d",
                         catalog.getCatalogName(), catalog.getId()));
     }
 

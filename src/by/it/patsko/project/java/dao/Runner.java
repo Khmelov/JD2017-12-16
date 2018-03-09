@@ -1,12 +1,12 @@
 package by.it.patsko.project.java.dao;
 
 
-import by.it.patsko.project.java.dao.beanDao.BuyerDAO;
 import by.it.patsko.project.java.dao.beanDao.DAO;
+import by.it.patsko.project.java.dao.beanDao.UserDAO;
 import by.it.patsko.project.java.dao.beens.Book;
-import by.it.patsko.project.java.dao.beens.Buyer;
 import by.it.patsko.project.java.dao.beens.ListOfPurchases;
 import by.it.patsko.project.java.dao.beens.Role;
+import by.it.patsko.project.java.dao.beens.User;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -16,17 +16,17 @@ public class Runner {
         /*DAO dao = DAO.getDAO();
         Role role=dao.roleDAO.read(2);
         System.out.println(role+"\n");
-        Buyer buyer=dao.buyerDAO.read(1);
-        System.out.println(buyer+"\n");
-        buyer.setLogin("buyer"+buyer.getId());
-        dao.buyerDAO.create(buyer);
-        System.out.println(buyer+"\n");
-        buyer.setLogin("buyer"+(buyer.getId()+1));
-        dao.buyerDAO.update(buyer);
-        System.out.println(buyer+"\n");
-        dao.buyerDAO.delete(buyer);
-        List<Buyer> users=dao.buyerDAO.getAll("");
-        for (Buyer b : users) {
+        User user=dao.userDAO.read(1);
+        System.out.println(user+"\n");
+        user.setLogin("user"+user.getId());
+        dao.userDAO.create(user);
+        System.out.println(user+"\n");
+        user.setLogin("user"+(user.getId()+1));
+        dao.userDAO.update(user);
+        System.out.println(user+"\n");
+        dao.userDAO.delete(user);
+        List<User> users=dao.userDAO.getAll("");
+        for (User b : users) {
             System.out.println(b);
         }
         System.out.println();
@@ -46,6 +46,6 @@ public class Runner {
         System.out.println("обнавление: "+dao.listOfPurchasesDAO.update(list)+"\n"+list);
         System.out.println("удаление: "+dao.listOfPurchasesDAO.delete(list));
         System.out.println("создание: "+dao.listOfPurchasesDAO.create(new ListOfPurchases(10,1,1)));*/
-        System.out.println(new BuyerDAO().read("TestLogin","TestPassword"));
+        System.out.println(new UserDAO().read("TestLogin","TestPassword"));
     }
 }

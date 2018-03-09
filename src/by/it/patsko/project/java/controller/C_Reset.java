@@ -26,7 +26,7 @@ public class C_Reset {
             statement.executeUpdate("DROP TABLE IF EXISTS `patsko`.`Books` ;");
             statement.executeUpdate("DROP TABLE IF EXISTS `patsko`.`Category` ;");
             statement.executeUpdate("DROP TABLE IF EXISTS `patsko`.`Catalog` ;");
-            statement.executeUpdate("DROP TABLE IF EXISTS `patsko`.`Buyers` ;");
+            statement.executeUpdate("DROP TABLE IF EXISTS `patsko`.`Users` ;");
             statement.executeUpdate("DROP TABLE IF EXISTS `patsko`.`Roles` ;");
 //            statement.executeUpdate("DROP SCHEMA IF EXISTS `patsko` ;");
         } catch (SQLException e) {

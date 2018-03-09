@@ -12,10 +12,7 @@ public class CommandLogOut extends ActionCommand {
     @Override
     public ActionCommand execute(HttpServletRequest req, HttpServletResponse resp) throws ParseException, SQLException {
         req.getSession().invalidate();
-
-//        req.setAttribute(Msg.PROFILE_LOGIN,LogInBuyer.currentBuyer!=null?LogInBuyer.currentBuyer.getLogin():"");
-        req.setAttribute(Msg.BUYER, "");
-
+        req.setAttribute(Msg.USER, "");
         return Actions.LOGIN.command;
     }
 }

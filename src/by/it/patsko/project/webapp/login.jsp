@@ -3,7 +3,6 @@
 
 <form class="form-horizontal"  action="do?command=Login" method="post">
     <fieldset>
-
         <!-- Form Name -->
         <legend>Form Login</legend>
 

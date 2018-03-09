@@ -1,6 +1,7 @@
 package by.it.patsko.project.java.controller;
 
 import by.it.patsko.project.java.controller.commands.*;
+import by.it.patsko.project.java.controller.commands.crudCommands.*;
 
 public enum Actions {
     LOGIN {
@@ -19,9 +20,9 @@ public enum Actions {
         {
             this.command = new CommandSignUP();
         }
-    },CATALOG{
+    },INDEX{
         {
-            this.command = new CommandCatalog();
+            this.command = new CommandIndex();
         }
     },INITDB{
         {
@@ -35,21 +36,39 @@ public enum Actions {
         {
             this.command = new CommandProfile();
         }
-    },CATEGORYCS{
+    },CATEGORY{
         {
-            this.command = new CommandCategoryCS();
-        }
-    },CATEGORYFICTION{
-        {
-            this.command = new CommandCategoryFiction();
-        }
-    },TOBASKET{
-        {
-            this.command = new CommandToBasket();
+            this.command = new CommandCategory();
         }
     },BASKET{
         {
             this.command = new CommandBasket();
+        }
+    }
+    //-----------------------CRUD-------------------
+    ,CRUDROLES{
+        {
+            this.command = new CommandCrudRoles();
+        }
+    },CRUDCATALOGS{
+        {
+            this.command = new CommandCrudCatalogs();
+        }
+    },CRUDUSERS{
+        {
+            this.command = new CommandCrudUsers();
+        }
+    },CRUDBOOKS{
+        {
+            this.command = new CommandCrudBooks();
+        }
+    },CRUDCATEGORIES{
+        {
+            this.command = new CommandCrudCategories();
+        }
+    },CRUDLISTOFPURCHASES{
+        {
+            this.command = new CommandCrudListOfPurchases();
         }
     };
 
