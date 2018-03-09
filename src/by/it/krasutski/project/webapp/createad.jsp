@@ -1,6 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
-
+<br>
+<div class="container">
 <form class="form-horizontal" action="do?command=CreateAd" method="post">
     <fieldset>
 
@@ -38,11 +39,12 @@
             </div>
         </div>
 
-        <!-- Textarea-->
+        <!-- Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="Description">Description</label>
             <div class="col-md-4">
-                <textarea class="form-control" id="Description" name="Description" type="text" rows="3"></textarea>
+                <input id="Description" name="Description" type="text"placeholder="" class="form-control input-md"
+                       required="">
             </div>
         </div>
 
@@ -52,17 +54,6 @@
             <label class="col-md-4 control-label" for="Price">Price</label>
             <div class="col-md-2">
                 <input id="Price" name="Price" type="text" placeholder="" class="form-control input-md">
-            </div>
-        </div>
-
-
-        <!-- Multiple Checkboxes (inline) -->
-        <div class="form-group">
-            <div class="col-md-4">
-                <label class="checkbox-inline" for="Auction">
-                    <input type="checkbox" name="checkboxes" id="Auction" value="1">
-                    auction
-                </label>
             </div>
         </div>
 
@@ -78,5 +69,5 @@
 </form>
 
 <p>Cmd Message: ${message}</p>
-
+</div>
 <%@ include file="include/end-html.jsp" %>

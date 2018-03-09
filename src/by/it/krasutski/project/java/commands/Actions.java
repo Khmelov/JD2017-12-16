@@ -1,6 +1,11 @@
 package by.it.krasutski.project.java.commands;
 
 public enum Actions {
+    RESETDB {
+        {
+            this.command = new CommandResetDB();
+        }
+    },
     LOGIN {
         {
             this.command = new CommandLogin();
@@ -21,6 +26,11 @@ public enum Actions {
             this.command = new CommandCreateAd();
         }
     },
+    EDITUSERS {
+        {
+            this.command = new CommandEditUsers();
+        }
+    },
     HOME {
         {
             this.command = new CommandHome();
@@ -29,6 +39,11 @@ public enum Actions {
     MYADS {
         {
             this.command = new CommandMyAds();
+        }
+    },
+    PROFILE {
+        {
+            this.command = new CommandProfile();
         }
     },
     SIGNUP {

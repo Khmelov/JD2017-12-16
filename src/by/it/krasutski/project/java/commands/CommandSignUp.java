@@ -21,7 +21,7 @@ public class CommandSignUp extends Action {
             String nickname =
                     FormUtil.getString(req, "Nickname", Patterns.NICKNAME);
             String phonenumber =
-                    FormUtil.getString(req, "PhoneNumber", ".+");
+                    FormUtil.getString(req, "PhoneNumber", Patterns.PHONENUMBER);
 
             User user = new User(0, login, email, password, nickname, phonenumber, 2);
             DAO dao = DAO.getDAO();
