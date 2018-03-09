@@ -1,7 +1,7 @@
 package by.it.patsko.project.java.controller;
 
 import by.it.patsko.project.java.controller.commands.ActionCommand;
-import by.it.patsko.project.java.dao.beens.Buyer;
+import by.it.patsko.project.java.dao.beens.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -28,11 +28,6 @@ public class FrontController extends HttpServlet {
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        Buyer buyer = (Buyer) session.getAttribute(Msg.BUYER);
-        req.setAttribute(Msg.PROFILE_LOGIN, buyer != null ? buyer.getLogin() : "");
-
-
         ActionFactory factory = new ActionFactory();
         ActionCommand command = factory.defineCommand(req);
         ActionCommand nextStep = null;

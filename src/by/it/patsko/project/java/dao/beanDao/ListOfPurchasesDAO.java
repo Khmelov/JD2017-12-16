@@ -14,10 +14,11 @@ public class ListOfPurchasesDAO extends DAO implements I_DAO<ListOfPurchases> {
 
     @Override
     public boolean create(ListOfPurchases list) throws SQLException {
+        System.out.println(list.getUsers_id()+"==="+ list.getBooks_id());
         list.setId(0);
         int id = executeUpdate(
-                String.format("INSERT INTO `list of purchases`(`Buyers_id`, `Books_id`) VALUES ('%d','%d')",
-                        list.getBuyers_id(), list.getBooks_id()));
+                String.format("INSERT INTO `list of purchases`(`Users_id`, `Books_id`) VALUES ('%d','%d')",
+                        list.getUsers_id(), list.getBooks_id()));
         if (id > 0) list.setId(id);
         return id > 0;
     }
@@ -31,8 +32,8 @@ public class ListOfPurchasesDAO extends DAO implements I_DAO<ListOfPurchases> {
     @Override
     public boolean update(ListOfPurchases list) throws SQLException {
         return 1 == executeUpdate(
-                String.format("UPDATE `list of purchases` SET `Buyers_id`='%d',`Books_id`='%d' WHERE id=%d",
-                        list.getBuyers_id(), list.getBooks_id(), list.getId()));
+                String.format("UPDATE `list of purchases` SET `Users_id`='%d',`Books_id`='%d' WHERE id=%d",
+                        list.getUsers_id(), list.getBooks_id(), list.getId()));
     }
 
     @Override
@@ -51,7 +52,7 @@ public class ListOfPurchasesDAO extends DAO implements I_DAO<ListOfPurchases> {
                 listOfPurchasesList.add(
                         new ListOfPurchases(
                                 lists.getInt("id"),
-                                lists.getInt("Buyers_id"),
+                                lists.getInt("Users_id"),
                                 lists.getInt("Books_id")
                         )
                 );

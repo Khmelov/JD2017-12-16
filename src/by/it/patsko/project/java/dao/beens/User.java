@@ -2,17 +2,17 @@ package by.it.patsko.project.java.dao.beens;
 
 import java.util.Objects;
 
-public class Buyer {
+public class User {
     private int id;
     private String login;
     private String password;
     private String email;
     private int Roles_id;
 
-    public Buyer() {
+    public User() {
     }
 
-    public Buyer(int id, String login, String password, String email, int roles_id) {
+    public User(int id, String login, String password, String email, int roles_id) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -64,12 +64,12 @@ public class Buyer {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Buyer buyer = (Buyer) o;
-        return id == buyer.id &&
-                Roles_id == buyer.Roles_id &&
-                Objects.equals(login, buyer.login) &&
-                Objects.equals(password, buyer.password) &&
-                Objects.equals(email, buyer.email);
+        User user = (User) o;
+        return id == user.id &&
+                Roles_id == user.Roles_id &&
+                Objects.equals(login, user.login) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(email, user.email);
     }
 
     @Override
@@ -80,7 +80,7 @@ public class Buyer {
 
     @Override
     public String toString() {
-        return "Buyer{" +
+        return "User{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +

@@ -1,8 +1,8 @@
 package by.it.patsko.project.java.controller.commands;
 
 import by.it.patsko.project.java.controller.*;
-import by.it.patsko.project.java.dao.beanDao.BuyerDAO;
-import by.it.patsko.project.java.dao.beens.Buyer;
+import by.it.patsko.project.java.dao.beanDao.UserDAO;
+import by.it.patsko.project.java.dao.beens.User;
 import org.apache.commons.codec.binary.Base64;
 
 import javax.servlet.http.Cookie;
@@ -17,34 +17,28 @@ public class CommandProfile extends ActionCommand {
     @Override
     public ActionCommand execute(HttpServletRequest req, HttpServletResponse resp) throws ParseException, SQLException {
         HttpSession session = req.getSession();
-        Buyer buyer = (Buyer) session.getAttribute(Msg.BUYER);
-        if (buyer != null) {
-            req.setAttribute(Msg.PROFILE_LOGIN, buyer.getLogin());
-            req.setAttribute(Msg.PROFILE_PASSWORD, buyer.getPassword());
-
-
+        User user = (User) session.getAttribute(Msg.USER);
+//        if (user != null) {
             if (FormUtil.isPost(req)) {
                 String login = FormUtil.getString(req.getParameter("newLogin"), Pattern.LOGIN);
                 if (login != null) {
-                    buyer.setLogin(login);
-                    new BuyerDAO().update(buyer);
-                    req.setAttribute(Msg.PROFILE_LOGIN, buyer.getLogin());
-                    session.setAttribute(Msg.BUYER, buyer);
+                    user.setLogin(login);
+                    new UserDAO().update(user);
+                    session.setAttribute(Msg.USER, user);
                     return Actions.PROFILE.command;
                 } else req.setAttribute(Msg.MESSAGE, "login==null");
 
                 String password = FormUtil.getString(req.getParameter("newPassword"), Pattern.PASSWORD);
                 if (password != null) {
-                    buyer.setPassword(password);
-                    new BuyerDAO().update(buyer);
-                    req.setAttribute(Msg.PROFILE_PASSWORD, buyer.getPassword());
-                    session.setAttribute(Msg.BUYER, buyer);
+                    user.setPassword(password);
+                    new UserDAO().update(user);
+                    session.setAttribute(Msg.USER, user);
                     return Actions.PROFILE.command;
                 } else req.setAttribute(Msg.MESSAGE, "password==null");
             }
             req.setAttribute(Msg.MESSAGE, getCookies(req));
             return Actions.PROFILE.command;
-        } else return Actions.LOGIN.command;
+//        } else return Actions.LOGIN.command;
     }
 
     private String getCookies(HttpServletRequest req) {

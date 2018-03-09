@@ -2,11 +2,10 @@ package by.it.patsko.project.java.controller.commands;
 
 import by.it.patsko.project.java.controller.Actions;
 import by.it.patsko.project.java.controller.Msg;
-import by.it.patsko.project.java.dao.beanDao.BookDAO;
 import by.it.patsko.project.java.dao.beanDao.DAO;
 import by.it.patsko.project.java.dao.beanDao.ListOfPurchasesDAO;
 import by.it.patsko.project.java.dao.beens.Book;
-import by.it.patsko.project.java.dao.beens.Buyer;
+import by.it.patsko.project.java.dao.beens.User;
 import by.it.patsko.project.java.dao.beens.ListOfPurchases;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,19 +18,15 @@ import java.util.List;
 public class CommandBasket extends ActionCommand {
     @Override
     public ActionCommand execute(HttpServletRequest req, HttpServletResponse resp) throws SQLException {
-        Buyer buyer;
-        if ((buyer=(Buyer) req.getSession().getAttribute(Msg.BUYER)) != null) {
+        User user;
+        if ((user=(User) req.getSession().getAttribute(Msg.USER)) != null) {
             List<ListOfPurchases> purchasesList =
-                    new ListOfPurchasesDAO().getAll("WHERE Buyers_id=" + buyer.getId());
-            System.out.println(purchasesList);
-            System.out.println();
+                    new ListOfPurchasesDAO().getAll("WHERE Users_id=" + user.getId());
             List<Book> booksInBasket = new ArrayList<>(purchasesList.size());
             for (int i = 0; i < purchasesList.size(); i++) {
                 booksInBasket.add(DAO.getDAO().bookDAO.read(purchasesList.get(i).getBooks_id()));
             }
-            System.out.println(booksInBasket);
             req.setAttribute(Msg.PURCHASES, booksInBasket);
-
             return Actions.BASKET.command;
         } else {
             CommandError.errorMassage = "Вы не залогинились";

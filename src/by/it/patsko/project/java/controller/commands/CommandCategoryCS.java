@@ -7,24 +7,23 @@ import by.it.patsko.project.java.dao.beanDao.BookDAO;
 import by.it.patsko.project.java.dao.beanDao.CategoryDAO;
 import by.it.patsko.project.java.dao.beanDao.DAO;
 import by.it.patsko.project.java.dao.beens.Book;
-import by.it.patsko.project.java.dao.beens.Buyer;
+import by.it.patsko.project.java.dao.beens.User;
 import by.it.patsko.project.java.dao.beens.Category;
 import by.it.patsko.project.java.dao.beens.ListOfPurchases;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
-import java.util.Enumeration;
 import java.util.List;
 
 public class CommandCategoryCS extends ActionCommand {
     @Override
     public ActionCommand execute(HttpServletRequest req, HttpServletResponse resp) throws SQLException {
         if (req.getParameter("toBasket") != null) {
-            Buyer buyer = (Buyer) req.getSession().getAttribute(Msg.BUYER);
-            if (buyer != null) {
+            User user = (User) req.getSession().getAttribute(Msg.USER);
+            if (user != null) {
                 int bookId = FormUtil.getInt(req.getParameter("id"));
-                ListOfPurchases list = new ListOfPurchases(0, buyer.getId(), bookId);
+                ListOfPurchases list = new ListOfPurchases(0, user.getId(), bookId);
                 DAO.getDAO().listOfPurchasesDAO.create(list);
             } else {
                 CommandError.errorMassage = "Вы не залогинелись";

@@ -1,8 +1,8 @@
 package by.it.patsko.project.java.controller.commands;
 
 import by.it.patsko.project.java.controller.*;
-import by.it.patsko.project.java.dao.beanDao.BuyerDAO;
-import by.it.patsko.project.java.dao.beens.Buyer;
+import by.it.patsko.project.java.dao.beanDao.UserDAO;
+import by.it.patsko.project.java.dao.beens.User;
 import org.apache.commons.codec.binary.Base64;
 
 import javax.servlet.http.Cookie;
@@ -20,7 +20,7 @@ public class CommandLogIn extends ActionCommand {
     @Override
     public ActionCommand execute(HttpServletRequest req, HttpServletResponse resp) throws ParseException, SQLException {
         HttpSession session = req.getSession();
-        if (session.getAttribute(Msg.BUYER) != null) {
+        if (session.getAttribute(Msg.USER) != null) {
             CommandError.errorMassage = "Вы уже вошли на сайт";
             CommandError.errorDetails = "<h5>details:</h5>" + Arrays.toString(new Exception().getStackTrace());
             return Actions.ERROR.command;
@@ -30,12 +30,12 @@ public class CommandLogIn extends ActionCommand {
         String testLogin = FormUtil.getString(req.getParameter("Login"), Pattern.LOGIN);
         String testPassword = FormUtil.getString(req.getParameter("Password"), Pattern.PASSWORD);
         try {
-            Buyer buyer = new BuyerDAO().read(new BuyerDAO().read(testLogin, testPassword));
-            session.setAttribute(Msg.BUYER, buyer);
+            User user = new UserDAO().read(new UserDAO().read(testLogin, testPassword));
+            session.setAttribute(Msg.USER, user);
             session.setMaxInactiveInterval(30);
-            req.setAttribute(Msg.MESSAGE, "Залогинился пользователь" + buyer.getLogin());
+            req.setAttribute(Msg.MESSAGE, "Залогинился пользователь" + user.getLogin());
 
-            setCookies(resp, buyer);
+            setCookies(resp, user);
 
         } catch (NullPointerException e) {
             CommandError.errorMassage = "Такого пользователя не существует";
@@ -45,10 +45,10 @@ public class CommandLogIn extends ActionCommand {
         return Actions.PROFILE.command;
     }
 
-    void setCookies(HttpServletResponse resp, Buyer buyer) {
+    void setCookies(HttpServletResponse resp, User user) {
         List<Cookie> cookies = new ArrayList<>(2);
-        cookies.add(new Cookie("loginCookie", encodeCookie(buyer.getLogin())));
-        cookies.add(new Cookie("passwordCookie", encodeCookie(buyer.getPassword())));
+        cookies.add(new Cookie("loginCookie", encodeCookie(user.getLogin())));
+        cookies.add(new Cookie("passwordCookie", encodeCookie(user.getPassword())));
         cookies.get(0).setMaxAge(60);
         cookies.get(1).setMaxAge(60);
         resp.addCookie(cookies.get(0));

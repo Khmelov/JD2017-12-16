@@ -14,6 +14,7 @@ public class CommandResetDB extends ActionCommand {
             C_Reset.main(null);
             req.setAttribute(Msg.MESSAGE, "База данных удалена!!!");
         }
+//        req.getSession().invalidate();
         return Actions.RESETDB.command;
     }
 }

@@ -29,16 +29,16 @@ public class C_Init {
                     "  `role` VARCHAR(45) NULL," +
                     "  PRIMARY KEY (`id`))" +
                     "ENGINE = InnoDB;");
-            statement.executeUpdate("DROP TABLE IF EXISTS `patsko`.`Buyers` ;");
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `patsko`.`Buyers` (" +
+            statement.executeUpdate("DROP TABLE IF EXISTS `patsko`.`Users` ;");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS `patsko`.`Users` (" +
                     "  `id` INT NOT NULL AUTO_INCREMENT," +
                     "  `login` VARCHAR(45) NULL," +
                     "  `password` VARCHAR(45) NULL," +
                     "  `email` VARCHAR(45) NULL," +
                     "  `Roles_id` INT NOT NULL DEFAULT 2," +
                     "  PRIMARY KEY (`id`)," +
-                    "  INDEX `fk_Buyers_Roles1_idx` (`Roles_id` ASC)," +
-                    "  CONSTRAINT `fk_Buyers_Roles1`" +
+                    "  INDEX `fk_Users_Roles1_idx` (`Roles_id` ASC)," +
+                    "  CONSTRAINT `fk_Users_Roles1`" +
                     "    FOREIGN KEY (`Roles_id`)" +
                     "    REFERENCES `patsko`.`Roles` (`id`)" +
                     "    ON DELETE RESTRICT" +
@@ -81,14 +81,14 @@ public class C_Init {
             statement.executeUpdate("DROP TABLE IF EXISTS `patsko`.`List of purchases` ;");
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS `patsko`.`List of purchases` (\n" +
                     "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
-                    "  `Buyers_id` INT NOT NULL,\n" +
+                    "  `Users_id` INT NOT NULL,\n" +
                     "  `Books_id` INT NOT NULL,\n" +
                     "  PRIMARY KEY (`id`),\n" +
-                    "  INDEX `fk_List of purchases_Buyers2_idx` (`Buyers_id` ASC),\n" +
+                    "  INDEX `fk_List of purchases_Users2_idx` (`Users_id` ASC),\n" +
                     "  INDEX `fk_List of purchases_Books1_idx` (`Books_id` ASC),\n" +
-                    "  CONSTRAINT `fk_List of purchases_Buyers2`\n" +
-                    "    FOREIGN KEY (`Buyers_id`)\n" +
-                    "    REFERENCES `patsko`.`Buyers` (`id`)\n" +
+                    "  CONSTRAINT `fk_List of purchases_Users2`\n" +
+                    "    FOREIGN KEY (`Users_id`)\n" +
+                    "    REFERENCES `patsko`.`Users` (`id`)\n" +
                     "    ON DELETE CASCADE\n" +
                     "    ON UPDATE CASCADE,\n" +
                     "  CONSTRAINT `fk_List of purchases_Books1`\n" +
@@ -98,13 +98,13 @@ public class C_Init {
                     "    ON UPDATE CASCADE)\n" +
                     "ENGINE = InnoDB;");
             statement.executeUpdate("INSERT INTO `patsko`.`Roles` (`id`, `role`) VALUES (DEFAULT, 'admin');");
-            statement.executeUpdate("INSERT INTO `patsko`.`Roles` (`id`, `role`) VALUES (DEFAULT, 'buyer');");
-            statement.executeUpdate("INSERT INTO `patsko`.`Buyers` (`id`, `login`, `password`, `email`, `Roles_id`) " +
+            statement.executeUpdate("INSERT INTO `patsko`.`Roles` (`id`, `role`) VALUES (DEFAULT, 'User');");
+            statement.executeUpdate("INSERT INTO `patsko`.`Users` (`id`, `login`, `password`, `email`, `Roles_id`) " +
                     "VALUES (DEFAULT, 'admin', 'password', 'admin@admin.by', 1);\n");
-            statement.executeUpdate("INSERT INTO `patsko`.`Buyers` (`id`, `login`, `password`, `email`, `Roles_id`) " +
-                    "VALUES (DEFAULT, 'buyer1', 'qwerty', 'buyer1@buyer.by', 2);\n");
-            statement.executeUpdate("INSERT INTO `patsko`.`Buyers` (`id`, `login`, `password`, `email`, `Roles_id`) " +
-                    "VALUES (DEFAULT, 'buyer2', '12345', 'buyer2@buyer.by', 2);\n");
+            statement.executeUpdate("INSERT INTO `patsko`.`Users` (`id`, `login`, `password`, `email`, `Roles_id`) " +
+                    "VALUES (DEFAULT, 'User1', 'qwerty', 'User1@User.by', 2);\n");
+            statement.executeUpdate("INSERT INTO `patsko`.`Users` (`id`, `login`, `password`, `email`, `Roles_id`) " +
+                    "VALUES (DEFAULT, 'User2', '12345', 'User2@User.by', 2);\n");
             statement.executeUpdate("INSERT INTO `patsko`.`Catalog` (`id`, `catalogName`) VALUES (DEFAULT, 'Каталог книг');");
             statement.executeUpdate("INSERT INTO `patsko`.`Category` (`id`, `CategoryName`, `Catalog_id`) " +
                     "VALUES (DEFAULT, 'CS', 1);\n");
@@ -116,11 +116,11 @@ public class C_Init {
                     "VALUES (DEFAULT, 'Java 8. Полное руководство', 'Герберт Шилдт', 500, 1);\n");
             statement.executeUpdate("INSERT INTO `patsko`.`Books` (`id`, `name`, `author`, `price`, `Category_id`) " +
                     "VALUES (DEFAULT, 'Оно', 'Стивен Кинг', 100, 2);\n");
-            statement.executeUpdate("INSERT INTO `patsko`.`List of purchases` (`id`, `Buyers_id`, `Books_id`) " +
+            statement.executeUpdate("INSERT INTO `patsko`.`List of purchases` (`id`, `Users_id`, `Books_id`) " +
                     "VALUES (DEFAULT, 1, 1);\n");
-            statement.executeUpdate("INSERT INTO `patsko`.`List of purchases` (`id`, `Buyers_id`, `Books_id`) " +
+            statement.executeUpdate("INSERT INTO `patsko`.`List of purchases` (`id`, `Users_id`, `Books_id`) " +
                     "VALUES (DEFAULT, 1, 3);\n");
-            statement.executeUpdate("INSERT INTO `patsko`.`List of purchases` (`id`, `Buyers_id`, `Books_id`) " +
+            statement.executeUpdate("INSERT INTO `patsko`.`List of purchases` (`id`, `Users_id`, `Books_id`) " +
                     "VALUES (DEFAULT, 2, 2);\n");
 
         } catch (SQLException e) {

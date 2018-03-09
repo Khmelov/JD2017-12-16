@@ -9,6 +9,10 @@ public class FormUtil {
         else if (value.matches(regxp)) return value;
         else return null;
     }
+    public static String getString(String value) {
+        if (value!=null) return value;
+        else return null;
+    }
 
     public static Integer getInt(String value) {
         if(value!=null) return Integer.parseInt(value);

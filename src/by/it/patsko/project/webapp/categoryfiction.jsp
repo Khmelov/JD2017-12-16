@@ -23,7 +23,7 @@
                                <input id="id" class="form-control input-md" name="id" value="${book.id}" hidden/>
                            </td>
                            <td>
-                              <c:if test="${buyer!=null}">
+                              <c:if test="${user!=null}">
                                   <button id="toBasket" value="toBasket" name="toBasket" class="btn btn-success">
                                       в корзину
                                   </button>

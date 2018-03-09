@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
-    <p><b><c:out value="${buyer.login}"/>, у вас в корзине:</b></p>
+    <p><b><c:out value="${user.login}"/>, у вас в корзине:</b></p>
         <table class="table">
             <thead>
                 <tr>
@@ -21,7 +21,7 @@
             </tbody>
         </table>
         <br><br>
-            <c:if test="${buyer!=null}">
+            <c:if test="${user!=null}">
                 <button id="No action" value="No action" name="No action" class="btn btn-success" disabled>
                     Оформить заказ
                 </button>

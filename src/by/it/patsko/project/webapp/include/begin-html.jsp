@@ -22,41 +22,39 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <c:if test="${buyer.roles_id==1}">
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              I/R DataBase
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="do?command=InitDB">InitDB</a>
-              <a class="dropdown-item" href="do?command=ResetDB">ResetDB</a>
-            </div>
-        </div>
+    <c:if test="${user.roles_id==1}">
+         <div class="dropdown">
+             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               I/R DataBase
+             </button>
+             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+               <a class="dropdown-item" href="do?command=InitDB">InitDB</a>
+               <a class="dropdown-item" href="do?command=ResetDB">ResetDB</a>
+             </div>
+         </div>
 
-        <div class="dropdown">
+         <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                DataBase actions
+                   DataBase actions
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="do?command=addRole">addRole</a>
-                <a class="dropdown-item" href="do?command=addUser">addUser</a>
-                <a class="dropdown-item" href="do?command=addBook">addBook</a>
-                <a class="dropdown-item" href="do?command=addCategory">addCategory</a>
-                <a class="dropdown-item" href="do?command=addCatalog">addCatalog</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="do?command=updateRole">updateRole</a>
-                <a class="dropdown-item" href="do?command=updateUser">updateUser</a>
-                <a class="dropdown-item" href="do?command=updateBook">updateBook</a>
-                <a class="dropdown-item" href="do?command=updateCategory">updateCategory</a>
-                <a class="dropdown-item" href="do?command=updateCatalog">updateCatalog</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="do?command=removeRole">removeRole</a>
-                <a class="dropdown-item" href="do?command=removeUser">removeUser</a>
-                <a class="dropdown-item" href="do?command=removeBook">removeBook</a>
-                <a class="dropdown-item" href="do?command=removeCategory">removeCategory</a>
-                <a class="dropdown-item" href="do?command=removeCatalog">removeCatalog</a>
+                   <a class="dropdown-item" href="do?command=crudbooks">CRUD books</a>
+                   <div class="dropdown-divider"></div>
+                   <a class="dropdown-item" href="do?command=crudcatalogs">CRUD catalogs</a>
+                   <div class="dropdown-divider"></div>
+                   <a class="dropdown-item" href="do?command=crudcategories">CRUD categories</a>
+                   <div class="dropdown-divider"></div>
+                   <a class="dropdown-item" href="do?command=crudlistofpurchases">CRUD list of purchases</a>
+                   <div class="dropdown-divider"></div>
+                   <a class="dropdown-item" href="do?command=crudroles">CRUD roles</a>
+                   <div class="dropdown-divider"></div>
+                   <a class="dropdown-item" href="do?command=crudusers">CRUD users</a>
+                   <div class="dropdown-divider"></div>
+
+
+
               </div>
-        </div>
+         </div>
     </c:if>
 
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -74,10 +72,10 @@
 
     <ul class="navbar-nav navbar-right">
         <c:choose>
-            <c:when test="${buyer!=null}">
+            <c:when test="${user!=null}">
                 <li class="nav-item active">
                     <a class="nav-link" href="do?command=Profile" style="color:#FF0000">
-                    <b>${profile_login}</b>
+                    <b>${user.login}</b>
                     <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
