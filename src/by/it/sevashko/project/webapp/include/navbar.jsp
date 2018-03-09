@@ -8,9 +8,6 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="do?command=CreatePublication">CreatePublication<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
                 <a class="nav-link" href="do?command=ResetDB">ResetDB</a>
             </li>
             <li class="nav-item dropdown">
@@ -33,6 +30,16 @@
         </li>
         <li class="nav-item active">
             <a class="nav-link" href="do?command=SignUp">SignUp <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      ${user.login}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="do?command=Profile">Профиль</a>
+                      <a class="dropdown-item" href="do?command=ShowSubscriptions">Мои подписки</a>
+
+                    </div>
         </li>
         <li class="nav-item active">
             <a class="nav-link" href="do?command=Logout">Logout <span class="sr-only">(current)</span></a>

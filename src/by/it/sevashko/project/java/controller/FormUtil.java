@@ -1,5 +1,7 @@
 package by.it.sevashko.project.java.controller;
 
+import by.it.sevashko.project.java.entities.User;
+
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 
@@ -22,5 +24,12 @@ public class FormUtil {
     static double getDouble(HttpServletRequest request, String paramName){
         String value = request.getParameter(paramName);
         return Double.parseDouble(value);
+    }
+
+    static User getUser(HttpServletRequest request){
+        return (User) request.getSession().getAttribute("user");
+    }
+    static boolean isAdministrator(User user){ ;
+        return user.getFk_role() == 1;
     }
 }

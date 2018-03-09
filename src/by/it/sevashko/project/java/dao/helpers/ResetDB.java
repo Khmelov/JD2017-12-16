@@ -1,6 +1,7 @@
 package by.it.sevashko.project.java.dao.helpers;
 
 import by.it.sevashko.project.java.dao.DAO;
+import by.it.sevashko.project.java.entities.Publication;
 import by.it.sevashko.project.java.entities.User;
 
 import java.sql.Connection;
@@ -28,6 +29,7 @@ public class ResetDB {
         createSubscriptionsTable();
         addRoles();
         addUsers();
+        addPublications();
     }
 
     private static void deleteAll() throws SQLException {
@@ -122,5 +124,15 @@ public class ResetDB {
         dao.userDAO.create(user1);
         dao.userDAO.create(user2);
         dao.userDAO.create(user3);
+    }
+
+    private static void addPublications() throws SQLException {
+        Publication publication1 = new Publication(0, "Автодайджест", 12, 1, 3.66f);
+        Publication publication2 = new Publication(0, "Транспортная безопасность", 24, 1, 13.45f);
+        Publication publication3 = new Publication(0, "Транспортный вестник", 26, 1, 14.85f);
+        DAO dao = DAO.getDAO();;
+        dao.publicationDAO.create(publication1);
+        dao.publicationDAO.create(publication2);
+        dao.publicationDAO.create(publication3);
     }
 }

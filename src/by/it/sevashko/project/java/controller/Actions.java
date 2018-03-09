@@ -12,14 +12,14 @@ public enum Actions {
             this.command = new CommandLogin();
         }
     },
-    CREATEPUBLICATION{
-        {
-            this.command = new CommandCreatePublication();
-        }
-    },
     EDITUSERS{
         {
             this.command = new CommandEditUsers();
+        }
+    },
+    EDITPUBLICATIONS{
+        {
+            this.command = new CommandEditPublications();
         }
     },
     LOGOUT{

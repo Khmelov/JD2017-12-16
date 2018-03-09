@@ -14,12 +14,10 @@ public class CommandEditUsers extends Action {
 
     @Override
     public Action execute(HttpServletRequest req) throws SQLException, ParseException {
-        HttpSession session = req.getSession();
-        /*Object object = session.getAttribute("user");
-        if (object != null){
-            User user = (User) object;
+        /*User user = FormUtil.getUser(req);
+        if (user != null){
             //проверка на администратора
-            if (user.getFk_role() != 1) {
+            if (!FormUtil.isAdministrator(user)) {
                 req.setAttribute(Msg.MESSAGE, "Вы не администратор");
                 return Actions.ERROR.command;
             }
@@ -56,8 +54,8 @@ public class CommandEditUsers extends Action {
         DAO dao = DAO.getDAO();
         List<User> users = dao.userDAO.getALL("");
         List<Role> roles = dao.roleDAO.getALL("");
-        session.setAttribute("users", users);
-        session.setAttribute("roles", roles);
+        req.setAttribute("users", users);
+        req.setAttribute("roles", roles);
         return null;
     }
 }
