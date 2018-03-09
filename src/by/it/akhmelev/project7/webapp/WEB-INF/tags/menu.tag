@@ -4,12 +4,15 @@
 %><%@ attribute name="text"  required="true" rtexprvalue="true" type="java.lang.String"
 %><%
     if (command.equalsIgnoreCase(request.getParameter("command"))){
-        request.setAttribute("menuClassActive","class='active'");
+        request.setAttribute("menuClassActive"," class='nav-item active'");
     }
     else
     {
         request.removeAttribute("menuClassActive");
     };
-%><li ${menuClassActive}><a href="do?command=${command}">${text}</a></li>
+%><li${menuClassActive}>
+    <a class="nav-link" href="do?command=${command}">${text}</a>
+</li>
+
 
 
