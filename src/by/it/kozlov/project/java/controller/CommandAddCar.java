@@ -22,6 +22,10 @@ public class CommandAddCar extends Action {
     public Action execute(HttpServletRequest request, HttpServletResponse response) throws ParseException, SQLException, NoSuchPaddingException, NoSuchAlgorithmException, IOException, BadPaddingException, IllegalBlockSizeException, InvalidKeyException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
+        if (user == null) {
+            request.setAttribute(Message.MESSAGE, "Войдите чтобы добавить автомобиль");
+            return Actions.LOGIN.command;
+        }
         if (FormUtil.isPost(request)) {
             Car car;
             try {

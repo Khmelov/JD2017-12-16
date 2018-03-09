@@ -21,6 +21,12 @@ public class CommandProfile extends Action {
     @Override
     public Action execute(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, UnsupportedEncodingException, InvalidKeyException {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            request.setAttribute(Message.MESSAGE, "Войдите чтобы просмотреть профиль");
+            return Actions.LOGIN.command;
+        }
         List<Brand> brands = DAO.getDAO().brand.getAll();
         request.setAttribute("brands", brands);
         List<City> cities = DAO.getDAO().city.getAll();
@@ -28,10 +34,8 @@ public class CommandProfile extends Action {
         List<Role> roles = DAO.getDAO().role.getAll();
         request.setAttribute("roles", roles);
         if (FormUtil.isPost(request)) {
-            HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("user");
             try {
-                if (request.getParameter("Email") != "") {
+                if (!request.getParameter("Email").equals(user.getEmail())) {
                     user.setEmail(FormUtil.getString(request.getParameter("Email"),
                             "([A-Za-z0-9_]*)[@a-z0-9_\\.]+"));
                 }
@@ -39,15 +43,15 @@ public class CommandProfile extends Action {
                     user.setPassword(FormUtil.getString(request.getParameter("Password"),
                             "[A-Za-z0-9_А-Яа-яЁё]+"));
                 }
-                if (request.getParameter("City") != "") {
+                if (request.getParameter("City")!="") {
                     user.setCityID(Integer.parseInt(request.getParameter("City")));
                 }
-                if (request.getParameter("address") != "") {
+                if (!request.getParameter("address").equals(user.getAddress())) {
                     user.setAddress(FormUtil.getString(request.getParameter("address"),
                             "[A-Za-z0-9_А-Яа-яЁё., -]+"));
 
                 }
-                if (request.getParameter("phoneNumber") != "") {
+                if (!request.getParameter("phoneNumber").equals(user.getPhoneNumber())) {
                     user.setPhoneNumber(FormUtil.getString(request.getParameter("phoneNumber"),
                             "[0-9+]*"));
 
