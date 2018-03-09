@@ -12,6 +12,7 @@ public class CommandResetDB extends Action {
         if (FormUtil.isPost(req)){
             req.setAttribute(Msg.MESSAGE, "Сброс базы не выполнен. Взможно вы не скопировали библиотеку mysql-connector-java.jar в lib-local");
             ResetDB.main(null);
+            req.getSession().invalidate();
             req.setAttribute(Msg.MESSAGE, "Сброс (создание) базы выполнен успешно");
         }
         return null;

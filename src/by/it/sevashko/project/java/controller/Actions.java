@@ -17,6 +17,11 @@ public enum Actions {
             this.command = new CommandCreatePublication();
         }
     },
+    EDITUSERS{
+        {
+            this.command = new CommandEditUsers();
+        }
+    },
     LOGOUT{
         {
             this.command = new CommandLogout();

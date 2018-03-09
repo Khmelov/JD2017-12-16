@@ -1,5 +1,8 @@
 package by.it.sevashko.project.java.dao.helpers;
 
+import by.it.sevashko.project.java.dao.DAO;
+import by.it.sevashko.project.java.entities.User;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -24,6 +27,7 @@ public class ResetDB {
         createUsersTable();
         createSubscriptionsTable();
         addRoles();
+        addUsers();
     }
 
     private static void deleteAll() throws SQLException {
@@ -105,5 +109,18 @@ public class ResetDB {
     private static void addRoles() throws SQLException {
         statement.executeUpdate("INSERT INTO `sevashko`.`roles` (`role`) VALUES ('Админитратор');");
         statement.executeUpdate("INSERT INTO `sevashko`.`roles` (`role`) VALUES ('Подписчик');");
+    }
+
+    private static void addUsers() throws SQLException {
+        User user1 = new User(0, "VladSV", "qwerty", "Владислав",
+                "Севашко", "vladsvby@yandex.by",1);
+        User user2 = new User(0, "Ivan48", "12345", "Иван",
+                "Иванов", "afdmag@mail.by",2);
+        User user3 = new User(0, "PetrBY", "12345", "Петр",
+                "Петров", "afaga@google.by",2);
+        DAO dao = DAO.getDAO();
+        dao.userDAO.create(user1);
+        dao.userDAO.create(user2);
+        dao.userDAO.create(user3);
     }
 }
