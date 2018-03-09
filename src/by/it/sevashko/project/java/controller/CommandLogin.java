@@ -29,6 +29,7 @@ public class CommandLogin extends Action {
             User user = users.get(0);
             HttpSession session = req.getSession();
             session.setAttribute("user", user);
+            return Actions.PROFILE.command;
         } else {
             req.setAttribute(Msg.MESSAGE, "Пользователь не найден");
         }

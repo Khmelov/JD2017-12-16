@@ -12,6 +12,11 @@ public enum Actions {
             this.command = new CommandLogin();
         }
     },
+    PROFILE{
+        {
+            this.command = new CommandProfile();
+        }
+    },
     EDITUSERS{
         {
             this.command = new CommandEditUsers();

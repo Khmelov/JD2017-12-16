@@ -14,7 +14,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="login" id="login"  placeholder="Придумайте логин" value="VladSV"/>
+									<input type="text" class="form-control" name="login" id="login"  placeholder="Придумайте логин" value="TestLogin"/>
 								</div>
 							</div>
 						</div>
@@ -24,7 +24,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="password"  placeholder="Придумайте пароль" value="qwerty"/>
+									<input type="password" class="form-control" name="password" id="password"  placeholder="Придумайте пароль" value="TestPassword"/>
 								</div>
 							</div>
 						</div>
@@ -34,7 +34,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="name" id="name"  placeholder="Введите своё имя" value="Владислав"/>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Введите своё имя" value="TestName"/>
 								</div>
 							</div>
 						</div>
@@ -44,7 +44,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="lastName" id="lastName"  placeholder="Введите свою фамилию" value="Севашко"/>
+									<input type="text" class="form-control" name="lastName" id="lastName"  placeholder="Введите свою фамилию" value="TestLastName"/>
 								</div>
 							</div>
 						</div>
@@ -54,7 +54,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="email" id="email"  placeholder="Введите свой Email" value="asdf@asdf.com"/>
+									<input type="text" class="form-control" name="email" id="email"  placeholder="Введите свой Email" value="test@email.com"/>
 								</div>
 							</div>
 						</div>

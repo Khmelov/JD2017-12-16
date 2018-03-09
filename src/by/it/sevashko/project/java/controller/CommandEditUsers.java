@@ -14,7 +14,7 @@ public class CommandEditUsers extends Action {
 
     @Override
     public Action execute(HttpServletRequest req) throws SQLException, ParseException {
-        /*User user = FormUtil.getUser(req);
+        User user = FormUtil.getUser(req);
         if (user != null){
             //проверка на администратора
             if (!FormUtil.isAdministrator(user)) {
@@ -22,7 +22,7 @@ public class CommandEditUsers extends Action {
                 return Actions.ERROR.command;
             }
         }
-        else return Actions.LOGIN.getCommand();*/
+        else return Actions.LOGIN.getCommand();
 
         if (FormUtil.isPost(req)){
             int id;
