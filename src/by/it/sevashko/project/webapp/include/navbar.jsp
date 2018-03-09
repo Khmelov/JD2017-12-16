@@ -10,27 +10,32 @@
             <li class="nav-item active">
                 <a class="nav-link" href="do?command=ResetDB">ResetDB</a>
             </li>
-            <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Операции
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="do?command=EditUsers">Пользователи</a>
-                      <a class="dropdown-item" href="do?command=EditPublications">Издания</a>
-                      <a class="dropdown-item" href="do?command=EditSubscriptions">Подписки</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </li>
+            <c:if test="${user != null && user.fk_role == 1}">
+                <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Операции
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="do?command=EditUsers">Пользователи</a>
+                          <a class="dropdown-item" href="do?command=EditPublications">Издания</a>
+                          <a class="dropdown-item" href="do?command=EditSubscriptions">Подписки</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                </li>
+            </c:if>
         </ul>
     </div>
     <ul class="navbar-nav navbar-right">
-        <li class="nav-item active">
-            <a class="nav-link" href="do?command=Login">Login <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="do?command=SignUp">SignUp <span class="sr-only">(current)</span></a>
-        </li>
+        <c:if test="${user == null}">
+            <li class="nav-item active">
+                <a class="nav-link" href="do?command=Login">Login <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="do?command=SignUp">SignUp <span class="sr-only">(current)</span></a>
+            </li>
+        </c:if>
+        <c:if test="${user != null}">
         <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       ${user.login}
@@ -41,10 +46,10 @@
 
                     </div>
         </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="do?command=Logout">Logout <span class="sr-only">(current)</span></a>
-        </li>
-
+            <li class="nav-item active">
+                <a class="nav-link" href="do?command=Logout">Logout<span class="sr-only">(current)</span></a>
+            </li>
+        </c:if>
     </ul>
 </nav>
 </head>
