@@ -1,4 +1,4 @@
-package by.it.akhmelev.project7.java.filters;
+package by.it.akhmelev.project8.java.filters;
 
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionAttributeListener;
