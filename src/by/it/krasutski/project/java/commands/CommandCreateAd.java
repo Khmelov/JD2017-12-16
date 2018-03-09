@@ -1,12 +1,14 @@
 package by.it.krasutski.project.java.commands;
 
 import by.it.krasutski.project.java.entity.Ad;
+import by.it.krasutski.project.java.entity.Category;
 import by.it.krasutski.project.java.entity.User;
 import by.it.krasutski.project.java.dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.ParseException;
+import java.util.List;
 
 public class CommandCreateAd extends Action {
 
@@ -28,7 +30,8 @@ public class CommandCreateAd extends Action {
                     FormUtil.getString(req, "SmallDesc", ".+"),
                     FormUtil.getString(req, "Description", ".+"),
                     FormUtil.getInt(req, "Price"),
-                    user.getID(), Integer.parseInt(req.getParameter("category_ID"))
+                    user.getID(),
+                    FormUtil.getInt(req,"category_ID")
             );
             DAO dao = DAO.getDAO();
             dao.adDAO.create(ad);

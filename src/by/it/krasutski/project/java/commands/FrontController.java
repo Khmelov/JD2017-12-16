@@ -12,23 +12,15 @@ public class FrontController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
-            process(req, resp);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        process(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
-            process(req, resp);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        process(req, resp);
     }
 
-    private void process(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+    private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ActionFactory actionFactory = new ActionFactory();
         Action command = actionFactory.defineCommand(req);
         Action nextStep = null;

@@ -50,6 +50,9 @@ public class DataBaseInit {
                     "  `roles_ID` INT NOT NULL,\n" +
                     "  PRIMARY KEY (`ID`),\n" +
                     "  INDEX `fk_users_roles1_idx` (`roles_ID` ASC),\n" +
+                    "  UNIQUE INDEX `Login_UNIQUE` (`Login` ASC),\n" +
+                    "  UNIQUE INDEX `Email_UNIQUE` (`Email` ASC),\n" +
+                    "  UNIQUE INDEX `NickName_UNIQUE` (`NickName` ASC),\n" +
                     "  CONSTRAINT `fk_users_roles1`\n" +
                     "    FOREIGN KEY (`roles_ID`)\n" +
                     "    REFERENCES `krasutski`.`roles` (`ID`))\n" +

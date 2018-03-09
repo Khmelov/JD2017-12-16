@@ -22,10 +22,11 @@ public class CommandLogin extends Action {
             req.setAttribute(Msg.MESSAGE, "user " + login + " exists.");
             HttpSession session = req.getSession();
             session.setAttribute("user", list.get(0));
-            return null;
+            return Actions.HOME.command;
         } else
             req.setAttribute(Msg.ERROR, "user " + login + " not exists.");
 
+        req.setAttribute(Msg.MESSAGE, "user " + login + " not exists.");
         return Actions.LOGIN.command;
     }
 }

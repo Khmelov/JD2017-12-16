@@ -39,9 +39,9 @@ public class AdDAO implements IDAO<Ad> {
              Statement statement = connection.createStatement()
         ) {
             String set = String.format("UPDATE `ads` SET Title='%s', SmallDesc='%s', Description='%s', Price='%d'," +
-                            "users_ID='%d', category_ID='%d' WHERE users.ID='%d';",
+                            "users_ID='%d', category_ID='%d' WHERE ads.ID='%d';",
                     ad.getTitle(), ad.getSmallDesc(), ad.getDescription(),
-                    ad.getPrice(), ad.getUsers_ID(), ad.getCategory_ID());
+                    ad.getPrice(), ad.getUsers_ID(), ad.getCategory_ID(), ad.getID());
             int recCount = statement.executeUpdate(set);
             return recCount == 1;
         }

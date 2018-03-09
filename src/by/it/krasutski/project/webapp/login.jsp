@@ -1,6 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
-
+<br>
+<div class="container">
 <form class="form-horizontal"  action="do?command=Login" method="post">
     <fieldset>
 
@@ -21,7 +22,7 @@
             <label class="col-md-4 control-label" for="Password">Password Input</label>
             <div class="col-md-4">
                 <input id="Password" name="Password" type="password" placeholder="put your password here" class="form-control input-md" required="">
-                <span class="help-block">(min 6 symbols)</span>
+                <span class="help-block">(min 5 symbols)</span>
             </div>
         </div>
 
@@ -36,8 +37,7 @@
     </fieldset>
 </form>
 
-
-
 <p>Cmd Login: <b>${message}</b></p>
+</div>
 
 <%@ include file="include/end-html.jsp" %>
