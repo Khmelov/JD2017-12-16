@@ -1,8 +1,9 @@
 <%@page language="java" pageEncoding="utf-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
+<p>${message}</p>
 <div class="page-header">
-    <h3>Все автомобили каталога</h3>
+    <legend>Все автомобили каталога</legend>
 </div>
 
 <div class="row">
@@ -15,7 +16,7 @@
 
 </div>
 <div class="col-md-12">
-    <hr align="center" width="1000" size="2" color="#ff0000"/>
+    <hr align="center" width="1100" size="2" color="#ff0000"/>
 </div>
 
 <c:forEach items="${cars}" var="car">

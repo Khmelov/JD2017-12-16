@@ -24,7 +24,7 @@ public class CommandLogin extends Action {
     @Override
     public Action execute(HttpServletRequest request, HttpServletResponse response) throws ParseException, SQLException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, IOException, InvalidKeyException {
         if (!FormUtil.isPost(request)) {
-            return Actions.LOGIN.command;
+            return null;
         } else if (request.getParameter("Login").equals("")) {
             request.setAttribute(Message.MESSAGE, "Введите имя пользователя и пароль");
             return Actions.LOGIN.command;
