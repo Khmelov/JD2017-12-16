@@ -5,6 +5,7 @@ import by.it.patsko.project.java.dao.beanDao.DAO;
 import by.it.patsko.project.java.dao.beens.Buyer;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -12,7 +13,7 @@ import java.util.Arrays;
 
 public class CommandSignUP extends ActionCommand {
     @Override
-    public ActionCommand execute(HttpServletRequest req) throws ParseException, SQLException {
+    public ActionCommand execute(HttpServletRequest req, HttpServletResponse resp) throws ParseException, SQLException {
         if (req.getSession().getAttribute(Msg.BUYER) != null) {
             CommandError.errorMassage="Вы уже вошли на сайт";
             CommandError.errorDetails="<h5>details:</h5>" + Arrays.toString(new Exception().getStackTrace());
