@@ -5,21 +5,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionCreator {
-    /*private static Connection connection;
-    public static Connection getConnection() {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            if (connection == null || connection.isClosed())
-                connection = DriverManager.getConnection(
-                        "jdbc:mysql://127.0.0.1:2016/patsko"
-                                + "?useUnicode=true&characterEncoding=UTF-8",
-                        "root", ""
-                );
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return connection;
-    }*/
     private static final String URL_DB =
             "jdbc:mysql://127.0.0.1:2016/patsko"
                     + "?useUnicode=true&characterEncoding=UTF-8";
@@ -32,8 +17,6 @@ public class ConnectionCreator {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-//            Driver driver = new FabricMySQLDriver();
-//            DriverManager.registerDriver(driver);
             if (connection == null || connection.isClosed())
                 connection = DriverManager.getConnection(
                         URL_DB, USER_DB, PASSWORD_DB

@@ -50,9 +50,6 @@
                    <div class="dropdown-divider"></div>
                    <a class="dropdown-item" href="do?command=crudusers">CRUD users</a>
                    <div class="dropdown-divider"></div>
-
-
-
               </div>
          </div>
     </c:if>

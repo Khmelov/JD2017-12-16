@@ -18,7 +18,7 @@ public class CommandProfile extends ActionCommand {
     public ActionCommand execute(HttpServletRequest req, HttpServletResponse resp) throws ParseException, SQLException {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute(Msg.USER);
-//        if (user != null) {
+        if (user != null) {
             if (FormUtil.isPost(req)) {
                 String login = FormUtil.getString(req.getParameter("newLogin"), Pattern.LOGIN);
                 if (login != null) {
@@ -38,7 +38,7 @@ public class CommandProfile extends ActionCommand {
             }
             req.setAttribute(Msg.MESSAGE, getCookies(req));
             return Actions.PROFILE.command;
-//        } else return Actions.LOGIN.command;
+        } else return Actions.LOGIN.command;
     }
 
     private String getCookies(HttpServletRequest req) {

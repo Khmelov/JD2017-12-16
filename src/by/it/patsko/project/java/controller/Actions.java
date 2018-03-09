@@ -36,14 +36,6 @@ public enum Actions {
         {
             this.command = new CommandProfile();
         }
-    },CATEGORYCS{
-        {
-            this.command = new CommandCategoryCS();
-        }
-    },CATEGORYFICTION{
-        {
-            this.command = new CommandCategoryFiction();
-        }
     },CATEGORY{
         {
             this.command = new CommandCategory();
@@ -52,7 +44,9 @@ public enum Actions {
         {
             this.command = new CommandBasket();
         }
-    },CRUDROLES{
+    }
+    //-----------------------CRUD-------------------
+    ,CRUDROLES{
         {
             this.command = new CommandCrudRoles();
         }

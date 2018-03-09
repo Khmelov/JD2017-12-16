@@ -22,17 +22,6 @@ public class CommandCrudBooks extends ActionCommand {
 
     @Override
     public ActionCommand execute(HttpServletRequest req, HttpServletResponse resp) throws SQLException {
-        System.out.println(req.getParameter("choose_category_id"));
-        System.out.println(req.getParameter("id"));
-        System.out.println(req.getParameter("name"));
-        System.out.println(req.getParameter("author"));
-        System.out.println(req.getParameter("price"));
-        System.out.println(req.getParameter("Category_id"));
-        System.out.println(req.getParameter("Update"));
-        System.out.println(req.getParameter("Delete"));
-        System.out.println(req.getParameter("Create"));
-        System.out.println("-----------------------------");
-
         if (FormUtil.isPost(req)) {
             if (req.getParameter("choose_category_id") != null)
                 chosenCategoryId = FormUtil.getInt(req.getParameter("choose_category_id"));
