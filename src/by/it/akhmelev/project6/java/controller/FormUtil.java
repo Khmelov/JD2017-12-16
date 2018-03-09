@@ -15,7 +15,6 @@ class FormUtil {
         String value=req.getParameter(field);
         return Integer.parseInt(value);
     }
-
     static double getDouble(HttpServletRequest req, String field) throws ParseException {
         String value=req.getParameter(field);
         return Double.parseDouble(value);
