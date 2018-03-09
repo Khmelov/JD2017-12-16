@@ -32,20 +32,24 @@ public class CommandProfile extends Action {
             User user = (User) session.getAttribute("user");
             try {
                 if (request.getParameter("Email") != "") {
-                    user.setEmail(FormUtil.getString(request.getParameter("Email"), "([A-Za-z0-9_]*)[@a-z0-9_\\.]+"));
+                    user.setEmail(FormUtil.getString(request.getParameter("Email"),
+                            "([A-Za-z0-9_]*)[@a-z0-9_\\.]+"));
                 }
                 if (request.getParameter("Password") != "") {
-                    user.setPassword(FormUtil.getString(request.getParameter("Password"), "[A-Za-z0-9_А-Яа-яЁё]+"));
+                    user.setPassword(FormUtil.getString(request.getParameter("Password"),
+                            "[A-Za-z0-9_А-Яа-яЁё]+"));
                 }
                 if (request.getParameter("City") != "") {
                     user.setCityID(Integer.parseInt(request.getParameter("City")));
                 }
                 if (request.getParameter("address") != "") {
-                    user.setAddress(FormUtil.getString(request.getParameter("address"), "[A-Za-z0-9_А-Яа-яЁё -]+"));
+                    user.setAddress(FormUtil.getString(request.getParameter("address"),
+                            "[A-Za-z0-9_А-Яа-яЁё., -]+"));
 
                 }
                 if (request.getParameter("phoneNumber") != "") {
-                    user.setPhoneNumber(FormUtil.getString(request.getParameter("phoneNumber"), "[0-9+]*"));
+                    user.setPhoneNumber(FormUtil.getString(request.getParameter("phoneNumber"),
+                            "[0-9+]*"));
 
                 }
             } catch (ParseException e) {

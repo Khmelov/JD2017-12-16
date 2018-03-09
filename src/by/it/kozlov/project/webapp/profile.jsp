@@ -24,7 +24,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="Email">Email</label>
             <div class="col-md-4">
-                <input id="Email" name="Email" type="text" placeholder="${user.email}" class="form-control input-md">
+                <input id="Email" name="Email" type="text" value="${user.email}" class="form-control input-md">
 
             </div>
         </div>
@@ -43,7 +43,11 @@
             <div class="col-md-4">
                 <select id="City" name="City" class="form-control">
                     <c:forEach items="${cities}" var="city">
-                        <option value="${city.id}">${city.city}</option>
+                        <option value="${city.id}"
+                                <c:if test="${city.id==user.cityID}">
+                                    selected
+                                </c:if>
+                        >${city.city}</option>
                     </c:forEach>
                 </select>
             </div>
@@ -61,7 +65,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="phoneNumber">Номер телефона</label>
             <div class="col-md-4">
-                <input id="phoneNumber" name="phoneNumber" type="text" placeholder="${user.phoneNumber}"
+                <input id="phoneNumber" name="phoneNumber" type="text" value="${user.phoneNumber}"
                        class="form-control input-md">
 
             </div>
