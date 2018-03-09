@@ -4,7 +4,7 @@
 <%@ include file="include/navbar.jsp" %>
 
 <div class="container users">
-    <h3>Добовление нового издания</h3>
+    <h3>Добавление нового издания</h3>
     <form class="add-publication" action="do?command=EditPublications" method=POST>
         <div class="row">
             <div class=col-md-11>

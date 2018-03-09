@@ -2,7 +2,6 @@
 <%@ include file="include/begin-html.jsp" %>
 <%@ include file="include/navbar.jsp" %>
 
-<h2>Доступные издания</h2>
 <p>${publications}</p>
 <p>INDEX: ${message}</p>
 
