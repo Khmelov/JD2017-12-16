@@ -20,6 +20,8 @@
                 </c:forEach>
             </tbody>
         </table>
+
+
         <br><br>
             <c:if test="${user!=null}">
                 <button id="No action" value="No action" name="No action" class="btn btn-success" disabled>
@@ -28,6 +30,9 @@
             </c:if>
         <br><br>
 
-<!--<p><b>${purchases_table}</b></p>-->
+        <div class="row">
+            <mytag:paginator count="${size}" step="5" urlprefix="do?command=basket&step=5&start="/>
+        </div>
+
 
 <%@ include file="include/end-html.jsp" %>

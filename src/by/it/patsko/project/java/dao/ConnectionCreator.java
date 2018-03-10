@@ -1,5 +1,8 @@
 package by.it.patsko.project.java.dao;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -14,7 +17,6 @@ public class ConnectionCreator {
     private static Connection connection;
 
     public static Connection getConnection() {
-
         try {
             Class.forName("com.mysql.jdbc.Driver");
             if (connection == null || connection.isClosed())
@@ -26,4 +28,17 @@ public class ConnectionCreator {
         }
         return connection;
     }
+
+    /*public static Connection getConnection() {
+    //Через раз бросает ошибку No database selected
+        try {
+            InitialContext initialContext = new InitialContext();
+            DataSource dataSource= (DataSource)initialContext.lookup("java:/comp/env/jdbc/my_sql_patsko");
+            return dataSource.getConnection();
+        } catch (NamingException | SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("nullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnull");
+        return null;
+    }*/
 }

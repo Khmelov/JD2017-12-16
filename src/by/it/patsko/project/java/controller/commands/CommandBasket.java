@@ -19,14 +19,21 @@ public class CommandBasket extends ActionCommand {
     @Override
     public ActionCommand execute(HttpServletRequest req, HttpServletResponse resp) throws SQLException {
         User user;
-        if ((user=(User) req.getSession().getAttribute(Msg.USER)) != null) {
+        if ((user = (User) req.getSession().getAttribute(Msg.USER)) != null) {
+            String strStart = req.getParameter("start");
+            int start = 0;
+            if (strStart != null) {
+                start = Integer.parseInt(strStart);
+
+            }
             List<ListOfPurchases> purchasesList =
                     new ListOfPurchasesDAO().getAll("WHERE Users_id=" + user.getId());
             List<Book> booksInBasket = new ArrayList<>(purchasesList.size());
-            for (int i = 0; i < purchasesList.size(); i++) {
+            for (int i = start; i < purchasesList.size() && i < start + 5; i++) {
                 booksInBasket.add(DAO.getDAO().bookDAO.read(purchasesList.get(i).getBooks_id()));
             }
             req.setAttribute(Msg.PURCHASES, booksInBasket);
+            req.setAttribute("size", purchasesList.size());
             return Actions.BASKET.command;
         } else {
             CommandError.errorMassage = "Вы не залогинились";

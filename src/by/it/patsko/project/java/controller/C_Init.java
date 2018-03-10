@@ -1,6 +1,8 @@
 package by.it.patsko.project.java.controller;
 
 
+import by.it.patsko.project.java.dao.ConnectionCreator;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,10 +15,7 @@ public class C_Init {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:2016"
-                        + "?useUnicode=true&characterEncoding=UTF-8",
-                "root", ""
-        );
+        try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()
         ) {
 

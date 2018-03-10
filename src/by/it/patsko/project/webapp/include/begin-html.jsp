@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="mytag" tagdir="/WEB-INF/tags" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
 
 <!doctype html>

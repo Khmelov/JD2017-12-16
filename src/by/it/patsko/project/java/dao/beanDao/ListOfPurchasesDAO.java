@@ -14,7 +14,6 @@ public class ListOfPurchasesDAO extends DAO implements I_DAO<ListOfPurchases> {
 
     @Override
     public boolean create(ListOfPurchases list) throws SQLException {
-        System.out.println(list.getUsers_id()+"==="+ list.getBooks_id());
         list.setId(0);
         int id = executeUpdate(
                 String.format("INSERT INTO `list of purchases`(`Users_id`, `Books_id`) VALUES ('%d','%d')",

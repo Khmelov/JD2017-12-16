@@ -33,6 +33,15 @@ public class CommandCategory extends ActionCommand {
         }
         Category category = new CategoryDAO().read(FormUtil.getInt(req.getParameter("categoryId")));
         List<Book> books = new BookDAO().getAll("WHERE category_id=" + category.getId());
+        req.setAttribute("booksSize", books.size());
+        String strStart = req.getParameter("start");
+        int start = 0;
+        if (strStart != null) {
+            start = Integer.parseInt(strStart);
+
+        }
+        books = new BookDAO().getAll(
+                String.format(" where category_id='%d' LIMIT %d, 10", category.getId(), start));
 
         req.setAttribute("category", category);
         req.setAttribute(Msg.BOOKS_IN_CATEGORY, books);

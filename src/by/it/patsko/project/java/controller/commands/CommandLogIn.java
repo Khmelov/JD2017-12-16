@@ -27,10 +27,10 @@ public class CommandLogIn extends ActionCommand {
         }
         if (!FormUtil.isPost(req)) return Actions.LOGIN.command;
 
-        String testLogin = FormUtil.getString(req.getParameter("Login"), Pattern.LOGIN);
-        String testPassword = FormUtil.getString(req.getParameter("Password"), Pattern.PASSWORD);
+        String login = FormUtil.getString(req.getParameter("Login"), Pattern.LOGIN);
+        String password = FormUtil.getString(req.getParameter("Password"), Pattern.PASSWORD);
         try {
-            User user = new UserDAO().read(new UserDAO().read(testLogin, testPassword));
+            User user = new UserDAO().read(new UserDAO().read(login, password));
             session.setAttribute(Msg.USER, user);
             session.setMaxInactiveInterval(30);
             req.setAttribute(Msg.MESSAGE, "Залогинился пользователь" + user.getLogin());

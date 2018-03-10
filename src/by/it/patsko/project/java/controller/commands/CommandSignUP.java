@@ -23,6 +23,7 @@ public class CommandSignUP extends ActionCommand {
         String login =FormUtil.getString(req.getParameter("Login"), Pattern.LOGIN);
         String email = FormUtil.getString(req.getParameter("Email"),Pattern.EMAIL);
         String password =FormUtil.getString(req.getParameter("Password"),Pattern.PASSWORD);
+
         User user = new User(0, login, password, email, 1);
         DAO dao = DAO.getDAO();
         dao.userDAO.create(user);
