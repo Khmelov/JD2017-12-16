@@ -8,7 +8,7 @@ public class ActionFactory {
         Action command;
         String action = req.getParameter("command");
         if (action == null)
-            action = "CommandHome";
+            action = "Home";
         try {
             Actions currentEnum = Actions.valueOf(action.toUpperCase());
             command = currentEnum.command;

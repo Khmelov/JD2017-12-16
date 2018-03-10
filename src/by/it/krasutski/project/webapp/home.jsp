@@ -26,6 +26,7 @@
             <div class="col-md-4">${ad.description} </div>
             <div class="col-md-1">${ad.price} </div>
         </div>
+        <br>
     </c:forEach>
 </div>
 <%@ include file="include/end-html.jsp" %>
