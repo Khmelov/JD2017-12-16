@@ -21,6 +21,8 @@ public class CommandCreateAd extends Action {
             user = (User) o;
         } else
             return Actions.LOGIN.command;
+        List<Category> categories = DAO.getDAO().categoryDAO.getAll("");
+        req.setAttribute("categories",categories);
         if (!FormUtil.isPost(req)) {
             return null;
         }
@@ -39,7 +41,7 @@ public class CommandCreateAd extends Action {
                 req.setAttribute(Msg.MESSAGE, "Ad created.");
                 return Actions.MYADS.command;
             } else {
-                req.setAttribute(Msg.ERROR, "Can't create ad.");
+                req.setAttribute(Msg.MESSAGE, "Can't create ad.");
                 return Actions.CREATEAD.command;
             }
         } catch (ParseException e) {
