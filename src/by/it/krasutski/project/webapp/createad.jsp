@@ -20,13 +20,13 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="category_ID">Category</label>
             <div class="col-md-4">
-                <select id="category_ID" name="category_ID" class="form-control">
-                    <option value="1">Smartphone</option>
-                    <option value="2">Laptop</option>
-                    <option value="3">TV</option>
-                    <option value="4">Game Console</option>
-                    <option value="5">Games</option>
-                </select>
+                        <select id="name" name="category_ID" class="form-control">
+                            <c:forEach items="${categories}" var="category">
+                                <option value="${category.ID}" role=${category.ID} ${category.ID==ad.category_ID?"selected":""}>
+                                        ${category.name}
+                                </option>
+                            </c:forEach>
+                        </select>
             </div>
         </div>
 
