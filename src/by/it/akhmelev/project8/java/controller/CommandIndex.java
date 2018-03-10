@@ -11,6 +11,13 @@ class CommandIndex extends Action {
     @Override
     Action execute(HttpServletRequest req) throws Exception {
         List<Ad> ads = DAO.getDAO().adDAO.getAll("");
+        req.setAttribute("adsSize",ads.size());
+        String strStart=req.getParameter("start");
+        int startAd=0;
+        if (strStart!=null)
+            startAd=Integer.parseInt(strStart);
+        String where=String.format(" LIMIT %d, 10",startAd);
+        ads= DAO.getDAO().adDAO.getAll(where);
         req.setAttribute("ads",ads);
         return null;
     }

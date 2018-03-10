@@ -32,4 +32,8 @@
     </div>
 </c:forEach>
 
+<div class="row">
+    <mytag:paginator count="${adsSize}" step="10" urlprefix="?start="/>
+</div>
+
 <%@ include file="include/end-html.jsp" %>

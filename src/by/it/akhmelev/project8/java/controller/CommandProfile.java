@@ -31,10 +31,16 @@ class CommandProfile extends Action {
             DAO.getDAO().userDAO.update(user);
         }
 
+        String where = String.format(" where fk_users='%d'", user.getId());
+        List<Ad> ads = DAO.getDAO().adDAO.getAll(where);
+        req.setAttribute("adsSize", ads.size());
+        String strStart = req.getParameter("start");
+        int startAd = 0;
+        if (strStart != null)
+            startAd = Integer.parseInt(strStart);
+        where = String.format(" where fk_users='%d' LIMIT %d, 5", user.getId(), startAd);
 
-        List<Ad> ads = DAO.getDAO().adDAO.getAll(
-                "where fk_users='" + user.getId() + "'"
-        );
+        ads = DAO.getDAO().adDAO.getAll(where);
         req.setAttribute("ads", ads);
         return null;
     }

@@ -70,7 +70,14 @@
     </div>
 </c:forEach>
 
-<br><br>
+<br>
+
+<div class="row">
+    <mytag:paginator count="${adsSize}" step="5" urlprefix="do?command=Profile&start="/>
+</div>
+
+<br>
+
 
 
 <%@ include file="include/end-html.jsp" %>
