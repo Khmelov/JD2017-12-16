@@ -2,11 +2,12 @@
 <%@ include file="include/begin-html.jsp" %>
 <br>
 <div class="container">
+    <div class="page-header">
+        <h2>Welcome back!</h2>
+    </div>
+    <br>
 <form class="form-horizontal"  action="do?command=Login" method="post">
     <fieldset>
-
-        <!-- Form Name -->
-        <legend>Welcome back!</legend>
 
         <!-- Text input-->
         <div class="form-group">
@@ -19,7 +20,7 @@
 
         <!-- Password input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="Password">Password Input</label>
+            <label class="col-md-4 control-label" for="Password">Password</label>
             <div class="col-md-4">
                 <input id="Password" name="Password" type="password" placeholder="put your password here" class="form-control input-md" required="">
                 <span class="help-block">(min 5 symbols)</span>
@@ -39,5 +40,4 @@
 
 <p>Cmd Login: <b>${message}</b></p>
 </div>
-
 <%@ include file="include/end-html.jsp" %>

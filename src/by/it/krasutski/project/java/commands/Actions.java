@@ -26,6 +26,16 @@ public enum Actions {
             this.command = new CommandCreateAd();
         }
     },
+    CREATECATEGORY {
+        {
+            this.command = new CommandCreateCategory();
+        }
+    },
+    EDITCATEGORY {
+        {
+            this.command = new CommandEditCategory();
+        }
+    },
     EDITUSERS {
         {
             this.command = new CommandEditUsers();

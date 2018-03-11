@@ -2,17 +2,18 @@
 <%@ include file="include/begin-html.jsp" %>
 <br>
 <div class="container">
+    <div class="page-header">
+        <h2>Create AD</h2>
+    </div>
+    <br>
 <form class="form-horizontal" action="do?command=CreateAd" method="post">
     <fieldset>
-
-        <!-- Create Ad -->
-        <legend>Create Ad</legend>
-
         <!-- Text input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="Title">Title</label>
             <div class="col-md-4">
-                <input id="Title" name="Title" type="text" placeholder="" class="form-control input-md" required="">
+                <input id="Title" name="Title" type="text" placeholder="" class="form-control input-md" required=""
+                value="test">
             </div>
         </div>
 
@@ -35,7 +36,7 @@
             <label class="col-md-4 control-label" for="SmallDesc">Small Description</label>
             <div class="col-md-4">
                 <input id="SmallDesc" name="SmallDesc" type="text" placeholder="" class="form-control input-md"
-                       required="">
+                       required="" value="test">
             </div>
         </div>
 
@@ -44,7 +45,7 @@
             <label class="col-md-4 control-label" for="Description">Description</label>
             <div class="col-md-4">
                 <input id="Description" name="Description" type="text"placeholder="" class="form-control input-md"
-                       required="">
+                       required="" value="test">
             </div>
         </div>
 
@@ -53,7 +54,8 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="Price">Price</label>
             <div class="col-md-2">
-                <input id="Price" name="Price" type="text" placeholder="" class="form-control input-md">
+                <input id="Price" name="Price" type="text" placeholder="" class="form-control input-md"
+                value="333">
             </div>
         </div>
 
