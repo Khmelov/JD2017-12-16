@@ -31,6 +31,9 @@
            </tbody>
        </table>
 
+<div class="row">
+    <mytag:paginator count="${booksSize}" step="10" urlprefix="do?command=category&categoryId=${category.id}&step=10&start="/>
+</div>
 
 
 <p>Cmd ERROR: ${error}</p>

@@ -44,9 +44,11 @@ public class CategoryDAO extends DAO implements I_DAO<Category> {
     @Override
     public List<Category> getAll(String where) throws SQLException {
         List<Category> categoryList = new ArrayList<>();
+        String sql = "SELECT * FROM `category`" + where + ";";
         try (Connection connection = ConnectionCreator.getConnection();
-             Statement statement = connection.createStatement()) {
-            ResultSet categories = statement.executeQuery("SELECT * FROM `category`" + where);
+             Statement statement = connection.createStatement();
+             ResultSet categories = statement.executeQuery(sql)
+        ) {
             while (categories.next()) {
                 categoryList.add(
                         new Category(

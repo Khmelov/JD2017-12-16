@@ -45,9 +45,11 @@ public class BookDAO extends DAO implements I_DAO<Book> {
     @Override
     public List<Book> getAll(String where) throws SQLException {
         List<Book> bookList = new ArrayList<>();
+        String sql = "SELECT * FROM `books`" + where + ";";
         try (Connection connection = ConnectionCreator.getConnection();
-             Statement statement = connection.createStatement()) {
-            ResultSet books = statement.executeQuery("SELECT * FROM `books`" + where);
+             Statement statement = connection.createStatement();
+             ResultSet books = statement.executeQuery(sql)
+        ) {
             while (books.next()) {
                 bookList.add(
                         new Book(

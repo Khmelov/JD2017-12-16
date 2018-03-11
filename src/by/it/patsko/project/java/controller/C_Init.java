@@ -1,26 +1,30 @@
 package by.it.patsko.project.java.controller;
 
 
+import by.it.patsko.project.java.dao.ConnectionCreator;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class C_Init {
+    private static final String URL_DB =
+            "jdbc:mysql://127.0.0.1:2016"
+                    + "?useUnicode=true&characterEncoding=UTF-8";
+
+    private static final String USER_DB = "root";
+    private static final String PASSWORD_DB = "";
     public static void main(String[] args) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:2016"
-                        + "?useUnicode=true&characterEncoding=UTF-8",
-                "root", ""
-        );
+
+        try (Connection connection = DriverManager.getConnection(URL_DB, USER_DB, PASSWORD_DB);
              Statement statement = connection.createStatement()
         ) {
-
-
             statement.executeUpdate("DROP SCHEMA IF EXISTS `patsko` ;");
             statement.executeUpdate("CREATE SCHEMA IF NOT EXISTS `patsko` DEFAULT CHARACTER SET utf8 ;");
             statement.executeUpdate("DROP TABLE IF EXISTS `patsko`.`Roles` ;");
@@ -110,10 +114,30 @@ public class C_Init {
                     "VALUES (DEFAULT, 'CS', 1);\n");
             statement.executeUpdate("INSERT INTO `patsko`.`Category` (`id`, `CategoryName`, `Catalog_id`) " +
                     "VALUES (DEFAULT, 'Fiction', 1);\n");
+
             statement.executeUpdate("INSERT INTO `patsko`.`Books` (`id`, `name`, `author`, `price`, `Category_id`) " +
                     "VALUES (DEFAULT, 'Java. Эффективное программирование', 'Джошуа Блох', 200, 1);\n");
             statement.executeUpdate("INSERT INTO `patsko`.`Books` (`id`, `name`, `author`, `price`, `Category_id`) " +
                     "VALUES (DEFAULT, 'Java 8. Полное руководство', 'Герберт Шилдт', 500, 1);\n");
+            statement.executeUpdate("INSERT INTO `patsko`.`Books` (`id`, `name`, `author`, `price`, `Category_id`) " +
+                    "VALUES (DEFAULT, 'Java: руководство для начинающих', 'Герберт Шилдт', 200, 1);\n");
+            statement.executeUpdate("INSERT INTO `patsko`.`Books` (`id`, `name`, `author`, `price`, `Category_id`) " +
+                    "VALUES (DEFAULT, 'Философия Java', 'Брюс Эккель', 250, 1);\n");
+            statement.executeUpdate("INSERT INTO `patsko`.`Books` (`id`, `name`, `author`, `price`, `Category_id`) " +
+                    "VALUES (DEFAULT, 'Java по-быстрому: Практический экспресс-курс', 'Любош Бруга', 300, 1);\n");
+            statement.executeUpdate("INSERT INTO `patsko`.`Books` (`id`, `name`, `author`, `price`, `Category_id`) " +
+                    "VALUES (DEFAULT, 'Совершенный код', 'МакконнеллCтив', 150, 1);\n");
+            statement.executeUpdate("INSERT INTO `patsko`.`Books` (`id`, `name`, `author`, `price`, `Category_id`) " +
+                    "VALUES (DEFAULT, 'Рефакторинг. Улучшение существующего кода', 'Мартин Фаулер', 200, 1);\n");
+            statement.executeUpdate("INSERT INTO `patsko`.`Books` (`id`, `name`, `author`, `price`, `Category_id`) " +
+                    "VALUES (DEFAULT, 'Чистый код', 'Мартин Роберт', 100, 1);\n");
+            statement.executeUpdate("INSERT INTO `patsko`.`Books` (`id`, `name`, `author`, `price`, `Category_id`) " +
+                    "VALUES (DEFAULT, 'Применение шаблонов Java', 'Стивен Стелтинг', 100, 1);\n");
+            statement.executeUpdate("INSERT INTO `patsko`.`Books` (`id`, `name`, `author`, `price`, `Category_id`) " +
+                    "VALUES (DEFAULT, 'MySQL 5.0', 'Виктор Гольцман', 150, 1);\n");
+            statement.executeUpdate("INSERT INTO `patsko`.`Books` (`id`, `name`, `author`, `price`, `Category_id`) " +
+                    "VALUES (DEFAULT, 'Структуры данных и алгоритмы JAVA', 'Роберт Лафоре', 120, 1);\n");
+
             statement.executeUpdate("INSERT INTO `patsko`.`Books` (`id`, `name`, `author`, `price`, `Category_id`) " +
                     "VALUES (DEFAULT, 'Оно', 'Стивен Кинг', 100, 2);\n");
             statement.executeUpdate("INSERT INTO `patsko`.`List of purchases` (`id`, `Users_id`, `Books_id`) " +
