@@ -24,7 +24,7 @@ public class CommandLogin extends Action {
             session.setAttribute("user", list.get(0));
             return Actions.HOME.command;
         } else
-            req.setAttribute(Msg.ERROR, "user " + login + " not exists.");
+            req.setAttribute(Msg.MESSAGE, "check inputs");
 
         req.setAttribute(Msg.MESSAGE, "user " + login + " not exists.");
         return Actions.LOGIN.command;

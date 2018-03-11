@@ -23,14 +23,27 @@
     <c:forEach items="${ads}" var="ad">
         <div class="row">
             <div class="col-md-2">${ad.title} </div>
-            <div class="col-md-2">${ad.category_ID} </div>
+            <div class="col-md-2">
+                <c:forEach items="${categories}" var="category">
+                    <c:if test="${category.ID==ad.category_ID}">
+                        ${category.name}
+                    </c:if>
+                </c:forEach>
+            </div>
             <div class="col-md-3">${ad.smallDesc} </div>
             <div class="col-md-4">${ad.description} </div>
-            <div class="col-md-1">${ad.price} </div>
+            <div class="col-md-1">${ad.price}$ </div>
         </div>
         <br>
     </c:forEach>
     <br>
+
+    <div class="row">
+        <mytag:paginator count="${adsSize}" step="3" urlprefix="do?command=MyAds&ads="/>
+    </div>
+
+    <br>
+
     <div class="container">
         <div class="row">
             <div class=col-md-1>ID</div>
@@ -75,7 +88,8 @@
                     <div class=col-md-2>
                         <select id="name" name="category_ID" class="form-control">
                             <c:forEach items="${categories}" var="category">
-                                <option value="${category.ID}" role=${category.ID} ${category.ID==ad.category_ID?"selected":""}>
+                                <option value="${category.ID}"
+                                        role=${category.ID} ${category.ID==ad.category_ID?"selected":""}>
                                         ${category.name}
                                 </option>
                             </c:forEach>

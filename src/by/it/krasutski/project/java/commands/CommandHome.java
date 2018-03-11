@@ -12,9 +12,16 @@ public class CommandHome extends Action {
     @Override
     Action execute(HttpServletRequest req) throws Exception {
         List<Ad> ads = DAO.getDAO().adDAO.getAll("");
+        req.setAttribute("adsSize", ads.size());
+        String strStart = req.getParameter("ads");
+        int startAd = 0;
+        if (strStart != null)
+            startAd = Integer.parseInt(strStart);
+        String where = String.format(" LIMIT %d, 8", startAd);
+        ads = DAO.getDAO().adDAO.getAll(where);
         List<Category> categories = DAO.getDAO().categoryDAO.getAll("");
-        req.setAttribute("ads",ads);
-        req.setAttribute("categories",categories);
+        req.setAttribute("ads", ads);
+        req.setAttribute("categories", categories);
         return null;
     }
 }

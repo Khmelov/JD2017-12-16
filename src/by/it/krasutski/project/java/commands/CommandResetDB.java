@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 public class CommandResetDB extends Action {
     @Override
     public Action execute(HttpServletRequest req) throws Exception {
-        if (!FormUtil.isPost(req)) {
+        if (FormUtil.isPost(req)) {
             DataBaseReset.resetDB();
             DataBaseInit.initDB();
             req.setAttribute(Msg.MESSAGE,"Database reset and created.");

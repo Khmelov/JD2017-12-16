@@ -32,7 +32,14 @@ public class CategoryDAO implements IDAO<Category> {
 
     @Override
     public boolean update(Category category) throws SQLException {
-        return false;
+        try (Connection connection = ConnectionCreator.getConnection();
+             Statement statement = connection.createStatement()
+        ) {
+            String set = String.format("UPDATE `category` SET Name='%s' WHERE category.ID='%d';",
+                    category.getName(),category.getID());
+            int recCount = statement.executeUpdate(set);
+            return recCount == 1;
+        }
     }
 
     @Override
