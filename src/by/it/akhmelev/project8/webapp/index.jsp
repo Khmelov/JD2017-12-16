@@ -8,16 +8,18 @@
     <p class="lead">Пример макета для вывода данных в виде таблицы</p>
 </div>
 
+<hr>
 <div class="row">
     <div class="col-md-1">Цена</div>
     <div class="col-md-3">Адрес</div>
     <div class="col-md-4">Описание</div>
-    <div class="col-md-1">Число комнат</div>
+    <div class="col-md-1">Комнат</div>
     <div class="col-md-1">Площадь</div>
     <div class="col-md-1">Этаж</div>
     <div class="col-md-1">Этажность</div>
 
 </div>
+<hr>
 
 <c:forEach items="${ads}" var="ad">
     <br>
@@ -32,8 +34,10 @@
     </div>
 </c:forEach>
 
+<hr>
 <div class="row">
     <mytag:paginator count="${adsSize}" step="10" urlprefix="?start="/>
 </div>
+<hr>
 
 <%@ include file="include/end-html.jsp" %>

@@ -1,5 +1,6 @@
 package by.it.akhmelev.project8.java.dao;
 
+import by.it.akhmelev.project8.java.dao.beanDAO.AdDAO;
 import by.it.akhmelev.project8.java.entity.Ad;
 import by.it.akhmelev.project8.java.dao.beanDAO.RoleDAO;
 import by.it.akhmelev.project8.java.dao.beanDAO.UniversalDAO;
@@ -9,15 +10,15 @@ public class DAO {
 
     private static DAO dao = null;
 
-    public final RoleDAO roleDAO;
-    public final UserDAO userDAO;
-    public final UniversalDAO<Ad> adDAO;
+    public final RoleDAO role;
+    public final UserDAO user;
+    public final AdDAO ad;
 
 
     private DAO() {
-        roleDAO = new RoleDAO();
-        userDAO = new UserDAO();
-        adDAO = new UniversalDAO<>(new Ad(),"ads");
+        role = new RoleDAO();
+        user = new UserDAO();
+        ad = new AdDAO(new Ad(),"ads");
     }
 
     public static DAO getDAO() {

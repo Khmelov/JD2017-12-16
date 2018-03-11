@@ -21,5 +21,6 @@
 <p>Нажмите на кнопку чтобы создать или сбросиь базу akhmelev (порт 2016)</p>
 
 <p>Cmd Reset DB: <b>${message}</b></p>
+<br><br><br><br><br><br><br>
 
 <%@ include file="include/end-html.jsp" %>

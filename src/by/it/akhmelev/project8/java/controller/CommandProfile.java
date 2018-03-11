@@ -1,38 +1,30 @@
 package by.it.akhmelev.project8.java.controller;
 
-import by.it.akhmelev.project8.java.controller.Action;
-import by.it.akhmelev.project8.java.controller.Actions;
-import by.it.akhmelev.project8.java.controller.FormUtil;
 import by.it.akhmelev.project8.java.dao.DAO;
 import by.it.akhmelev.project8.java.entity.Ad;
 import by.it.akhmelev.project8.java.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 class CommandProfile extends Action {
     @Override
     Action execute(HttpServletRequest req) throws Exception {
-        HttpSession session = req.getSession();
-        Object o = session.getAttribute("user");
-        User user;
-        if (o != null) {
-            user = (User) o;
-        } else
+        User user = Util.findInSession(req, User.class);
+        if (user == null)
             return Actions.LOGIN.command;
         //обновление данных пользователя
-        if (FormUtil.isPost(req)) {
-            String login = FormUtil.getString(req, "Login", ".+");
-            String password = FormUtil.getString(req, "Password", ".+");
+        if (Util.isPost(req)) {
+            String login = Util.getString(req, "Login", ".+");
+            String password = Util.getString(req, "Password", ".+");
             user.setLogin(login);
             //user.setEmail(email);
             user.setPassword(password);
-            DAO.getDAO().userDAO.update(user);
+            DAO.getDAO().user.update(user);
         }
 
         String where = String.format(" where fk_users='%d'", user.getId());
-        List<Ad> ads = DAO.getDAO().adDAO.getAll(where);
+        List<Ad> ads = DAO.getDAO().ad.getAll(where);
         req.setAttribute("adsSize", ads.size());
         String strStart = req.getParameter("start");
         int startAd = 0;
@@ -40,7 +32,7 @@ class CommandProfile extends Action {
             startAd = Integer.parseInt(strStart);
         where = String.format(" where fk_users='%d' LIMIT %d, 5", user.getId(), startAd);
 
-        ads = DAO.getDAO().adDAO.getAll(where);
+        ads = DAO.getDAO().ad.getAll(where);
         req.setAttribute("ads", ads);
         return null;
     }

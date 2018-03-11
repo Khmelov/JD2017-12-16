@@ -27,19 +27,19 @@ public class FrontController extends HttpServlet {
         Action nextStep = null;
         ServletContext servletContext = getServletContext();
         try {
+            System.out.println(req.getMethod().toUpperCase()+":"+command);
             nextStep = command.execute(req);
         } catch (Exception e) {
-            req.setAttribute(Msg.ERROR, "FC:" + e.getMessage());
-            String errorJsp = Actions.ERROR.command.getJsp();
-            RequestDispatcher dispatcher = servletContext.getRequestDispatcher(errorJsp);
+            req.setAttribute(Msg.ERROR, e.getMessage());
         }
+
         if (nextStep == null || nextStep==command) //конец, показать jsp
         {
             String viewJsp = command.getJsp();
             RequestDispatcher dispatcher = servletContext.getRequestDispatcher(viewJsp);
             dispatcher.forward(req, resp);
         }
-        else //redirect
+        else //еще есть операция, которую нужно выполнить. redirect на get
         {
             resp.sendRedirect("do?command="+nextStep);
         }

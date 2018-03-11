@@ -1,9 +1,6 @@
 package by.it.akhmelev.project8.java.controller;
 
-import by.it.akhmelev.project8.java.controller.Action;
-import by.it.akhmelev.project8.java.controller.FormUtil;
 import by.it.akhmelev.project8.java.dao.DAO;
-import by.it.akhmelev.project8.java.entity.Ad;
 import by.it.akhmelev.project8.java.entity.Role;
 import by.it.akhmelev.project8.java.entity.User;
 
@@ -13,23 +10,28 @@ import java.util.List;
 class CommandEditUsers extends Action {
     @Override
     Action execute(HttpServletRequest req) throws Exception {
+        DAO dao=DAO.getDAO();
+        User userInSession = Util.findInSession(req, User.class);
+        if (userInSession == null)
+            return Actions.LOGIN.command;
+        if (Util.isPost(req)){
+            int id = Util.getInt(req, "id");
+            String login = Util.getString(req, "Login", ".+");
+            String email = Util.getString(req, "Email", ".+");
+            String password = Util.getString(req, "Password", ".+");
+            int fk_roles = Util.getInt(req, "fk_roles");
 
-        if (FormUtil.isPost(req)){
-            int id = FormUtil.getInt(req, "id");
-            String login = FormUtil.getString(req, "Login", ".+");
-            String email = FormUtil.getString(req, "Email", ".+");
-            String password = FormUtil.getString(req, "Password", ".+");
-            int fk_roles = FormUtil.getInt(req, "fk_roles");
             User user=new User(id,login,email,password,fk_roles);
+
             if (req.getParameter("Update")!=null){
-                DAO.getDAO().userDAO.update(user);
+                dao.user.update(user);
             }
             else if (req.getParameter("Delete")!=null){
-                DAO.getDAO().userDAO.delete(user);
+                dao.user.delete(user);
             }
         }
-        List<User> users = DAO.getDAO().userDAO.getAll("");
-        List<Role> roles = DAO.getDAO().roleDAO.getAll("");
+        List<User> users = dao.user.getAll("");
+        List<Role> roles = dao.role.getAll("");
         req.setAttribute("users",users);
         req.setAttribute("roles",roles);
         return null;
