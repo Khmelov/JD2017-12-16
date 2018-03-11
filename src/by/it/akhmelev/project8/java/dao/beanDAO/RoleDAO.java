@@ -33,20 +33,23 @@ public class RoleDAO implements InterfaceDAO<Role> {
 
     @Override
     public Role read(int id) throws SQLException {
-        List<Role> list=getAll(" where ID="+id);
-        return list.size()>0?list.get(0):null;
+        List<Role> list = getAll(" where ID=" + id);
+        return list.size() > 0 ? list.get(0) : null;
     }
 
     @Override
     public List<Role> getAll(String where) throws SQLException {
-        List<Role> list=new ArrayList<>();
-        Connection connection= ConnectionCreator.getConnection();
-        Statement statement=connection.createStatement();
-        String sql="SELECT * from roles "+where+";";
-        ResultSet rs=statement.executeQuery(sql);
-        while (rs.next()){
-            Role role=new Role(rs.getInt("ID"),rs.getString("Role"));
-            list.add(role);
+        List<Role> list = new ArrayList<>();
+        String sql = "SELECT * from roles " + where + ";";
+        try (
+                Connection connection = ConnectionCreator.getConnection();
+                Statement statement = connection.createStatement();
+                ResultSet rs = statement.executeQuery(sql)
+        ) {
+            while (rs.next()) {
+                Role role = new Role(rs.getInt("ID"), rs.getString("Role"));
+                list.add(role);
+            }
         }
         return list;
     }

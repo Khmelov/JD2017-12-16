@@ -15,20 +15,21 @@ class AbstractDAO {
              Statement statement = cn.createStatement()
         ) {
             int recCount = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+            int id = -1;
             if (recCount == 1) {
                 ResultSet keys = statement.getGeneratedKeys();
                 if (keys.next()) {
-                    return keys.getInt(1);
+                    id = keys.getInt(1);
+                    keys.close();
                 }
             }
-            return -1;
+            return id;
         }
     }
 
     public int executeUpdate(String sql) throws SQLException {
-        if (sql.toUpperCase().startsWith("INSERT"))
+        if (sql.toUpperCase().trim().startsWith("INSERT"))
             return create(sql);
-
         try (Connection cn = ConnectionCreator.getConnection();
              Statement statement = cn.createStatement()
         ) {

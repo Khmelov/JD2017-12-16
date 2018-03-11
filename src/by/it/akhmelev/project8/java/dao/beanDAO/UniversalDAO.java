@@ -50,7 +50,7 @@ public class UniversalDAO<TypeBean> implements InterfaceDAO<TypeBean> {
             while (rs.next()) {
                 //создаем копию бина, в который будем складывать запись из Recordset
                 TypeBean newBean = newBean();
-                for (int i = 1; i < fields.length+1; i++) {
+                for (int i = 1; i < fields.length + 1; i++) {
                     //перебирая поля бина по очереди извлекаем значения в соответствии с их типом
                     Field f = fields[i - 1];
                     f.setAccessible(true);
@@ -185,15 +185,16 @@ public class UniversalDAO<TypeBean> implements InterfaceDAO<TypeBean> {
     private static int executeUpdate(String sql, boolean returnLastID) throws SQLException {
         int result;
         try (Connection connection = ConnectionCreator.getConnection();
-             Statement statement = connection.createStatement()) {
-            result = statement.executeUpdate(sql,Statement.RETURN_GENERATED_KEYS);
+             Statement statement = connection.createStatement()
+        ) {
+            result = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
             //получим ID, если это требуется извне.
-            if (result>0 && returnLastID) {
+            if (result > 0 && returnLastID) {
                 //в MySQL можно так .executeQuery("SELECT LAST_INSERT_ID();");
                 //но этот способ надежнее (не зависит от базы данных и безопаснее)
                 ResultSet resultSet = statement.getGeneratedKeys();
                 if (resultSet.next()) result = resultSet.getInt(1);
-                System.out.println("id: "+result);
+                System.out.println("id: " + result);
             }
         } catch (SQLException e) {
             throw new SQLException(e);

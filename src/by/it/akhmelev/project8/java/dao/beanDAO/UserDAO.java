@@ -57,19 +57,23 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
     @Override
     public List<User> getAll(String where) throws SQLException {
         List<User> list = new ArrayList<>();
-        Connection connection = ConnectionCreator.getConnection();
-        Statement statement = connection.createStatement();
         String sql = "SELECT * from users " + where + ";";
-        ResultSet rs = statement.executeQuery(sql);
-        while (rs.next()) {
-            User user = new User(
-                    rs.getInt("ID"),
-                    rs.getString("Login"),
-                    rs.getString("Email"),
-                    rs.getString("Password"),
-                    rs.getInt("FK_roles")
-            );
-            list.add(user);
+        try (
+                Connection connection = ConnectionCreator.getConnection();
+                Statement statement = connection.createStatement();
+                ResultSet rs = statement.executeQuery(sql);
+        ) {
+
+            while (rs.next()) {
+                User user = new User(
+                        rs.getInt("ID"),
+                        rs.getString("Login"),
+                        rs.getString("Email"),
+                        rs.getString("Password"),
+                        rs.getInt("FK_roles")
+                );
+                list.add(user);
+            }
         }
         return list;
     }
