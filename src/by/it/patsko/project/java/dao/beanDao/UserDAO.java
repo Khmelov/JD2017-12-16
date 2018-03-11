@@ -28,10 +28,10 @@ public class UserDAO extends DAO implements I_DAO<User> {
         List<User> userList = getAll(" where id=" + id);
         return !userList.isEmpty() ? userList.get(0) : null;
     }
-    public int read(String login, String password) throws SQLException {
-        List<User> userList = getAll(" where login='" + login+"' AND password='"+password+"'");
-        return !userList.isEmpty() ? userList.get(0).getId() : null;
 
+    public int read(String login, String password) throws SQLException {
+        List<User> userList = getAll(" where login='" + login + "' AND password='" + password + "'");
+        return !userList.isEmpty() ? userList.get(0).getId() : null;
     }
 
     @Override
@@ -50,19 +50,23 @@ public class UserDAO extends DAO implements I_DAO<User> {
     @Override
     public List<User> getAll(String where) throws SQLException {
         List<User> userList = new ArrayList<>();
-        Connection connection = ConnectionCreator.getConnection();
-        Statement statement = connection.createStatement();
-        ResultSet Users = statement.executeQuery("SELECT * FROM `Users`" + where);
-        while (Users.next()) {
-            userList.add(
-                    new User(
-                            Users.getInt("id"),
-                            Users.getString("login"),
-                            Users.getString("password"),
-                            Users.getString("email"),
-                            Users.getInt("Roles_id")
-                    )
-            );
+        String sql = "SELECT * FROM `Users`" + where + ";";
+        try (
+                Connection connection = ConnectionCreator.getConnection();
+                Statement statement = connection.createStatement();
+                ResultSet Users = statement.executeQuery(sql)
+        ) {
+            while (Users.next()) {
+                userList.add(
+                        new User(
+                                Users.getInt("id"),
+                                Users.getString("login"),
+                                Users.getString("password"),
+                                Users.getString("email"),
+                                Users.getInt("Roles_id")
+                        )
+                );
+            }
         }
         return userList;
     }

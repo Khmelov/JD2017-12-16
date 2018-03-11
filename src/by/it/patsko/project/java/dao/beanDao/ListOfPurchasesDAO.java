@@ -44,9 +44,11 @@ public class ListOfPurchasesDAO extends DAO implements I_DAO<ListOfPurchases> {
     @Override
     public List<ListOfPurchases> getAll(String where) throws SQLException {
         List<ListOfPurchases> listOfPurchasesList = new ArrayList<>();
+        String sql = "SELECT * FROM `list of purchases`" + where + ";";
         try (Connection connection = ConnectionCreator.getConnection();
-             Statement statement = connection.createStatement()) {
-            ResultSet lists = statement.executeQuery("SELECT * FROM `list of purchases`" + where);
+             Statement statement = connection.createStatement();
+             ResultSet lists = statement.executeQuery(sql)
+        ) {
             while (lists.next()) {
                 listOfPurchasesList.add(
                         new ListOfPurchases(

@@ -91,14 +91,16 @@ public class UniversalDAO<T> extends DAO implements I_DAO<T> {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-        return 0< executeUpdate(sql.toString());
+        return 0 < executeUpdate(sql.toString());
     }
 
     public List<T> getAll(String where) throws SQLException {
         List<T> beanList = new ArrayList<>();
+        String sql = "SELECT * FROM `" + tableName + "` " + where + ";";
         try (Connection connection = ConnectionCreator.getConnection();
-             Statement statement = connection.createStatement()) {
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM `" + tableName + "` " + where);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)
+        ) {
             while (resultSet.next()) {
                 T newBean = (T) bean.getClass().newInstance();
                 for (int i = 1; i < fields.size() + 1; i++) {

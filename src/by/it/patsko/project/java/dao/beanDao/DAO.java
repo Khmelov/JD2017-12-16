@@ -34,21 +34,27 @@ public class DAO {
 
     private static int create(String sql) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
-             Statement statement = connection.createStatement()) {
+             Statement statement = connection.createStatement()
+        ) {
             int recCount = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+            int id=-1;
             if (1 == recCount) {
                 ResultSet keys = statement.getGeneratedKeys();
-                if (keys.next())
-                    return keys.getInt(1);
+                if (keys.next()){
+                    id= keys.getInt(1);
+                    keys.close();
+                }
             }
+            return id;
         }
-        return -1;
     }
 
     public static int executeUpdate(String sql) throws SQLException {
-        if (sql.toUpperCase().startsWith("INSERT ")) return create(sql);
+        if (sql.toUpperCase().trim().startsWith("INSERT "))
+            return create(sql);
         try (Connection connection = ConnectionCreator.getConnection();
-             Statement statement = connection.createStatement()) {
+             Statement statement = connection.createStatement()
+        ) {
             return statement.executeUpdate(sql);
         }
     }

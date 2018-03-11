@@ -42,14 +42,19 @@ public class RoleDAO extends DAO implements I_DAO<Role> {
     @Override
     public List<Role> getAll(String where) throws SQLException {
         List<Role> roleList = new ArrayList<>();
-        Connection connection = ConnectionCreator.getConnection();
-        Statement statement = connection.createStatement();
-        ResultSet roles = statement.executeQuery("SELECT * FROM `roles`" + where);
-        while (roles.next()) {
-            roleList.add(
-                    new Role(
-                            roles.getInt("id"),
-                            roles.getString("role")));
+        String sql = "SELECT * FROM `roles`" + where + ";";
+        try (Connection connection = ConnectionCreator.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet roles = statement.executeQuery(sql)
+        ) {
+            while (roles.next()) {
+                roleList.add(
+                        new Role(
+                                roles.getInt("id"),
+                                roles.getString("role")
+                        )
+                );
+            }
         }
         return roleList;
     }

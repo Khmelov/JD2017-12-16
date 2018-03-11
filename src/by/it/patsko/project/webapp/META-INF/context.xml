@@ -23,8 +23,6 @@
     username="root"
     password=""
     driverClassName="com.mysql.jdbc.Driver"
-    url="jdbc:mysql://127.0.0.1:2016/patsko?useUnicode=true&amp;characterEncoding=UTF-8"/>
-
-    <!--url="jdbc:mysql://localhost:2016/akhmelev?useUnicode=true&amp;characterEncoding=UTF-8"/>-->
+    url="jdbc:mysql://localhost:2016/patsko?useUnicode=true&amp;characterEncoding=UTF-8"/>
 
 </Context>

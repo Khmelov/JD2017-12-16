@@ -32,7 +32,7 @@
        </table>
 
 <div class="row">
-    <mytag:paginator count="${booksSize}" step="10" urlprefix="do?command=category&step=10&start="/>
+    <mytag:paginator count="${booksSize}" step="10" urlprefix="do?command=category&categoryId=${category.id}&step=10&start="/>
 </div>
 
 

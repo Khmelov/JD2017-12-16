@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionCreator {
-    private static final String URL_DB =
+    /*private static final String URL_DB =
             "jdbc:mysql://127.0.0.1:2016/patsko"
                     + "?useUnicode=true&characterEncoding=UTF-8";
     private static final String USER_DB = "root";
@@ -27,10 +27,10 @@ public class ConnectionCreator {
             e.printStackTrace();
         }
         return connection;
-    }
+    }*/
 
-    /*public static Connection getConnection() {
-    //Через раз бросает ошибку No database selected
+    public static Connection getConnection() {
+        //иногда бросается java.sql.SQLException: No database selected
         try {
             InitialContext initialContext = new InitialContext();
             DataSource dataSource= (DataSource)initialContext.lookup("java:/comp/env/jdbc/my_sql_patsko");
@@ -40,5 +40,5 @@ public class ConnectionCreator {
         }
         System.out.println("nullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnull");
         return null;
-    }*/
+    }
 }
