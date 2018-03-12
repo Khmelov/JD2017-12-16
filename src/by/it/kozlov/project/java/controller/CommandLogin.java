@@ -23,9 +23,9 @@ import java.util.List;
 public class CommandLogin extends Action {
     @Override
     public Action execute(HttpServletRequest request, HttpServletResponse response) throws ParseException, SQLException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, IOException, InvalidKeyException {
-        HttpSession session=request.getSession();
-        if (session.getAttribute("user")!=null){
-            session.setAttribute(Message.MESSAGE,"Вы уже вошли");
+        HttpSession session = request.getSession();
+        if (session.getAttribute("user") != null) {
+            session.setAttribute(Message.MESSAGE, "Вы уже вошли");
         }
         if (!FormUtil.isPost(request)) {
             return null;
