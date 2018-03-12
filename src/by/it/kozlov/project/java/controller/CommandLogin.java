@@ -31,14 +31,14 @@ public class CommandLogin extends Action {
             return null;
         } else if (request.getParameter("Login").equals("")) {
             request.setAttribute(Message.MESSAGE, "Введите имя пользователя и пароль");
-            return Actions.LOGIN.command;
+            return null;
         }
         String login = "";
         try {
             login = FormUtil.getString(request.getParameter("Login"), "[A-Za-z0-9_@.-]+");
         } catch (ParseException e) {
             request.setAttribute(Message.MESSAGE, "Введены недопустимые символы");
-            return Actions.LOGIN.command;
+            return null;
         }
 
         DAO dao = DAO.getDAO();
@@ -53,14 +53,11 @@ public class CommandLogin extends Action {
                 return Actions.PROFILE.command;
             } else {
                 request.setAttribute(Message.MESSAGE, "Неверный пароль");
-                return Actions.LOGIN.command;
+                return null;
             }
-        } else if (users.size() == 0) {
+        } else {
             request.setAttribute(Message.MESSAGE, "Пользователя с таким именем не существует");
-            return Actions.LOGIN.command;
-        } else {                      //Убрать когда поле логин будет уникальным
-            request.setAttribute(Message.MESSAGE, "Найдено больше одного пользователя");
-            return Actions.LOGIN.command;
+            return null;
         }
     }
 }

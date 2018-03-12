@@ -20,7 +20,7 @@ import java.util.List;
 
 public class CommandSignUp extends Action {
     @Override
-    public Action execute(HttpServletRequest request, HttpServletResponse response) throws SQLException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, UnsupportedEncodingException, InvalidKeyException {
+    public Action execute(HttpServletRequest request, HttpServletResponse response) throws NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, UnsupportedEncodingException, InvalidKeyException, SQLException {
         List<City> cities = DAO.getDAO().city.getAll();
         request.setAttribute("cities", cities);
         if (!FormUtil.isPost(request)) {
@@ -47,11 +47,14 @@ public class CommandSignUp extends Action {
                 return Actions.PROFILE.command;
             } else {
                 request.setAttribute(Message.MESSAGE, "Ошибка добавления пользователя");
-                return Actions.SIGNUP.command;
+                return null;
             }
         } catch (ParseException e) {
             request.setAttribute(Message.MESSAGE, "Введены недопустимые символы");
-            return Actions.SIGNUP.command;
+            return null;
+        } catch (SQLException e) {
+            request.setAttribute(Message.MESSAGE, "Пользователь с таким именем уже существует");
+            return null;
         }
     }
 }
