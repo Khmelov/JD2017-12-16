@@ -164,6 +164,9 @@ public class CreateNewSchema {
 
            sql=String.format("INSERT INTO sendetskaya.roles (Role) VALUES ('Пользователь');");
             statement.executeUpdate(sql);
+
+            sql=String.format("INSERT INTO sendetskaya.roles (Role) VALUES ('Черный список');");
+            statement.executeUpdate(sql);
         }
     }
 
