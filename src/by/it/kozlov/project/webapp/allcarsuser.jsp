@@ -3,7 +3,12 @@
 
 <p>${message}</p>
 <div class="page-header">
-    <legend>Все автомобили пользователя</legend>
+    <c:if test="${user.id==1}">
+        <legend>Все автомобили пользователей</legend>
+    </c:if>
+    <c:if test="${user.id==2}">
+        <legend>Все автомобили пользователя</legend>
+    </c:if>
 </div>
 
 <div class="row">

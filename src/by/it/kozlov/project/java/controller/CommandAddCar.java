@@ -31,9 +31,9 @@ public class CommandAddCar extends Action {
             try {
                 car = new Car(0,
                         Integer.parseInt(request.getParameter("Brand")),
-                        FormUtil.getString(request.getParameter("Model"), "[A-Za-z0-9_А-Яа-яЁё]+"),
+                        FormUtil.getString(request.getParameter("Model"), "[A-Za-z0-9_А-Яа-яЁё ]+"),
                         FormUtil.getString(request.getParameter("CarClass"), "[A-Za-z0-9_А-Яа-яЁё]+"),
-                        Double.parseDouble(request.getParameter("Price")),
+                        Double.parseDouble(request.getParameter("Price").replace(",", ".")),
                         Integer.parseInt(request.getParameter("Year")),
                         user.getId()
                 );
@@ -41,14 +41,9 @@ public class CommandAddCar extends Action {
                 request.setAttribute(Message.MESSAGE, "Введены недопустимые символы");
                 return null;
             }
-            DAO dao = DAO.getDAO();
-            if (dao.car.create(car)) {
-                request.setAttribute(Message.MESSAGE, "Автомобиль добавлен");
-                return null;
-            } else {
-                request.setAttribute(Message.MESSAGE, "Ошибка добавления машины");
-                return null;
-            }
+            DAO.getDAO().car.create(car);
+            request.setAttribute(Message.MESSAGE, "Автомобиль добавлен");
+            return null;
         } else {
             return null;
         }

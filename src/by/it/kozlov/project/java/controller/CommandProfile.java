@@ -27,6 +27,10 @@ public class CommandProfile extends Action {
             request.setAttribute(Message.MESSAGE, "Войдите чтобы просмотреть профиль");
             return Actions.LOGIN.command;
         }
+        if (user.getRolesID() == 1) {
+            List<User> users = DAO.getDAO().user.getAll();
+            request.setAttribute("users", users);
+        }
         List<Brand> brands = DAO.getDAO().brand.getAll();
         request.setAttribute("brands", brands);
         List<City> cities = DAO.getDAO().city.getAll();
@@ -34,35 +38,57 @@ public class CommandProfile extends Action {
         List<Role> roles = DAO.getDAO().role.getAll();
         request.setAttribute("roles", roles);
         if (FormUtil.isPost(request)) {
+            User userNew = null;
             try {
-                if (!request.getParameter("Email").equals(user.getEmail())) {
-                    user.setEmail(FormUtil.getString(request.getParameter("Email"),
-                            "([A-Za-z0-9_]*)[@a-z0-9_\\.]+"));
+                if (request.getParameter("button") != null) {
+                    userNew = user;
+                } else if (request.getParameter("submit") != null && user.getRolesID() == 1) {
+                    userNew = DAO.getDAO().user.read(Integer.parseInt(request.getParameter("submit")));
+                } else if (request.getParameter("delete") != null && user.getRolesID() == 1) {
+                    userNew = DAO.getDAO().user.read(Integer.parseInt(request.getParameter("delete")));
                 }
-                if (request.getParameter("Password") != "") {
-                    user.setPassword(FormUtil.getString(request.getParameter("Password"),
-                            "[A-Za-z0-9_А-Яа-яЁё]+"));
-                }
-                if (request.getParameter("City")!="") {
-                    user.setCityID(Integer.parseInt(request.getParameter("City")));
-                }
-                if (!request.getParameter("address").equals(user.getAddress())) {
-                    user.setAddress(FormUtil.getString(request.getParameter("address"),
-                            "[A-Za-z0-9_А-Яа-яЁё., -]+"));
+                if (request.getParameter("delete") == null) {
+                    if (!request.getParameter("Email").equals(user.getEmail())) {
+                        userNew.setEmail(FormUtil.getString(request.getParameter("Email"),
+                                "([A-Za-z0-9_]*)[@a-z0-9_\\\\.-]+"));
+                    }
+                    if (request.getParameter("Password") != "") {
+                        userNew.setPassword(FormUtil.getString(request.getParameter("Password"),
+                                "[A-Za-z0-9_А-Яа-яЁё]+"));
+                    }
+                    if (request.getParameter("City") != "") {
+                        userNew.setCityID(Integer.parseInt(request.getParameter("City")));
+                    }
+                    if (!request.getParameter("address").equals(user.getAddress())) {
+                        userNew.setAddress(FormUtil.getString(request.getParameter("address"),
+                                "[A-Za-z0-9_А-Яа-яЁё., -]+"));
 
-                }
-                if (!request.getParameter("phoneNumber").equals(user.getPhoneNumber())) {
-                    user.setPhoneNumber(FormUtil.getString(request.getParameter("phoneNumber"),
-                            "[0-9+]*"));
+                    }
+                    if (!request.getParameter("phoneNumber").equals(user.getPhoneNumber())) {
+                        userNew.setPhoneNumber(FormUtil.getString(request.getParameter("phoneNumber"),
+                                "[0-9+]*"));
 
+                    }
                 }
             } catch (ParseException e) {
                 request.setAttribute(Message.MESSAGE, "Введены недопустимые символы");
                 return null;
             }
-            DAO.getDAO().user.update(user);
+            if (request.getParameter("delete") != null && user.getRolesID() == 1) {
+                DAO.getDAO().user.delete(userNew);
+                request.setAttribute(Message.MESSAGE, "Пользователь удалён");
+            } else {
+                DAO.getDAO().user.update(userNew);
+                if (request.getParameter(request.getParameter("button")) != null) {
+                    user = userNew;
+                }
+                request.setAttribute(Message.MESSAGE, "Данные изменены");
+            }
             CookiesUser.setCookie(response, user);
-            request.setAttribute(Message.MESSAGE, "Данные изменены");
+            if (user.getRolesID() == 1) {
+                List<User> users = DAO.getDAO().user.getAll();
+                request.setAttribute("users", users);
+            }
         }
         return null;
     }
