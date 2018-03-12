@@ -1,24 +1,25 @@
-package by.it.sendetskaya.project.java;
+package by.it.sendetskaya.project.java.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
 public class ActionFactory {
 
-    ActionCommand defineCommand(HttpServletRequest request){
+    Action defineCommand(HttpServletRequest request){
 
-        ActionCommand command;
+        Action command;
         String action=request.getParameter("command");
+        if(action==null)
+        {
+            action="Index";
+        }
         try {
-
-
             Actions currentEnum = Actions.valueOf(action.toUpperCase());
-            command=currentEnum.getCommand();
+            command=currentEnum.command;
         }
         catch (IllegalArgumentException e)
         {
             command=Actions.ERROR.command;    //по умолчанию будет стр error
         }
-
 
         return command;
     }
