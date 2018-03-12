@@ -6,21 +6,8 @@ import java.io.Serializable;
  * Created by user on 20.02.2018.
  */
 public class Ad implements Serializable {
-    private  int id;
-    private  String description;
-    private  int carrying;
-    private  int volume;
-    private  String tariff;
-    private  int FK_users;
 
-    public Ad() {
-    }
-    public Ad(int id,
-              String description,
-              int carrying,
-              int volume,
-              String tariff,
-              int FK_users){
+    public Ad(int id,String description,int carrying,int volume,String tariff, int FK_users){
         this.id=id;
         this.description=description;
         this.carrying=carrying;
@@ -29,8 +16,19 @@ public class Ad implements Serializable {
         this.FK_users=FK_users;
     }
 
-    public Ad(int id, String login, String description, String carrying, String volume, String tariff) {
+
+    public Ad() {
     }
+
+
+
+    private  int id;
+    private  String description;
+    private  int carrying;
+    private  int volume;
+    private  String tariff;
+    private  int FK_users;
+
 
     public int getId() {
         return id;
@@ -48,7 +46,7 @@ public class Ad implements Serializable {
         this.description = description;
     }
 
-    public int getCarrying() {
+    public double getCarrying() {
         return carrying;
     }
 
@@ -56,7 +54,7 @@ public class Ad implements Serializable {
         this.carrying = carrying;
     }
 
-    public int getVolume() {
+    public double getVolume() {
         return volume;
     }
 
@@ -80,6 +78,7 @@ public class Ad implements Serializable {
         this.FK_users = FK_users;
     }
 
+
     @Override
     public String toString() {
         return "Ad{" +
@@ -91,6 +90,7 @@ public class Ad implements Serializable {
                 ", FK_users=" + FK_users +
                 '}';
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -110,8 +110,9 @@ public class Ad implements Serializable {
     @Override
     public int hashCode() {
         int result = id;
+        
         result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + carrying;
+        result = 31 * result + carrying ;
         result = 31 * result + volume;
         result = 31 * result + (tariff != null ? tariff.hashCode() : 0);
         result = 31 * result + FK_users;

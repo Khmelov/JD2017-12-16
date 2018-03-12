@@ -10,6 +10,14 @@
     Важно чтобы внутри каждого из этих тегов были теги servlet-name
     и имя сервлета в них было одинаковым!!! Здесь это имя HelloWorld
     -->
+    <servlet>
+        <servlet-name>HelloWorld</servlet-name>
+        <servlet-class>by.it.karpeichyk.Project.java.HelloServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelloWorld</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
 
     <!--
     Подключим точно так же второй сервлета-контроллер с именем FrontControllerServlet
