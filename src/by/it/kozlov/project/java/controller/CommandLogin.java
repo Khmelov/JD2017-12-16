@@ -23,6 +23,10 @@ import java.util.List;
 public class CommandLogin extends Action {
     @Override
     public Action execute(HttpServletRequest request, HttpServletResponse response) throws ParseException, SQLException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, IOException, InvalidKeyException {
+        HttpSession session=request.getSession();
+        if (session.getAttribute("user")!=null){
+            session.setAttribute(Message.MESSAGE,"Вы уже вошли");
+        }
         if (!FormUtil.isPost(request)) {
             return null;
         } else if (request.getParameter("Login").equals("")) {
@@ -43,7 +47,6 @@ public class CommandLogin extends Action {
             User user = users.get(0);
             String password = FormUtil.getString(request.getParameter("Password"), "[A-Za-z0-9_А-Яа-яЁё]+");
             if (user.getPassword().equals(password)) {
-                HttpSession session = request.getSession();
                 session.setAttribute("user", user);
                 session.setMaxInactiveInterval(60);
                 CookiesUser.setCookie(response, user);

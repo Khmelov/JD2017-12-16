@@ -23,7 +23,7 @@ public class CommandAddCar extends Action {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         if (user == null) {
-            request.setAttribute(Message.MESSAGE, "Войдите чтобы добавить автомобиль");
+            session.setAttribute(Message.MESSAGE, "Войдите чтобы добавить автомобиль");
             return Actions.LOGIN.command;
         }
         if (FormUtil.isPost(request)) {

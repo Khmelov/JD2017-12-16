@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -42,6 +43,11 @@ public class FrontController extends HttpServlet {
         Action command = actionFactory.defineCommand(request);
         Action nextStep = null;
         ServletContext servletContext = getServletContext();
+        HttpSession session = request.getSession();
+        if (session.getAttribute(Message.MESSAGE) != null) {
+            request.setAttribute(Message.MESSAGE, session.getAttribute(Message.MESSAGE));
+            session.setAttribute(Message.MESSAGE, null);
+        }
         try {
             CookiesUser.getSession(request);
         } catch (NoSuchPaddingException | BadPaddingException | NoSuchAlgorithmException | IllegalBlockSizeException | InvalidKeyException e) {
