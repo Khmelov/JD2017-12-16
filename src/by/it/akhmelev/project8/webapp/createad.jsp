@@ -11,7 +11,8 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="Description">Описание</label>
   <div class="col-md-4">
-  <input id="Description" name="Description" type="text" placeholder="" class="form-control input-md" required="" value="test">
+  <input id="Description" name="Description" value="Тестовое описание"
+         type="text" placeholder="" class="form-control input-md" required="" >
 
   </div>
 </div>
@@ -20,7 +21,8 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="Address">Адрес</label>
   <div class="col-md-4">
-  <input id="Address" name="Address" type="text" placeholder="" class="form-control input-md" required=""  value="test">
+  <input id="Address" name="Address"   value="Тестовый адрес"
+         type="text" placeholder="" class="form-control input-md" required="">
 
   </div>
 </div>

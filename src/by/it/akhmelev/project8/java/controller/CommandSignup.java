@@ -10,9 +10,9 @@ class CommandSignup extends Command {
     public Command execute(HttpServletRequest req) throws Exception {
         if (!Util.isPost(req))
             return null;
-        String login = Util.getString(req, "Login", ".+");
-        String email = Util.getString(req, "Email", ".+");
-        String password = Util.getString(req, "Password", ".+");
+        String login = Util.frmString(req, "Login", ".+");
+        String email = Util.frmString(req, "Email", ".+");
+        String password = Util.frmString(req, "Password", ".+");
         //по умолчанию администратор, но это нужно изменить
         User user = new User(0, login, email, password, 1);
         DAO dao = DAO.getDAO();

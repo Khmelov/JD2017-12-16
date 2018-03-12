@@ -10,13 +10,13 @@ import java.util.List;
 class CommandProfile extends Command {
     @Override
     Command execute(HttpServletRequest req) throws Exception {
-        User user = Util.findInSession(req, User.class);
+        User user = Util.findInSession(req, "user");
         if (user == null)
             return Actions.LOGIN.command;
         //обновление данных пользователя
         if (Util.isPost(req)) {
-            String login = Util.getString(req, "Login", ".+");
-            String password = Util.getString(req, "Password", ".+");
+            String login = Util.frmString(req, "Login", ".+");
+            String password = Util.frmString(req, "Password", ".+");
             user.setLogin(login);
             //user.setEmail(email);
             user.setPassword(password);

@@ -13,11 +13,12 @@ class CommandLogin extends Command {
         if (!Util.isPost(req))
             return null;
         String login =
-                Util.getString(req,"Login", ".+");
+                Util.frmString(req,"Login", ".+");
         String password =
-                Util.getString(req,"Password", ".+");
+                Util.frmString(req,"Password", ".+");
         DAO dao = DAO.getDAO();
         List<User> list = dao.user.getAll(" where Login='" + login + "' and Password='" + password + "'");
+
         if (list.size() > 0) {
             req.setAttribute(Msg.MESSAGE, "пользователь " + login + " найден");
             HttpSession session = req.getSession();

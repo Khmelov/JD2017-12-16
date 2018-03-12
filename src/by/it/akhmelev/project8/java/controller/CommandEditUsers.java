@@ -11,15 +11,15 @@ class CommandEditUsers extends Command {
     @Override
     Command execute(HttpServletRequest req) throws Exception {
         DAO dao=DAO.getDAO();
-        User userInSession = Util.findInSession(req, User.class);
+        User userInSession = Util.findInSession(req, "user");
         if (userInSession == null)
             return Actions.LOGIN.command;
         if (Util.isPost(req)){
-            int id = Util.getInt(req, "id");
-            String login = Util.getString(req, "Login", ".+");
-            String email = Util.getString(req, "Email", ".+");
-            String password = Util.getString(req, "Password", ".+");
-            int fk_roles = Util.getInt(req, "fk_roles");
+            int id = Util.frmInt(req, "id");
+            String login = Util.frmString(req, "Login", ".+");
+            String email = Util.frmString(req, "Email", ".+");
+            String password = Util.frmString(req, "Password", ".+");
+            int fk_roles = Util.frmInt(req, "fk_roles");
 
             User user=new User(id,login,email,password,fk_roles);
 

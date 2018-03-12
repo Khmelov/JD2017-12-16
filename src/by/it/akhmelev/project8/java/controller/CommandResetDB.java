@@ -9,9 +9,9 @@ class CommandResetDB extends Command {
     @Override
     public Command execute(HttpServletRequest req) throws SQLException, ClassNotFoundException {
         if (Util.isPost(req)) {
-            req.setAttribute(Msg.MESSAGE,"POST1. Сброс базы. Если завершается здесь, то возможно вы не скопировали библиотеку mysql-connector-java.jar в lib-local");
+            req.setAttribute(Msg.MESSAGE,"POST. Команда сброса базы. Возможно вы не скопировали библиотеку mysql-connector-java.jar в lib-local");
             ResetDB_akhmelev.main(null);
-            req.setAttribute(Msg.MESSAGE,"POST2. Сброс базы завершился успешно.");
+            req.setAttribute(Msg.MESSAGE,"POST. Сброс базы завершился успешно.");
             req.getSession().invalidate();
         }
         return null;

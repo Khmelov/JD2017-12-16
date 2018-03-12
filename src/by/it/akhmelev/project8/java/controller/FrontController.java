@@ -22,9 +22,8 @@ public class FrontController extends HttpServlet {
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("FC:"+req.getMethod()+" "+req.getRequestURI()+"?"+req.getQueryString());
-        ActionFactory actionFactory = new ActionFactory();
-        Command command = actionFactory.defineCommand(req);
+        System.out.println("FrontController: "+req.getMethod()+" "+req.getRequestURI()+"?"+req.getQueryString());
+        Command command = Actions.defineCommand(req);
         Command nextStep = null;
         ServletContext servletContext = getServletContext();
         try {
