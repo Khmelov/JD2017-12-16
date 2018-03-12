@@ -3,7 +3,7 @@ package by.it.kozlov.project.java.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class City implements Serializable{
+public class City implements Serializable {
     private int id;
     private String city;
 

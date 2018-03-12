@@ -6,7 +6,6 @@
     <fieldset>
 
 
-
         <!-- Form Name -->
         <legend>Войти</legend>
 
@@ -14,7 +13,8 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="Login">Login</label>
             <div class="col-md-4">
-                <input id="Login" name="Login" type="text" placeholder="Login" class="form-control input-md" value="bayernkraft.by">
+                <input id="Login" name="Login" type="text" placeholder="Login" class="form-control input-md"
+                       value="bayernkraft.by">
 
             </div>
         </div>
@@ -23,7 +23,8 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="Password">Password</label>
             <div class="col-md-4">
-                <input id="Password" name="Password" type="password" placeholder="Password" class="form-control input-md" value="bayernkraft">
+                <input id="Password" name="Password" type="password" placeholder="Password"
+                       class="form-control input-md" value="bayernkraft">
             </div>
         </div>
 

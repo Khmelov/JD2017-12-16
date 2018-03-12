@@ -48,7 +48,7 @@ public class CommandProfile extends Action {
                     userNew = DAO.getDAO().user.read(Integer.parseInt(request.getParameter("delete")));
                 }
                 if (request.getParameter("delete") == null) {
-                    if (user.getRolesID()==1){
+                    if (user.getRolesID() == 1) {
                         if (!request.getParameter("Login").equals(userNew.getEmail())) {
                             userNew.setLogin(FormUtil.getString(request.getParameter("Login"),
                                     "[A-Za-z0-9_@.]+"));
