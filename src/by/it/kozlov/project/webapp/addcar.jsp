@@ -1,5 +1,6 @@
 <%@page language="java" pageEncoding="utf-8" %>
 <%@ include file="include/begin-html.jsp" %>
+<p>${message}</p>
 <form class="form-horizontal" action="do?command=addCar" method="POST">
     <fieldset>
 
@@ -11,8 +12,13 @@
             <label class="col-md-4 control-label" for="Brand">Марка</label>
             <div class="col-md-4">
                 <select id="Brand" name="Brand" class="form-control">
-                    <option value="1">BMW</option>
-                    <option value="2">Mercedes-Benz</option>
+                    <c:forEach items="${brands}" var="brand">
+                        <option value="${brand.id}"
+                                <c:if test="${brand.id==car.brandID}">
+                                    selected
+                                </c:if>
+                        >${brand.brand}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>
@@ -30,10 +36,9 @@
             <label class="col-md-4 control-label" for="CarClass">Класс</label>
             <div class="col-md-4">
                 <select id="CarClass" name="CarClass" class="form-control">
-                    <option value="Хэтчбек">Хэтчбек</option>
-                    <option value="Седан">Седан</option>
-                    <option value="Кроссовер">Кроссовер</option>
-                    <option value="Внедорожник">Внедорожник</option>
+                    <c:forEach items="${bodies}" var="body">
+                        <option value="${body.id}">${body.body}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>
@@ -52,9 +57,13 @@
             <label class="col-md-4 control-label" for="Year">Год выпуска</label>
             <div class="col-md-4">
                 <select id="Year" name="Year" class="form-control">
-                    <option value="2016">2016</option>
-                    <option value="2017">2017</option>
-                    <option value="2018">2018</option>
+                    <c:forEach items="${years}" var="year">
+                        <option value="${year.year}"
+                                <c:if test="${year.year==car.year}">
+                                    selected
+                                </c:if>
+                        >${year.year}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>
@@ -69,8 +78,5 @@
 
     </fieldset>
 </form>
-
-
-<p>Cmd Login: ${message}</p>
 
 <%@ include file="include/end-html.jsp" %>

@@ -6,12 +6,12 @@ import javax.servlet.http.HttpServletResponse;
 
 public class CommandLogout extends Action {
     @Override
-    public Action execute(HttpServletRequest req, HttpServletResponse resp) {
-        req.getSession().invalidate();
-        Cookie[] cookies = req.getCookies();
+    public Action execute(HttpServletRequest request, HttpServletResponse response) {
+        request.getSession().invalidate();
+        Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
             cookie.setMaxAge(0);
-            resp.addCookie(cookie);
+            response.addCookie(cookie);
         }
         return Actions.LOGIN.command;
     }

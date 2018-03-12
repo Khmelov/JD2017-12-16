@@ -3,16 +3,16 @@ package by.it.kozlov.project.java.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class City implements Serializable {
+public class Body implements Serializable {
     private int id;
-    private String city;
+    private String body;
 
-    public City(int id, String city) {
+    public Body(int id, String body) {
         this.id = id;
-        this.city = city;
+        this.body = body;
     }
 
-    public City() {
+    public Body() {
     }
 
     public int getId() {
@@ -23,19 +23,19 @@ public class City implements Serializable {
         this.id = id;
     }
 
-    public String getCity() {
-        return city;
+    public String getBody() {
+        return body;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setBody(String body) {
+        this.body = body;
     }
 
     @Override
     public String toString() {
-        return "City{" +
+        return "Body{" +
                 "id=" + id +
-                ", city='" + city + '\'' +
+                ", body='" + body + '\'' +
                 '}';
     }
 
@@ -43,13 +43,14 @@ public class City implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        City city1 = (City) o;
-        return id == city1.id &&
-                Objects.equals(city, city1.city);
+        Body body1 = (Body) o;
+        return id == body1.id &&
+                Objects.equals(body, body1.body);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, city);
+
+        return Objects.hash(id, body);
     }
 }

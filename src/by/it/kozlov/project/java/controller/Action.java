@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 abstract class Action {
-    abstract Action execute(HttpServletRequest request, HttpServletResponse resp) throws ParseException, SQLException, NoSuchPaddingException, NoSuchAlgorithmException, IOException, BadPaddingException, IllegalBlockSizeException, InvalidKeyException;
+    abstract Action execute(HttpServletRequest request, HttpServletResponse response) throws ParseException, SQLException, NoSuchPaddingException, NoSuchAlgorithmException, IOException, BadPaddingException, IllegalBlockSizeException, InvalidKeyException;
 
     String getJsp() {
         return "/" + this.toString().toLowerCase() + ".jsp";

@@ -30,4 +30,11 @@
         <filter-name>EncodingUTF8</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <resource-ref>
+        <description>my_sql_kozlov</description>
+        <res-ref-name>jdbc/my_sql_kozlov</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
 </web-app>
