@@ -34,20 +34,23 @@ public class ConnectionCreator {
 //        return connection;
 //    }
 
-    public static Connection getConnection(){
-        try {
+    private static DataSource ds;
+
+    private static DataSource getDataSource() throws NamingException {
+        if (ds == null) {
             InitialContext initialContext = new InitialContext();
-            DataSource ds= (DataSource) initialContext.lookup("java:/comp/env/jdbc/my_sql_akhmelev");
-            try {
-                return ds.getConnection();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        } catch (NamingException e) {
-            e.printStackTrace();
+            ds = (DataSource) initialContext.lookup("java:/comp/env/jdbc/my_sql_akhmelev");
         }
-        return null;
+        return ds;
     }
 
-
+    public static Connection getConnection() throws SQLException {
+        try {
+            return getDataSource().getConnection();
+        } catch (SQLException e) {
+            throw e;
+        } catch (NamingException e) {
+            throw new SQLException(e);
+        }
+    }
 }
