@@ -97,7 +97,7 @@ public class GoodDAO extends AbstractDAO implements IDAO<Good> {
         try(Connection connection= ConnectionCreator.getConnection();
             Statement statement=connection.createStatement()
         ) {
-            String sql=String.format("SELECT * FROM goods "+where+ ";");
+            String sql=("SELECT * FROM goods "+where+ ";");
 
             ResultSet resultSet=statement.executeQuery(sql);
 
