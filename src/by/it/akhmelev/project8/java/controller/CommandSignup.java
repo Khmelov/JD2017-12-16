@@ -5,9 +5,9 @@ import by.it.akhmelev.project8.java.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
 
-class CommandSignup extends Action {
+class CommandSignup extends Command {
     @Override
-    public Action execute(HttpServletRequest req) throws Exception {
+    public Command execute(HttpServletRequest req) throws Exception {
         if (!Util.isPost(req))
             return null;
         String login = Util.getString(req, "Login", ".+");

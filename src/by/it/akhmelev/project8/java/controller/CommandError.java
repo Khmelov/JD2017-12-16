@@ -1,12 +1,10 @@
 package by.it.akhmelev.project8.java.controller;
 
-import by.it.akhmelev.project8.java.controller.Action;
-
 import javax.servlet.http.HttpServletRequest;
 
-public class CommandError extends Action {
+public class CommandError extends Command {
     @Override
-    public Action execute(HttpServletRequest req) {
+    public Command execute(HttpServletRequest req) {
 
         return null;
     }

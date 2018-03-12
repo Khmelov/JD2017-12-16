@@ -2,8 +2,8 @@ package by.it.akhmelev.project8.java.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-abstract class Action {
-    abstract Action execute(HttpServletRequest req) throws Exception;
+abstract class Command {
+    abstract Command execute(HttpServletRequest req) throws Exception;
 
     String getJsp(){
       return "/"+this.toString().toLowerCase()+".jsp";

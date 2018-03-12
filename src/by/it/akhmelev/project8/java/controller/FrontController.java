@@ -22,12 +22,12 @@ public class FrontController extends HttpServlet {
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("FC:"+req.getMethod()+" "+req.getRequestURI()+"?"+req.getQueryString());
         ActionFactory actionFactory = new ActionFactory();
-        Action command = actionFactory.defineCommand(req);
-        Action nextStep = null;
+        Command command = actionFactory.defineCommand(req);
+        Command nextStep = null;
         ServletContext servletContext = getServletContext();
         try {
-            System.out.println(req.getMethod().toUpperCase()+":"+command);
             nextStep = command.execute(req);
         } catch (Exception e) {
             req.setAttribute(Msg.ERROR, e.getMessage());

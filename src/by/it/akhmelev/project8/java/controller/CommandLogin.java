@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-class CommandLogin extends Action {
+class CommandLogin extends Command {
     @Override
-    public Action execute(HttpServletRequest req) throws Exception {
+    public Command execute(HttpServletRequest req) throws Exception {
         if (!Util.isPost(req))
             return null;
         String login =

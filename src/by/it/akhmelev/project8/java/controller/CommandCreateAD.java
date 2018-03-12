@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-class CommandCreateAD extends Action {
+class CommandCreateAD extends Command {
     @Override
-    Action execute(HttpServletRequest req) throws ParseException, SQLException {
+    Command execute(HttpServletRequest req) throws ParseException, SQLException {
         User userInSession = Util.findInSession(req, User.class);
         if (userInSession == null)
             return Actions.LOGIN.command;

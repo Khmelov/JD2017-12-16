@@ -1,13 +1,10 @@
 package by.it.akhmelev.project8.java.controller;
 
-import by.it.akhmelev.project8.java.controller.Action;
-import by.it.akhmelev.project8.java.controller.Actions;
-
 import javax.servlet.http.HttpServletRequest;
 
 class ActionFactory {
-    Action defineCommand(HttpServletRequest request) {
-        Action command;
+    Command defineCommand(HttpServletRequest request) {
+        Command command;
         String action = request.getParameter("command");
         if (action==null)
             action="Index";

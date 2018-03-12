@@ -7,9 +7,9 @@ import by.it.akhmelev.project8.java.entity.User;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-class CommandEditUsers extends Action {
+class CommandEditUsers extends Command {
     @Override
-    Action execute(HttpServletRequest req) throws Exception {
+    Command execute(HttpServletRequest req) throws Exception {
         DAO dao=DAO.getDAO();
         User userInSession = Util.findInSession(req, User.class);
         if (userInSession == null)

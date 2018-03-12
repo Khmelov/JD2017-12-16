@@ -7,9 +7,9 @@ import by.it.akhmelev.project8.java.entity.User;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-class CommandProfile extends Action {
+class CommandProfile extends Command {
     @Override
-    Action execute(HttpServletRequest req) throws Exception {
+    Command execute(HttpServletRequest req) throws Exception {
         User user = Util.findInSession(req, User.class);
         if (user == null)
             return Actions.LOGIN.command;

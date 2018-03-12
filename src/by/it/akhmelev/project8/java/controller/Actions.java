@@ -1,8 +1,5 @@
 package by.it.akhmelev.project8.java.controller;
 
-import by.it.akhmelev.project8.java.controller.*;
-import by.it.akhmelev.project8.java.controller.Action;
-
 public enum Actions {
     INDEX {
         {
@@ -50,6 +47,6 @@ public enum Actions {
         }
     };
 
-    public Action command;
+    public Command command;
 
 }

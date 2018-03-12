@@ -6,9 +6,9 @@ import by.it.akhmelev.project8.java.entity.Ad;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-class CommandIndex extends Action {
+class CommandIndex extends Command {
     @Override
-    Action execute(HttpServletRequest req) throws Exception {
+    Command execute(HttpServletRequest req) throws Exception {
         List<Ad> ads = DAO.getDAO().ad.getAll("");
         req.setAttribute("adsSize",ads.size());
         String strStart=req.getParameter("start");
