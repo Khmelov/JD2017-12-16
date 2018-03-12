@@ -54,6 +54,7 @@ public class Init {
                     "  `phoneNumber` VARCHAR(50) NOT NULL,\n" +
                     "  `rolesID` INT(11) NOT NULL,\n" +
                     "  PRIMARY KEY (`ID`),\n" +
+                    "  UNIQUE INDEX `idx_users_login` (`login` ASC)," +
                     "  INDEX `fk_users_roles_idx` (`rolesID` ASC),\n" +
                     "  INDEX `fk_users_city1_idx` (`cityID` ASC),\n" +
                     "  CONSTRAINT `fk_users_city1`\n" +
