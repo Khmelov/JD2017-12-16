@@ -29,7 +29,13 @@
             </c:forEach>
         </div>
         <div class="col-md-3">${car.model}</div>
-        <div class="col-md-2">${car.carClass}</div>
+        <div class="col-md-2">
+            <c:forEach items="${bodies}" var="body">
+                <c:if test="${body.id==car.carClass}">
+                    ${body.body}
+                </c:if>
+            </c:forEach>
+        </div>
         <div class="col-md-2">${car.price}</div>
         <div class="col-md-2">${car.year}</div>
     </div>

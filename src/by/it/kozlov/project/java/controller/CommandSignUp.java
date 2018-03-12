@@ -1,8 +1,8 @@
 package by.it.kozlov.project.java.controller;
 
+import by.it.kozlov.project.java.dao.dao.DAO;
 import by.it.kozlov.project.java.entity.City;
 import by.it.kozlov.project.java.entity.User;
-import by.it.kozlov.project.java.dao.dao.DAO;
 import by.it.kozlov.project.java.filters.CookiesUser;
 
 import javax.crypto.BadPaddingException;

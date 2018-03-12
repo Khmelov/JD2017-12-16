@@ -1,7 +1,7 @@
 package by.it.kozlov.project.java.dao.dao;
 
-import by.it.kozlov.project.java.entity.Car;
 import by.it.kozlov.project.java.dao.connect.ConnectionCreator;
+import by.it.kozlov.project.java.entity.Car;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -42,7 +42,7 @@ public class CarDAO implements IDAO<Car> {
                         resultSet.getInt("id"),
                         resultSet.getInt("brandID"),
                         resultSet.getString("model"),
-                        resultSet.getString("carClass"),
+                        resultSet.getInt("carClass"),
                         resultSet.getDouble("price"),
                         resultSet.getInt("year"),
                         resultSet.getInt("usersID")
@@ -91,7 +91,7 @@ public class CarDAO implements IDAO<Car> {
                         resultSet.getInt("id"),
                         resultSet.getInt("brandID"),
                         resultSet.getString("model"),
-                        resultSet.getString("carClass"),
+                        resultSet.getInt("carClass"),
                         resultSet.getDouble("price"),
                         resultSet.getInt("year"),
                         resultSet.getInt("usersID")

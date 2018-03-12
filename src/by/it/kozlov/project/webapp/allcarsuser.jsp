@@ -42,12 +42,15 @@
                 <input id="Model" name="Model" type="text" class="form-control" value="${car.model}">
             </div>
             <div class="col-md-2">
-                <select id="CarClass" name="CarClass" class="form-control">
-                    <option value="${car.carClass}" selected>${car.carClass}</option>
-                    <option value="Хэтчбек">Хэтчбек</option>
-                    <option value="Седан">Седан</option>
-                    <option value="Кроссовер">Кроссовер</option>
-                    <option value="Внедорожник">Внедорожник</option>
+
+                <select id="Body" name="Body" class="form-control">
+                    <c:forEach items="${bodies}" var="body">
+                        <option value="${body.id}"
+                                <c:if test="${body.id==car.carClass}">
+                                    selected
+                                </c:if>
+                        >${body.body}</option>
+                    </c:forEach>
                 </select>
             </div>
             <div class="col-md-2">
@@ -55,10 +58,13 @@
             </div>
             <div class="col-md-1">
                 <select id="Year" name="Year" class="form-control">
-                    <option value="${car.year}">${car.year}</option>
-                    <option value="2016">2016</option>
-                    <option value="2017">2017</option>
-                    <option value="2018">2018</option>
+                    <c:forEach items="${years}" var="year">
+                        <option value="${year.year}"
+                                <c:if test="${year.year==car.year}">
+                                    selected
+                                </c:if>
+                        >${year.year}</option>
+                    </c:forEach>
                 </select>
             </div>
             <div class="col-md-1">

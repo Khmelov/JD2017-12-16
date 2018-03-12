@@ -86,7 +86,7 @@
         <form class="form-horizontal" action="do?command=Profile" method="POST">
             <fieldset>
                 <!-- Form Name -->
-                <legend>Изменить данные</legend>
+                <legend>Изменить данные пользователей</legend>
                 <div class="form-group">
                     <div class="col-md-12">
                         <h5>
