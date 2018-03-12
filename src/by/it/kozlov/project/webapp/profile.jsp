@@ -101,6 +101,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="col-md-4 control-label" for="Login">Login</label>
+                    <div class="col-md-4">
+                        <input id="Login" name="Login" type="text" value="${userone.login}"
+                               class="form-control input-md">
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="col-md-4 control-label" for="Email">Email</label>
                     <div class="col-md-4">
                         <input id="Email" name="Email" type="text" value="${userone.email}"

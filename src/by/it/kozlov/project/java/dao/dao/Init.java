@@ -103,6 +103,7 @@ public class Init {
 
             statement.executeUpdate("INSERT INTO `kozlov`.`users` (`login`, `email`, `password`, `cityID`, `address`, `phoneNumber`, `rolesID`) VALUES ('bayernkraft.by', 'bmw.service@bayernkraft.by', 'bayernkraft', 7, 'ул. Панченко, 9', '+375447730077', 2);");
             statement.executeUpdate("INSERT INTO `kozlov`.`users` (`login`, `email`, `password`, `cityID`, `address`, `phoneNumber`, `rolesID`) VALUES ('mercedes-benz.by', 'info@mercedes-benz.by', 'mercedes', 7, 'ул. Тимирязева, 70', '+375296039999', 2);");
+            statement.executeUpdate("INSERT INTO `kozlov`.`users` (`login`, `email`, `password`, `cityID`, `address`, `phoneNumber`, `rolesID`) VALUES ('admin', 'admin@admin.by', 'admin', 7, 'ул. Пушкина', '+375299988777', 1);");
 
             statement.executeUpdate("INSERT INTO `kozlov`.`cars` (`brandID`, `model`, `carClass`, `price`, `year`, `usersID`) VALUES (1, '7 series', 'Седан', 164400, 2018, 1);\n");
             statement.executeUpdate("INSERT INTO `kozlov`.`cars` (`brandID`, `model`, `carClass`, `price`, `year`, `usersID`) VALUES (1, 'X6', 'Кроссовер', 132000, 2018, 1);");

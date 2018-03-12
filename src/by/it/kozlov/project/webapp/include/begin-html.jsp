@@ -25,18 +25,18 @@
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
                 <c:if test="${user!=null}">
-                    <c:if test="${user.id==2}">
+                    <c:if test="${user.rolesID==2}">
                         <li class="nav-item">
                             <a class="nav-link" href="do?command=AddCar">Добавить автомобиль</a>
                         </li>
                     </c:if>
 
-                    <c:if test="${user.id==1}">
+                    <c:if test="${user.rolesID==1}">
                         <li class="nav-item">
                             <a class="nav-link" href="do?command=AllCarsUser">Автомобили пользователей</a>
                         </li>
                     </c:if>
-                    <c:if test="${user.id==2}">
+                    <c:if test="${user.rolesID==2}">
                         <li class="nav-item">
                             <a class="nav-link" href="do?command=AllCarsUser">Автомобили пользователя</a>
                         </li>

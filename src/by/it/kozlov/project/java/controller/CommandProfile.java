@@ -48,7 +48,13 @@ public class CommandProfile extends Action {
                     userNew = DAO.getDAO().user.read(Integer.parseInt(request.getParameter("delete")));
                 }
                 if (request.getParameter("delete") == null) {
-                    if (!request.getParameter("Email").equals(user.getEmail())) {
+                    if (user.getRolesID()==1){
+                        if (!request.getParameter("Login").equals(userNew.getEmail())) {
+                            userNew.setLogin(FormUtil.getString(request.getParameter("Login"),
+                                    "[A-Za-z0-9_@.]+"));
+                        }
+                    }
+                    if (!request.getParameter("Email").equals(userNew.getEmail())) {
                         userNew.setEmail(FormUtil.getString(request.getParameter("Email"),
                                 "([A-Za-z0-9_]*)[@a-z0-9_\\\\.-]+"));
                     }
@@ -59,12 +65,12 @@ public class CommandProfile extends Action {
                     if (request.getParameter("City") != "") {
                         userNew.setCityID(Integer.parseInt(request.getParameter("City")));
                     }
-                    if (!request.getParameter("address").equals(user.getAddress())) {
+                    if (!request.getParameter("address").equals(userNew.getAddress())) {
                         userNew.setAddress(FormUtil.getString(request.getParameter("address"),
                                 "[A-Za-z0-9_А-Яа-яЁё., -]+"));
 
                     }
-                    if (!request.getParameter("phoneNumber").equals(user.getPhoneNumber())) {
+                    if (!request.getParameter("phoneNumber").equals(userNew.getPhoneNumber())) {
                         userNew.setPhoneNumber(FormUtil.getString(request.getParameter("phoneNumber"),
                                 "[0-9+]*"));
 
