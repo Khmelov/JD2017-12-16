@@ -24,19 +24,23 @@ public class FrontController extends HttpServlet {
 
     private  void process (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ActionFactory actionFactory = new ActionFactory();
-        ActionCommand command = actionFactory.defineCommand(req);
-        String viewJsp = null;
+        AbstractAction command = actionFactory.defineCommand(req);
+       ServletContext servletContext = getServletContext();
+       AbstractAction nextStep = null;
         try {
-            viewJsp = command.execute(req);
-        }catch (Exception e){
-            req.setAttribute(Msg.ERROR,"FC:"+e.getMessage());
-            viewJsp=Action.ERROR.jsp;
+            nextStep = command.execute(req);
+        } catch (Exception e) {
+            req.setAttribute(Msg.ERROR, "FC:" + e.getMessage());
+            String errorJsp = Action.ERROR.command.getJsp();
+            RequestDispatcher dispatcher = servletContext.getRequestDispatcher(errorJsp);
+        }
+        if (nextStep == null || nextStep == command) {
+            String viewJsp = command.getJsp();
+            RequestDispatcher dispatcher = servletContext.getRequestDispatcher(viewJsp);
+            dispatcher.forward(req, resp);
+        } else {
+            resp.sendRedirect("do?command=" + nextStep);
         }
 
-        ServletContext servletContext=getServletContext();
-        RequestDispatcher dispatcher = servletContext.getRequestDispatcher(viewJsp);
-        dispatcher.forward(req,resp);
     }
-
-
     }

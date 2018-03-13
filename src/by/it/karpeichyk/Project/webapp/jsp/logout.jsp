@@ -1,6 +1,5 @@
-<%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
-<p>Main: ${message}</p>
+<p>Cmd Logout: ${message}</p>
 
 <%@ include file="include/end-html.jsp" %>
