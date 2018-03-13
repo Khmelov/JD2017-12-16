@@ -125,6 +125,6 @@
     </c:forEach>
 </div>
 
-<p>INDEX: ${message}</p>
+<p>EDIT USERS: ${message}</p>
 
 <%@ include file="include/end-html.jsp" %>

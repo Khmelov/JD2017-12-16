@@ -8,14 +8,12 @@ import by.it.sevashko.project.java.entities.User;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.time.LocalDate;
-import java.util.List;
 
 public class CommandCreateSubscription extends Action {
 
     @Override
-    public Action execute(HttpServletRequest req) throws SQLException, ParseException {
+    public Action execute(HttpServletRequest req) throws SQLException{
         User user = FormUtil.getUser(req);
         if (user == null){
             return Actions.LOGIN.getCommand();
@@ -33,6 +31,7 @@ public class CommandCreateSubscription extends Action {
             Subscription subscription = new Subscription(0, user.getId(), publicationId,
                     copies, period, start_subscription, end_subscription, price);
             DAO.getDAO().subscriptionsDAO.create(subscription);
+            req.getSession().setAttribute(Msg.MESSAGE, "Сздана новая подписка");
             return Actions.SHOWSUBSCRIPTIONS.command;
         }
         int[] options = new int[5];
@@ -41,9 +40,6 @@ public class CommandCreateSubscription extends Action {
         }
         req.setAttribute("options", options);
         req.setAttribute("publication", publication);
-        if (FormUtil.isPost(req)){
-
-        }
         return null;
     }
 }

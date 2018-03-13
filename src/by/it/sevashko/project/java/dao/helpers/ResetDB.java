@@ -98,10 +98,12 @@ public class ResetDB {
                 "  INDEX `FK_publications_idx` (`publication` ASC),\n" +
                 "  CONSTRAINT `fk_publications`\n" +
                 "    FOREIGN KEY (`publication`)\n" +
-                "    REFERENCES `sevashko`.`publications` (`index`),\n" +
+                "    REFERENCES `sevashko`.`publications` (`index`)ON DELETE CASCADE\n" +
+                "    ON UPDATE CASCADE,\n" +
                 "  CONSTRAINT `fk_usres`\n" +
                 "    FOREIGN KEY (`user`)\n" +
-                "    REFERENCES `sevashko`.`users` (`id`))\n" +
+                "    REFERENCES `sevashko`.`users` (`id`)ON DELETE CASCADE\n" +
+                "    ON UPDATE CASCADE)\n" +
                 "ENGINE = InnoDB\n" +
                 "DEFAULT CHARACTER SET = utf8\n" +
                 "COMMENT = 'Пул подписок';");

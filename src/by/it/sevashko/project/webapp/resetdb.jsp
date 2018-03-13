@@ -21,7 +21,7 @@
         </fieldset>
     </form>
     <p>Нажмите на кнопку чтобы создать или сбросиь базу sevashko (порт 2016)</p>
-    <p>Cmd Reset DB: <b>${message}</b></p>
+    <p><b>${message}</b></p>
 </div>
 
 <%@ include file="include/end-html.jsp" %>

@@ -50,6 +50,6 @@
 </div>
 
 
-<p>PROFILE: ${message}</p>
+<p>CREATE SUBSCRIPTION: ${message}</p>
 
 <%@ include file="include/end-html.jsp" %>

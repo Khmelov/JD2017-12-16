@@ -32,7 +32,7 @@ public class CommandProfile extends Action {
             }
             else if (req.getParameter("Delete")!=null){
                 DAO.getDAO().userDAO.delete(user);
-                req.setAttribute(Msg.MESSAGE, "Пользователь удален");
+                req.getSession().setAttribute(Msg.MESSAGE, "Пользователь удален");
                 req.getSession().invalidate();
                 return Actions.SIGNUP.command;
             }

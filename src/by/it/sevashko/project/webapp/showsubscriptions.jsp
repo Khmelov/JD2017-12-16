@@ -50,6 +50,6 @@
     </c:forEach>
 </div>
 
-<p>INDEX: ${message}</p>
+<p>SHOW SUBSCRIPTIONS: ${message}</p>
 
 <%@ include file="include/end-html.jsp" %>
