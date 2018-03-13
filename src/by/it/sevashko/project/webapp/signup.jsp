@@ -68,7 +68,7 @@
 			</div>
 		</div>
 
-<p>Cmd SIGN-UP: ${message}</p>
+<p>SIGN-UP: ${message}</p>
 
 <%@ include file="include/end-html.jsp" %>
 

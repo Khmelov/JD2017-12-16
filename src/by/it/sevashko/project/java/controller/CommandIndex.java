@@ -13,6 +13,6 @@ public class CommandIndex extends Action {
     public Action execute(HttpServletRequest req) throws SQLException {
         List<Publication> publications = DAO.getDAO().publicationDAO.getALL("");
         req.setAttribute("publications", publications);
-        return null;
+        return Actions.INDEX.command;
     }
 }

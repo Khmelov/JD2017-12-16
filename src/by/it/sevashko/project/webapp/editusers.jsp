@@ -61,7 +61,7 @@
             <div class=col-md-2>Фамилия/Имя</div>
             <div class=col-md-3>Email</div>
             <div class=col-md-2>Роль</div>
-    </div>
+    </div><hr>
     <c:forEach items="${users}" var="user">
             <form class="update-user-${user.id}" action="do?command=EditUsers" method=POST>
                 <div class="row">
@@ -125,6 +125,6 @@
     </c:forEach>
 </div>
 
-<p>INDEX: ${message}</p>
+<p>EDIT USERS: ${message}</p>
 
 <%@ include file="include/end-html.jsp" %>

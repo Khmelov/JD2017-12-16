@@ -82,6 +82,6 @@
     </c:forEach>
 </div>
 
-<p>INDEX: ${message}</p>
+<p>EDIT PUBLICATION: ${message}</p>
 
 <%@ include file="include/end-html.jsp" %>

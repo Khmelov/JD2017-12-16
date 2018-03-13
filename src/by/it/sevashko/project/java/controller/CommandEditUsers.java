@@ -5,7 +5,6 @@ import by.it.sevashko.project.java.entities.Role;
 import by.it.sevashko.project.java.entities.User;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
@@ -18,7 +17,7 @@ public class CommandEditUsers extends Action {
         if (user != null){
             //проверка на администратора
             if (!FormUtil.isAdministrator(user)) {
-                req.setAttribute(Msg.MESSAGE, "Вы не администратор");
+                req.getSession().setAttribute(Msg.MESSAGE, "Вы не администратор");
                 return Actions.ERROR.command;
             }
         }

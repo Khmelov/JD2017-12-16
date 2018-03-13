@@ -14,7 +14,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="login" id="login"  placeholder="Введите логин" value="TestLogin"/>
+									<input type="text" class="form-control" name="login" id="login"  placeholder="Введите логин" value="VladSV"/>
 								</div>
 							</div>
 						</div>
@@ -24,7 +24,7 @@
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-									<input type="password" class="form-control" name="password" id="password"  placeholder="Введите пароль" value="TestPassword"/>
+									<input type="password" class="form-control" name="password" id="password"  placeholder="Введите пароль" value="qwerty"/>
 								</div>
 							</div>
 						</div>
@@ -38,7 +38,7 @@
 			</div>
 		</div>
 
-<p>Cmd Login: ${message}</p>
+<p>Login: ${message}</p>
 
 <%@ include file="include/end-html.jsp" %>
 

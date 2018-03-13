@@ -7,6 +7,8 @@ public class ActionFactory {
     Action defineCommand(HttpServletRequest req){
         Action command;
         String action = req.getParameter("command");
+        if (action==null)
+            action="Index";
         try {
             Actions currentEnum = Actions.valueOf(action.toUpperCase());
             command = currentEnum.getCommand();

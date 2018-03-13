@@ -2,12 +2,10 @@ package by.it.sevashko.project.java.dao.helpers;
 
 import by.it.sevashko.project.java.dao.DAO;
 import by.it.sevashko.project.java.entities.Publication;
+import by.it.sevashko.project.java.entities.Subscription;
 import by.it.sevashko.project.java.entities.User;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class ResetDB {
 
@@ -30,6 +28,7 @@ public class ResetDB {
         addRoles();
         addUsers();
         addPublications();
+        addSubscriptions();
     }
 
     private static void deleteAll() throws SQLException {
@@ -99,10 +98,12 @@ public class ResetDB {
                 "  INDEX `FK_publications_idx` (`publication` ASC),\n" +
                 "  CONSTRAINT `fk_publications`\n" +
                 "    FOREIGN KEY (`publication`)\n" +
-                "    REFERENCES `sevashko`.`publications` (`index`),\n" +
+                "    REFERENCES `sevashko`.`publications` (`index`)ON DELETE CASCADE\n" +
+                "    ON UPDATE CASCADE,\n" +
                 "  CONSTRAINT `fk_usres`\n" +
                 "    FOREIGN KEY (`user`)\n" +
-                "    REFERENCES `sevashko`.`users` (`id`))\n" +
+                "    REFERENCES `sevashko`.`users` (`id`)ON DELETE CASCADE\n" +
+                "    ON UPDATE CASCADE)\n" +
                 "ENGINE = InnoDB\n" +
                 "DEFAULT CHARACTER SET = utf8\n" +
                 "COMMENT = 'Пул подписок';");
@@ -130,9 +131,22 @@ public class ResetDB {
         Publication publication1 = new Publication(0, "Автодайджест", 12, 1, 3.66f);
         Publication publication2 = new Publication(0, "Транспортная безопасность", 24, 1, 13.45f);
         Publication publication3 = new Publication(0, "Транспортный вестник", 26, 1, 14.85f);
-        DAO dao = DAO.getDAO();;
+        DAO dao = DAO.getDAO();
         dao.publicationDAO.create(publication1);
         dao.publicationDAO.create(publication2);
         dao.publicationDAO.create(publication3);
+    }
+
+    private static void addSubscriptions() throws SQLException {
+        Subscription subscription1 = new Subscription(0,1, 1, 2,
+                4, Date.valueOf("2018-01-01"), Date.valueOf("2018-03-30"), 14.64f);
+        Subscription subscription2 = new Subscription(0,2, 2, 1,4,
+                Date.valueOf("2018-01-01"), Date.valueOf("2018-03-30"), 15.8f);
+        Subscription subscription3 = new Subscription(0, 2, 3, 3,
+                4, Date.valueOf("2018-01-01"), Date.valueOf("2018-03-30"), 98.34f);
+        DAO dao = DAO.getDAO();
+        dao.subscriptionsDAO.create(subscription1);
+        dao.subscriptionsDAO.create(subscription2);
+        dao.subscriptionsDAO.create(subscription3);
     }
 }
