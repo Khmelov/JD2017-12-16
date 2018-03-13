@@ -57,7 +57,7 @@ public class CarDAO implements IDAO<Car> {
     public boolean update(Car car) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-            String sql = String.format("UPDATE `kozlov`.`cars` SET `brandID`='%d',`model`='%s',`carClass`='%s',`price`='%G',`year`='%d',`usersID`='%d' WHERE id=%d",
+            String sql = String.format(new Locale("en", "US"), "UPDATE `kozlov`.`cars` SET `brandID`='%d',`model`='%s',`carClass`='%s',`price`='%G',`year`='%d',`usersID`='%d' WHERE id=%d",
                     car.getBrandID(), car.getModel(), car.getCarClass(), car.getPrice(), car.getYear(), car.getUsersID(), car.getId());
             int count = statement.executeUpdate(sql);
             return count == 1;
