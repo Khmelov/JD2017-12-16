@@ -46,7 +46,7 @@ public class Ad implements Serializable {
         this.description = description;
     }
 
-    public double getCarrying() {
+    public int getCarrying() {
         return carrying;
     }
 
@@ -54,7 +54,7 @@ public class Ad implements Serializable {
         this.carrying = carrying;
     }
 
-    public double getVolume() {
+    public int getVolume() {
         return volume;
     }
 

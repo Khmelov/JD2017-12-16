@@ -21,7 +21,7 @@ public class MyAdDAO extends AbstractDAO_My implements DAO<Ad> {
     @Override
     public boolean create(Ad ad) throws SQLException {
         String sql = String.format(Locale.ENGLISH,"INSERT INTO ads (Description,Carrying,Volume,Tariff,FK_Users)" +
-        " VALUES ('%s','%s','%s','%s','%d');",
+        " VALUES ('%s','%d','%d','%s','%d');",
                 ad.getDescription(),
                 ad.getCarrying(),
                 ad.getVolume(),
