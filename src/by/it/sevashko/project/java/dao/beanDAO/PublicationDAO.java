@@ -38,7 +38,7 @@ public class PublicationDAO extends AbstractDAO implements InterfaceDAO<Publicat
                         result.getString("name"),
                         result.getInt("periodicity"),
                         result.getInt("minPeriod"),
-                        result.getFloat("price")
+                        result.getDouble("price")
                 );
             }
         }
@@ -73,7 +73,7 @@ public class PublicationDAO extends AbstractDAO implements InterfaceDAO<Publicat
                         result.getString("name"),
                         result.getInt("periodicity"),
                         result.getInt("minPeriod"),
-                        result.getFloat("price")
+                        result.getDouble("price")
                 );
                 list.add(publication);
             }

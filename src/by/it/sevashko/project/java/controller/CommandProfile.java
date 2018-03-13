@@ -1,13 +1,11 @@
 package by.it.sevashko.project.java.controller;
 
 import by.it.sevashko.project.java.dao.DAO;
-import by.it.sevashko.project.java.entities.Role;
 import by.it.sevashko.project.java.entities.User;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.List;
 
 public class CommandProfile extends Action {
 
