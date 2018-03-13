@@ -1,0 +1,36 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0"
+         metadata-complete="true">
+    <display-name>Сервлет SHEL</display-name>
+    <!--
+    Для любого сервлета нужно определить два тега servlet и servlet-mapping.
+    Важно чтобы внутри каждого из этих тегов были теги servlet-name
+    и имя сервлета в них было одинаковым!!! Здесь это имя HelloWorld
+    -->
+    <servlet>
+        <servlet-name>FrontControllerMy</servlet-name>
+        <servlet-class>by.it.vshelukhin.jd03_06.java.controller.FrontController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FrontControllerMy</servlet-name>
+        <url-pattern>/do</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>EncodingUTF8</filter-name>
+        <filter-class>by.it.vshelukhin.jd03_06.java.filters.EncodingUTF8</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>EncodingUTF8</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+</web-app>
