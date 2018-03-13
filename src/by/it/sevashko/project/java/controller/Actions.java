@@ -17,6 +17,16 @@ public enum Actions {
             this.command = new CommandProfile();
         }
     },
+    SHOWSUBSCRIPTIONS{
+        {
+            this.command = new CommandShowSubscriptions();
+        }
+    },
+    CREATESUBSCRIPTION{
+        {
+            this.command = new CommandCreateSubscription();
+        }
+    },
     EDITUSERS{
         {
             this.command = new CommandEditUsers();
@@ -25,6 +35,11 @@ public enum Actions {
     EDITPUBLICATIONS{
         {
             this.command = new CommandEditPublications();
+        }
+    },
+    EDITSUBSCRIPTIONS{
+        {
+            this.command = new CommandEditSubscriptions();
         }
     },
     LOGOUT{
@@ -48,7 +63,6 @@ public enum Actions {
         }
     };
 
-    public String jsp;
     public Action command;
     public Action getCommand() {
         return this.command;

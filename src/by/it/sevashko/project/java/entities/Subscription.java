@@ -17,7 +17,7 @@ public class Subscription {
     public Subscription() {
     }
 
-    public Subscription(int id, int user, int publication, int copies, int period, Date start_subscription, Date end_subscription, float price) {
+    public Subscription(int id, int user, int publication, int copies, int period, Date start_subscription, Date end_subscription, double price) {
         this.id = id;
         this.user = user;
         this.publication = publication;

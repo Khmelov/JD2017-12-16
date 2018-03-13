@@ -44,7 +44,7 @@ public class SubscriptionsDAO extends AbstractDAO implements InterfaceDAO<Subscr
                         result.getInt("period"),
                         result.getDate("start_subscription"),
                         result.getDate("end_subscription"),
-                        result.getFloat("price"));
+                        result.getDouble("price"));
             }
         }
         return null;
@@ -83,7 +83,7 @@ public class SubscriptionsDAO extends AbstractDAO implements InterfaceDAO<Subscr
                         result.getInt("period"),
                         result.getDate("start_subscription"),
                         result.getDate("end_subscription"),
-                        result.getFloat("price"));
+                        result.getDouble("price"));
                 list.add(subscription);
             }
         }
