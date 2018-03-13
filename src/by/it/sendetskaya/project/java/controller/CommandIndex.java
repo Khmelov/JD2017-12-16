@@ -8,6 +8,7 @@ import by.it.sendetskaya.project.java.entity.Good;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.Format;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,11 +32,11 @@ class CommandIndex extends Action {
             String nameSearch=FormUtil.getString(req,"searchInput", "[\\wА-Яа-я]+");
 
             //выводит список товаро только по части слова Поиска
-            goods=DAO.getDAO().goodDAO.getAll(" WHERE Name LIKE '%"+nameSearch+"%'");
+            goods=DAO.getDAO().goodDAO.getAll((" WHERE Name LIKE '%"+nameSearch+"%'"));
 
             req.setAttribute("goods",goods);
 
-            req.setAttribute(Msg.ERROR, "товар по Вашему поиску найден!");
+            req.setAttribute(Msg.MESSAGE, "товар по Вашему поиску найден!");
             return null;
 
         }
@@ -48,7 +49,7 @@ class CommandIndex extends Action {
 
 
         //если нажата кнопка "В корзину"
-        if (req.getParameter("Update")!= null ) {
+        if (req.getParameter("Update")!= null && buyer.getFk_roles()!=3) {
             int idGood = FormUtil.getInt(req, "ID");
             double price=FormUtil.getDouble(req,"Price");
             String name=goods.get(0).getName();
@@ -62,7 +63,7 @@ class CommandIndex extends Action {
             Basket basket=new Basket(id,quantity,sum,fk_buyers,fk_goods);
             DAO.getDAO().basketDAO.create(basket);
 
-            req.setAttribute(Msg.ERROR, "товар " + name + " добавлен в корзину");
+            req.setAttribute(Msg.MESSAGE, "товар " + name + " добавлен в корзину");
             return null;
 
 

@@ -65,12 +65,14 @@
        </c:when>
        <c:otherwise>
 
+        <c:if test="${buyer.fk_roles!=3}">
           <li class="nav-item active">
              <a class="nav-link" href="do?command=Profile">Личный кабинет <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
              <a class="nav-link" href="do?command=CreateBasket">Корзина<span class="sr-only">(current)</span></a>
           </li>
+        </c:if>
           <li class="nav-item">
             <a class="nav-link" href="do?command=Logout">Выйти <span class="sr-only">(current)</span></a>
           </li>

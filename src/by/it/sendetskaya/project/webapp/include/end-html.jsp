@@ -1,4 +1,6 @@
 Error: <b> ${error}</b>
+<br>
+Cmd: <b>${message}</b>
 
 </div>                  <!---container-->
 

@@ -41,11 +41,13 @@
 
          </div>
 
+       <c:if test="${buyer.fk_roles!=3}">
          <div class="col-md-1">
             <button id="Update" value="Update" name="Update" class="btn btn-success">
                   В корзину
             </button>
          </div>
+       </c:if>
       </div>
 
    </form>

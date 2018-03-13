@@ -66,14 +66,15 @@ class CommandCreateBasket extends Action {
         if (goods.size()<1)
             req.setAttribute(Msg.ERROR, "Ваша корзина пуста!");
 
-        Iterator<Double> iterator=sumList.iterator();
+        Iterator<Basket> iterator=baskets.iterator();
         while (iterator.hasNext())
         {
-            sumReady+=iterator.next();
+            sumReady+=iterator.next().getSum();
         }
 
         if (req.getParameter("ready") != null) {
-            req.setAttribute(Msg.ERROR, "Ваш заказ принят, сумма к оплате: "+sumReady);
+            String sumOutput=String.format("Ваш заказ принят, сумма к оплате: %5.2f рублей", sumReady);
+            req.setAttribute(Msg.MESSAGE, sumOutput);
         }
 
         return null;
