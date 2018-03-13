@@ -24,8 +24,8 @@ public class CommandCreateAd extends  AbstractAction {
         if (FormUtil.isPost(req)) {
             int id = 0;
             String description = FormUtil.getString(req, "Description", ".*");
-            double carrying = FormUtil.getInt(req, "Carrying");
-            double volume = FormUtil.getInt(req, "Volume");
+            int carrying = FormUtil.getInt(req, "Carrying");
+            int volume = FormUtil.getInt(req, "Volume");
             String tariff = FormUtil.getString(req, "Tariff", ".*");
            int fk_users = user.getId();
             Ad ad = new Ad(id,description,carrying,volume,tariff,fk_users);
