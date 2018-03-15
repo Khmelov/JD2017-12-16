@@ -1,7 +1,8 @@
 package by.it.kozlov.project.java.filters;
 
 import javax.crypto.*;
-import java.io.*;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 

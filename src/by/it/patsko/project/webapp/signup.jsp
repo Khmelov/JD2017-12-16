@@ -47,7 +47,7 @@
 </form>
 
 
-<p>SIGN-UP MESSAGE: <b>${message}</b></p>
+<!--<p>SIGN-UP MESSAGE: <b>${message}</b></p>-->
 
 <%@ include file="include/end-html.jsp" %>
 

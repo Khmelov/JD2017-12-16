@@ -1,5 +1,6 @@
+<%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
-<form class="form-horizontal">
+<form class="form-horizontal"  action="do?command=CreateAd" method="post">
 <fieldset>
 
 <!-- Form Name -->
@@ -25,7 +26,7 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="Carrying">Carrying</label>
+  <label class="col-md-4 control-label" for="Carrying">ГРУЗОПОДЪЁМНОСТЬ</label>
   <div class="col-md-4">
   <input id="Carrying" name="Carrying" type="text" placeholder="" class="form-control input-md" required="">
 

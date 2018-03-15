@@ -1,14 +1,17 @@
 package by.it.patsko.project.java.controller;
 
 
-import by.it.patsko.project.java.dao.ConnectionCreator;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class C_Reset {
+    private static final String URL_DB =
+            "jdbc:mysql://127.0.0.1:3306"
+                    + "?useUnicode=true&characterEncoding=UTF-8";
+    private static final String USER_DB = "root";
+    private static final String PASSWORD_DB = "";
 
     public static void main(String[] args) {
         try {
@@ -16,10 +19,8 @@ public class C_Reset {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
-        try (Connection connection = ConnectionCreator.getConnection();
-             Statement statement = connection.createStatement()
-        ) {
+        try (Connection connection = DriverManager.getConnection(URL_DB, USER_DB, PASSWORD_DB);) {
+            Statement statement = connection.createStatement();
 
             statement.executeUpdate("DROP TABLE IF EXISTS `patsko`.`List of purchases` ;");
             statement.executeUpdate("DROP TABLE IF EXISTS `patsko`.`Books` ;");

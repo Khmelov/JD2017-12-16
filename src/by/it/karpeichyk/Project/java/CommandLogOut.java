@@ -5,9 +5,10 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by user on 22.02.2018.
  */
-public class CommandLogOut implements ActionCommand {
+public class CommandLogOut extends AbstractAction {
     @Override
-    public String execute(HttpServletRequest req) {
-        return Action.LOGOUT.jsp;
+    public AbstractAction execute(HttpServletRequest req) {
+        req.getSession().invalidate();
+        return Action.LOGOUT.command;
     }
 }

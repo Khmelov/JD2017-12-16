@@ -20,7 +20,7 @@ public class CommandSignup extends Action {
         String email = FormUtil.checkValue(req.getParameter("email"), Patterns.EMAIL);
 
         req.setAttribute(Msg.MESSAGE, "Создание объекта пользователя");
-        User user = new User(0, login, password, name, lastName, email, 1);
+        User user = new User(0, login, password, name, lastName, email, 2);
 
         req.setAttribute(Msg.MESSAGE, "Получаем DAO");
         DAO dao = DAO.getDAO();

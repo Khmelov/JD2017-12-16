@@ -7,12 +7,12 @@ public class Car implements Serializable {
     private int id;
     private int brandID;
     private String model;
-    private String carClass;
+    private int carClass;
     private Double price;
     private int year;
     private int usersID;
 
-    public Car(int id, int brandID, String model, String carClass, Double price, int year, int usersID) {
+    public Car(int id, int brandID, String model, int carClass, Double price, int year, int usersID) {
         this.id = id;
         this.brandID = brandID;
         this.model = model;
@@ -50,11 +50,11 @@ public class Car implements Serializable {
         this.model = model;
     }
 
-    public String getCarClass() {
+    public int getCarClass() {
         return carClass;
     }
 
-    public void setCarClass(String carClass) {
+    public void setCarClass(int carClass) {
         this.carClass = carClass;
     }
 

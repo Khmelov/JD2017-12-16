@@ -2,7 +2,6 @@ package by.it.sevashko.project.java.controller;
 
 import by.it.sevashko.project.java.dao.DAO;
 import by.it.sevashko.project.java.entities.Publication;
-import by.it.sevashko.project.java.entities.Role;
 import by.it.sevashko.project.java.entities.User;
 
 import javax.servlet.http.HttpServletRequest;

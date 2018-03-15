@@ -4,48 +4,53 @@ package by.it.karpeichyk.Project.java;
  * Created by user on 22.02.2018.
  */
 public enum  Action {
-    CreateAd {
+    PROFILE {
         {
             this.command = new CommandCreateAd();
-            this.jsp = "/createad.jsp";
+
+        }
+    }, CREATEAD {
+        {
+            this.command = new CommandCreateAd();
+
+        }
+    }, INDEX {
+        {
+            this.command = new CommandIndex();
+
         }
     },
     SIGNUP {
         {
             this.command = new CommandSignup();
-            this.jsp = "/signup.jsp";
+
         }
     },
     RESETDB {
         {
             this.command = new CommandResetDB();
-            this.jsp = "/resetdb.jsp";
+
         }
     },
     LOGIN {
         {
             this.command = new CommandLogin();
-            this.jsp = "/login.jsp";
+
         }
     },
     LOGOUT {
         {
             this.command = new CommandLogOut();
-            this.jsp = "/logout.jsp";
         }
     },
     ERROR {
         {
-            this.command = new CommandError();
-            this.jsp = "/error.jsp";
+            this.command =  new CommandError();
         }
     };
 
-    public String jsp = "error.jsp";
-    public ActionCommand command;
-    public ActionCommand getCommand() {
-        return command;
-    }
+
+    public AbstractAction command;
 }
 
 

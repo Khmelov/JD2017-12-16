@@ -1,11 +1,14 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 <br>
+<div align="center">
 <div class="container">
+    <div class="page-header">
+        <h2>Hello new Bonjo user!</h2>
+    </div>
+    <br>
     <form class="form-horizontal" action="do?command=SignUp" method="post">
         <fieldset>
-
-            <legend>Hello new Bonjo user!</legend>
 
             <!-- Text input-->
             <div class="form-group">
@@ -27,7 +30,7 @@
 
             <!-- Password input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="Password">Password Input</label>
+                <label class="col-md-4 control-label" for="Password">Password</label>
                 <div class="col-md-4">
                     <input id="Password" name="Password" type="password" placeholder="min 5 symbols"
                            class="form-control input-md" required="">
@@ -45,7 +48,7 @@
 
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="PhoneNumber">PhoneNumber</label>
+                <label class="col-md-4 control-label" for="PhoneNumber">Phone Number</label>
                 <div class="col-md-4">
                     <input id="PhoneNumber" name="PhoneNumber" type="text" placeholder="+375297777777"
                            class="form-control input-md" required="">

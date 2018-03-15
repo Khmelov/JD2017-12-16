@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <div class="container">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href=".">Home</a>
+    <a class="navbar-brand" href=".">Издания</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -19,8 +19,6 @@
                           <a class="dropdown-item" href="do?command=EditUsers">Пользователи</a>
                           <a class="dropdown-item" href="do?command=EditPublications">Издания</a>
                           <a class="dropdown-item" href="do?command=EditSubscriptions">Подписки</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Something else here</a>
                         </div>
                 </li>
             </c:if>
@@ -41,9 +39,8 @@
                       ${user.login}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="do?command=Profile">Профиль</a>
+                      <a class="dropdown-item" href="do?command=Profile">Мой профиль</a>
                       <a class="dropdown-item" href="do?command=ShowSubscriptions">Мои подписки</a>
-
                     </div>
         </li>
             <li class="nav-item active">

@@ -8,30 +8,26 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by user on 02.03.2018.
  */
-public class CommandSignup implements  ActionCommand {
+public class CommandSignup extends AbstractAction {
     @Override
 
-    public String execute(HttpServletRequest req) throws Exception {
+    public AbstractAction execute(HttpServletRequest req) throws Exception {
         if (!FormUtil.isPost(req))
-            return Action.SIGNUP.jsp;
-        req.setAttribute(Msg.MESSAGE, "POST OK. Начинаем проверку полей.");
+            return null;
         String login =
-                FormUtil.getString(req.getParameter("Login"), ".+");
+                FormUtil.getString(req,"Login", ".+");
         String email =
-                FormUtil.getString(req.getParameter("Email"), ".+");
+                FormUtil.getString(req,"E-mail", ".+");
         String password =
-                FormUtil.getString(req.getParameter("Password"), ".+");
-        req.setAttribute(Msg.MESSAGE, "POST2. Поля OK. Пробуем создать юзера.");
+                FormUtil.getString(req,"pasword", ".+");
         User user = new User(0, login, email, password, 1);
-        req.setAttribute(Msg.MESSAGE, "POST3. Юзер OK. Пробуем получить DAO");
+       //req.setAttribute(Msg.MESSAGE, "POST3. Юзер OK. Пробуем получить DAO");
         MyDAO dao = MyDAO.getMyDAO();
-        req.setAttribute(Msg.MESSAGE, "POST4. DAO OK. Пробуем выполнить команду create (если завершается, то вы не скопировали библиотеку mysql-connector-java.jar в lib-local");
         dao.myUserDAO.create(user);
-        req.setAttribute(Msg.MESSAGE, "POST5. SQL OK. Проверьте пользователя в базе.");
         if (user.getId() > 0)
-            return Action.LOGIN.jsp;
+            return Action.LOGIN.command;
         else {
             req.setAttribute(Msg.MESSAGE, "Ошибка добавления пользователя");
-            return Action.SIGNUP.jsp;
+            return null;
         }
     }}

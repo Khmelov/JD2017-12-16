@@ -5,40 +5,37 @@ import by.it.karpeichyk.Project.java.dao.BEAN.User;
 import by.it.karpeichyk.Project.java.dao.DAO.MyDAO;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by user on 04.03.2018.
  */
-public class CommandCreateAd implements ActionCommand {
+public class CommandCreateAd extends  AbstractAction {
     @Override
-    public String execute(HttpServletRequest req) throws Exception {
-        if (!FormUtil.isPost(req))
-            return Action.CreateAd.jsp;
-        req.setAttribute(Msg.MESSAGE, "POST OK. Начинаем проверку полей.");
-        String login =
-                FormUtil.getString(req.getParameter("Login"), ".+");
-        String description =
-                FormUtil.getString(req.getParameter("Description"), ".+");
-        String carrying =
-                FormUtil.getString(req.getParameter("Carrying"), ".+");
-        String volume =
-                FormUtil.getString(req.getParameter("Volume"), ".+");
-        String tariff =
-                FormUtil.getString(req.getParameter("Tariff"), ".+");
-        req.setAttribute(Msg.MESSAGE, "POST2. Поля OK. Пробуем создать объявление.");
-        Ad ad = new Ad(0,login,description,carrying,volume,tariff);
-        req.setAttribute(Msg.MESSAGE, "POST3. Объявление OK. Пробуем получить DAO");
-        MyDAO dao = MyDAO.getMyDAO();
-        req.setAttribute(Msg.MESSAGE, "POST4. DAO OK. Пробуем выполнить команду create (если завершается, то вы не скопировали библиотеку mysql-connector-java.jar в lib-local");
-        dao.myAdDAO.create(ad);
-        req.setAttribute(Msg.MESSAGE, "POST5. SQL OK. Проверьте объявление в базе.");
-        if (ad.getId() > 0)
-            return Action.CreateAd.jsp;
-        else {
-            req.setAttribute(Msg.MESSAGE, "Ошибка добавления объявления");
-            return Action.CreateAd.jsp;
-        }
-    }}
+    AbstractAction execute(HttpServletRequest req) throws Exception {
+       HttpSession session = req.getSession();
+        Object o = session.getAttribute("user");
+
+       User user;
+      if (o != null) {
+            user = (User) o;
+      } else
+         return Action.LOGIN.command;
+        if (FormUtil.isPost(req)) {
+            int id = 0;
+            String description = FormUtil.getString(req, "Description", ".*");
+            int carrying = FormUtil.getInt(req, "Carrying");
+            int volume = FormUtil.getInt(req, "Volume");
+            String tariff = FormUtil.getString(req, "Tariff", ".*");
+           int fk_users = user.getId();
+            Ad ad = new Ad(id,description,carrying,volume,tariff,fk_users);
+            MyDAO.getMyDAO().myAdDAO.create(ad);
+            return null;
+        } else
+            return null;
+    }
+}
+
 
 
 

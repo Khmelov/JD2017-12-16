@@ -1,7 +1,7 @@
 package by.it.kozlov.project.java.dao.dao;
 
-import by.it.kozlov.project.java.entity.Car;
 import by.it.kozlov.project.java.dao.connect.ConnectionCreator;
+import by.it.kozlov.project.java.entity.Car;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class CarDAO implements IDAO<Car> {
 
@@ -18,7 +19,7 @@ public class CarDAO implements IDAO<Car> {
         car.setId(0);
         Connection connection = ConnectionCreator.getConnection();
         Statement statement = connection.createStatement();
-        String sql = String.format("INSERT INTO `kozlov`.`cars` (`brandID`, `model`, `carClass`, `price`, `year`, `usersID`) VALUES ('%d', '%s', '%s', '%G', '%d', '%d');",
+        String sql = String.format(new Locale("en", "US"), "INSERT INTO `kozlov`.`cars` (`brandID`, `model`, `carClass`, `price`, `year`, `usersID`) VALUES ('%d', '%s', '%s', '%G', '%d', '%d');",
                 car.getBrandID(), car.getModel(), car.getCarClass(), car.getPrice(), car.getYear(), car.getUsersID());
         int count = statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
         if (count == 1) {
@@ -42,7 +43,7 @@ public class CarDAO implements IDAO<Car> {
                         resultSet.getInt("id"),
                         resultSet.getInt("brandID"),
                         resultSet.getString("model"),
-                        resultSet.getString("carClass"),
+                        resultSet.getInt("carClass"),
                         resultSet.getDouble("price"),
                         resultSet.getInt("year"),
                         resultSet.getInt("usersID")
@@ -56,7 +57,7 @@ public class CarDAO implements IDAO<Car> {
     public boolean update(Car car) throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-            String sql = String.format("UPDATE `kozlov`.`cars` SET `brandID`='%d',`model`='%s',`carClass`='%s',`price`='%G',`year`='%d',`usersID`='%d' WHERE id=%d",
+            String sql = String.format(new Locale("en", "US"), "UPDATE `kozlov`.`cars` SET `brandID`='%d',`model`='%s',`carClass`='%s',`price`='%G',`year`='%d',`usersID`='%d' WHERE id=%d",
                     car.getBrandID(), car.getModel(), car.getCarClass(), car.getPrice(), car.getYear(), car.getUsersID(), car.getId());
             int count = statement.executeUpdate(sql);
             return count == 1;
@@ -91,7 +92,7 @@ public class CarDAO implements IDAO<Car> {
                         resultSet.getInt("id"),
                         resultSet.getInt("brandID"),
                         resultSet.getString("model"),
-                        resultSet.getString("carClass"),
+                        resultSet.getInt("carClass"),
                         resultSet.getDouble("price"),
                         resultSet.getInt("year"),
                         resultSet.getInt("usersID")

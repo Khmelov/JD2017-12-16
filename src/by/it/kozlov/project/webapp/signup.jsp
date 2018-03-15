@@ -1,10 +1,14 @@
 <%@page language="java" pageEncoding="utf-8" %>
 <%@ include file="include/begin-html.jsp" %>
+
+
+<p>${message}</p>
+
 <form class="form-horizontal" action="do?command=Signup" method="POST">
     <fieldset>
 
         <!-- Form Name -->
-        <legend>Form Name</legend>
+        <legend>Регистрация</legend>
 
         <!-- Text input-->
         <div class="form-group">
@@ -39,13 +43,9 @@
             <label class="col-md-4 control-label" for="City">Город</label>
             <div class="col-md-4">
                 <select id="City" name="City" class="form-control">
-                    <option value="7">Минск</option>
-                    <option value="6">Могилевская область</option>
-                    <option value="5">Минская область</option>
-                    <option value="4">Гродненская область</option>
-                    <option value="3">Гомельская область</option>
-                    <option value="2">Витебская область</option>
-                    <option value="1">Брестская область</option>
+                    <c:forEach items="${cities}" var="city">
+                        <option value="${city.id}">${city.city}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>
@@ -79,8 +79,6 @@
 
     </fieldset>
 </form>
-
-<p>Cmd SignUp: ${message}</p>
 
 <%@ include file="include/end-html.jsp" %>
 

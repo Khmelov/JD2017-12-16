@@ -34,10 +34,17 @@ public class CommandMyAds extends Action {
                 DAO.getDAO().adDAO.delete(ad);
             }
         }
-        List<Ad> ads = DAO.getDAO().adDAO.getAll( "where users_ID='" + user.getID() + "'");
-        List<Category> categories = DAO.getDAO().categoryDAO.getAll("");
+        List<Ad> ads = DAO.getDAO().adDAO.getAll("where users_ID='" + user.getID() + "'");
+        req.setAttribute("adsSize", ads.size());
+        String strStart = req.getParameter("ads");
+        int startAd = 0;
+        if (strStart != null)
+            startAd = Integer.parseInt(strStart);
+        String where = String.format(" where users_ID='%d' LIMIT %d, 3", user.getID(), startAd);
+        ads = DAO.getDAO().adDAO.getAll(where);
         req.setAttribute("ads", ads);
-        req.setAttribute("categories",categories);
+        List<Category> categories = DAO.getDAO().categoryDAO.getAll("");
+        req.setAttribute("categories", categories);
         return null;
     }
 }

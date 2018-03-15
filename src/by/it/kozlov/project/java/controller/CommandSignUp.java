@@ -1,17 +1,28 @@
 package by.it.kozlov.project.java.controller;
 
-import by.it.kozlov.project.java.entity.User;
 import by.it.kozlov.project.java.dao.dao.DAO;
+import by.it.kozlov.project.java.entity.City;
+import by.it.kozlov.project.java.entity.User;
+import by.it.kozlov.project.java.filters.CookiesUser;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.List;
 
 public class CommandSignUp extends Action {
     @Override
-    public Action execute(HttpServletRequest request, HttpServletResponse resp) throws SQLException {
+    public Action execute(HttpServletRequest request, HttpServletResponse response) throws NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, UnsupportedEncodingException, InvalidKeyException, SQLException {
+        List<City> cities = DAO.getDAO().city.getAll();
+        request.setAttribute("cities", cities);
         if (!FormUtil.isPost(request)) {
             return null;
         }
@@ -31,14 +42,19 @@ public class CommandSignUp extends Action {
                 request.setAttribute(Message.MESSAGE, "Пользователь зарегестрирован");
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                return Actions.LOGIN.command;
+                session.setMaxInactiveInterval(60);
+                CookiesUser.setCookie(response, user);
+                return Actions.PROFILE.command;
             } else {
                 request.setAttribute(Message.MESSAGE, "Ошибка добавления пользователя");
-                return Actions.SIGNUP.command;
+                return null;
             }
         } catch (ParseException e) {
             request.setAttribute(Message.MESSAGE, "Введены недопустимые символы");
-            return Actions.SIGNUP.command;
+            return null;
+        } catch (SQLException e) {
+            request.setAttribute(Message.MESSAGE, "Пользователь с таким именем уже существует");
+            return null;
         }
     }
 }

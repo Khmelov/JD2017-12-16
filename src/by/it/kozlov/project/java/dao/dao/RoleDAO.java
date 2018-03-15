@@ -1,7 +1,7 @@
 package by.it.kozlov.project.java.dao.dao;
 
-import by.it.kozlov.project.java.entity.Role;
 import by.it.kozlov.project.java.dao.connect.ConnectionCreator;
+import by.it.kozlov.project.java.entity.Role;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
