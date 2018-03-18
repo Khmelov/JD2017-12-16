@@ -3,7 +3,6 @@ package by.it.akhmelev.project8.java.dao;
 import by.it.akhmelev.project8.java.dao.beanDAO.AdDAO;
 import by.it.akhmelev.project8.java.entity.Ad;
 import by.it.akhmelev.project8.java.dao.beanDAO.RoleDAO;
-import by.it.akhmelev.project8.java.dao.beanDAO.UniversalDAO;
 import by.it.akhmelev.project8.java.dao.beanDAO.UserDAO;
 
 public class DAO {
@@ -18,7 +17,7 @@ public class DAO {
     private DAO() {
         role = new RoleDAO();
         user = new UserDAO();
-        ad = new AdDAO(new Ad(),"ads");
+        ad = new AdDAO(Ad.class,"ads");
     }
 
     public static DAO getDAO() {
