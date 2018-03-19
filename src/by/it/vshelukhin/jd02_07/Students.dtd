@@ -1,9 +1,0 @@
-<!ELEMENT Students (Student)+>
-<!ELEMENT Student (Univer,Kurs,Facultet,Goods,Price) >
-<!ELEMENT Univer (#PCDATA)>
-<!ELEMENT Kurs (#PCDATA)>
-<!ELEMENT Facultet (#PCDATA)>
-<!ELEMENT Goods (Product)+>
-<!ELEMENT Product (#PCDATA)>
-<!ELEMENT Price (#PCDATA)>
-

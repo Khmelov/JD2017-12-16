@@ -1,3 +1,0 @@
-msg.Welcome=Hello!
-msg.Question=How are you?
-msg.Name=Irina

@@ -1,8 +1,0 @@
-E:\Java\github\JD2017-12-16\src\by\it\sevashko\jd02_05\resources>
-    E:\Java\jdk1.8.0_162\bin\native2ascii.exe -encoding utf-8 text.txt text.properties
-
-E:\Java\github\JD2017-12-16\src\by\it\sevashko\jd02_05\resources>
-    E:\Java\jdk1.8.0_162\bin\native2ascii.exe -encoding utf-8 text_be_BY.txt text_be_BY.properties
-
-E:\Java\github\JD2017-12-16\src\by\it\sevashko\jd02_05\resources>
-    E:\Java\jdk1.8.0_162\bin\native2ascii.exe -encoding utf-8 text_ru_RU.txt text_ru_RU.properties

@@ -1,2 +1,0 @@
-INSERT INTO `user` (`ID`, `nickname`, `email`, `password`, `address`, `phone`, `FK_Roles`)
-VALUES (NULL, 'Guest', 'Guest@mail.ru', 'Guest1234', 'GuestCenter', '11111111', '3');

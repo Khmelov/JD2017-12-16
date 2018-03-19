@@ -1,2 +1,0 @@
-INSERT INTO `products` (`ID`, `ProductName`, `Sku`, `Count`, `Price`, `PriceCurrencу`, `FK_Users`)
-VALUES (NULL, 'Poland', 'A4754P3', '1', '120', 'euro', '2');

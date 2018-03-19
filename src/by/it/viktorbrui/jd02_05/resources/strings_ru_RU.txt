@@ -1,3 +1,0 @@
-msg.Welcome=Здравствуйте!
-msg.Question=Как дела?
-msg.Name=Виктор

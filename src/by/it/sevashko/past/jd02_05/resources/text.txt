@@ -1,3 +1,0 @@
-msg.Hello = Hello!
-msg.Question = How do you do?
-msg.Name = Vladislav

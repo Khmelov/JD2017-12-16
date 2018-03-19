@@ -1,3 +1,0 @@
-INSERT INTO `viktorbrui`.`roles` (`ID`, `Roles`) VALUES (NULL, 'Administraor');
-INSERT INTO `viktorbrui`.`roles` (`ID`, `Roles`) VALUES (NULL, 'User');
-INSERT INTO `viktorbrui`.`roles` (`ID`, `Roles`) VALUES (NULL, 'Guest');

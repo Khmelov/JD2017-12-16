@@ -1,3 +1,0 @@
-msg.Welcome=Прывiтанне!
-msg.Question=Як справы?
-msg.Name=Вiктар
